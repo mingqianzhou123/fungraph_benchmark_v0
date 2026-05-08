@@ -1,0 +1,32 @@
+{
+  "created": "2026-05-08",
+  "scenefun3d": {
+    "num_queries": 1485,
+    "splits": {
+      "train": 456,
+      "val": 111,
+      "test": 918
+    },
+    "query_types": {
+      "functional": 870,
+      "spatial": 405,
+      "semantic": 210
+    },
+    "num_geometry_scenes": 20,
+    "num_geometry_nodes": 317
+  },
+  "3dssg": {
+    "num_queries": 13193,
+    "splits": {
+      "train": 10842,
+      "val": 1857,
+      "test": 494
+    },
+    "query_types": {
+      "semantic": 1068,
+      "compositional": 6270,
+      "spatial": 5855
+    },
+    "num_scene_graphs": 1335
+  }
+}

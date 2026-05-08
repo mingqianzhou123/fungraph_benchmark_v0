@@ -1,0 +1,212 @@
+{
+  "dataset": "3dssg",
+  "raw_object_scans": 1482,
+  "raw_relationship_scans": 1335,
+  "overlap_scans": 1335,
+  "total_nodes": 38929,
+  "total_edges": 543956,
+  "top_object_labels": [
+    [
+      "wall",
+      5707
+    ],
+    [
+      "chair",
+      2169
+    ],
+    [
+      "pillow",
+      1569
+    ],
+    [
+      "box",
+      1511
+    ],
+    [
+      "shelf",
+      1423
+    ],
+    [
+      "floor",
+      1341
+    ],
+    [
+      "ceiling",
+      1246
+    ],
+    [
+      "plant",
+      993
+    ],
+    [
+      "door",
+      880
+    ],
+    [
+      "window",
+      867
+    ],
+    [
+      "table",
+      855
+    ],
+    [
+      "item",
+      804
+    ],
+    [
+      "lamp",
+      797
+    ],
+    [
+      "curtain",
+      775
+    ],
+    [
+      "object",
+      660
+    ],
+    [
+      "cabinet",
+      609
+    ],
+    [
+      "picture",
+      585
+    ],
+    [
+      "bag",
+      458
+    ],
+    [
+      "light",
+      396
+    ],
+    [
+      "doorframe",
+      388
+    ],
+    [
+      "kitchen cabinet",
+      382
+    ],
+    [
+      "sink",
+      380
+    ],
+    [
+      "clothes",
+      380
+    ],
+    [
+      "armchair",
+      375
+    ],
+    [
+      "towel",
+      339
+    ]
+  ],
+  "top_relations": [
+    [
+      "same object type",
+      107084
+    ],
+    [
+      "same shape",
+      85218
+    ],
+    [
+      "same color",
+      66940
+    ],
+    [
+      "right",
+      45357
+    ],
+    [
+      "left",
+      45357
+    ],
+    [
+      "close by",
+      26500
+    ],
+    [
+      "front",
+      24165
+    ],
+    [
+      "behind",
+      24165
+    ],
+    [
+      "same material",
+      20828
+    ],
+    [
+      "attached to",
+      12761
+    ],
+    [
+      "standing on",
+      12672
+    ],
+    [
+      "brighter than",
+      8925
+    ],
+    [
+      "darker than",
+      8925
+    ],
+    [
+      "higher than",
+      8415
+    ],
+    [
+      "lower than",
+      8415
+    ],
+    [
+      "same as",
+      7778
+    ],
+    [
+      "same state",
+      5074
+    ],
+    [
+      "same texture",
+      4388
+    ],
+    [
+      "bigger than",
+      4205
+    ],
+    [
+      "smaller than",
+      4205
+    ],
+    [
+      "lying on",
+      3571
+    ],
+    [
+      "hanging on",
+      2423
+    ],
+    [
+      "supported by",
+      1501
+    ],
+    [
+      "same symmetry as",
+      722
+    ],
+    [
+      "more comfortable than",
+      664
+    ]
+  ]
+}

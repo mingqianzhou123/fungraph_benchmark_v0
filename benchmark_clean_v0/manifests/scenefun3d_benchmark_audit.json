@@ -1,0 +1,496 @@
+{
+  "aligned": {
+    "total_aligned_queries": 64,
+    "stats": {
+      "total_scenes": 8,
+      "total_aligned": 64,
+      "total_unmatched": 50,
+      "min_iou_threshold": 0.2,
+      "verified_edges": 61,
+      "passes_quality_gate": 58,
+      "quality_flag_counts": {
+        "duplicate_target_mapping": 2,
+        "low_iou_alignment": 5,
+        "missing_verified_functional_edge": 3
+      }
+    },
+    "low_iou_queries": 5,
+    "missing_verified_edges": 3,
+    "sample_low_iou_queries": [
+      {
+        "scene_id": "421013",
+        "query": "Connect the device in one of the power outlets on the left of the wardrobe",
+        "match_iou_scores": [
+          0.123,
+          0.111,
+          0.122,
+          0.121,
+          0.136,
+          0.107
+        ]
+      },
+      {
+        "scene_id": "421063",
+        "query": "Close the bathroom door",
+        "match_iou_scores": [
+          0.0,
+          0.623
+        ]
+      },
+      {
+        "scene_id": "421254",
+        "query": "Open the fifth drawer of the cabinet located to the left of the TV",
+        "match_iou_scores": [
+          0.692,
+          0.001
+        ]
+      },
+      {
+        "scene_id": "421267",
+        "query": "Plug the device in the socket next to the potted plant",
+        "match_iou_scores": [
+          0.146
+        ]
+      },
+      {
+        "scene_id": "421602",
+        "query": "Turn on the ceiling light",
+        "match_iou_scores": [
+          0.176
+        ]
+      }
+    ]
+  },
+  "full_benchmark": {
+    "metadata": {
+      "dataset_name": "FunRAG",
+      "dataset_version": "v0.2",
+      "total": 264,
+      "train": 120,
+      "val": 35,
+      "test": 109,
+      "breakdown": {
+        "train": {
+          "functional": 34,
+          "spatial": 54,
+          "semantic": 32
+        },
+        "val": {
+          "functional": 25,
+          "spatial": 5,
+          "semantic": 5
+        },
+        "test": {
+          "spatial": 76,
+          "semantic": 33
+        }
+      },
+      "annotation_sources": {
+        "human": 59,
+        "templated": 205
+      },
+      "train_scenes": [
+        "420683",
+        "421013",
+        "421015",
+        "421063",
+        "421267",
+        "421602"
+      ],
+      "val_scenes": [
+        "421254",
+        "422007"
+      ],
+      "test_scenes": [
+        "421380",
+        "422391",
+        "422813",
+        "422826",
+        "460417",
+        "460419",
+        "466183",
+        "466192",
+        "466803",
+        "467293",
+        "468076",
+        "469011"
+      ]
+    },
+    "counts": {
+      "total_entries": 264,
+      "by_split": {
+        "train": 120,
+        "val": 35,
+        "test": 109
+      },
+      "by_type": {
+        "functional": 59,
+        "spatial": 135,
+        "semantic": 70
+      },
+      "by_source": {
+        "human": 59,
+        "templated": 205
+      },
+      "functional_missing_verified_edges": 0,
+      "duplicate_functional_texts": 0
+    },
+    "per_scene": {
+      "420683": {
+        "functional": 7,
+        "spatial": 8,
+        "semantic": 5
+      },
+      "421013": {
+        "functional": 6,
+        "spatial": 6,
+        "semantic": 4
+      },
+      "421015": {
+        "functional": 2,
+        "spatial": 10,
+        "semantic": 2
+      },
+      "421063": {
+        "functional": 2,
+        "spatial": 13,
+        "semantic": 10
+      },
+      "421254": {
+        "functional": 16,
+        "spatial": 5,
+        "semantic": 2
+      },
+      "421267": {
+        "functional": 8,
+        "spatial": 4,
+        "semantic": 7
+      },
+      "421380": {
+        "spatial": 5,
+        "semantic": 3
+      },
+      "421602": {
+        "functional": 9,
+        "spatial": 13,
+        "semantic": 4
+      },
+      "422007": {
+        "functional": 9,
+        "semantic": 3
+      },
+      "422391": {
+        "spatial": 9,
+        "semantic": 4
+      },
+      "422813": {
+        "spatial": 8,
+        "semantic": 2
+      },
+      "422826": {
+        "spatial": 8,
+        "semantic": 2
+      },
+      "460417": {
+        "spatial": 6,
+        "semantic": 3
+      },
+      "460419": {
+        "spatial": 9,
+        "semantic": 2
+      },
+      "466183": {
+        "spatial": 4
+      },
+      "466192": {
+        "spatial": 8
+      },
+      "466803": {
+        "spatial": 6,
+        "semantic": 2
+      },
+      "467293": {
+        "semantic": 2
+      },
+      "468076": {
+        "semantic": 2
+      },
+      "469011": {
+        "spatial": 13,
+        "semantic": 11
+      }
+    },
+    "top_duplicate_functional_queries": []
+  },
+  "annotated_benchmark": {
+    "metadata": {
+      "dataset_name": "FunRAG",
+      "dataset_version": "v0.2",
+      "total": 264,
+      "train": 120,
+      "val": 35,
+      "test": 109,
+      "breakdown": {
+        "train": {
+          "functional": 34,
+          "spatial": 54,
+          "semantic": 32
+        },
+        "val": {
+          "functional": 25,
+          "spatial": 5,
+          "semantic": 5
+        },
+        "test": {
+          "spatial": 76,
+          "semantic": 33
+        }
+      },
+      "annotation_sources": {
+        "human": 59,
+        "templated": 205,
+        "llm_generated": 231
+      },
+      "train_scenes": [
+        "420683",
+        "421013",
+        "421015",
+        "421063",
+        "421267",
+        "421602"
+      ],
+      "val_scenes": [
+        "421254",
+        "422007"
+      ],
+      "test_scenes": [
+        "421380",
+        "422391",
+        "422813",
+        "422826",
+        "460417",
+        "460419",
+        "466183",
+        "466192",
+        "466803",
+        "467293",
+        "468076",
+        "469011"
+      ],
+      "annotated_version": true,
+      "annotation_batch_id": "msgbatch_016yNJiwuuXR3f3gtLsfZJSa",
+      "total_entries": 495,
+      "split_counts": {
+        "train": 152,
+        "val": 37,
+        "test": 306
+      },
+      "query_type_counts": {
+        "functional": 290,
+        "spatial": 135,
+        "semantic": 70
+      },
+      "rebuilt_from_existing_llm_outputs": true,
+      "dropped_duplicate_generated_queries": 0
+    },
+    "counts": {
+      "total_entries": 495,
+      "by_split": {
+        "train": 152,
+        "val": 37,
+        "test": 306
+      },
+      "by_type": {
+        "functional": 290,
+        "spatial": 135,
+        "semantic": 70
+      },
+      "by_source": {
+        "human": 59,
+        "templated": 205,
+        "llm_generated": 231
+      },
+      "functional_missing_verified_edges": 0,
+      "duplicate_functional_texts": 24
+    },
+    "per_scene": {
+      "420683": {
+        "functional": 11,
+        "spatial": 8,
+        "semantic": 5
+      },
+      "421013": {
+        "functional": 14,
+        "spatial": 6,
+        "semantic": 4
+      },
+      "421015": {
+        "functional": 6,
+        "spatial": 10,
+        "semantic": 2
+      },
+      "421063": {
+        "functional": 10,
+        "spatial": 13,
+        "semantic": 10
+      },
+      "421254": {
+        "functional": 18,
+        "spatial": 5,
+        "semantic": 2
+      },
+      "421267": {
+        "functional": 10,
+        "spatial": 4,
+        "semantic": 7
+      },
+      "421380": {
+        "spatial": 5,
+        "semantic": 3,
+        "functional": 34
+      },
+      "421602": {
+        "functional": 15,
+        "spatial": 13,
+        "semantic": 4
+      },
+      "422007": {
+        "functional": 9,
+        "semantic": 3
+      },
+      "422391": {
+        "spatial": 9,
+        "semantic": 4,
+        "functional": 8
+      },
+      "422813": {
+        "spatial": 8,
+        "semantic": 2,
+        "functional": 16
+      },
+      "422826": {
+        "spatial": 8,
+        "semantic": 2,
+        "functional": 11
+      },
+      "460417": {
+        "spatial": 6,
+        "semantic": 3,
+        "functional": 16
+      },
+      "460419": {
+        "spatial": 9,
+        "semantic": 2,
+        "functional": 16
+      },
+      "466183": {
+        "spatial": 4,
+        "functional": 12
+      },
+      "466192": {
+        "spatial": 8,
+        "functional": 10
+      },
+      "466803": {
+        "spatial": 6,
+        "semantic": 2,
+        "functional": 8
+      },
+      "467293": {
+        "semantic": 2,
+        "functional": 10
+      },
+      "468076": {
+        "semantic": 2,
+        "functional": 8
+      },
+      "469011": {
+        "spatial": 13,
+        "semantic": 11,
+        "functional": 48
+      }
+    },
+    "top_duplicate_functional_queries": [
+      {
+        "query": "open the kitchen cabinet to access dishes and cookware.",
+        "count": 4
+      },
+      {
+        "query": "power on the television so we can watch it.",
+        "count": 4
+      },
+      {
+        "query": "change the oven heat level for cooking.",
+        "count": 3
+      },
+      {
+        "query": "open the kitchen cabinet to access stored items.",
+        "count": 3
+      },
+      {
+        "query": "turn on the television in this room",
+        "count": 3
+      },
+      {
+        "query": "turn on the water at the bathroom sink",
+        "count": 3
+      },
+      {
+        "query": "adjust the oven temperature to the desired setting.",
+        "count": 2
+      },
+      {
+        "query": "close the cabinet after putting away the dishes.",
+        "count": 2
+      },
+      {
+        "query": "close the cabinet next to the dishwasher.",
+        "count": 2
+      },
+      {
+        "query": "close the door behind you for privacy.",
+        "count": 2
+      },
+      {
+        "query": "enable the washing machine to start its operation.",
+        "count": 2
+      },
+      {
+        "query": "fill the bathtub with water",
+        "count": 2
+      },
+      {
+        "query": "fill the bathtub with water for a bath.",
+        "count": 2
+      },
+      {
+        "query": "fill the bathtub with water.",
+        "count": 2
+      },
+      {
+        "query": "increase the heat output from the radiator in this room.",
+        "count": 2
+      },
+      {
+        "query": "open the drawer to access its contents",
+        "count": 2
+      },
+      {
+        "query": "open the kitchen cabinet to access dishes.",
+        "count": 2
+      },
+      {
+        "query": "open the television stand cabinet to access storage",
+        "count": 2
+      },
+      {
+        "query": "open the television stand cabinet to access storage.",
+        "count": 2
+      },
+      {
+        "query": "open the television stand drawer to access storage space.",
+        "count": 2
+      }
+    ]
+  }
+}
