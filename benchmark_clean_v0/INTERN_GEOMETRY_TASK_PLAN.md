@@ -52,7 +52,7 @@ supporting edge 两端是否都有 3D grounding？
 如果场景里有多个同名 object，geometry 是否能帮助区分？
 ```
 
-这里的 geometry 指的是 object-level 3D bounding box 信息，例如：
+==这里的 geometry 指的是 object-level 3D bounding box 信息，例如==：
 
 ```text
 bbox_center
@@ -154,7 +154,7 @@ benchmark_clean_v0/geometry/scenefun3d_node_geom.json
 scene_id -> node_id -> bbox_center / bbox_min / bbox_max
 ```
 
-这是本任务最重要的 geometry 输入。
+==这是本任务最重要的 geometry 输入==。
 
 ### 3.4 OpenFunGraph annotations
 
@@ -215,7 +215,7 @@ anchor_node_id 是否有 bbox
 supporting_edge_id / supporting_edge_ids 的 endpoint 是否有 bbox
 ```
 
-需要统计：
+==需要统计：==
 
 ```text
 all SceneFun3D queries

@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-05-10T08:25:45.035498+00:00",
+  "input_files": {
+    "queries": "benchmark_clean_v0/queries/all_queries_index.jsonl",
+    "geometry": "benchmark_clean_v0/geometry/scenefun3d_node_geom.json",
+    "enriched": "benchmark_clean_v0/queries/scenefun3d_funrag_benchmark_enriched.json"
+  },
+  "geometry_inventory": {
+    "n_scenes_in_geom": 20,
+    "n_nodes_in_geom": 317,
+    "scene_ids": [
+      "420683",
+      "421013",
+      "421015",
+      "421063",
+      "421254",
+      "421267",
+      "421380",
+      "421602",
+      "422007",
+      "422391",
+      "422813",
+      "422826",
+      "460417",
+      "460419",
+      "466183",
+      "466192",
+      "466803",
+      "467293",
+      "468076",
+      "469011"
+    ]
+  },
+  "totals": {
+    "n_scenefun3d_queries": 1485,
+    "n_functional": 870,
+    "n_spatial": 405,
+    "n_semantic": 210
+  },
+  "coverage": {
+    "test": {
+      "functional": {
+        "n": 591,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      },
+      "semantic": {
+        "n": 99,
+        "target": 1.0,
+        "anchor": null,
+        "edge": null
+      },
+      "spatial": {
+        "n": 228,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": null
+      },
+      "ALL": {
+        "n": 918,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      }
+    },
+    "train": {
+      "functional": {
+        "n": 198,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      },
+      "semantic": {
+        "n": 96,
+        "target": 1.0,
+        "anchor": null,
+        "edge": null
+      },
+      "spatial": {
+        "n": 162,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": null
+      },
+      "ALL": {
+        "n": 456,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      }
+    },
+    "val": {
+      "functional": {
+        "n": 81,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      },
+      "semantic": {
+        "n": 15,
+        "target": 1.0,
+        "anchor": null,
+        "edge": null
+      },
+      "spatial": {
+        "n": 15,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": null
+      },
+      "ALL": {
+        "n": 111,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      }
+    },
+    "ALL": {
+      "functional": {
+        "n": 870,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      },
+      "semantic": {
+        "n": 210,
+        "target": 1.0,
+        "anchor": null,
+        "edge": null
+      },
+      "spatial": {
+        "n": 405,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": null
+      },
+      "ALL": {
+        "n": 1485,
+        "target": 1.0,
+        "anchor": 1.0,
+        "edge": 1.0
+      }
+    }
+  },
+  "missing_breakdown": {
+    "scenefun3d_functional_test": {
+      "n_total": 591,
+      "n_missing_target": 0,
+      "n_missing_anchor": 0,
+      "n_missing_edge_src": 0,
+      "n_missing_edge_tgt": 0,
+      "n_scene_not_in_geom": 0
+    },
+    "scenefun3d_functional_train": {
+      "n_total": 198,
+      "n_missing_target": 0,
+      "n_missing_anchor": 0,
+      "n_missing_edge_src": 0,
+      "n_missing_edge_tgt": 0,
+      "n_scene_not_in_geom": 0
+    },
+    "scenefun3d_functional_val": {
+      "n_total": 81,
+      "n_missing_target": 0,
+      "n_missing_anchor": 0,
+      "n_missing_edge_src": 0,
+      "n_missing_edge_tgt": 0,
+      "n_scene_not_in_geom": 0
+    }
+  },
+  "same_label_distractor": {
+    "scenefun3d_functional_test": {
+      "n_with_distractor": 498,
+      "distractor_rate": 0.8426395939086294,
+      "median_same_label_count": 3.0,
+      "max_same_label_count": 19
+    },
+    "scenefun3d_functional_train": {
+      "n_with_distractor": 162,
+      "distractor_rate": 0.8181818181818182,
+      "median_same_label_count": 8.0,
+      "max_same_label_count": 11
+    },
+    "scenefun3d_functional_val": {
+      "n_with_distractor": 75,
+      "distractor_rate": 0.9259259259259259,
+      "median_same_label_count": 20.0,
+      "max_same_label_count": 20
+    }
+  },
+  "gate_check": {
+    "scenefun3d_functional_test_n_queries": 591,
+    "scenefun3d_functional_test_target_coverage": 1.0,
+    "scenefun3d_functional_test_support_edge_coverage": 1.0,
+    "fallback_used_train_val_functional": false,
+    "fallback_target_coverage": null,
+    "fallback_support_edge_coverage": null,
+    "gate_target_coverage_evaluated": 1.0,
+    "gate_support_edge_coverage_evaluated": 1.0,
+    "passes_target_threshold_0.70": true,
+    "passes_edge_threshold_0.65": true,
+    "ready_for_phase_2": true
+  },
+  "scenes_missing_from_geom": []
+}
