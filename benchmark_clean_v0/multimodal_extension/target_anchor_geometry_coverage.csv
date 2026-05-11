@@ -1,0 +1,17 @@
+split,query_type,n_queries,n_target_covered,target_coverage_rate,n_anchor_applicable,n_anchor_covered,anchor_coverage_rate,n_edge_applicable,n_edge_both_covered,support_edge_endpoint_coverage_rate,n_target_and_anchor_both_covered,target_and_anchor_coverage_rate,n_same_label_distractor,same_label_distractor_rate
+test,functional,591,591,1.0000,591,591,1.0000,591,591,1.0000,591,1.0000,498,0.8426
+test,semantic,99,99,1.0000,0,0,,0,0,,0,0.0000,99,1.0000
+test,spatial,228,228,1.0000,228,228,1.0000,0,0,,228,1.0000,0,0.0000
+test,ALL,918,918,1.0000,819,819,1.0000,591,591,1.0000,819,0.8922,597,0.6503
+train,functional,198,198,1.0000,198,198,1.0000,198,198,1.0000,198,1.0000,162,0.8182
+train,semantic,96,96,1.0000,0,0,,0,0,,0,0.0000,96,1.0000
+train,spatial,162,162,1.0000,162,162,1.0000,0,0,,162,1.0000,0,0.0000
+train,ALL,456,456,1.0000,360,360,1.0000,198,198,1.0000,360,0.7895,258,0.5658
+val,functional,81,81,1.0000,81,81,1.0000,81,81,1.0000,81,1.0000,75,0.9259
+val,semantic,15,15,1.0000,0,0,,0,0,,0,0.0000,15,1.0000
+val,spatial,15,15,1.0000,15,15,1.0000,0,0,,15,1.0000,0,0.0000
+val,ALL,111,111,1.0000,96,96,1.0000,81,81,1.0000,96,0.8649,90,0.8108
+ALL,functional,870,870,1.0000,870,870,1.0000,870,870,1.0000,870,1.0000,735,0.8448
+ALL,semantic,210,210,1.0000,0,0,,0,0,,0,0.0000,210,1.0000
+ALL,spatial,405,405,1.0000,405,405,1.0000,0,0,,405,1.0000,0,0.0000
+ALL,ALL,1485,1485,1.0000,1275,1275,1.0000,870,870,1.0000,1275,0.8586,945,0.6364
