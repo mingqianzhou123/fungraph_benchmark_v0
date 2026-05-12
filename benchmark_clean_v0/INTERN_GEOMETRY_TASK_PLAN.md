@@ -333,7 +333,7 @@ CSV: nan
 PT: float("nan")
 ```
 
-下游代码必须使用 `has_bbox` mask 过滤缺失 geometry，不要通过数值本身判断缺失。
+==下游代码必须使用 `has_bbox` mask 过滤缺失 geometry，不要通过数值本身判断缺失==。
 
 ### Feature columns 契约
 
@@ -351,7 +351,7 @@ NODE_FEATURE_COLUMNS = [
 ]
 ```
 
-后续如果要加新列，只能 append 到末尾，不能插入、删除或重排已有列。
+==后续如果要加新列，只能 append 到末尾，不能插入、删除或重排已有列==。
 
 ### 输出文件
 
@@ -361,7 +361,7 @@ benchmark_clean_v0/multimodal_extension/node_geometry_features.pt
 benchmark_clean_v0/multimodal_extension/feature_index.json
 ```
 
-### feature_index.json 示例
+### feature_index.json 示例	
 
 ```json
 {
