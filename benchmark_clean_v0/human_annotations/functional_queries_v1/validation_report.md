@@ -1,4 +1,4 @@
-## Validation Report — 2026-05-14 22:41
+## Validation Report — 2026-05-15 21:58
 
 Input file: pilot_20_queries.jsonl
 Total queries checked: 20
@@ -19,13 +19,13 @@ Scene distribution:
 Difficulty tags distribution:
   endpoint_ambiguity: 3
   functional_relation: 13
-  geometry_aware: 3
+  geometry_aware: 5
   hard_negative: 2
-  same_label_disambiguation: 5
-  simple_functional: 4
+  same_label_disambiguation: 8
+  simple_functional: 3
 
 Phase 1 category distribution (TASK_PLAN Section 8 requires 10/5/3/2):
-  local_functional: 10 (expected 10) [OK]
-  same_or_endpoint: 5 (expected 5) [OK]
-  geometry_aware: 3 (expected 3) [OK]
+  local_functional: 7 (expected 10) [MISMATCH]
+  same_or_endpoint: 6 (expected 5) [MISMATCH]
+  geometry_aware: 5 (expected 3) [MISMATCH]
   hard_negative: 2 (expected 2) [OK]

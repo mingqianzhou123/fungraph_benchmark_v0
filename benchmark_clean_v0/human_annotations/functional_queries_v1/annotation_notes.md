@@ -356,3 +356,75 @@ Files ready for review:
 - validation_report.md
 
 ==STOP HERE — Phase 1 完成，等 Mingqian 审核后再进入 Phase 2==
+
+---
+
+## Phase 1 manual review fixes — 2026-05-15
+
+Did:
+- 学长 Mingqian 提供 manual review 表
+  （`summary/phase_clarify/phase1_manual_review.md`），指出 4 处问题
+  并要求修复后重跑 validator、保留 manual review 表原样、不修改 frozen benchmark
+  core files。
+- 修 `000003`（学长 ⚠️ 问题 1，严重）：query 说 "top drawer of the dresser"，但原
+  target=`cde51d66`（z=170.741）只是 5 个连到该 dresser 的 handle 中第 2 高，真正
+  z-max 是 `9fcd23c1`（z=170.932）。target_node_id 改为 `9fcd23c1`，supporting_edge
+  同步更新。同时 retag 从 `simple_functional` → `geometry_aware` +
+  `same_label_disambiguation`（"top" 是几何线索，"handle" 在该 anchor 上有 5 个候选
+  → 不是 label-only solvable）。加 `geometry_cues=["top"]`，
+  `is_label_only_solvable` 由 true → false。
+- 修 `000009`（学长 ⚠️ 问题 2，中等）：原 query "Which remote controls the
+  television" 有 2 个合法 target（560f1e2c 和 9c06f662 都连到同一 TV）。按学长
+  manual review 选项 A，补充几何描述：query_text 改为
+  "Which remote on the right-hand side controls the television"。target 保留
+  560f1e2c（x=-0.330，比 9c06f662 的 x=-0.443 更靠右，x diff = 0.113m）。
+  difficulty_tags 加 `geometry_aware`，加 `geometry_cues=["right"]`。
+- 修 `000007`（学长 ⚠️ 问题 3，轻微）：scene 421380 有 15 knobs，`num_same_label_distractors=14`
+  完全满足 `same_label_disambiguation` 条件，加入 tag。
+- 修 `000011`（学长 ⚠️ 问题 3，轻微）：scene 469011 有 19 knobs，
+  `num_same_label_distractors=18` 满足同上条件，加 tag。
+- 重跑 validator：20/20 PASS，0 ERROR，0 WARN，C13（重复 instance）通过。
+- 未修改 `phase1_manual_review.md`（学长保留原样指令）；未触碰 frozen 目录
+  （queries/、graphs/、geometry/、annotations/、manifests/、multimodal_extension/）。
+
+Counts:
+- pilot_20_queries.jsonl：20 条，修改 4 条（000003 / 000007 / 000009 / 000011），
+  其余 16 条不变。
+- difficulty_tags 计数变化：
+  - `simple_functional`：4 → 3（000003 移出）
+  - `functional_relation`：13 → 13（不变）
+  - `same_label_disambiguation`：5 → 8（+ 000003 / 000007 / 000011）
+  - `endpoint_ambiguity`：3 → 3（不变）
+  - `geometry_aware`：3 → 5（+ 000003 / 000009）
+  - `hard_negative`：2 → 2（不变）
+- 四类互斥分布（hard_neg > geometry > same/endpoint > local 优先级）：
+  10 / 5 / 3 / 2 → **7 / 6 / 5 / 2**
+- Scene 分布：469011=4, 421013=4, 420683=4, 421254=3, 421602=3, 421380=2（不变）
+- Validator：20/20 PASS, 0 ERROR, 0 WARN；
+  Phase 1 category distribution 检查显示 MISMATCH（informational only）。
+
+Potential issues:
+- [issue] (已修正) 000003 target 选错（z=170.741 不是最高，应是 z=170.932 的
+  9fcd23c1）。来源：学长 manual review ⚠️ 问题 1。
+- [issue] (已修正) 000009 query 有两个合法答案（两个 remote 都连同一 TV）。
+  来源：学长 manual review ⚠️ 问题 2。
+- [issue] (已修正) 000007 缺 `same_label_disambiguation` tag（14 个 same-label knob
+  满足条件）。来源：学长 manual review ⚠️ 问题 3。
+- [issue] (已修正) 000011 缺 `same_label_disambiguation` tag（18 个 same-label knob
+  满足条件）。来源：学长 manual review ⚠️ 问题 3。
+- [issue] (informational, 不阻塞) Phase 1 四类分布从 10/5/3/2 漂移到 7/6/5/2。
+  漂移原因 = 诚实 retag（000003 加 geometry+same_label、000007/000011 加 same_label、
+  000009 加 geometry）。学长在本轮反馈中明确指示"下一批提高 hard non-label-only
+  query 比例（尤其 same-label disambiguation / endpoint ambiguity / geometry-aware
+  / hard negative）"，本次漂移正是这个方向：local-7 减少（更少 easy case），
+  same/endpoint+1、geometry+2（更多 hard case）。Phase 2 扩展时按此方向继续。
+
+Files ready for review:
+- `pilot_20_queries.jsonl`（20 条，4 条修正后全 validator PASS）
+- `validation_report.md`（最新，包含修正后分布）
+- `summary/phase_clarify/phase1_manual_review.md`（学长 review 表，保留原样）
+- `scripts/validate_functional_queries.py`（13 项检查不变）
+
+==STOP HERE — Manual review 修正完成，等学长 ack 后开始 Phase 2（重点：
+扩展时刻意提高 same_label_disambiguation / endpoint_ambiguity / geometry_aware /
+hard_negative 比例，按学长指示降低 label-only 易解 query 的占比）==

@@ -105,6 +105,8 @@ edge_id 格式 = target_node_id | relation | anchor_node_id？（方向是否正
 
 ### ⚠️ 问题 1（严重）：`000003` target 可能选错了
 
+> 如果要修复，我感觉可以在后面的difficulty_tags加上geometry_aware！
+
 ```
 query: "Rotate the handle to open the top drawer of the dresser"
 anchor: f4e41b55 (dresser/chest of drawers)
@@ -168,3 +170,12 @@ query "Which remote controls the television" 没有给出区分两个 remote 的
         suggested_fix=difficulty_tags 补充 "same_label_disambiguation"
         status=PENDING_MINGQIAN
 ```
+
+## 数据齐全。==修复==方案:
+
+| Query      | 问题                                                         | 修复                                                         |
+| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **000003** | target=`cde51d66`(z=170.741,第2高),"top drawer" 应选 z 最大的 | target → `9fcd23c1`(z=170.932,真正最高);retag 为 `geometry_aware`+`same_label_disambiguation`,加 `geometry_cues=["top"]` |
+| **000007** | 14 个 same-label knob 但缺 `same_label_disambiguation` tag   | 加 tag                                                       |
+| **000009** | 2 个 remote 都连同一 TV,query 无唯一答案。两 remote 仅 x 差 0.113m | ==加 "on the right-hand side"(target x=-0.330 > 9c06f662 x=-0.443)==;加 `geometry_aware` tag + `geometry_cues=["right"]` |
+| **000011** | 18 个 same-label knob 但缺 `same_label_disambiguation` tag   | 加 tag                                                       |
