@@ -209,7 +209,7 @@ benchmark_clean_v0/annotations/openfungraph/SceneFun3D.relations.json
 
 ---
 
-## 6. Difficulty Tags
+## 6. ==Difficulty Tags==
 
 请只使用下面这些 tag。不要临时发明新 tag，除非写在 `annotation_notes.md` 里等 Mingqian 确认。
 
@@ -571,7 +571,7 @@ validation_report.md
 对每条新增 query：
 
 ```text
-query_id 是否唯一
+query_id 是否唯一👍
 scene_id 是否存在
 target_node_id 是否存在于 scene graph
 anchor_node_id 是否存在于 scene graph
@@ -666,7 +666,7 @@ Phase 7: hard_slice_summary_v1.json
 3. 这个 query 难在哪里，能不能被 label-only shortcut 解决？
 ```
 
-如果这三个问题答不清楚，不要收进 `functional_queries_v1.jsonl`。
+==如果这三个问题答不清楚，不要收进 `functional_queries_v1.jsonl`。==
 
 ---
 

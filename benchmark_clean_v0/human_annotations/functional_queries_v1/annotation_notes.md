@@ -288,3 +288,71 @@ Next step: Phase 1 — write 20 pilot queries from these 6 scenes.
   - 3 geometry-aware functional (use 421013/469011/421602 high z-range scenes)
   - 2 hard negatives
   - Validator script (Phase 6) should be written in parallel with Phase 1.
+
+---
+
+## Phase 1 progress — 2026-05-15
+
+Did:
+- 写 scripts/phase1_scene_explorer.py（仅标准库），生成 scene_graph_summary_v1.txt
+  —— 6 个选中 scene 的 node / edge / 同名分组；关键修正：过滤 "unknown" 标签，不计入
+  同名 distractor。
+- 写 scripts/validate_functional_queries.py，最终 13 项检查（C1–C13）+ Phase 1 分布
+  分析。C12 增强为同时查 long_range tag 与 is_long_range 字段；C13 新增重复 instance
+  检查（同一 target+anchor+edge tuple）；新增 category distribution 检查自动比对 10/5/3/2。
+- ==写 20 条 pilot queries（pilot_20_queries.jsonl），覆盖全部 6 个 scene==。
+
+- 术语澄清（==**供后续标注参考Mingqian可以忽略**==；基于 OpenFunGraph CVPR'25 Sec. 1/3 与 Research Plan）：
+  内部 review 曾把 local/remote 误说成"按动词类型分的 edge family"，已修正：
+  • **local edge / remote edge**（OpenFunGraph 物理定义）按**物理依附 vs 物理分离**
+    分类，**不是按动词类型**：local = interactive element 刚性 part of object
+    （如 handle-door、knob-cabinet）；remote = element 与 object 物理分离、远距离
+    操作（如 switch controls ceiling light、outlet powers fridge、remote-TV）。
+    动词（opens/pulls vs controls/powers）只是物理关系的 proxy，不是定义。
+  • **long_range**（TASK_PLAN Section 6）= evidence chain ≥ 2 跳（**图论多跳**）。
+    Research Plan Section 8.5 另定义了 "spatially long-range"（target↔anchor 的
+    **3D 物理距离大**），与图跳数互为独立轴。
+  • **TASK_PLAN Section 8 "10 条 local functional"** 中的 "local" 上下文反义词是
+    long_range（Section 6 + Phase 4 规定 pilot 禁写 long_range），所以这里 "local"
+    = local-range（图上单跳），**与 OpenFunGraph 的 "local-type edge" 不是同一
+    概念**。pilot 这 10 条单跳 functional 既含物理 local-type 边（knob→radiator）
+    也含单跳 remote-type 边（outlet→fridge）。
+  • 附注：6 条 remote-type 单跳 query（000006/000009/000012/000013/000018/000019）
+    虽然图跳=1、不算 long_range tag，但 target↔anchor 的 3D 距离往往较大（如墙
+    开关 ↔ 天花板灯 ~2.5m）；从 Research Plan Section 8.5 的物理距离视角看可属
+    "spatially long-range" 案例——这是 graph-hop 与 3D-distance 两个 long-range
+    轴在 pilot 上的具体体现。
+
+Counts:
+- pilot_20_queries.jsonl：20 条，全部 unique instance（C13 通过）。
+- difficulty 四类分布：local=10, same/endpoint=5, geometry=3, hard_neg=2 —— 符合
+  TASK_PLAN Section 8 的 10/5/3/2。
+- difficulty_tags 计数：simple_functional=4, functional_relation=13,
+  same_label_disambiguation=5, endpoint_ambiguity=3, geometry_aware=3, hard_negative=2。
+- Scene 分布：469011=4, 421013=4, 420683=4, 421254=3, 421602=3, 421380=2（每个 ≥2）。
+- edge-family 粗分布（人工按 research plan Table 1 归类）：functional_local=14,
+  functional_remote=6。
+- is_long_range 全 false，无 long_range tag。
+- Validator：20/20 PASS，0 ERROR，0 WARN。
+
+Potential issues:
+- [issue] scene_id=469011 problem=469011 的 144 条 functional queries 的
+  `anchor_labels` 字段全部为空（涉及 15 个 unique anchor_node_id）；
+  phase0_scene_audit.py:142 将空 anchor_labels 兜底为字符串 "unknown"，导致
+  scene_audit_v1.csv 显示 "unknown=15"。**scene_graph 节点本身没有 'unknown'
+  label**（已实测：469011 的 43 个节点全部有合法 label，unknown 计数 = 0）。
+  suggested_fix=anchor 身份由 node_id 唯一确定，pilot 通过 scene_graph 反查得到
+  合法 label，不阻塞。源头修复需补 enriched JSON 里 query 层的 `anchor_labels`
+  字段（这是数据集级缺失，不是单节点错误）。
+- [issue] scope=multimodal_extension/phase2 problem=phase2.md 设计决策 "高度轴=y"
+  与实测 geometry 冲突。实测 ceiling light 在 z 轴 3/3 scene 排第 1、y 轴排中部
+  （#13/#10/#5），==证明 z 才是垂直轴==
+
+Files ready for review:
+- pilot_20_queries.jsonl（20 条，分布 10/5/3/2，全部 validator PASS）
+- scripts/phase1_scene_explorer.py
+- scripts/validate_functional_queries.py（13 项检查 + 分布分析）
+- scene_graph_summary_v1.txt
+- validation_report.md
+
+==STOP HERE — Phase 1 完成，等 Mingqian 审核后再进入 Phase 2==
