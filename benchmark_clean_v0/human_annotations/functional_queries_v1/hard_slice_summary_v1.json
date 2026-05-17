@@ -1,0 +1,46 @@
+{
+  "total_queries": 93,
+  "scene_distribution": {
+    "420683": 12,
+    "421013": 10,
+    "421602": 11,
+    "421380": 14,
+    "469011": 23,
+    "421254": 23
+  },
+  "difficulty_tag_counts": {
+    "simple_functional": 7,
+    "same_label_disambiguation": 86,
+    "endpoint_ambiguity": 18,
+    "multi_anchor": 41,
+    "geometry_aware": 74,
+    "functional_relation": 18,
+    "hard_negative": 11
+  },
+  "difficulty_tag_ratios_pct": {
+    "simple_functional": 7.5,
+    "same_label_disambiguation": 92.5,
+    "endpoint_ambiguity": 19.4,
+    "multi_anchor": 44.1,
+    "geometry_aware": 79.6,
+    "functional_relation": 19.4,
+    "hard_negative": 11.8
+  },
+  "is_label_only_solvable_count": 2,
+  "is_label_only_solvable_ratio_pct": 2.2,
+  "num_same_label_distractors_histogram": {
+    "1": 8,
+    "5-9": 20,
+    "0": 6,
+    "10-19": 59
+  },
+  "multi_anchor_x_geometry_aware_co_occurrence": {
+    "multi_anchor_AND_geometry_aware": 41,
+    "geometry_aware_only": 33
+  },
+  "phase2_anchors": {
+    "ideal_target": 150,
+    "minimum": 80,
+    "rationale": "Realistic cap from 6-scene edge supply (~79 fresh edges, with cluster knobs in 421380 reducing distinguishable edges further)."
+  }
+}

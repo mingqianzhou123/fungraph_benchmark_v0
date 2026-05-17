@@ -1,0 +1,575 @@
+================================================================================
+SCENE 469011  (43 nodes, 24 edges)
+================================================================================
+
+NODES:
+  node_id                                 label                                    z           x           y
+  --------------------------------------  ------------------------------  ----------  ----------  ----------
+  4a7d1c17-7c39-41cc-9b5c-6d169d0a9ca1    cabinet                            -26.993       3.212       1.894
+  af49702a-b605-472e-8ba6-697e38979647    dishwasher                         -28.251       0.723       1.333
+  0146b63e-698d-4337-9a8b-f7b1a25c05f7    electric outlet                    -26.325       3.131       2.447
+  548a6569-5c70-4d7b-9f10-0ece005e6c00    electric outlet                    -28.492      -0.446       1.130
+  6e044328-4536-4638-8548-55219211867d    electric outlet                    -27.582       3.414       2.115
+  9fac55c8-8af6-4699-8978-fb2ffd318a66    electric outlet                    -27.588       2.441       3.218
+  bbb3fe07-f5a8-4f7e-a549-806c7bfcbd57    electric outlet                    -27.598       2.685       2.936
+  c7768a1e-fb11-4eb3-a8b9-a1dd2c5400f6    electric outlet                    -27.577       3.717       2.004
+  3d0352ee-0916-4a98-b353-a083f97c9fd7    exhaust hood / ventilation fan     -27.114       2.890       2.269
+  4af16074-57d0-47e7-8be9-aa361472ae26    faucet / handle                    -27.661       0.881       2.081
+  7fddf637-3da9-4511-b4b4-fc6a042db72c    fridge                             -27.640       0.119       0.972
+  2abcdace-ba3f-45c0-8dce-eac4de015ee8    handle                             -27.546       0.041       0.680
+  47d6518d-dce3-4c45-8cfc-34c56bbb3454    handle                             -27.922       2.656       2.020
+  0b2e3fc2-7080-4e9f-aee6-1a18a9798952    kitchen cabinet                    -26.981       2.551       2.653
+  4507827d-3758-4e21-ac0c-75149e840d57    kitchen cabinet                    -28.181       2.335       2.464
+  78932c81-2e84-4f45-a579-f28174406741    kitchen cabinet                    -28.192       2.360       0.841
+  7b89239e-5681-403a-a1da-dd26e16be537    kitchen cabinet                    -28.202       3.018       1.691
+  a5cb3f02-1860-44e3-95c1-9799088474e0    kitchen cabinet                    -28.196       1.977       2.473
+  cdfa3f8b-1bdf-4b70-aa8a-8be5d157be07    kitchen cabinet                    -28.195       1.121       1.734
+  d68f6e84-8842-429e-a877-dd6d951bc930    kitchen cabinet                    -28.196       1.537       2.088
+  f985cca4-89e2-43f9-b8c2-5de77392b1f3    kitchen cabinet                    -26.990       2.219       3.028
+  ff93b24e-ee51-464d-81b9-737553b78364    kitchen cabinet                    -28.197       2.940       1.336
+  19d41c11-a30d-4f1b-bb52-5f8260af117f    kitchen sink                       -27.857       0.907       2.111
+  06b684bb-7a5c-4717-847a-d343bd6824d9    knob                               -27.799       2.528       2.193
+  1a2ac79a-7144-460c-9641-2cfd08c9615d    knob                               -27.879       2.329       0.853
+  26d01e98-de8b-4574-91a6-6b4f62371315    knob                               -27.873       1.553       2.073
+  26facf7e-0a3c-4c02-ae11-e6ce94dcdc33    knob                               -28.032       1.550       2.073
+  28e9ec26-d38b-45a2-9614-9fe6a8d69211    knob                               -27.799       2.581       2.124
+  60c75bed-76ac-430f-9ed8-790350f059b6    knob                               -27.880       1.299       1.858
+  65d617ff-232c-4148-99bb-0286d46995b5    knob                               -27.871       2.878       1.822
+  6dcb0d35-1950-4621-a2d7-c4ba3cb0f5d1    knob                               -27.883       2.429       2.317
+  76002344-9de9-476f-a43e-d822d1cdb592    knob                               -27.800       2.700       1.993
+  79d81cf3-381e-48cd-9bf6-aea8e7bd017c    knob                               -27.878       2.373       0.892
+  8572a9c1-67b2-4493-8cfe-d492a255c623    knob                               -28.198       1.556       2.072
+  85f5f2f0-ef9b-4e32-a0de-cd8a7f54db4b    knob                               -27.802       2.814       1.891
+  98aa04b7-41b4-4339-aed9-0a1e01d51fd8    knob                               -27.308       2.381       2.811
+  9f732c04-b269-4e3b-982c-fb29cf75d515    knob                               -27.879       2.751       1.216
+  a6844581-85cd-4300-9fed-bc1d7e5971a5    knob                               -27.306       2.646       2.508
+  ba5246d7-ea68-4bd5-b390-45a1b4e8d58e    knob                               -27.925       0.848       1.422
+  cb5cccda-b4e9-4933-8516-6c775c1f91f8    knob                               -27.304       3.077       2.007
+  d003c3b8-3330-4adf-8c1e-6c8c9f2245f8    knob                               -27.797       2.492       2.246
+  d4432013-4335-4218-8276-da26c1bf64e4    knob                               -27.885       1.805       2.286
+  8e66432e-ee5a-4009-9ad5-f53d29772552    oven                               -28.272       2.669       2.076
+
+SAME-LABEL GROUPS (distractor candidates, unknown excluded):
+  [knob]  count=19
+    06b684bb-7a5c-4717-847a-d343bd6824d9  z=-27.799  x=2.528
+    1a2ac79a-7144-460c-9641-2cfd08c9615d  z=-27.879  x=2.329
+    26d01e98-de8b-4574-91a6-6b4f62371315  z=-27.873  x=1.553
+    26facf7e-0a3c-4c02-ae11-e6ce94dcdc33  z=-28.032  x=1.550
+    28e9ec26-d38b-45a2-9614-9fe6a8d69211  z=-27.799  x=2.581
+    60c75bed-76ac-430f-9ed8-790350f059b6  z=-27.880  x=1.299
+    65d617ff-232c-4148-99bb-0286d46995b5  z=-27.871  x=2.878
+    6dcb0d35-1950-4621-a2d7-c4ba3cb0f5d1  z=-27.883  x=2.429
+    76002344-9de9-476f-a43e-d822d1cdb592  z=-27.800  x=2.700
+    79d81cf3-381e-48cd-9bf6-aea8e7bd017c  z=-27.878  x=2.373
+    8572a9c1-67b2-4493-8cfe-d492a255c623  z=-28.198  x=1.556
+    85f5f2f0-ef9b-4e32-a0de-cd8a7f54db4b  z=-27.802  x=2.814
+    98aa04b7-41b4-4339-aed9-0a1e01d51fd8  z=-27.308  x=2.381
+    9f732c04-b269-4e3b-982c-fb29cf75d515  z=-27.879  x=2.751
+    a6844581-85cd-4300-9fed-bc1d7e5971a5  z=-27.306  x=2.646
+    ba5246d7-ea68-4bd5-b390-45a1b4e8d58e  z=-27.925  x=0.848
+    cb5cccda-b4e9-4933-8516-6c775c1f91f8  z=-27.304  x=3.077
+    d003c3b8-3330-4adf-8c1e-6c8c9f2245f8  z=-27.797  x=2.492
+    d4432013-4335-4218-8276-da26c1bf64e4  z=-27.885  x=1.805
+  [kitchen cabinet]  count=9
+    0b2e3fc2-7080-4e9f-aee6-1a18a9798952  z=-26.981  x=2.551
+    4507827d-3758-4e21-ac0c-75149e840d57  z=-28.181  x=2.335
+    78932c81-2e84-4f45-a579-f28174406741  z=-28.192  x=2.360
+    7b89239e-5681-403a-a1da-dd26e16be537  z=-28.202  x=3.018
+    a5cb3f02-1860-44e3-95c1-9799088474e0  z=-28.196  x=1.977
+    cdfa3f8b-1bdf-4b70-aa8a-8be5d157be07  z=-28.195  x=1.121
+    d68f6e84-8842-429e-a877-dd6d951bc930  z=-28.196  x=1.537
+    f985cca4-89e2-43f9-b8c2-5de77392b1f3  z=-26.990  x=2.219
+    ff93b24e-ee51-464d-81b9-737553b78364  z=-28.197  x=2.940
+  [electric outlet]  count=6
+    0146b63e-698d-4337-9a8b-f7b1a25c05f7  z=-26.325  x=3.131
+    548a6569-5c70-4d7b-9f10-0ece005e6c00  z=-28.492  x=-0.446
+    6e044328-4536-4638-8548-55219211867d  z=-27.582  x=3.414
+    9fac55c8-8af6-4699-8978-fb2ffd318a66  z=-27.588  x=2.441
+    bbb3fe07-f5a8-4f7e-a549-806c7bfcbd57  z=-27.598  x=2.685
+    c7768a1e-fb11-4eb3-a8b9-a1dd2c5400f6  z=-27.577  x=3.717
+  [handle]  count=2
+    2abcdace-ba3f-45c0-8dce-eac4de015ee8  z=-27.546  x=0.041
+    47d6518d-dce3-4c45-8cfc-34c56bbb3454  z=-27.922  x=2.656
+
+EDGES:
+  source_label                    relation                                       target_label                  
+  ------------------------------  ---------------------------------------------  ------------------------------
+  faucet / handle                 control the water flow                         kitchen sink                  
+    edge_id: 4af16074-57d0-47e7-8be9-aa361472ae26|control the water flow|19d41c11-a30d-4f1b-bb52-5f8260af117f
+  electric outlet                 provide power                                  fridge                        
+    edge_id: 548a6569-5c70-4d7b-9f10-0ece005e6c00|provide power|7fddf637-3da9-4511-b4b4-fc6a042db72c
+  electric outlet                 provide power                                  exhaust hood / ventilation fan
+    edge_id: 0146b63e-698d-4337-9a8b-f7b1a25c05f7|provide power|3d0352ee-0916-4a98-b353-a083f97c9fd7
+  handle                          pull to open or close                          fridge                        
+    edge_id: 2abcdace-ba3f-45c0-8dce-eac4de015ee8|pull to open or close|7fddf637-3da9-4511-b4b4-fc6a042db72c
+  handle                          pull to open or close                          oven                          
+    edge_id: 47d6518d-dce3-4c45-8cfc-34c56bbb3454|pull to open or close|8e66432e-ee5a-4009-9ad5-f53d29772552
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 60c75bed-76ac-430f-9ed8-790350f059b6|pull to open or close|cdfa3f8b-1bdf-4b70-aa8a-8be5d157be07
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 26d01e98-de8b-4574-91a6-6b4f62371315|pull to open or close|d68f6e84-8842-429e-a877-dd6d951bc930
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 26facf7e-0a3c-4c02-ae11-e6ce94dcdc33|pull to open or close|d68f6e84-8842-429e-a877-dd6d951bc930
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 8572a9c1-67b2-4493-8cfe-d492a255c623|pull to open or close|d68f6e84-8842-429e-a877-dd6d951bc930
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: d4432013-4335-4218-8276-da26c1bf64e4|pull to open or close|a5cb3f02-1860-44e3-95c1-9799088474e0
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 6dcb0d35-1950-4621-a2d7-c4ba3cb0f5d1|pull to open or close|4507827d-3758-4e21-ac0c-75149e840d57
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 65d617ff-232c-4148-99bb-0286d46995b5|pull to open or close|7b89239e-5681-403a-a1da-dd26e16be537
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 98aa04b7-41b4-4339-aed9-0a1e01d51fd8|pull to open or close|f985cca4-89e2-43f9-b8c2-5de77392b1f3
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: a6844581-85cd-4300-9fed-bc1d7e5971a5|pull to open or close|0b2e3fc2-7080-4e9f-aee6-1a18a9798952
+  knob                            pull to open or close                          cabinet                       
+    edge_id: cb5cccda-b4e9-4933-8516-6c775c1f91f8|pull to open or close|4a7d1c17-7c39-41cc-9b5c-6d169d0a9ca1
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 9f732c04-b269-4e3b-982c-fb29cf75d515|pull to open or close|ff93b24e-ee51-464d-81b9-737553b78364
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 79d81cf3-381e-48cd-9bf6-aea8e7bd017c|pull to open or close|78932c81-2e84-4f45-a579-f28174406741
+  knob                            pull to open or close                          kitchen cabinet               
+    edge_id: 1a2ac79a-7144-460c-9641-2cfd08c9615d|pull to open or close|78932c81-2e84-4f45-a579-f28174406741
+  knob                            rotate to adjust the setting                   oven                          
+    edge_id: d003c3b8-3330-4adf-8c1e-6c8c9f2245f8|rotate to adjust the setting|8e66432e-ee5a-4009-9ad5-f53d29772552
+  knob                            rotate to adjust the setting                   oven                          
+    edge_id: 06b684bb-7a5c-4717-847a-d343bd6824d9|rotate to adjust the setting|8e66432e-ee5a-4009-9ad5-f53d29772552
+  knob                            rotate to adjust the setting                   oven                          
+    edge_id: 28e9ec26-d38b-45a2-9614-9fe6a8d69211|rotate to adjust the setting|8e66432e-ee5a-4009-9ad5-f53d29772552
+  knob                            rotate to adjust the setting                   oven                          
+    edge_id: 76002344-9de9-476f-a43e-d822d1cdb592|rotate to adjust the setting|8e66432e-ee5a-4009-9ad5-f53d29772552
+  knob                            rotate to adjust the setting                   oven                          
+    edge_id: 85f5f2f0-ef9b-4e32-a0de-cd8a7f54db4b|rotate to adjust the setting|8e66432e-ee5a-4009-9ad5-f53d29772552
+  knob                            rotate to adjust the setting or open or close  dishwasher                    
+    edge_id: ba5246d7-ea68-4bd5-b390-45a1b4e8d58e|rotate to adjust the setting or open or close|af49702a-b605-472e-8ba6-697e38979647
+
+================================================================================
+SCENE 421254  (28 nodes, 23 edges)
+================================================================================
+
+NODES:
+  node_id                                 label                                    z           x           y
+  --------------------------------------  ------------------------------  ----------  ----------  ----------
+  97164eaa-1cf8-49ff-9024-f20d4d64f13e    dresser / chest of drawers         212.536      -0.853       0.737
+  f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb    dresser / chest of drawers         212.670      -1.766       0.966
+  762c6ae7-17cb-4f69-998b-ffe2c168d47f    dresser / nightstand               212.221      -0.435      -1.881
+  51097855-7ce4-4893-8f0a-4715abeaec1c    electric outlet                    211.975      -0.945      -1.960
+  044038ae-cd3a-4874-837c-9f2e32a83b04    knob                               212.613      -1.942       0.963
+  0635ce47-455a-4933-b421-cd5601b7203f    knob                               212.256      -1.128       0.752
+  15a1acd9-d48d-4011-bbdc-297619dfb62c    knob                               212.441      -1.563       0.871
+  2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64    knob                               212.451      -1.946       0.965
+  2ffdc7cc-6746-4b6d-a2e5-35c078befc56    knob                               212.700      -0.724       0.648
+  3025d034-e4c9-4dc8-8711-ba7cda23b8e1    knob                               212.480      -1.125       0.754
+  482d7642-61c9-4161-b651-45dc8cb9e2ae    knob                               212.293      -1.559       0.866
+  6aa841fa-6898-401d-a750-0f521b4cafe7    knob                               212.612      -1.557       0.865
+  877bb40d-b6d8-4716-b958-320b07e6f8d8    knob                               212.255      -0.726       0.651
+  8ab6af8d-3cad-4fad-bf78-157916578132    knob                               212.933      -1.937       0.961
+  9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3    knob                               212.926      -1.123       0.753
+  a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f    knob                               212.932      -1.549       0.866
+  ac42e1c2-3ed4-447f-8147-cd903d8eefc5    knob                               212.775      -1.941       0.962
+  addeffee-87e2-4f20-98bd-589c425f0f07    knob                               212.925      -0.726       0.651
+  b0aa5f30-4fae-4ca8-bc66-c0595b8fc754    knob                               212.770      -1.552       0.865
+  ba0e4f26-1e02-4745-92b6-e1035ba5252c    knob                               212.345      -0.446      -1.798
+  c0685f07-46ed-41c9-b3ce-4fc476c86c7c    knob                               212.201      -0.446      -1.801
+  d2174346-66bb-4a99-8177-edcc8c7cd20b    knob                               212.048      -0.446      -1.799
+  da2d25fc-56d3-4b0f-8ada-778acac16871    knob                               212.703      -1.125       0.752
+  f75e1a27-55d7-4b2e-be1a-2d5596d69dd8    knob                               212.480      -0.726       0.651
+  0ea8a987-f639-4314-a3f3-78a5e6a3b5dc    lamp                               212.688      -0.525      -2.062
+  560f1e2c-e62d-4f1e-93e8-3acbf61433cd    remote                             212.446      -0.330      -1.935
+  9c06f662-e551-484e-9559-a7d3c0b5b31d    remote                             212.447      -0.443      -1.945
+  8bd6869b-b734-4041-a3e5-0cd3e3b18d0e    television                         213.197      -1.068       0.955
+
+SAME-LABEL GROUPS (distractor candidates, unknown excluded):
+  [knob]  count=20
+    044038ae-cd3a-4874-837c-9f2e32a83b04  z=212.613  x=-1.942
+    0635ce47-455a-4933-b421-cd5601b7203f  z=212.256  x=-1.128
+    15a1acd9-d48d-4011-bbdc-297619dfb62c  z=212.441  x=-1.563
+    2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64  z=212.451  x=-1.946
+    2ffdc7cc-6746-4b6d-a2e5-35c078befc56  z=212.700  x=-0.724
+    3025d034-e4c9-4dc8-8711-ba7cda23b8e1  z=212.480  x=-1.125
+    482d7642-61c9-4161-b651-45dc8cb9e2ae  z=212.293  x=-1.559
+    6aa841fa-6898-401d-a750-0f521b4cafe7  z=212.612  x=-1.557
+    877bb40d-b6d8-4716-b958-320b07e6f8d8  z=212.255  x=-0.726
+    8ab6af8d-3cad-4fad-bf78-157916578132  z=212.933  x=-1.937
+    9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3  z=212.926  x=-1.123
+    a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f  z=212.932  x=-1.549
+    ac42e1c2-3ed4-447f-8147-cd903d8eefc5  z=212.775  x=-1.941
+    addeffee-87e2-4f20-98bd-589c425f0f07  z=212.925  x=-0.726
+    b0aa5f30-4fae-4ca8-bc66-c0595b8fc754  z=212.770  x=-1.552
+    ba0e4f26-1e02-4745-92b6-e1035ba5252c  z=212.345  x=-0.446
+    c0685f07-46ed-41c9-b3ce-4fc476c86c7c  z=212.201  x=-0.446
+    d2174346-66bb-4a99-8177-edcc8c7cd20b  z=212.048  x=-0.446
+    da2d25fc-56d3-4b0f-8ada-778acac16871  z=212.703  x=-1.125
+    f75e1a27-55d7-4b2e-be1a-2d5596d69dd8  z=212.480  x=-0.726
+  [dresser / chest of drawers]  count=2
+    97164eaa-1cf8-49ff-9024-f20d4d64f13e  z=212.536  x=-0.853
+    f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb  z=212.670  x=-1.766
+  [remote]  count=2
+    560f1e2c-e62d-4f1e-93e8-3acbf61433cd  z=212.446  x=-0.330
+    9c06f662-e551-484e-9559-a7d3c0b5b31d  z=212.447  x=-0.443
+
+EDGES:
+  source_label                    relation                                       target_label                  
+  ------------------------------  ---------------------------------------------  ------------------------------
+  remote                          control                                        television                    
+    edge_id: 560f1e2c-e62d-4f1e-93e8-3acbf61433cd|control|8bd6869b-b734-4041-a3e5-0cd3e3b18d0e
+  remote                          control                                        television                    
+    edge_id: 9c06f662-e551-484e-9559-a7d3c0b5b31d|control|8bd6869b-b734-4041-a3e5-0cd3e3b18d0e
+  electric outlet                 provide power                                  lamp                          
+    edge_id: 51097855-7ce4-4893-8f0a-4715abeaec1c|provide power|0ea8a987-f639-4314-a3f3-78a5e6a3b5dc
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: addeffee-87e2-4f20-98bd-589c425f0f07|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: da2d25fc-56d3-4b0f-8ada-778acac16871|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 2ffdc7cc-6746-4b6d-a2e5-35c078befc56|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: f75e1a27-55d7-4b2e-be1a-2d5596d69dd8|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 3025d034-e4c9-4dc8-8711-ba7cda23b8e1|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 0635ce47-455a-4933-b421-cd5601b7203f|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 877bb40d-b6d8-4716-b958-320b07e6f8d8|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 8ab6af8d-3cad-4fad-bf78-157916578132|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: b0aa5f30-4fae-4ca8-bc66-c0595b8fc754|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: ac42e1c2-3ed4-447f-8147-cd903d8eefc5|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 6aa841fa-6898-401d-a750-0f521b4cafe7|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 044038ae-cd3a-4874-837c-9f2e32a83b04|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 15a1acd9-d48d-4011-bbdc-297619dfb62c|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 482d7642-61c9-4161-b651-45dc8cb9e2ae|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb
+  knob                            pull to open or close a drawer                 dresser / nightstand          
+    edge_id: ba0e4f26-1e02-4745-92b6-e1035ba5252c|pull to open or close a drawer|762c6ae7-17cb-4f69-998b-ffe2c168d47f
+  knob                            pull to open or close a drawer                 dresser / nightstand          
+    edge_id: c0685f07-46ed-41c9-b3ce-4fc476c86c7c|pull to open or close a drawer|762c6ae7-17cb-4f69-998b-ffe2c168d47f
+  knob                            pull to open or close a drawer                 dresser / nightstand          
+    edge_id: d2174346-66bb-4a99-8177-edcc8c7cd20b|pull to open or close a drawer|762c6ae7-17cb-4f69-998b-ffe2c168d47f
+
+================================================================================
+SCENE 421380  (22 nodes, 17 edges)
+================================================================================
+
+NODES:
+  node_id                                 label                                    z           x           y
+  --------------------------------------  ------------------------------  ----------  ----------  ----------
+  bd7e5291-0c48-44aa-9965-3e7810b3be12    electric outlet                    193.580      -0.426      -0.858
+  08a1222a-4837-49cf-a0c6-836d236311a0    knob                               193.346       1.070       1.196
+  1365989c-2223-4888-8465-ec59a7adea8e    knob                               193.568       1.469       1.078
+  2569559b-e5fd-4e92-a533-308098b6becd    knob                               193.348       1.469       1.082
+  282c10c9-3020-4333-b468-cb3197b80940    knob                               193.749       1.068       1.191
+  352d3a71-9681-4a32-aecd-1d89a929bd7b    knob                               193.750       1.468       1.077
+  44d68daa-9a11-483c-91fc-8771f75185a0    knob                               193.316       1.832      -0.740
+  64dde80b-d956-4d15-8305-58466e31648f    knob                               193.778       1.885       0.967
+  73839439-0110-43e5-bb6e-d2883e193874    knob                               193.660       1.467       1.079
+  8fa63b99-b099-4906-a608-5325add561e4    knob                               193.477       1.467       1.076
+  927cd15d-3bd7-4709-b88d-6e4c8b8afca4    knob                               193.658       1.068       1.194
+  9db14ed4-ed96-4e43-a12d-7a1a865f0161    knob                               193.776       0.690       1.303
+  bb923245-a044-4875-b548-bee144ca7d2a    knob                               193.478       1.068       1.196
+  bc40c514-1f23-4a0f-b9c6-a3aee1416269    knob                               193.775       0.652       1.316
+  f263ca02-a3c0-4b5f-bd3e-2866f0c9a9ec    knob                               193.777       1.848       0.980
+  f26835a1-518e-4918-a492-c23cee451f0a    knob                               193.568       1.067       1.190
+  53839976-7039-45ba-9581-719814492e1f    lamp                               193.998       2.076       1.036
+  f422e864-7d94-4369-b4b4-d4c06bbe4739    radiator                           193.473       1.904      -0.325
+  c44a2818-7f0c-4200-bda1-915f3ade1731    remote                             193.837       1.596       1.140
+  d75da7cf-4a4b-40fc-ac77-ffd1dd8edb6b    remote                             193.837       1.700       1.117
+  8b0f6a88-2f0e-4f44-ad59-65dec8b2aca1    television                         194.118       1.280       1.284
+  6e39c1ea-d3cd-4059-9b4f-c2a506d716e9    television stand / cabinet         193.580       1.261       1.164
+
+SAME-LABEL GROUPS (distractor candidates, unknown excluded):
+  [knob]  count=15
+    08a1222a-4837-49cf-a0c6-836d236311a0  z=193.346  x=1.070
+    1365989c-2223-4888-8465-ec59a7adea8e  z=193.568  x=1.469
+    2569559b-e5fd-4e92-a533-308098b6becd  z=193.348  x=1.469
+    282c10c9-3020-4333-b468-cb3197b80940  z=193.749  x=1.068
+    352d3a71-9681-4a32-aecd-1d89a929bd7b  z=193.750  x=1.468
+    44d68daa-9a11-483c-91fc-8771f75185a0  z=193.316  x=1.832
+    64dde80b-d956-4d15-8305-58466e31648f  z=193.778  x=1.885
+    73839439-0110-43e5-bb6e-d2883e193874  z=193.660  x=1.467
+    8fa63b99-b099-4906-a608-5325add561e4  z=193.477  x=1.467
+    927cd15d-3bd7-4709-b88d-6e4c8b8afca4  z=193.658  x=1.068
+    9db14ed4-ed96-4e43-a12d-7a1a865f0161  z=193.776  x=0.690
+    bb923245-a044-4875-b548-bee144ca7d2a  z=193.478  x=1.068
+    bc40c514-1f23-4a0f-b9c6-a3aee1416269  z=193.775  x=0.652
+    f263ca02-a3c0-4b5f-bd3e-2866f0c9a9ec  z=193.777  x=1.848
+    f26835a1-518e-4918-a492-c23cee451f0a  z=193.568  x=1.067
+  [remote]  count=2
+    c44a2818-7f0c-4200-bda1-915f3ade1731  z=193.837  x=1.596
+    d75da7cf-4a4b-40fc-ac77-ffd1dd8edb6b  z=193.837  x=1.700
+
+EDGES:
+  source_label                    relation                                       target_label                  
+  ------------------------------  ---------------------------------------------  ------------------------------
+  remote                          control                                        television                    
+    edge_id: c44a2818-7f0c-4200-bda1-915f3ade1731|control|8b0f6a88-2f0e-4f44-ad59-65dec8b2aca1
+  remote                          control                                        television                    
+    edge_id: d75da7cf-4a4b-40fc-ac77-ffd1dd8edb6b|control|8b0f6a88-2f0e-4f44-ad59-65dec8b2aca1
+  knob                            pull to open or close                          television stand / cabinet    
+    edge_id: f263ca02-a3c0-4b5f-bd3e-2866f0c9a9ec|pull to open or close|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close                          television stand / cabinet    
+    edge_id: 64dde80b-d956-4d15-8305-58466e31648f|pull to open or close|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close                          television stand / cabinet    
+    edge_id: 9db14ed4-ed96-4e43-a12d-7a1a865f0161|pull to open or close|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close                          television stand / cabinet    
+    edge_id: bc40c514-1f23-4a0f-b9c6-a3aee1416269|pull to open or close|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 282c10c9-3020-4333-b468-cb3197b80940|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 352d3a71-9681-4a32-aecd-1d89a929bd7b|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 927cd15d-3bd7-4709-b88d-6e4c8b8afca4|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 73839439-0110-43e5-bb6e-d2883e193874|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: f26835a1-518e-4918-a492-c23cee451f0a|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 1365989c-2223-4888-8465-ec59a7adea8e|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: bb923245-a044-4875-b548-bee144ca7d2a|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 8fa63b99-b099-4906-a608-5325add561e4|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 08a1222a-4837-49cf-a0c6-836d236311a0|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            pull to open or close a drawer                 television stand / cabinet    
+    edge_id: 2569559b-e5fd-4e92-a533-308098b6becd|pull to open or close a drawer|6e39c1ea-d3cd-4059-9b4f-c2a506d716e9
+  knob                            rotate to adjust the temperature               radiator                      
+    edge_id: 44d68daa-9a11-483c-91fc-8771f75185a0|rotate to adjust the temperature|f422e864-7d94-4369-b4b4-d4c06bbe4739
+
+================================================================================
+SCENE 421602  (19 nodes, 13 edges)
+================================================================================
+
+NODES:
+  node_id                                 label                                    z           x           y
+  --------------------------------------  ------------------------------  ----------  ----------  ----------
+  631559ce-afb5-4459-9a00-7ec088bf4628    cabinet / closet                   170.970      -2.020       0.781
+  405c7c68-c579-4094-b2ee-4a02ad1828a8    ceiling light                      172.184      -0.852      -0.498
+  1293f172-4c8b-4f52-9c8d-745aeb42d7f1    door                               171.002      -0.589       1.004
+  340b66f3-ff28-4436-a311-ba6ba9202289    dresser / chest of drawers         170.445       0.833      -0.268
+  f4e41b55-ad6c-4f3c-a624-d139edd6f6c3    dresser / chest of drawers         170.655      -1.808      -1.946
+  13b01e96-5010-4c1a-8b09-c8346e420ea3    handle                             171.038      -0.533       0.709
+  1fff26d6-a1bc-4a03-bfa9-b4baf44f058d    handle                             170.175      -1.893      -1.829
+  2e9cd70e-9bcb-463e-8609-dc8c63d1facc    handle                             170.567       0.651      -0.229
+  31afb664-5958-490b-ba2d-4de7e0d0e632    handle                             170.962      -1.864       0.955
+  416fa12f-6bc2-458b-941d-0daffd9e5d7d    handle                             170.971      -1.861       1.026
+  70b0480d-4014-4c34-a7c1-b8c37aa7faaa    handle                             170.360      -1.884      -1.829
+  7f9d7574-57e9-4963-af14-e6278c288313    handle                             170.553      -1.884      -1.825
+  90e6a8bd-5b0f-4991-8bbe-831acf0faa53    handle                             170.191       0.662      -0.231
+  9fcd23c1-4638-41a9-a8d8-02bffa3e6a7c    handle                             170.932      -1.881      -1.822
+  cde51d66-3837-4fc6-bf48-16cb2189a7ed    handle                             170.741      -1.876      -1.825
+  d54793bc-ed8e-4883-a708-1299c03d038d    handle                             170.379       0.656      -0.222
+  c9adafa4-e9f4-469b-9f85-1fefacb17b22    knob                               170.245      -0.647       1.341
+  1901053a-2215-40c3-8e3e-10ca3b402428    light switch                       171.427      -1.628       1.439
+  0c6ed5cc-e7f3-45df-9d2c-bd355e32457f    radiator                           170.476       0.297       1.260
+
+SAME-LABEL GROUPS (distractor candidates, unknown excluded):
+  [handle]  count=11
+    13b01e96-5010-4c1a-8b09-c8346e420ea3  z=171.038  x=-0.533
+    1fff26d6-a1bc-4a03-bfa9-b4baf44f058d  z=170.175  x=-1.893
+    2e9cd70e-9bcb-463e-8609-dc8c63d1facc  z=170.567  x=0.651
+    31afb664-5958-490b-ba2d-4de7e0d0e632  z=170.962  x=-1.864
+    416fa12f-6bc2-458b-941d-0daffd9e5d7d  z=170.971  x=-1.861
+    70b0480d-4014-4c34-a7c1-b8c37aa7faaa  z=170.360  x=-1.884
+    7f9d7574-57e9-4963-af14-e6278c288313  z=170.553  x=-1.884
+    90e6a8bd-5b0f-4991-8bbe-831acf0faa53  z=170.191  x=0.662
+    9fcd23c1-4638-41a9-a8d8-02bffa3e6a7c  z=170.932  x=-1.881
+    cde51d66-3837-4fc6-bf48-16cb2189a7ed  z=170.741  x=-1.876
+    d54793bc-ed8e-4883-a708-1299c03d038d  z=170.379  x=0.656
+  [dresser / chest of drawers]  count=2
+    340b66f3-ff28-4436-a311-ba6ba9202289  z=170.445  x=0.833
+    f4e41b55-ad6c-4f3c-a624-d139edd6f6c3  z=170.655  x=-1.808
+
+EDGES:
+  source_label                    relation                                       target_label                  
+  ------------------------------  ---------------------------------------------  ------------------------------
+  light switch                    control, turn on or turn off                   ceiling light                 
+    edge_id: 1901053a-2215-40c3-8e3e-10ca3b402428|control, turn on or turn off|405c7c68-c579-4094-b2ee-4a02ad1828a8
+  handle                          pull to open or close                          cabinet / closet              
+    edge_id: 31afb664-5958-490b-ba2d-4de7e0d0e632|pull to open or close|631559ce-afb5-4459-9a00-7ec088bf4628
+  handle                          pull to open or close                          cabinet / closet              
+    edge_id: 416fa12f-6bc2-458b-941d-0daffd9e5d7d|pull to open or close|631559ce-afb5-4459-9a00-7ec088bf4628
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 2e9cd70e-9bcb-463e-8609-dc8c63d1facc|pull to open or close a drawer|340b66f3-ff28-4436-a311-ba6ba9202289
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: d54793bc-ed8e-4883-a708-1299c03d038d|pull to open or close a drawer|340b66f3-ff28-4436-a311-ba6ba9202289
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 90e6a8bd-5b0f-4991-8bbe-831acf0faa53|pull to open or close a drawer|340b66f3-ff28-4436-a311-ba6ba9202289
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 9fcd23c1-4638-41a9-a8d8-02bffa3e6a7c|pull to open or close a drawer|f4e41b55-ad6c-4f3c-a624-d139edd6f6c3
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: cde51d66-3837-4fc6-bf48-16cb2189a7ed|pull to open or close a drawer|f4e41b55-ad6c-4f3c-a624-d139edd6f6c3
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 7f9d7574-57e9-4963-af14-e6278c288313|pull to open or close a drawer|f4e41b55-ad6c-4f3c-a624-d139edd6f6c3
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 70b0480d-4014-4c34-a7c1-b8c37aa7faaa|pull to open or close a drawer|f4e41b55-ad6c-4f3c-a624-d139edd6f6c3
+  handle                          pull to open or close a drawer                 dresser / chest of drawers    
+    edge_id: 1fff26d6-a1bc-4a03-bfa9-b4baf44f058d|pull to open or close a drawer|f4e41b55-ad6c-4f3c-a624-d139edd6f6c3
+  knob                            rotate to adjust the temperature               radiator                      
+    edge_id: c9adafa4-e9f4-469b-9f85-1fefacb17b22|rotate to adjust the temperature|0c6ed5cc-e7f3-45df-9d2c-bd355e32457f
+  handle                          rotate to open or close                        door                          
+    edge_id: 13b01e96-5010-4c1a-8b09-c8346e420ea3|rotate to open or close|1293f172-4c8b-4f52-9c8d-745aeb42d7f1
+
+================================================================================
+SCENE 421013  (22 nodes, 10 edges)
+================================================================================
+
+NODES:
+  node_id                                 label                                    z           x           y
+  --------------------------------------  ------------------------------  ----------  ----------  ----------
+  38486241-df60-4e9b-946a-2a05fce6d3eb    ceiling light                      217.068       1.434      -0.085
+  2b27ebab-9f6f-4a35-8e8b-dca0f71aeeef    door                               215.753       3.170      -0.822
+  600ca2b3-a6fd-4360-8279-2e91df4d6851    dresser / nightstand               215.145      -0.133       0.328
+  34208c34-ef39-41ab-8ce8-7c17c0ba6063    electric outlet                    215.220       2.327      -1.952
+  3b94c767-7660-4148-9286-e7f8f443f249    electric outlet                    215.220       0.908      -1.806
+  85c97937-e343-4b6d-965e-37ed6e370658    electric outlet                    215.217       2.476      -1.850
+  a0504b82-f38b-490e-9fab-2829fce20155    electric outlet                    215.216       2.787      -1.644
+  f835ba0c-5fdd-477b-a217-3a10c6ddd7ef    electric outlet                    215.220       2.631      -1.747
+  217402c7-af78-4217-b70f-ef3bb65f71d4    handle                             214.915       1.418      -1.834
+  363a1c6d-0870-419a-a9e1-539b68463700    handle                             214.898       1.712       1.430
+  4375aca4-619a-49e3-9bb5-abcd2fdc203f    handle                             215.133       1.715       1.424
+  5c383fa1-c2de-46d9-8c87-969486e5e28d    handle                             215.723       3.132      -1.123
+  5c71b546-bf86-49cd-9c7f-158a9c4b24e5    handle                             215.704       1.591      -1.720
+  6ce409f0-d503-4282-bbda-8dd62e3d2ae3    handle                             215.456       1.258      -1.938
+  763b8e1e-ca12-4f8d-a0d9-cbdad0b699c2    handle                             214.922      -0.105       0.270
+  7f13ad67-a21a-4ed2-9bc1-c0e330ebfbb4    handle                             215.147      -0.096       0.263
+  d1cb8681-bd37-49eb-8d89-5f09d782a627    handle                             215.139       1.431      -1.828
+  14a3fccb-c6a2-4cd5-bba7-a8bb1a313948    light bulb                         215.429      -0.132       0.427
+  2c04b533-d63b-4a30-a4d3-4d50eabfa740    light bulb                         215.417       1.596       1.537
+  eab8ec36-9674-4dc7-8c00-0c6478fc8f92    light switch                       215.912       2.697       0.491
+  e810c10f-8b4a-4fd1-8ae1-0d51fd3e2295    nightstand / dresser               215.112       1.662       1.465
+  a00be285-5f92-4254-aadd-83e7182b5db9    wardrobe                           215.642       1.642      -1.856
+
+SAME-LABEL GROUPS (distractor candidates, unknown excluded):
+  [handle]  count=9
+    217402c7-af78-4217-b70f-ef3bb65f71d4  z=214.915  x=1.418
+    363a1c6d-0870-419a-a9e1-539b68463700  z=214.898  x=1.712
+    4375aca4-619a-49e3-9bb5-abcd2fdc203f  z=215.133  x=1.715
+    5c383fa1-c2de-46d9-8c87-969486e5e28d  z=215.723  x=3.132
+    5c71b546-bf86-49cd-9c7f-158a9c4b24e5  z=215.704  x=1.591
+    6ce409f0-d503-4282-bbda-8dd62e3d2ae3  z=215.456  x=1.258
+    763b8e1e-ca12-4f8d-a0d9-cbdad0b699c2  z=214.922  x=-0.105
+    7f13ad67-a21a-4ed2-9bc1-c0e330ebfbb4  z=215.147  x=-0.096
+    d1cb8681-bd37-49eb-8d89-5f09d782a627  z=215.139  x=1.431
+  [electric outlet]  count=5
+    34208c34-ef39-41ab-8ce8-7c17c0ba6063  z=215.220  x=2.327
+    3b94c767-7660-4148-9286-e7f8f443f249  z=215.220  x=0.908
+    85c97937-e343-4b6d-965e-37ed6e370658  z=215.217  x=2.476
+    a0504b82-f38b-490e-9fab-2829fce20155  z=215.216  x=2.787
+    f835ba0c-5fdd-477b-a217-3a10c6ddd7ef  z=215.220  x=2.631
+  [light bulb]  count=2
+    14a3fccb-c6a2-4cd5-bba7-a8bb1a313948  z=215.429  x=-0.132
+    2c04b533-d63b-4a30-a4d3-4d50eabfa740  z=215.417  x=1.596
+
+EDGES:
+  source_label                    relation                                       target_label                  
+  ------------------------------  ---------------------------------------------  ------------------------------
+  light switch                    control, turn on or turn off                   ceiling light                 
+    edge_id: eab8ec36-9674-4dc7-8c00-0c6478fc8f92|control, turn on or turn off|38486241-df60-4e9b-946a-2a05fce6d3eb
+  handle                          pull to open or close                          wardrobe                      
+    edge_id: 5c71b546-bf86-49cd-9c7f-158a9c4b24e5|pull to open or close|a00be285-5f92-4254-aadd-83e7182b5db9
+  handle                          pull to open or close                          wardrobe                      
+    edge_id: 6ce409f0-d503-4282-bbda-8dd62e3d2ae3|pull to open or close|a00be285-5f92-4254-aadd-83e7182b5db9
+  handle                          pull to open or close                          wardrobe                      
+    edge_id: d1cb8681-bd37-49eb-8d89-5f09d782a627|pull to open or close|a00be285-5f92-4254-aadd-83e7182b5db9
+  handle                          pull to open or close                          wardrobe                      
+    edge_id: 217402c7-af78-4217-b70f-ef3bb65f71d4|pull to open or close|a00be285-5f92-4254-aadd-83e7182b5db9
+  handle                          pull to open or close a drawer                 dresser / nightstand          
+    edge_id: 7f13ad67-a21a-4ed2-9bc1-c0e330ebfbb4|pull to open or close a drawer|600ca2b3-a6fd-4360-8279-2e91df4d6851
+  handle                          pull to open or close a drawer                 dresser / nightstand          
+    edge_id: 763b8e1e-ca12-4f8d-a0d9-cbdad0b699c2|pull to open or close a drawer|600ca2b3-a6fd-4360-8279-2e91df4d6851
+  handle                          pull to open or close a drawer                 nightstand / dresser          
+    edge_id: 4375aca4-619a-49e3-9bb5-abcd2fdc203f|pull to open or close a drawer|e810c10f-8b4a-4fd1-8ae1-0d51fd3e2295
+  handle                          pull to open or close a drawer                 nightstand / dresser          
+    edge_id: 363a1c6d-0870-419a-a9e1-539b68463700|pull to open or close a drawer|e810c10f-8b4a-4fd1-8ae1-0d51fd3e2295
+  handle                          rotate to open or close                        door                          
+    edge_id: 5c383fa1-c2de-46d9-8c87-969486e5e28d|rotate to open or close|2b27ebab-9f6f-4a35-8e8b-dca0f71aeeef
+
+================================================================================
+SCENE 420683  (21 nodes, 12 edges)
+================================================================================
+
+NODES:
+  node_id                                 label                                    z           x           y
+  --------------------------------------  ------------------------------  ----------  ----------  ----------
+  7a6d5c52-dc92-4dac-b205-5f38b5e3b44b    ceiling light                      383.577       1.445      -0.410
+  34ef21f3-fb41-496f-afac-632e7ad4c34b    chest of drawers / dresser         382.188       0.399      -1.412
+  6564cece-b08a-4e99-aadc-7b9b84d48c14    door                               382.732       2.355       1.311
+  1bcde871-8765-4a7b-b2fa-92caeb16596e    handle                             383.090      -0.531      -0.905
+  eb945e52-a2d5-4257-8de1-3f340deb71c9    handle                             382.567       2.227       1.058
+  1b45ca90-7c63-4bed-945b-ee564321a724    knob                               382.670       0.471      -1.354
+  465347e8-606a-4807-b89e-085cf8c578f3    knob                               382.668       0.603      -1.612
+  7478eaa4-362a-4613-9d6e-d41b794f41b9    knob                               382.124       3.039      -0.737
+  875242c5-10d3-4dd4-95ec-d20799e913c3    knob                               382.119       1.198      -1.719
+  8dec8ba5-ee16-44b1-a131-611ee615bba7    knob                               382.121       0.457      -1.368
+  bd7938dd-0f75-4e1c-84a3-aa6294dc6b36    knob                               382.118       0.596      -1.619
+  d8c8183c-8054-4101-9a2b-1d2645194360    knob                               382.388       0.596      -1.624
+  d9876b50-2eaf-4c07-8543-3f57f6813b25    knob                               382.396       0.467      -1.355
+  e0047d50-015b-40d0-8910-f0c4b1fb5b7a    knob                               381.827      -0.487      -0.312
+  30b8b11f-2fa0-4121-8ee4-1c3538b597fc    lamp                               382.518       1.284      -1.853
+  3e6f9598-15d7-43ef-847e-24f495af71dc    lamp                               382.500       3.129      -0.915
+  6eabdfdc-d41c-4511-a841-08b177fd3d4b    nightstand drawer                  382.124       3.050      -0.741
+  ef11c37b-4be8-4b73-aa2e-ff2d1a9ea5ff    nightstand drawer                  382.114       1.210      -1.735
+  8a1b9af6-dc57-4766-98cb-f10cb6266656    radiator                           382.002      -0.240      -0.720
+  560e4272-ce2c-4442-be41-413532b29fe2    switch panel / electric outlet     382.928       2.949       0.820
+  74f9d3c4-241d-4a60-937d-92a11e9421c7    window                             383.083      -0.579      -0.886
+
+SAME-LABEL GROUPS (distractor candidates, unknown excluded):
+  [knob]  count=9
+    1b45ca90-7c63-4bed-945b-ee564321a724  z=382.670  x=0.471
+    465347e8-606a-4807-b89e-085cf8c578f3  z=382.668  x=0.603
+    7478eaa4-362a-4613-9d6e-d41b794f41b9  z=382.124  x=3.039
+    875242c5-10d3-4dd4-95ec-d20799e913c3  z=382.119  x=1.198
+    8dec8ba5-ee16-44b1-a131-611ee615bba7  z=382.121  x=0.457
+    bd7938dd-0f75-4e1c-84a3-aa6294dc6b36  z=382.118  x=0.596
+    d8c8183c-8054-4101-9a2b-1d2645194360  z=382.388  x=0.596
+    d9876b50-2eaf-4c07-8543-3f57f6813b25  z=382.396  x=0.467
+    e0047d50-015b-40d0-8910-f0c4b1fb5b7a  z=381.827  x=-0.487
+  [nightstand drawer]  count=2
+    6eabdfdc-d41c-4511-a841-08b177fd3d4b  z=382.124  x=3.050
+    ef11c37b-4be8-4b73-aa2e-ff2d1a9ea5ff  z=382.114  x=1.210
+  [lamp]  count=2
+    30b8b11f-2fa0-4121-8ee4-1c3538b597fc  z=382.518  x=1.284
+    3e6f9598-15d7-43ef-847e-24f495af71dc  z=382.500  x=3.129
+  [handle]  count=2
+    1bcde871-8765-4a7b-b2fa-92caeb16596e  z=383.090  x=-0.531
+    eb945e52-a2d5-4257-8de1-3f340deb71c9  z=382.567  x=2.227
+
+EDGES:
+  source_label                    relation                                       target_label                  
+  ------------------------------  ---------------------------------------------  ------------------------------
+  switch panel / electric outlet  control, turn on or turn off                   ceiling light                 
+    edge_id: 560e4272-ce2c-4442-be41-413532b29fe2|control, turn on or turn off|7a6d5c52-dc92-4dac-b205-5f38b5e3b44b
+  handle                          pull to open or close                          door                          
+    edge_id: eb945e52-a2d5-4257-8de1-3f340deb71c9|pull to open or close|6564cece-b08a-4e99-aadc-7b9b84d48c14
+  knob                            pull to open or close                          nightstand drawer             
+    edge_id: 7478eaa4-362a-4613-9d6e-d41b794f41b9|pull to open or close|6eabdfdc-d41c-4511-a841-08b177fd3d4b
+  knob                            pull to open or close                          nightstand drawer             
+    edge_id: 875242c5-10d3-4dd4-95ec-d20799e913c3|pull to open or close|ef11c37b-4be8-4b73-aa2e-ff2d1a9ea5ff
+  knob                            pull to open or close a drawer                 chest of drawers / dresser    
+    edge_id: 465347e8-606a-4807-b89e-085cf8c578f3|pull to open or close a drawer|34ef21f3-fb41-496f-afac-632e7ad4c34b
+  knob                            pull to open or close a drawer                 chest of drawers / dresser    
+    edge_id: 1b45ca90-7c63-4bed-945b-ee564321a724|pull to open or close a drawer|34ef21f3-fb41-496f-afac-632e7ad4c34b
+  knob                            pull to open or close a drawer                 chest of drawers / dresser    
+    edge_id: d8c8183c-8054-4101-9a2b-1d2645194360|pull to open or close a drawer|34ef21f3-fb41-496f-afac-632e7ad4c34b
+  knob                            pull to open or close a drawer                 chest of drawers / dresser    
+    edge_id: d9876b50-2eaf-4c07-8543-3f57f6813b25|pull to open or close a drawer|34ef21f3-fb41-496f-afac-632e7ad4c34b
+  knob                            pull to open or close a drawer                 chest of drawers / dresser    
+    edge_id: 8dec8ba5-ee16-44b1-a131-611ee615bba7|pull to open or close a drawer|34ef21f3-fb41-496f-afac-632e7ad4c34b
+  knob                            pull to open or close a drawer                 chest of drawers / dresser    
+    edge_id: bd7938dd-0f75-4e1c-84a3-aa6294dc6b36|pull to open or close a drawer|34ef21f3-fb41-496f-afac-632e7ad4c34b
+  knob                            rotate to adjust the temperature               radiator                      
+    edge_id: e0047d50-015b-40d0-8910-f0c4b1fb5b7a|rotate to adjust the temperature|8a1b9af6-dc57-4766-98cb-f10cb6266656
+  handle                          rotate to open or close                        window                        
+    edge_id: 1bcde871-8765-4a7b-b2fa-92caeb16596e|rotate to open or close|74f9d3c4-241d-4a60-937d-92a11e9421c7
