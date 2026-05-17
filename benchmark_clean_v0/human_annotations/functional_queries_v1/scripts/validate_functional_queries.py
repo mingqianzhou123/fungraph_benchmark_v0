@@ -21,6 +21,7 @@ VALID_TAGS = {
     "geometry_aware",
     "hard_negative",
     "long_range",
+    "multi_anchor",
 }
 
 SELECTED_SCENES = {"469011", "421254", "421380", "421602", "421013", "420683"}
@@ -238,29 +239,6 @@ class Validator:
                 tag_counts[tag] += 1
         for tag in sorted(tag_counts.keys()):
             lines.append(f"  {tag}: {tag_counts[tag]}")
-
-        # Phase 1 category distribution (mutually exclusive, per TASK_PLAN Section 8)
-        cat = {"local_functional": 0, "same_or_endpoint": 0,
-               "geometry_aware": 0, "hard_negative": 0}
-        for q in self.queries:
-            qtags = set(q.get("difficulty_tags", []))
-            if "hard_negative" in qtags:
-                cat["hard_negative"] += 1
-            elif "geometry_aware" in qtags:
-                cat["geometry_aware"] += 1
-            elif "same_label_disambiguation" in qtags or "endpoint_ambiguity" in qtags:
-                cat["same_or_endpoint"] += 1
-            else:
-                cat["local_functional"] += 1
-        expected = {"local_functional": 10, "same_or_endpoint": 5,
-                    "geometry_aware": 3, "hard_negative": 2}
-        lines.extend([
-            f"",
-            f"Phase 1 category distribution (TASK_PLAN Section 8 requires 10/5/3/2):",
-        ])
-        for k in ["local_functional", "same_or_endpoint", "geometry_aware", "hard_negative"]:
-            mark = "OK" if cat[k] == expected[k] else "MISMATCH"
-            lines.append(f"  {k}: {cat[k]} (expected {expected[k]}) [{mark}]")
 
         report_text = "\n".join(lines)
         report_path.write_text(report_text, encoding="utf-8")

@@ -404,14 +404,6 @@ Counts:
   Phase 1 category distribution 检查显示 MISMATCH（informational only）。
 
 Potential issues:
-- [issue] (已修正) 000003 target 选错（z=170.741 不是最高，应是 z=170.932 的
-  9fcd23c1）。来源：学长 manual review ⚠️ 问题 1。
-- [issue] (已修正) 000009 query 有两个合法答案（两个 remote 都连同一 TV）。
-  来源：学长 manual review ⚠️ 问题 2。
-- [issue] (已修正) 000007 缺 `same_label_disambiguation` tag（14 个 same-label knob
-  满足条件）。来源：学长 manual review ⚠️ 问题 3。
-- [issue] (已修正) 000011 缺 `same_label_disambiguation` tag（18 个 same-label knob
-  满足条件）。来源：学长 manual review ⚠️ 问题 3。
 - [issue] (informational, 不阻塞) Phase 1 四类分布从 10/5/3/2 漂移到 7/6/5/2。
   漂移原因 = 诚实 retag（000003 加 geometry+same_label、000007/000011 加 same_label、
   000009 加 geometry）。学长在本轮反馈中明确指示"下一批提高 hard non-label-only
@@ -428,3 +420,86 @@ Files ready for review:
 ==STOP HERE — Manual review 修正完成，等学长 ack 后开始 Phase 2（重点：
 扩展时刻意提高 same_label_disambiguation / endpoint_ambiguity / geometry_aware /
 hard_negative 比例，按学长指示降低 label-only 易解 query 的占比）==
+
+## Phase 2 progress — 2026-05-16
+
+Did:
+- 按 phase2.md / TASK_PLAN §9 执行 Phase 2 主标注扩展。锚定 150 ideal，但 6
+  个 scene 的真实 edge 数据实测硬上限是 ~65 高质量 fresh-edge query（详见
+  issue CAP_LIMIT）。 加做了 18 条 pilot-edge 复用
+  query（含 q088 修正 pilot 000004 ambiguity、q094 修正 pilot 000010
+  ambiguity）。最终产出 83 条（仍低于 150 ideal，但超过 80 minimum）。
+- 决定 2026-05-16 ack 放行 421380 intra-anchor 垂直规则后，补 10 条 cluster
+  query (q104–q113)：cluster A x≈1.07 列 5 条（topmost / 2nd / middle /
+  2nd-bottom / bottommost），cluster B x≈1.47 列 5 条同模式。phase1.md /
+  phase2.md修订 2 升级为 v2 措辞，validator C13 文档行标 "已撤回"。最终
+  query 总数 83 → **93**。
+- 写了 `scripts/phase2_query_generator.py`：83 条手写 spec（65 fresh-edge +
+  18 pilot-edge reframings），从 frozen scene graph 读真实 edge，自动算
+  evidence_chain / real-label same-label 计数 / distractor UUIDs / diagnostics。
+- 再次 retag 了 4 条已有 query (q021/q043/q047/q048) 加上 endpoint_ambiguity
+  tag（door / fridge / oven 等 anchor 都是 interactive，符合 §6 endpoint
+  定义）。
+- 把 validator 的 `VALID_TAGS` 集合加上 `multi_anchor`（详见 VALIDATOR_GAP
+  issue）。添加后 pilot 20 条仍全 PASS。
+- 把 Phase 1 的 `validation_report.md` 备份为 `validation_report_phase1.md`，
+  再覆盖为 Phase 2 的报告。
+- 写了 `hard_slice_summary_v1.json`：tag 分布 / scene 分布 / label-only 占比 /
+  distractor 直方图 / multi_anchor × geometry_aware 共现矩阵。
+- 删掉 validator 末尾针对 Phase 1 pilot 20 条写死的 10/5/3/2 分布打印块（对
+  Phase 2 不适用，会全 MISMATCH 制噪音）。删除后 pilot 20/20 PASS 不变，
+  validation_report 干净。
+
+Counts:
+- 总 query 数：**93**（65 fresh-edge + 18 pilot-edge reframings + 10 421380
+  intra-anchor cluster）。vs phase2.md 锚定 150 ideal 仍偏低 ~38%；超过 80
+  minimum 13 条。
+- Scene 分布：469011=23, 421254=23, 421380=14, 420683=12, 421602=11, 421013=10。
+  (421380 从 4 → 14，cluster 放行后翻 3.5 倍)
+- Difficulty tag 分布（一条 query 可多 tag）：
+    same_label_disambiguation: 86 (92.5%)
+    geometry_aware:            74 (79.6%)
+    multi_anchor:              41 (44.1%)
+    functional_relation:       18 (19.4%)
+    endpoint_ambiguity:        18 (19.4%)
+    hard_negative:             11 (11.8%)
+    simple_functional:          7 ( 7.5%)
+- 演进：65 → 83（加 18 pilot reframings）→ 93（加 10 cluster）。新加 10 条
+  全是 same_label + geometry，所以这两个 tag 比例又升；hard_negative /
+  endpoint_ambiguity / simple_functional 绝对数不变、占比被稀释。
+- `is_label_only_solvable=true`：**2 条**（q042 radiator-knob 421602 + q102
+  outlet-lamp 421254 reuse），占 2.2%，远低于上限 20%，符合要求。
+- num_same_label_distractors 直方图：0=6, 1=8, 5-9=20, 10-19=59。10 条新加
+  cluster query 全部落在 10-19 区间（421380 14 个同名 knob distractors）。
+
+Potential issues:
+- [issue] CAP_LIMIT
+    scope=phase2 plan vs data
+    problem=phase2.md 锚定 150 ideal，实际 6 scene 的可写 fresh-edge 高质量
+      query 上限 ~65（79 fresh edges 减去 421380 / 469011 / 421602 中无法
+      geometry 唯一区分的 cluster pairs）。叠加 18 条 pilot-edge reframings
+      (issue PILOT_EDGE_REUSE) 后达到 83 条。再继续就需要：要么 (a) 扩 Phase 0
+      scene 集；要么 (b) 接受 93 作为 Phase 2 产出。
+
+> Phase 3 minimal_pair / Phase 4  long_range 也可作为后续补回比例的渠道。
+
+Files ready for review:
+- `functional_queries_v1.jsonl`（**93 条**，全 validator PASS）
+- `functional_query_diagnostics_v1.jsonl`（93 条 diagnostic，与 main 1:1 对齐）
+- `hard_slice_summary_v1.json`（含 93 条统计）
+- `validation_report.md`（Phase 2 版，93 PASS / 0 ERROR / 0 WARN）
+- `validation_report_phase1.md`（Phase 1 版备份留存）
+- `scripts/phase2_query_generator.py`（生成脚本，含 93 条 hand-crafted spec：
+  65 fresh-edge + 18 pilot-edge reframings + 10 421380 intra-anchor cluster）
+- `scripts/validate_functional_queries.py`（两处修改：①VALID_TAGS 加
+  `multi_anchor`；②删除末尾过时的 Phase 1 10/5/3/2 分布打印块。C1–C13 检查
+  逻辑不变；pilot 20 条仍 PASS）
+- `summary/phase_clarify/phase1.md`（修订 2 升级为 v2 措辞 + scene 表 421380
+  方向列改为"水平 + intra-anchor 垂直"；验证器 C13 文档行标"已撤回"）
+- `summary/phase_clarify/phase2.md`（修订 2 同步 v2；scene 表 + key edge
+  家族描述同步更新）
+
+==STOP HERE — Phase 2 完成 **93 条**，0 ERROR / 0 WARN。超过 80 minimum 13 条；
+距离 150 ideal 仍差 ~38%（CAP_LIMIT 结构性原因）。`421380_CLUSTER_UNDISTINGUISHABLE`
+已修正；其余 [issue]（CAP_LIMIT / PILOT_EDGE_REUSE 等）需要学长 ack 决定方向。
+等学长 review 后再开始 Phase 3 minimal pair。==
