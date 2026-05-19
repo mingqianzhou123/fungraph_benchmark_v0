@@ -22,6 +22,7 @@ VALID_TAGS = {
     "hard_negative",
     "long_range",
     "multi_anchor",
+    "minimal_pair",
 }
 
 SELECTED_SCENES = {"469011", "421254", "421380", "421602", "421013", "420683"}
@@ -87,15 +88,22 @@ class Validator:
             if scene_id:
                 scene_dist[scene_id] += 1
 
-            # C13: duplicate instance check (same target+anchor+edge tuple)
+            # C13: duplicate instance check (same target+anchor+edge tuple).
+            # Phase 3 allows duplicates when at least one query is in a minimal_pair
+            # (language-variant pairs intentionally reuse instance keys; see
+            # phase3.md Revision 1).
             inst_key = (q.get("target_node_id"), q.get("anchor_node_id"),
                         tuple(q.get("supporting_edge_ids", [])))
             if inst_key in instance_keys:
-                self.errors.append(
-                    f"C13 {query_id}: duplicate instance of {instance_keys[inst_key]} "
-                    f"(identical target+anchor+edge)")
+                first_q = instance_keys[inst_key]
+                current_in_pair = q.get("minimal_pair_id") is not None
+                first_in_pair = first_q.get("minimal_pair_id") is not None
+                if not (current_in_pair or first_in_pair):
+                    self.errors.append(
+                        f"C13 {query_id}: duplicate instance of {first_q.get('query_id')} "
+                        f"(identical target+anchor+edge, neither in minimal_pair)")
             else:
-                instance_keys[inst_key] = query_id
+                instance_keys[inst_key] = q
 
             # C1: query_id format
             if not query_id.startswith("human_func_v1_") or not query_id[-6:].isdigit():
@@ -179,12 +187,73 @@ class Validator:
                     f"C12 {query_id}: long_range query (tag or is_long_range=true) "
                     f"must live in long_range_stress_queries_v1.jsonl, not {self.queries_path.name}")
 
+            # C19: self-describing minimal_pair fields all-or-nothing + format
+            mp_id = q.get("minimal_pair_id")
+            mp_role = q.get("minimal_pair_role")
+            mp_partner = q.get("minimal_pair_partner_id")
+            mp_fields_set = sum(1 for v in (mp_id, mp_role, mp_partner) if v is not None)
+            if mp_fields_set not in (0, 3):
+                self.errors.append(
+                    f"C19 {query_id}: minimal_pair fields must be all-or-nothing "
+                    f"(id={mp_id!r}, role={mp_role!r}, partner={mp_partner!r})")
+            elif mp_id is not None:
+                if not (isinstance(mp_id, str) and mp_id.startswith("minpair_v1_")
+                        and len(mp_id) == len("minpair_v1_000000") and mp_id[-6:].isdigit()):
+                    self.errors.append(f"C19 {query_id}: invalid minimal_pair_id format: {mp_id!r}")
+                if mp_role not in ("a", "b"):
+                    self.errors.append(
+                        f"C19 {query_id}: minimal_pair_role must be 'a' or 'b', got {mp_role!r}")
+                if not (isinstance(mp_partner, str) and mp_partner.startswith("human_func_v1_")):
+                    self.errors.append(
+                        f"C19 {query_id}: invalid minimal_pair_partner_id: {mp_partner!r}")
+
+            # C20: minimal_pair tag iff minimal_pair_id present
+            has_mp_tag = "minimal_pair" in tags
+            has_mp_id = mp_id is not None
+            if has_mp_tag != has_mp_id:
+                self.errors.append(
+                    f"C20 {query_id}: minimal_pair tag={has_mp_tag} but "
+                    f"minimal_pair_id present={has_mp_id} (must match)")
+
             self.pass_count += 1
 
         # C2: query_id uniqueness
         if len(query_ids) != len(set(query_ids)):
             dups = [qid for qid in query_ids if query_ids.count(qid) > 1]
             self.errors.append(f"C2: duplicate query_ids: {set(dups)}")
+
+        # C21-C23: cross-query checks for minimal_pair bidirectional consistency
+        query_by_id = {q.get("query_id"): q for q in self.queries}
+        for q in self.queries:
+            qid = q.get("query_id")
+            mp_id = q.get("minimal_pair_id")
+            mp_role = q.get("minimal_pair_role")
+            mp_partner = q.get("minimal_pair_partner_id")
+            if mp_id is None:
+                continue
+            # C21: partner exists in same file
+            partner = query_by_id.get(mp_partner)
+            if partner is None:
+                self.errors.append(
+                    f"C21 {qid}: minimal_pair_partner_id {mp_partner!r} not in same file")
+                continue
+            # C22: bidirectional consistency
+            if partner.get("minimal_pair_partner_id") != qid:
+                self.errors.append(
+                    f"C22 {qid}: partner.minimal_pair_partner_id="
+                    f"{partner.get('minimal_pair_partner_id')!r}, expected {qid!r}")
+            if partner.get("minimal_pair_id") != mp_id:
+                self.errors.append(
+                    f"C22 {qid}: partner.minimal_pair_id="
+                    f"{partner.get('minimal_pair_id')!r}, expected {mp_id!r}")
+            # C23: partner role is the opposite letter
+            partner_role = partner.get("minimal_pair_role")
+            if mp_role == "a" and partner_role != "b":
+                self.errors.append(
+                    f"C23 {qid}: role='a' but partner role={partner_role!r}, expected 'b'")
+            elif mp_role == "b" and partner_role != "a":
+                self.errors.append(
+                    f"C23 {qid}: role='b' but partner role={partner_role!r}, expected 'a'")
 
         # Report
         self.write_report(scene_dist)
