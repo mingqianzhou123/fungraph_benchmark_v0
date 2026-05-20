@@ -503,3 +503,98 @@ Files ready for review:
 距离 150 ideal 仍差 ~38%（CAP_LIMIT 结构性原因）。`421380_CLUSTER_UNDISTINGUISHABLE`
 已修正；其余 [issue]（CAP_LIMIT / PILOT_EDGE_REUSE 等）需要学长 ack 决定方向。
 等学长 review 后再开始 Phase 3 minimal pair。==
+
+---
+
+## Phase 3 progress — 2026-05-20
+
+Did:
+- 执行 Phase 3 minimal-pair 标注，按 `summary/phase_clarify/phase3.md` + 学长 review
+  反馈两条指示落地：① 自描述 schema（每条参与 pair 的 query 自身带
+  `minimal_pair_id` / `minimal_pair_role` / `minimal_pair_partner_id` 三字段，双
+  向互指，pair 两条 query 同文件相邻写）；② 新 query 写进 `functional_queries_v1.jsonl`
+  不开独立文件（符合 TASK_PLAN §4 八项交付清单）。
+- 写 `scripts/phase3_pair_miner.py`：从 113 条已有 query 三类口径（spatial /
+  anchor / functional_relation）穷举候选，输出 `pair_candidates_v1.csv`（433 行）。
+- 写 `scripts/phase3_compose_pairs.py`（核心，~900 行，idempotent）：
+  hand-craft 的 8 mining-keep + 40 new-queries + 20 new-pairs 规格，从 frozen
+  scene_graph / geometry 读 UUID，写出最终 main + pair 文件，pilot 文件回滚 tag。
+- 扩 `scripts/validate_functional_queries.py`：C19/C20/C21/C22/C23 检查（三字段
+  全有全无 + 格式 + 双向互指 + role 互斥）；C13 放宽（dup-instance 在 minimal_pair
+  中允许，语言变体复用 tuple 是设计意图）；`VALID_TAGS` 加 `minimal_pair`。
+- 写 `scripts/validate_minimal_pairs.py`（C14–C18 派生视图二次校验，独立报告）。
+- 挑 8 mining pair：001 / 003 / 007 / 009 / 012 / 014 / 015 / 017（覆盖 4 类
+  changed_factor + 5 scene）。原 20 对中删 6 个跨文件 + 2 个全 pilot + 2 个
+  query-id 冲突（pair_005 与 017 共用 q067；pair_020 与 001 共用 q104，functional_relation
+  由新 pair_039 取代）+ 余下 redundant。
+- 写 20 new pair（pair_ids 021–040，queries 000114–000153），主题：outlet→appliance
+  (直接 + 间接 hard_negative)、handle→appliance NEW、oven knob 自然语言重写、
+  remote→TV 自然语言重写、cluster A/B 全展开 + 跨列、cross-anchor 4 scene、
+  wardrobe 自然语言、functional_relation amplifier、间接 hard_negative。所有
+  query_text 无裸坐标，按学长 criteria 1-3 执行。
+- 跑三个 validator 全 0 ERROR / 0 WARN（详 Counts）；compose 二次跑过滤 80
+  previously-appended 后从 93 base 干净重建到 133（idempotent 验证）。
+- 未触碰 frozen 目录、Phase 2 主集 query 内容（仅在 16 条 mining-keep query 上
+  加 3 self-describing 字段）、`multimodal_extension/`。
+
+Counts:
+- pilot_20_queries.jsonl: **20 条**（0 含 `minimal_pair` tag——pilot 不参与
+  任何 pair，rule 2 同文件相邻）。
+- ==functional_queries_v1.jsonl: **133 条**==（93 Phase 2 base + 40 Phase 3 new；
+  56 条带 self-describing 3 字段 = 16 mining-keep + ==40 new==）。
+- ==minimal_pairs_v1.jsonl: **28 对**==（派生视图）= 8 mining + 20 new。
+  vs phase3.md 原 20 / 修订 30 锚定：缩到 28 因 q067/q104 schema 冲突
+  （详 PAIR_QUERY_CONFLICT）。
+- changed_factor 分布: spatial_qualifier=11 (39%), geometry_direction=7 (25%),
+  anchor_object=9 (32%), functional_relation=1 (4%)。4 类全覆盖。
+- Scene 分布: 421380=12, 469011=7, 421254=3, 420683=2, 421013=2, 421602=2。
+  6 scene 全覆盖（421380 仍 43%，cluster A/B 集中提供多类 pair）。
+- pair_evidence_used: geometry_z_axis=9, geometry_x_axis=9, anchor_identity=9,
+  functional_edge=3。
+- Validators: 主 pilot 20/20 PASS, 主 main 133/133 PASS (C1–C13 + C19–C23),
+  pair validator 28/28 PASS (C14–C18)。0 ERROR / 0 WARN 全过。
+- difficulty_tag_counts（main 133 条）：same_label_disambiguation=119 (89%),
+  geometry_aware=99 (74%), functional_relation=58 (44%), minimal_pair=56 (42%),
+  multi_anchor=51 (38%), endpoint_ambiguity=21 (16%), hard_negative=15 (11%),
+  simple_functional=7 (5%)。
+- target_label（28 对引用的 query 中）: knob ~67%, handle ~17%, electric outlet
+  4 query, remote 4 query, 其他 2 query。vs retag patch 时 85%（criteria 1
+  改善 18 pp）。
+
+Potential issues:
+- [issue] FUNC_REL_CEILING_1 (PENDING_MINGQIAN_ACK)
+    functional_relation 这一类全场只有 1 对。原因：6 个 scene 里只有 421380
+    那台 TV 柜上的旋钮同时承担两种 relation（pull-to-open 开柜门 +
+    pull-to-open-a-drawer 拉抽屉），其他 anchor 都只支持一种 relation，写不
+    出第二对。本次用新写的 pair_039（q150+q151）替代了原挖矿的 pair_020，
+    但数量上界仍是 1。要凑第 2 对必须扩 Phase 0 重选 scene，超出本阶段范围。
+- [issue] target_label 仍以 knob 为主（informational, PENDING_MINGQIAN_ACK）
+    学长 criteria 1 要求降低 knob/handle 占比。本次 knob 占比从 retag 阶段的
+    85% 降到 67%（改善 18 个百分点），但还没到"均衡"。原因是 6 scene 内**非**
+    knob/handle 的可用功能边只够写 6 对新 pair（outlet 2 对、handle→appliance
+    1 对、remote 2 对、faucet 1 对），其余 14 对必须复用 cluster knob、靠自然
+    语言改写来满足 criteria 2/3。要把 knob 占比压到 50% 以下，同样需要扩
+    Phase 0 重选 scene。
+
+Files ready for review:
+- `functional_queries_v1.jsonl`（**133 条**，56 条 in-pair 带自描述 3 字段，
+  pilot/main 全 validator PASS）
+- `minimal_pairs_v1.jsonl`（**28 对**派生视图，每行含 pair-level 元信息
+  changed_factor / why_hard / pair_evidence_used / diff_summary / target_geom_diff_m）
+- `pilot_20_queries.jsonl`（20 条原 Phase 1 状态，不参与 pair）
+- `pair_candidates_v1.csv`（433 候选，挖矿追溯用）
+- `hard_slice_summary_v1.json`（total_queries=133；含 minimal_pairs 段 +
+  query_source_breakdown）
+- `validation_report.md` / `validation_report_phase3.md`（最新版）
+- `scripts/phase3_pair_miner.py` + `scripts/phase3_compose_pairs.py` +
+  `scripts/validate_functional_queries.py`（扩 C19-C23）+
+  `scripts/validate_minimal_pairs.py`
+- `summary/phase_clarify/phase3.md`（含 Revision 1 段记录正文锚定推翻）
+
+==STOP HERE — Phase 3 完成 **28 对** minimal pair==，三 validator 全 0 ERROR /
+0 WARN，4 类 changed_factor 全覆盖，6 scene 全覆盖。等学长 ack 后启动 Phase 4
+long-range stress set。3 个 PENDING_MINGQIAN_ACK 待决：
+
+1. PAIR_QUERY_CONFLICT 接受 28 对（vs 原锚定 30）
+2. FUNC_REL_CEILING_1 接受 1 对 vs 扩 Phase 0 scene 集
+3. target_label 67% knob 接受 vs 扩 Phase 0 进一步降占比==

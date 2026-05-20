@@ -1,46 +1,89 @@
 {
-  "total_queries": 93,
+  "total_queries": 133,
   "scene_distribution": {
-    "420683": 12,
-    "421013": 10,
-    "421602": 11,
-    "421380": 14,
-    "469011": 23,
-    "421254": 23
+    "420683": 14,
+    "421013": 14,
+    "421254": 27,
+    "421380": 32,
+    "421602": 13,
+    "469011": 33
   },
   "difficulty_tag_counts": {
-    "simple_functional": 7,
-    "same_label_disambiguation": 86,
-    "endpoint_ambiguity": 18,
-    "multi_anchor": 41,
-    "geometry_aware": 74,
-    "functional_relation": 18,
-    "hard_negative": 11
+    "same_label_disambiguation": 119,
+    "geometry_aware": 99,
+    "functional_relation": 58,
+    "minimal_pair": 56,
+    "multi_anchor": 51,
+    "endpoint_ambiguity": 21,
+    "hard_negative": 15,
+    "simple_functional": 7
   },
   "difficulty_tag_ratios_pct": {
-    "simple_functional": 7.5,
-    "same_label_disambiguation": 92.5,
-    "endpoint_ambiguity": 19.4,
-    "multi_anchor": 44.1,
-    "geometry_aware": 79.6,
-    "functional_relation": 19.4,
-    "hard_negative": 11.8
+    "simple_functional": 5.3,
+    "same_label_disambiguation": 89.5,
+    "endpoint_ambiguity": 15.8,
+    "multi_anchor": 38.3,
+    "geometry_aware": 74.4,
+    "minimal_pair": 42.1,
+    "functional_relation": 43.6,
+    "hard_negative": 11.3
   },
   "is_label_only_solvable_count": 2,
-  "is_label_only_solvable_ratio_pct": 2.2,
+  "is_label_only_solvable_ratio_pct": 1.5,
   "num_same_label_distractors_histogram": {
-    "1": 8,
-    "5-9": 20,
+    "1": 14,
+    "5-9": 30,
     "0": 6,
-    "10-19": 59
+    "10-19": 79,
+    "2-4": 4
   },
   "multi_anchor_x_geometry_aware_co_occurrence": {
-    "multi_anchor_AND_geometry_aware": 41,
-    "geometry_aware_only": 33
+    "multi_anchor_AND_geometry_aware": 43,
+    "geometry_aware_only": 56
   },
   "phase2_anchors": {
     "ideal_target": 150,
     "minimum": 80,
     "rationale": "Realistic cap from 6-scene edge supply (~79 fresh edges, with cluster knobs in 421380 reducing distinguishable edges further)."
+  },
+  "minimal_pairs": {
+    "total_pairs": 28,
+    "by_changed_factor": {
+      "anchor_object": 9,
+      "functional_relation": 1,
+      "geometry_direction": 7,
+      "spatial_qualifier": 11
+    },
+    "by_scene": {
+      "420683": 2,
+      "421013": 2,
+      "421254": 3,
+      "421380": 12,
+      "421602": 2,
+      "469011": 7
+    },
+    "pair_evidence_used": {
+      "anchor_identity": 9,
+      "functional_edge": 3,
+      "geometry_x_axis": 9,
+      "geometry_z_axis": 9
+    },
+    "phase3_revision_anchors": {
+      "target_pairs": 30,
+      "achieved": 28,
+      "mining_kept": 8,
+      "new_pairs": 20,
+      "changed_factor_floor_each_class": 1,
+      "all_4_classes_covered": true
+    },
+    "query_source_breakdown": {
+      "n_pairs_using_main_only": 28,
+      "n_pairs_using_pilot_only": 0,
+      "n_pairs_mixed": 0,
+      "n_pairs_using_phase3_new_query": 20,
+      "n_unique_queries_referenced": 56,
+      "n_phase3_new_queries": 40
+    },
+    "note": "Phase 3 revision (2026-05-19): 28 pairs = 8 mining (kept original pair_ids 001/003/007/009/012/014/015/017) + 20 newly written (pair_ids 021-040, queries 000114-000153). Self-describing schema: each participating query carries minimal_pair_id/role/partner_id fields. Pilot file pairs were dropped per same-file rule. FUNC_REL_CEILING_1 mitigated to 2 pairs (mining 020 + new 039) -- still structural limit of 1 unique anchor (421380 TV stand) in 6 scenes."
   }
 }
