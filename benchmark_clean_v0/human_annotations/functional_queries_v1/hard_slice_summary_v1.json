@@ -84,6 +84,6 @@
       "n_unique_queries_referenced": 56,
       "n_phase3_new_queries": 40
     },
-    "note": "Phase 3 revision (2026-05-19): 30 pairs = 10 mining (kept original pair_ids 001/003/005/007/009/012/014/015/017/020) + 20 newly written (pair_ids 021-040, queries 000114-000153). Self-describing schema: each participating query carries minimal_pair_id/role/partner_id fields. Pilot file pairs were dropped per same-file rule. FUNC_REL_CEILING_1 mitigated to 2 pairs (mining 020 + new 039) -- still structural limit of 1 unique anchor (421380 TV stand) in 6 scenes."
+    "note": "Phase 3 revision (2026-05-19): 28 pairs = 8 mining (kept original pair_ids 001/003/007/009/012/014/015/017) + 20 newly written (pair_ids 021-040, queries 000114-000153). Self-describing schema: each participating query carries minimal_pair_id/role/partner_id fields. Pilot file pairs were dropped per same-file rule. FUNC_REL_CEILING_1 mitigated to 2 pairs (mining 020 + new 039) -- still structural limit of 1 unique anchor (421380 TV stand) in 6 scenes."
   }
 }
