@@ -1,0 +1,74 @@
+================================================================================
+Phase 4 Junction Audit Summary
+================================================================================
+
+Total scenes audited     : 20
+Total junctions found    : 12
+Total writable pairs     : 59
+Scenes with >=1 junction : 8
+Total chain bridges      : 0
+
+Per-scene summary:
+     scene  nodes  edges  n_junc  n_pairs  n_chain  top_anchors
+  --------  -----  -----  ------  -------  -------  ----
+    421380     22     17       1       40        0  television stand / cabinet(40)
+    460417     14      8       2        6        0  washing machine(5), dryer(1)
+    469011     43     24       2        6        0  oven(5), fridge(1)
+    421063     12      7       2        2        0  sink(1), bathtub(1)
+    422813     13      8       2        2        0  bathroom sink(1), bathtub(1)
+    422391     10      4       1        1        0  television(1)
+    466192      8      5       1        1        0  bathroom sink(1)
+    466803      6      4       1        1        0  washing machine(1)
+    420683     21     12       0        0        0  
+    421013     22     10       0        0        0  
+    421015     11      7       0        0        0  
+    421254     28     23       0        0        0  
+    421267     18     11       0        0        0  
+    421602     19     13       0        0        0  
+    422007     16     13       0        0        0  
+    422826     10      6       0        0        0  
+    460419     14      8       0        0        0  
+    466183     14      6       0        0        0  
+    467293      7      5       0        0        0  
+    468076      9      4       0        0        0  
+
+Chain candidates (nodes with both in-edge AND out-edge):
+  (none — bipartite topology confirmed)
+
+Strong-junction detail (writable_score=1.0, src+rel both differ):
+  scene=421063  (2 strong pairs)
+    anchor=sink (c4a12f33..)  1 pairs
+      button / knob --press or rotate to control the water flow--> _  vs  faucet / handle --control the water flow--> _  src_dist=0.244m
+    anchor=bathtub (b0e10097..)  1 pairs
+      button / knob --press or rotate to control the water flow--> _  vs  faucet / handle --control the water flow--> _  src_dist=0.584m
+  scene=422391  (1 strong pairs)
+    anchor=television (f0591cae..)  1 pairs
+      electric outlet / power strip --provide power--> _  vs  remote --control--> _  src_dist=1.145m
+  scene=422813  (2 strong pairs)
+    anchor=bathroom sink (649f5431..)  1 pairs
+      button / knob --press or rotate to control the water flow--> _  vs  handle / faucet --control the water flow--> _  src_dist=0.211m
+    anchor=bathtub (bb70dccc..)  1 pairs
+      button / knob --press or rotate to control the water flow--> _  vs  handle / faucet --control the water flow--> _  src_dist=0.536m
+  scene=460417  (6 strong pairs)
+    anchor=washing machine (66ce5acd..)  5 pairs
+      button --press to open or close, or adjust the setting--> _  vs  knob / button --rotate or press to adjust the setting--> _  src_dist=0.096m
+      button --press to open or close, or adjust the setting--> _  vs  electric outlet --provide power--> _  src_dist=0.758m
+      button --press to open or close, or adjust the setting--> _  vs  electric outlet --provide power--> _  src_dist=0.963m
+      ... +2 more
+    anchor=dryer (3f5fc8ad..)  1 pairs
+      electric outlet --provide power--> _  vs  knob --rotate to adjust the setting--> _  src_dist=0.961m
+  scene=466192  (1 strong pairs)
+    anchor=bathroom sink (87da20eb..)  1 pairs
+      faucet / knob / handle --control the water flow--> _  vs  button / knob --press or rotate to  control the water flow--> _  src_dist=0.235m
+  scene=466803  (1 strong pairs)
+    anchor=washing machine (6c6ea5f0..)  1 pairs
+      knob --rotate to adjust the setting--> _  vs  power strip --provide power--> _  src_dist=0.904m
+  scene=469011  (6 strong pairs)
+    anchor=fridge (7fddf637..)  1 pairs
+      handle --pull to open or close--> _  vs  electric outlet --provide power--> _  src_dist=1.155m
+    anchor=oven (8e66432e..)  5 pairs
+      knob --rotate to adjust the setting--> _  vs  handle --pull to open or close--> _  src_dist=0.306m
+      knob --rotate to adjust the setting--> _  vs  handle --pull to open or close--> _  src_dist=0.248m
+      knob --rotate to adjust the setting--> _  vs  handle --pull to open or close--> _  src_dist=0.178m
+      ... +2 more
+

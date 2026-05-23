@@ -85,5 +85,48 @@
       "n_phase3_new_queries": 40
     },
     "note": "Phase 3 revision (2026-05-19): 28 pairs = 8 mining (kept original pair_ids 001/003/007/009/012/014/015/017) + 20 newly written (pair_ids 021-040, queries 000114-000153). Self-describing schema: each participating query carries minimal_pair_id/role/partner_id fields. Pilot file pairs were dropped per same-file rule. FUNC_REL_CEILING_1 mitigated to 2 pairs (mining 020 + new 039) -- still structural limit of 1 unique anchor (421380 TV stand) in 6 scenes."
+  },
+  "long_range_stress": {
+    "total_queries": 30,
+    "file": "long_range_stress_queries_v1.jsonl",
+    "source": "human_phase4",
+    "query_id_range": "lr_v1_000001 – lr_v1_000030",
+    "long_range_pattern": "junction_2hop",
+    "evidence_hop_count": "2 (structural ceiling — all 20 SceneFun3D scenes are strictly bipartite; 0 chain-bridge nodes found, so 3-hop is impossible with current data)",
+    "scene_distribution": {
+      "421063": 2,
+      "421380": 8,
+      "422391": 2,
+      "422813": 2,
+      "460417": 5,
+      "466192": 2,
+      "466803": 2,
+      "469011": 7
+    },
+    "new_scenes_vs_phase1_3": ["421063", "422391", "422813", "460417", "466192", "466803"],
+    "difficulty_tag_counts": {
+      "long_range": 30,
+      "functional_relation": 30,
+      "same_label_disambiguation": 14,
+      "geometry_aware": 13,
+      "hard_negative": 4,
+      "multi_anchor": 4
+    },
+    "reference_necessity": {
+      "strict": 10,
+      "contextual": 20,
+      "strict_ratio_pct": 33.3
+    },
+    "junction_2hop_definition": "target_node --rel_1--> shared_anchor <--rel_2-- reference_node: 3 distinct nodes, 2 real functional edges converging at shared_anchor. All 20 SceneFun3D scenes are strictly bipartite (0 chain bridges found), making true A->B->C direction chains structurally impossible.",
+    "phase4_revision_anchors": {
+      "minimum": 30,
+      "ideal": 40,
+      "achieved": 30,
+      "strict_reference_necessity_floor_pct": 30,
+      "strict_achieved_pct": 33.3,
+      "scenes_with_zero_junctions_in_original_6": ["421254", "421602", "421013", "420683"],
+      "note": "4 of 6 original Phase 1-3 scenes have no viable junctions (bipartite with single-src appliances). Phase 4 expands to 6 new scenes to reach the 30-query minimum."
+    },
+    "validation_checks": "C24-C29 (long_range-only), all 30 queries PASS 2026-05-23"
   }
 }
