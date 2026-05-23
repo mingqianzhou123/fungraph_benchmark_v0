@@ -1,5 +1,23 @@
 # Benchmark-v2 Changelog
 
+## Phase 4b additions (2026-05-24)
+
+**File expanded:**
+
+- `human_annotations/functional_queries_v1/long_range_stress_queries_v1.jsonl` — expanded from 40 → **50** long-range stress queries
+  - 10 new queries appended (lr_v1_000041 – lr_v1_000050)
+  - `reference_necessity`: 26 strict / 24 contextual (52.0% strict, up from 50.0%)
+  - 3 new scenes added: **421254** (4 queries), **421267** (3 queries), **422007** (3 queries)
+  - New target type: `handle` (dresser drawer handles) — reduces knob/button over-concentration
+  - Top-3 scene concentration (421380/469011/460417): reduced from 65% → 52%
+  - Total unique scenes across both files: 12 → **15**
+
+**Scripts added:**
+
+- `scripts/append_queries_041_050.py` — appended 10 new handle-target queries (q041–q050) to long-range file
+
+---
+
 ## Phase 4 additions (2026-05-23)
 
 **New file added:**

@@ -1,6 +1,6 @@
 # Benchmark-v2 Coverage Audit
 
-Generated: 2026-05-23
+Generated: 2026-05-24
 
 This document provides a quantitative coverage analysis of all human-annotated functional queries. Intended for the CoRL paper's benchmark section / appendix.
 
@@ -8,12 +8,12 @@ This document provides a quantitative coverage analysis of all human-annotated f
 
 ## 1. Query Type Distribution
 
-All 173 queries across both files are `query_type: "functional"`.
+All 183 queries across both files are `query_type: "functional"`.
 
 | File | functional | spatial | mixed |
 |---|---|---|---|
 | `functional_queries_v1.jsonl` | 133 | 0 | 0 |
-| `long_range_stress_queries_v1.jsonl` | 40 | 0 | 0 |
+| `long_range_stress_queries_v1.jsonl` | 50 | 0 | 0 |
 
 ---
 
@@ -30,12 +30,15 @@ All 173 queries across both files are `query_type: "functional"`.
 | 421602 | 13 |
 | 469011 | 33 |
 
-### long_range_stress_queries_v1 (8 scenes)
+### long_range_stress_queries_v1 (11 scenes — 3 new in Phase 4b)
 
 | Scene | Queries |
 |---|---|
 | 421063 | 4 |
+| 421254 | 4 |
+| 421267 | 3 |
 | 421380 | 8 |
+| 422007 | 3 |
 | 422391 | 2 |
 | 422813 | 4 |
 | 460417 | 6 |
@@ -43,7 +46,7 @@ All 173 queries across both files are `query_type: "functional"`.
 | 466803 | 2 |
 | 469011 | 12 |
 
-Total unique scenes combined: **12**.
+Total unique scenes combined: **15** (scene 421254 appears in both files).
 
 ---
 
@@ -65,8 +68,8 @@ Total unique scenes combined: **12**.
 
 | Target Label | Count |
 |---|---|
-| knob | 15 |
-| handle | 6 |
+| knob | 22 |
+| handle | 9 |
 | button / knob | 5 |
 | electric outlet | 3 |
 | knob / button | 2 |
@@ -130,8 +133,11 @@ Total unique scenes combined: **12**.
 | 1 | 12 |
 | 2 | 5 |
 | 5 | 1 |
+| 7 | 3 |
+| 12 | 3 |
 | 14 | 8 |
 | 18 | 5 |
+| 19 | 4 |
 
 ---
 
@@ -154,10 +160,10 @@ By scene: 420683×2, 421013×2, 421254×3, 421380×12, 421602×2, 469011×7.
 
 | `reference_necessity` | Count | % |
 |---|---|---|
-| strict | 20 | 50.0% |
-| contextual | 20 | 50.0% |
+| strict | 26 | 52.0% |
+| contextual | 24 | 48.0% |
 
-All 40 use `long_range_pattern: "junction_2hop"` and `evidence_hop_count: 2`.
+All 50 use `long_range_pattern: "junction_2hop"` and `evidence_hop_count: 2`.
 
 **Strict definition**: target node has ≥1 same-label distractor AND the distractor cannot be ruled out without the reference node (the anchor type or label alone is insufficient).
 
@@ -170,11 +176,11 @@ All 40 use `long_range_pattern: "junction_2hop"` and `evidence_hop_count: 2`.
 | File | Target nodes with geometry | % |
 |---|---|---|
 | `functional_queries_v1.jsonl` | 133 / 133 | 100% |
-| `long_range_stress_queries_v1.jsonl` | 40 / 40 | 100% |
+| `long_range_stress_queries_v1.jsonl` | 50 / 50 | 100% |
 
 All queries in both files have geometry-backed target nodes (bbox_center, bbox_min, bbox_max in `scenefun3d_node_geom.json`).
 
-Note: geometry data covers 20 of 23 SceneFun3D scenes. All 12 scenes used by these queries are within the covered set.
+Note: geometry data covers 20 of 23 SceneFun3D scenes. All 15 scenes used by these queries are within the covered set.
 
 ---
 
@@ -183,7 +189,7 @@ Note: geometry data covers 20 of 23 SceneFun3D scenes. All 12 scenes used by the
 | File | Has `supporting_edge_ids` | Has `evidence_chain` |
 |---|---|---|
 | `functional_queries_v1.jsonl` | 133 / 133 | 133 / 133 |
-| `long_range_stress_queries_v1.jsonl` | 40 / 40 | 40 / 40 |
+| `long_range_stress_queries_v1.jsonl` | 50 / 50 | 50 / 50 |
 
 Every query in both files has verified edge IDs and written evidence chains.
 
