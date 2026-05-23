@@ -678,3 +678,39 @@ Files ready for review:
 ==STOP HERE — Phase 4 完成 **30 条** long-range stress query==，全 validator PASS，
 strict reference_necessity 33.3%（≥30% 满足）。等学长 ack 后进入 Phase 5
 （existing query audit）或结束。==
+
+---
+
+## Phase 4 Expansion + Benchmark-v2 Release (2026-05-23)
+
+Per Mingqian's feedback, expanded long_range_stress_queries_v1.jsonl from 30 → 40 queries and produced the full Benchmark-v2 release package.
+
+### long_range_stress_queries_v1.jsonl expansion (q031–q040)
+
+10 new **strict** queries added, bringing totals to 40 queries / 20 strict = 50.0%:
+
+- **q031–q032** (scene 469011): oven handle (47d6518d) as target, reference = leftmost knob (d003c3b8) and rightmost knob (85f5f2f0) respectively. Strict because 2 handles in scene (oven + fridge); fridge has no rotating-knob control.
+- **q033** (scene 460417): WM knob/button (a6956e03) as target, reference = dedicated outlet 59552624 (powers WM only, not dryer). Strict because dryer also has a knob but no dedicated outlet.
+- **q034–q035** (scene 421063): sink/bathtub faucet as target, reference = higher/lower button. Strict by geometry — both fixtures have buttons; height disambiguates.
+- **q036–q037** (scene 422813): same pattern as q034/q035 in the second bathroom scene.
+- **q038–q040** (scene 469011): oven handle (47d6518d) as target, reference = 2nd-from-left knob (06b684bb), middle knob (28e9ec26), 2nd-from-right knob (76002344). Different supporting_edge_ids per query → no C13 conflict.
+
+Scripts used:
+- `scripts/append_queries_031_040.py` — initial append of q031–q040
+- `scripts/fix_queries_038_040.py` — replaced original q038–q040 (which had C13 conflicts) with correct oven-handle strict variants
+
+### Benchmark-v2 release package files created
+
+- `summary/benchmark_v2_release_summary.md` — query counts, validator status, slice breakdown, scene coverage, target label distribution
+- `summary/benchmark_v2_changelog.md` — Phase 1–4 history, what is/isn't in the main split
+- `summary/benchmark_v2_coverage_audit.md` — quantitative coverage analysis (geometry, supporting edges, distractors, tag co-occurrence)
+
+### Validator status (all three files, 2026-05-23)
+
+| File | Queries | Result |
+|---|---|---|
+| `pilot_20_queries.jsonl` | 20 | PASS (0 error, 0 warning) |
+| `functional_queries_v1.jsonl` | 133 | PASS (0 error, 0 warning) |
+| `long_range_stress_queries_v1.jsonl` | 40 | PASS (0 error, 0 warning) |
+
+==Benchmark-v2 data freeze complete. Steps 3–5 of release package delivered. Robot trials sidecar (Steps 6–8) pending.==
