@@ -19,18 +19,18 @@ Per-scene summary:
     422391     10      4       1        1        0  television(1)
     466192      8      5       1        1        0  bathroom sink(1)
     466803      6      4       1        1        0  washing machine(1)
-    420683     21     12       0        0        0  
-    421013     22     10       0        0        0  
-    421015     11      7       0        0        0  
-    421254     28     23       0        0        0  
-    421267     18     11       0        0        0  
-    421602     19     13       0        0        0  
-    422007     16     13       0        0        0  
-    422826     10      6       0        0        0  
-    460419     14      8       0        0        0  
-    466183     14      6       0        0        0  
-    467293      7      5       0        0        0  
-    468076      9      4       0        0        0  
+    420683     21     12       0        0        0
+    421013     22     10       0        0        0
+    421015     11      7       0        0        0
+    421254     28     23       0        0        0
+    421267     18     11       0        0        0
+    421602     19     13       0        0        0
+    422007     16     13       0        0        0
+    422826     10      6       0        0        0
+    460419     14      8       0        0        0
+    466183     14      6       0        0        0
+    467293      7      5       0        0        0
+    468076      9      4       0        0        0
 
 Chain candidates (nodes with both in-edge AND out-edge):
   (none — bipartite topology confirmed)
@@ -71,4 +71,3 @@ Strong-junction detail (writable_score=1.0, src+rel both differ):
       knob --rotate to adjust the setting--> _  vs  handle --pull to open or close--> _  src_dist=0.248m
       knob --rotate to adjust the setting--> _  vs  handle --pull to open or close--> _  src_dist=0.178m
       ... +2 more
-

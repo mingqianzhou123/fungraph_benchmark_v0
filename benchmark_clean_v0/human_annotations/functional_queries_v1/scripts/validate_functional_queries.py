@@ -347,7 +347,9 @@ class Validator:
 
     def write_report(self, scene_dist: dict) -> None:
         """Write validation_report.md."""
-        report_path = self.queries_path.parent / "validation_report.md"
+        report_stem = self.queries_path.stem
+        report_name = "validation_report.md" if report_stem == "functional_queries_v1" else f"validation_report_{report_stem}.md"
+        report_path = self.queries_path.parent / report_name
 
         lines = [
             f"## Validation Report — {datetime.now().strftime('%Y-%m-%d %H:%M')}",

@@ -1,34 +1,27 @@
-## Validation Report — 2026-05-24 23:12
+## Validation Report — 2026-05-24 18:35
 
-Input file: long_range_stress_queries_v1.jsonl
-Total queries checked: 50
+Input file: functional_queries_v1.jsonl
+Total queries checked: 133
 
 Results:
-  PASS (no errors): 50
+  PASS (no errors): 133
   FAIL (≥1 error):  0
   WARN only:        0
 
 Scene distribution:
-  421063: 4 queries
-  421254: 4 queries
-  421267: 3 queries
-  421380: 8 queries
-  422007: 3 queries
-  422391: 2 queries
-  422813: 4 queries
-  460417: 6 queries
-  466192: 2 queries
-  466803: 2 queries
-  469011: 12 queries
+  420683: 14 queries
+  421013: 14 queries
+  421254: 27 queries
+  421380: 32 queries
+  421602: 13 queries
+  469011: 33 queries
 
 Difficulty tags distribution:
-  functional_relation: 50
-  geometry_aware: 32
-  hard_negative: 5
-  long_range: 50
-  multi_anchor: 4
-  same_label_disambiguation: 33
-
-reference_necessity distribution (Phase 4 long_range):
-  contextual: 24
-  strict: 26
+  endpoint_ambiguity: 21
+  functional_relation: 58
+  geometry_aware: 99
+  hard_negative: 15
+  minimal_pair: 56
+  multi_anchor: 51
+  same_label_disambiguation: 119
+  simple_functional: 7

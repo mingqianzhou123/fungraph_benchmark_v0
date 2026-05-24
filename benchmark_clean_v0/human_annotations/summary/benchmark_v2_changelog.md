@@ -10,7 +10,7 @@
   - 3 new scenes added: **421254** (4 queries), **421267** (3 queries), **422007** (3 queries)
   - New target type: `handle` (dresser drawer handles) — reduces knob/button over-concentration
   - Top-3 scene concentration (421380/469011/460417): reduced from 65% → 52%
-  - Total unique scenes across both files: 12 → **15**
+  - Total unique scenes across both files: 12 → **14**
 
 **Scripts added:**
 

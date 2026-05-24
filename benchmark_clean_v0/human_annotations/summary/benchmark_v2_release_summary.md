@@ -80,7 +80,7 @@ Cross-tag: `multi_anchor AND geometry_aware` co-occurrence: 43 queries; `geometr
 | 466803 | 2 | New in Phase 4 |
 | 469011 | 12 | Shared with main |
 
-**Total unique scenes across both files: 15**
+**Total unique scenes across both files: 14**
 `420683, 421013, 421063, 421254, 421267, 421380, 421602, 422007, 422391, 422813, 460417, 466192, 466803, 469011`
 
 Note: scene 421254 appears in both `functional_queries_v1.jsonl` (27 queries) and `long_range_stress_queries_v1.jsonl` (4 queries).
@@ -149,7 +149,7 @@ Note: scene 421254 appears in both `functional_queries_v1.jsonl` (27 queries) an
 | `robot_trials/robot_execution_sidecar_v1.jsonl` | 192 (all execution_feasible=True, 179 actionable) |
 | `robot_trials/robot_trial_manifest_v1.jsonl` | 25 selected demo trials (from 133 main queries) |
 
-Manifest selection: top-25 by `num_same_label_distractors`, max 5/scene, all 3 action types covered. `route_expected=verifier` for all 25 (none are label-only solvable).
+Manifest selection: top-25 by `num_same_label_distractors`, max 5/scene, all 3 action types covered. `route_expected=funrag_prior` for all 25. This field records the baseline route used in the current manifest, not an oracle/verifier recommendation.
 
 ## Classification Note
 

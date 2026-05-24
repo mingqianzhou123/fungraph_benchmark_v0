@@ -75,7 +75,7 @@ Fields per row:
 | `query_text` | Natural language query |
 | `target_node_id` | Ground-truth target node |
 | `target_label` | Target object label |
-| `route_expected` | "verifier" (FunRAG grounding required) or "prior" (label alone sufficient) |
+| `route_expected` | Current routing label. In this manifest all rows use `funrag_prior`; future manifests may use `funrag_verifier` when verifier-selected trials are added |
 | `robot_action` | Action primitive |
 | `approach_axis` | Heuristic approach direction |
 | `interaction_point` | 3D target point |

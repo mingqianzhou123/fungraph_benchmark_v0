@@ -657,7 +657,7 @@ Potential issues:
 - ==[issue]==scope=phase4_hop_ceiling
     problem=TASK_PLAN §11 允许 evidence_hop_count ≥ 2，但本批 30 条全部 = 2，无法写出
     3-hop 或更长的链。
-    
+
     原因：SceneFun3D scene_graph 只有功能交互边（pull/rotate/control/
     provide power 等 21 种），没有空间关系边（near/supports/on 等）；且功能边全部是
     interactive element → appliance 的单向结构，任何 appliance 都无出边，图上不存在
