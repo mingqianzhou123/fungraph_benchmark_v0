@@ -31,8 +31,8 @@ SIMPLE_ACTIONS = {"pull_handle", "press_button", "rotate_knob"}
 
 def route_expected(q: dict) -> str:
     # "prior" only if label alone is sufficient (is_label_only_solvable=True);
-    # "verifier" for all cases requiring FunRAG grounding to disambiguate
-    return "prior" if q.get("is_label_only_solvable", False) else "verifier"
+    # "funrag_prior" for all cases requiring FunRAG grounding to disambiguate
+    return "prior" if q.get("is_label_only_solvable", False) else "funrag_prior"
 
 
 def success_metric(robot_action: str) -> str:

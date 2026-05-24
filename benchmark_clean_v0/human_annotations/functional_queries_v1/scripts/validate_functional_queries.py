@@ -4,10 +4,15 @@ Checks 13 validation rules + Phase 1 distribution analysis on pilot_20_queries.j
 """
 from __future__ import annotations
 import json
+import re
 import sys
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
+
+_COORD_PAT = re.compile(
+    r'\b[xyz]=[-−]?\d+(\.\d+)?|\b[xyz]≈[-−]?\d+(\.\d+)?',
+    re.IGNORECASE)
 
 BENCH_ROOT = Path(__file__).resolve().parents[3]
 ENRICH_PATH = BENCH_ROOT / "queries" / "scenefun3d_funrag_benchmark_enriched.json"
@@ -197,6 +202,12 @@ class Validator:
                 self.errors.append(
                     f"C12 {query_id}: long_range query (tag or is_long_range=true) "
                     f"must live in long_range_stress_queries_v1.jsonl, not {self.queries_path.name}")
+
+            # C14: no naked coordinate in query_text (x=1.23, y=-0.85, z=293, x≈1.07)
+            if _COORD_PAT.search(q.get("query_text", "")):
+                self.errors.append(
+                    f"C14 {query_id}: naked coordinate in query_text: "
+                    f"{q['query_text'][:80]!r}")
 
             # C19: self-describing minimal_pair fields all-or-nothing + format
             mp_id = q.get("minimal_pair_id")
