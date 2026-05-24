@@ -4,10 +4,15 @@ Checks 13 validation rules + Phase 1 distribution analysis on pilot_20_queries.j
 """
 from __future__ import annotations
 import json
+import re
 import sys
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
+
+_COORD_PAT = re.compile(
+    r'\b[xyz]=[-−]?\d+(\.\d+)?|\b[xyz]≈[-−]?\d+(\.\d+)?',
+    re.IGNORECASE)
 
 BENCH_ROOT = Path(__file__).resolve().parents[3]
 ENRICH_PATH = BENCH_ROOT / "queries" / "scenefun3d_funrag_benchmark_enriched.json"
@@ -39,15 +44,20 @@ class Validator:
         self.pass_count = 0
 
     def load_data(self) -> bool:
-        """Load enriched JSON and geometry."""
+        """Load enriched JSON and geometry.
+
+        Loads ALL SceneFun3D scenes (not just SELECTED_SCENES) so Phase 4
+        long_range queries on new scenes (460417, 421063, 422813, 422391,
+        466192, 466803, etc.) can be validated. SELECTED_SCENES is retained
+        as documentation for the Phase 1-3 6-scene scope.
+        """
         try:
             with ENRICH_PATH.open(encoding="utf-8") as f:
                 data = json.load(f)
             for item in data["data"]:
                 sid = item["scene_id"]
-                if sid in SELECTED_SCENES and sid not in self.scene_graphs:
-                    if item.get("scene_graph"):
-                        self.scene_graphs[sid] = item["scene_graph"]
+                if sid not in self.scene_graphs and item.get("scene_graph"):
+                    self.scene_graphs[sid] = item["scene_graph"]
             print(f"Loaded {len(self.scene_graphs)} scene graphs")
 
             with GEOM_PATH.open(encoding="utf-8") as f:
@@ -105,9 +115,11 @@ class Validator:
             else:
                 instance_keys[inst_key] = q
 
-            # C1: query_id format
-            if not query_id.startswith("human_func_v1_") or not query_id[-6:].isdigit():
-                self.errors.append(f"C1 {query_id}: invalid format")
+            # C1: query_id format — accept human_func_v1_NNNNNN or lr_v1_NNNNNN
+            is_human = query_id.startswith("human_func_v1_") and query_id[-6:].isdigit()
+            is_lr_id = query_id.startswith("lr_v1_") and query_id[-6:].isdigit()
+            if not (is_human or is_lr_id):
+                self.errors.append(f"C1 {query_id}: invalid format (expected human_func_v1_NNNNNN or lr_v1_NNNNNN)")
                 continue
 
             # C3: scene_id valid
@@ -135,23 +147,27 @@ class Validator:
 
             # C6 & C7 & C8: supporting_edge_ids
             edge_ids = q.get("supporting_edge_ids", [])
+            is_long_range_q = bool(q.get("is_long_range", False))
             edge_valid = True
-            for eid in edge_ids:
+            for e_idx, eid in enumerate(edge_ids):
                 if eid not in edges_by_id:
                     self.errors.append(f"C6 {query_id}: edge_id not found: {eid}")
                     edge_valid = False
                     break
                 e = edges_by_id[eid]
                 # C7: source = target_node_id
-                if e.get("source_node_id") != target_nid and e["edge_id"].split("|")[0] != target_nid:
-                    # Try to extract source from edge_id format
-                    parts = e["edge_id"].split("|")
-                    if len(parts) == 3 and parts[0] != target_nid:
-                        self.errors.append(f"C7 {query_id}: edge source mismatch")
-                        edge_valid = False
-                        break
-                # C8: target = anchor_node_id
-                if anchor_nid and e.get("target_node_id") != anchor_nid and e["edge_id"].split("|")[2] != anchor_nid:
+                # For long_range junction queries, only the first edge's source is target;
+                # the second edge's source is reference_node_id (different node). Skip C7
+                # for subsequent edges of long_range queries.
+                if e_idx == 0 or not is_long_range_q:
+                    if e.get("source_node_id") != target_nid and e["edge_id"].split("|")[0] != target_nid:
+                        parts = e["edge_id"].split("|")
+                        if len(parts) == 3 and parts[0] != target_nid:
+                            self.errors.append(f"C7 {query_id}: edge source mismatch")
+                            edge_valid = False
+                            break
+                # C8: target = anchor_node_id (skip for long_range — C26 covers junction anchor)
+                if not is_long_range_q and anchor_nid and e.get("target_node_id") != anchor_nid and e["edge_id"].split("|")[2] != anchor_nid:
                     parts = e["edge_id"].split("|")
                     if len(parts) == 3 and parts[2] != anchor_nid:
                         self.errors.append(f"C8 {query_id}: edge target mismatch")
@@ -187,6 +203,12 @@ class Validator:
                     f"C12 {query_id}: long_range query (tag or is_long_range=true) "
                     f"must live in long_range_stress_queries_v1.jsonl, not {self.queries_path.name}")
 
+            # C14: no naked coordinate in query_text (x=1.23, y=-0.85, z=293, x≈1.07)
+            if _COORD_PAT.search(q.get("query_text", "")):
+                self.errors.append(
+                    f"C14 {query_id}: naked coordinate in query_text: "
+                    f"{q['query_text'][:80]!r}")
+
             # C19: self-describing minimal_pair fields all-or-nothing + format
             mp_id = q.get("minimal_pair_id")
             mp_role = q.get("minimal_pair_role")
@@ -214,6 +236,70 @@ class Validator:
                 self.errors.append(
                     f"C20 {query_id}: minimal_pair tag={has_mp_tag} but "
                     f"minimal_pair_id present={has_mp_id} (must match)")
+
+            # C24-C29: Phase 4 long_range checks (only when is_long_range=true)
+            if is_long_range_q:
+                edge_ids_lr = q.get("supporting_edge_ids", [])
+                ev_chain = q.get("evidence_chain", [])
+
+                # C24: supporting_edge_ids and evidence_chain both length ≥ 2 and equal
+                if len(edge_ids_lr) < 2:
+                    self.errors.append(
+                        f"C24 {query_id}: is_long_range=true but supporting_edge_ids "
+                        f"length={len(edge_ids_lr)} (must be ≥ 2)")
+                if len(ev_chain) < 2:
+                    self.errors.append(
+                        f"C24 {query_id}: is_long_range=true but evidence_chain "
+                        f"length={len(ev_chain)} (must be ≥ 2)")
+                if len(edge_ids_lr) != len(ev_chain):
+                    self.errors.append(
+                        f"C24 {query_id}: supporting_edge_ids length={len(edge_ids_lr)} "
+                        f"≠ evidence_chain length={len(ev_chain)} (must match)")
+
+                # C25: all supporting edges exist (already covered by C6 above; skip re-check)
+
+                # C26: junction_2hop — all edge targets ("|" right-end) must be identical
+                # (= shared_anchor). Only applies when long_range_pattern == "junction_2hop".
+                lr_pattern = q.get("long_range_pattern")
+                if lr_pattern == "junction_2hop" and len(edge_ids_lr) >= 2:
+                    tgt_ends = []
+                    for eid in edge_ids_lr:
+                        parts = eid.split("|")
+                        if len(parts) == 3:
+                            tgt_ends.append(parts[2])
+                    if len(set(tgt_ends)) > 1:
+                        self.errors.append(
+                            f"C26 {query_id}: junction_2hop but edge target UUIDs differ "
+                            f"({tgt_ends}) — all must share the same anchor")
+                    # Also cross-check shared_anchor_node_id field if present
+                    shared_anchor = q.get("shared_anchor_node_id")
+                    if shared_anchor and tgt_ends and tgt_ends[0] != shared_anchor:
+                        self.errors.append(
+                            f"C26 {query_id}: shared_anchor_node_id={shared_anchor!r} does not "
+                            f"match edge target {tgt_ends[0]!r}")
+
+                # C27: target ≠ shared_anchor ≠ reference (3 distinct UUIDs)
+                shared_anc = q.get("shared_anchor_node_id")
+                ref_nid = q.get("reference_node_id")
+                if shared_anc and ref_nid:
+                    uuids = [target_nid, shared_anc, ref_nid]
+                    if len(set(uuids)) < 3:
+                        self.errors.append(
+                            f"C27 {query_id}: target/shared_anchor/reference not all distinct "
+                            f"({target_nid!r}, {shared_anc!r}, {ref_nid!r})")
+
+                # C28: long_range tag must be present in difficulty_tags
+                if "long_range" not in tags:
+                    self.errors.append(
+                        f"C28 {query_id}: is_long_range=true but 'long_range' tag missing "
+                        f"from difficulty_tags")
+
+                # C29: reference_necessity must be "strict" or "contextual"
+                ref_nec = q.get("reference_necessity")
+                if ref_nec not in ("strict", "contextual"):
+                    self.errors.append(
+                        f"C29 {query_id}: reference_necessity={ref_nec!r} (must be "
+                        f"'strict' or 'contextual')")
 
             self.pass_count += 1
 
@@ -261,7 +347,9 @@ class Validator:
 
     def write_report(self, scene_dist: dict) -> None:
         """Write validation_report.md."""
-        report_path = self.queries_path.parent / "validation_report.md"
+        report_stem = self.queries_path.stem
+        report_name = "validation_report.md" if report_stem == "functional_queries_v1" else f"validation_report_{report_stem}.md"
+        report_path = self.queries_path.parent / report_name
 
         lines = [
             f"## Validation Report — {datetime.now().strftime('%Y-%m-%d %H:%M')}",
@@ -308,6 +396,16 @@ class Validator:
                 tag_counts[tag] += 1
         for tag in sorted(tag_counts.keys()):
             lines.append(f"  {tag}: {tag_counts[tag]}")
+
+        ref_nec_counts = defaultdict(int)
+        for q in self.queries:
+            rn = q.get("reference_necessity")
+            if rn is not None:
+                ref_nec_counts[rn] += 1
+        if ref_nec_counts:
+            lines.extend([f"", f"reference_necessity distribution (Phase 4 long_range):"])
+            for rn in sorted(ref_nec_counts.keys()):
+                lines.append(f"  {rn}: {ref_nec_counts[rn]}")
 
         report_text = "\n".join(lines)
         report_path.write_text(report_text, encoding="utf-8")

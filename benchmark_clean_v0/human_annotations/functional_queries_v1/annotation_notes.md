@@ -598,3 +598,119 @@ long-range stress set。3 个 PENDING_MINGQIAN_ACK 待决：
 1. PAIR_QUERY_CONFLICT 接受 28 对（vs 原锚定 30）
 2. FUNC_REL_CEILING_1 接受 1 对 vs 扩 Phase 0 scene 集
 3. target_label 67% knob 接受 vs 扩 Phase 0 进一步降占比==
+
+---
+
+## Phase 4 progress — 2026-05-23
+
+Did:
+- 执行 Phase 4 Long-Range Stress Set，按 `summary/phase_clarify/phase4.md` + 学长
+  2026-05-23 ack 落地（junction 2-hop 替代不可实现的真同向 A→B→C 链）。
+- 写 `scripts/phase4_scene_audit.py`（仅标准库）：扫描全部 20 个 SceneFun3D scene 的
+  functional scene graph，输出 `phase4_junction_audit.csv`（59 候选对）+
+  `phase4_audit_summary.txt`。关键发现：20 个 scene 全部是严格二部图，0 个节点同时
+  具有入边和出边（bipartite confirmed），真同向 A→B→C 链在数据集层面完全不存在。
+- 写 `scripts/phase4_query_generator.py`（idempotent）：30 条手写 spec（含 scene_id /
+  target_uuid / anchor_uuid / reference_uuid / 两条 supporting_edge_ids / query_text /
+  tags / ref_necessity / fail_modes / notes），从 frozen scene_graph 读真实 UUID+edge，
+  自动算 evidence_chain / reference_label / target_anchor_3d_distance_m / distractor UUIDs。
+- 生成 `long_range_stress_queries_v1.jsonl`（30 条 junction 2-hop query，独立文件与
+  main JSONL 严格隔离）及 `long_range_diagnostics_v1.jsonl`（30 条诊断行）。
+- 扩展 `scripts/validate_functional_queries.py`：
+  ① `load_data()` 改为读取全部 20 个 scene（原只读 6 SELECTED_SCENES），使 Phase 4
+     新增的 6 个 scene（421063/422391/422813/460417/466192/466803）可校验；
+  ② C1 检查接受 `lr_v1_NNNNNN` 格式（原只接受 `human_func_v1_`）；
+  ③ C7 放宽：long_range query 只检查 edge[0] source = target_node_id（edge[1] source
+     是 reference_node_id，不同节点，属设计意图）；
+  ④ C8 对 long_range query 跳过（C26 junction anchor 一致性取代）；
+  ⑤ 新增 C24–C29 六项 long_range 专用检查（见下方）；
+  ⑥ write_report() 增加 reference_necessity 分布统计。
+- 更新 `hard_slice_summary_v1.json`：追加 `long_range_stress` 段（30 条统计 + scene
+  分布 + tag 分布 + reference_necessity 分布 + 6 新 scene 说明）。
+- 写 `validation_report_phase4.md`（Phase 4 专用报告）。
+- 未触碰 frozen 目录、Phase 1–3 文件内容、multimodal_extension/。
+
+Counts:
+- long_range_stress_queries_v1.jsonl：**30 条**，全部 validator PASS（0 ERROR / 0 WARN）。
+- 新增 scene：421063 (2), 422391 (2), 422813 (2), 460417 (5), 466192 (2), 466803 (2)。
+  保留原 6 scene 中有 junction 的两个：421380 (8), 469011 (7)。
+  原 6 scene 中 4 个零 junction：421254 / 421602 / 421013 / 420683（结构性原因）。
+- reference_necessity: strict=10 (33.3%), contextual=20 (66.7%)。phase4.md 锚定 ≥30%
+  strict，已满足（33.3%）。
+- Difficulty tags（30 条）：long_range=30, functional_relation=30,
+  same_label_disambiguation=14, geometry_aware=13, hard_negative=4, multi_anchor=4。
+- evidence_hop_count: 全部 = 2（==结构性上限，非设计选择：20 个 scene 全部严格二部图==，
+  phase4_scene_audit.py 确认 chain bridges = 0，3-hop 在当前数据集层面不可实现）；
+  long_range_pattern: 全部 "junction_2hop"。TASK_PLAN §11 允许 ≥2，本批上限即为 2。
+- Validator 回归：pilot_20_queries.jsonl 20/20 PASS，functional_queries_v1.jsonl
+  133/133 PASS，long_range_stress_queries_v1.jsonl 30/30 PASS（C24–C29 全通过）。
+
+新增检查 C24–C29（仅作用于 is_long_range=true 的 query）：
+- C24: supporting_edge_ids + evidence_chain 长度都 ≥ 2 且相等
+- C25: 所有 supporting_edge 存在于 scene_graph（由 C6 覆盖）
+- C26: junction_2hop 时所有 edge target（"|" 右端）相同 = shared_anchor
+- C27: target / shared_anchor / reference 三个 UUID 互不相同
+- C28: difficulty_tags 必须含 long_range
+- C29: reference_necessity 必须是 "strict" 或 "contextual"
+
+Potential issues:
+- ==[issue]==scope=phase4_hop_ceiling
+    problem=TASK_PLAN §11 允许 evidence_hop_count ≥ 2，但本批 30 条全部 = 2，无法写出
+    3-hop 或更长的链。
+
+    原因：SceneFun3D scene_graph 只有功能交互边（pull/rotate/control/
+    provide power 等 21 种），没有空间关系边（near/supports/on 等）；且功能边全部是
+    interactive element → appliance 的单向结构，任何 appliance 都无出边，图上不存在
+    A→B→C 三节点同向链。当前数据集层面的 hop 上限即为 2。
+    suggested_fix=数据集结构性约束，非实现问题。若后续基于 bbox 坐标推导空间边并
+    扩展 schema，可实现 3-hop。当前无需处理，学长 ack 后关闭。
+
+Files ready for review:
+- `long_range_stress_queries_v1.jsonl`（**30 条** junction 2-hop，全 validator PASS）
+- `long_range_diagnostics_v1.jsonl`（30 条诊断行）
+- `hard_slice_summary_v1.json`（追加 long_range_stress 段）
+- `validation_report_phase4.md`（Phase 4 专用报告）
+- `phase4_junction_audit.csv` + `phase4_audit_summary.txt`（Step 0 扫描结果）
+- `scripts/phase4_scene_audit.py` + `scripts/phase4_query_generator.py`
+- `scripts/validate_functional_queries.py`（扩 C24–C29 + 全 scene 加载 + lr_v1 格式）
+- `summary/phase_clarify/phase4.md`（Phase 4 详细计划文档）
+
+==STOP HERE — Phase 4 完成 **30 条** long-range stress query==，全 validator PASS，
+strict reference_necessity 33.3%（≥30% 满足）。等学长 ack 后进入 Phase 5
+（existing query audit）或结束。==
+
+---
+
+## Phase 4 Expansion + Benchmark-v2 Release (2026-05-23)
+
+Per Mingqian's feedback, expanded long_range_stress_queries_v1.jsonl from 30 → 40 queries and produced the full Benchmark-v2 release package.
+
+### long_range_stress_queries_v1.jsonl expansion (q031–q040)
+
+10 new **strict** queries added, bringing totals to 40 queries / 20 strict = 50.0%:
+
+- **q031–q032** (scene 469011): oven handle (47d6518d) as target, reference = leftmost knob (d003c3b8) and rightmost knob (85f5f2f0) respectively. Strict because 2 handles in scene (oven + fridge); fridge has no rotating-knob control.
+- **q033** (scene 460417): WM knob/button (a6956e03) as target, reference = dedicated outlet 59552624 (powers WM only, not dryer). Strict because dryer also has a knob but no dedicated outlet.
+- **q034–q035** (scene 421063): sink/bathtub faucet as target, reference = higher/lower button. Strict by geometry — both fixtures have buttons; height disambiguates.
+- **q036–q037** (scene 422813): same pattern as q034/q035 in the second bathroom scene.
+- **q038–q040** (scene 469011): oven handle (47d6518d) as target, reference = 2nd-from-left knob (06b684bb), middle knob (28e9ec26), 2nd-from-right knob (76002344). Different supporting_edge_ids per query → no C13 conflict.
+
+Scripts used:
+- `scripts/append_queries_031_040.py` — initial append of q031–q040
+- `scripts/fix_queries_038_040.py` — replaced original q038–q040 (which had C13 conflicts) with correct oven-handle strict variants
+
+### Benchmark-v2 release package files created
+
+- `summary/benchmark_v2_release_summary.md` — query counts, validator status, slice breakdown, scene coverage, target label distribution
+- `summary/benchmark_v2_changelog.md` — Phase 1–4 history, what is/isn't in the main split
+- `summary/benchmark_v2_coverage_audit.md` — quantitative coverage analysis (geometry, supporting edges, distractors, tag co-occurrence)
+
+### Validator status (all three files, 2026-05-23)
+
+| File | Queries | Result |
+|---|---|---|
+| `pilot_20_queries.jsonl` | 20 | PASS (0 error, 0 warning) |
+| `functional_queries_v1.jsonl` | 133 | PASS (0 error, 0 warning) |
+| `long_range_stress_queries_v1.jsonl` | 40 | PASS (0 error, 0 warning) |
+
+==Benchmark-v2 data freeze complete. Steps 3–5 of release package delivered. Robot trials sidecar (Steps 6–8) pending.==

@@ -1,4 +1,4 @@
-## Phase 3 Validation Report -- 2026-05-20 00:56 UTC
+## Phase 3 Validation Report -- 2026-05-24 17:35 UTC
 
 Input files:
   - minimal_pairs_v1.jsonl (28 pairs)
