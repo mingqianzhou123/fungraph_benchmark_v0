@@ -1,0 +1,10 @@
+crops/
+pointclouds/
+*.jpg
+*.jpeg
+*.png
+*.ply
+*.npy
+*.npz
+*.pt
+*.pth

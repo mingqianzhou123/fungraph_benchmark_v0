@@ -2,6 +2,25 @@
 
 Write all geometry or multimodal extension outputs here.
 
+## Current Intern Task
+
+The current intern task is:
+
+```text
+../INTERN_PERCEPTION_TASK_PLAN_v2.md
+```
+
+That task plan is authoritative for the next round of intern work. It starts a
+new relation-conditioned perception extension under:
+
+```text
+perception/
+```
+
+The geometry deliverables below are legacy v1 sidecar outputs. They remain
+useful inputs for Phase 1 stratification, but they are not the current first
+task. The current first task is the P0 raw-modality availability audit.
+
 Do not edit the frozen benchmark files in:
 
 ```text
@@ -11,7 +30,7 @@ Do not edit the frozen benchmark files in:
 ../annotations/
 ```
 
-## Required First Deliverables
+## Legacy Geometry Deliverables
 
 ```text
 geometry_coverage_report.csv
@@ -26,7 +45,7 @@ manual_check_report.csv
 ablation_results.csv
 ```
 
-## First Task
+## Legacy Geometry Task
 
 Audit geometry coverage using:
 
@@ -45,13 +64,16 @@ functional queries
 same-label distractor cases
 ```
 
-## Optional Later Work
+## Current Perception Task
 
-Only after the geometry extension is complete, check whether RGB/camera files exist locally. If they do, create a small RGB pilot under:
+Follow `../INTERN_PERCEPTION_TASK_PLAN_v2.md`. The required first step is the
+raw modality availability audit:
 
 ```text
-rgb_pilot/
+perception/p0_raw_modality_availability.csv
+perception/p0_availability_summary.md
 ```
 
-Do not start full DINOv2, CLIP, Uni3D, or 3DGraphLLM preprocessing until the geometry deliverables are finished.
+Do not start crop generation, point-cloud export, DINOv2, CLIP, Uni3D, or
+3DGraphLLM preprocessing until P0 has been reviewed by Mingqian.
 
