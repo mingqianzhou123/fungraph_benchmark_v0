@@ -4,7 +4,7 @@
 
 - Export scenes audited: 20
 - Scenes with real original 3DGraphLLM/ScanNet native features: 0/20
-- Scenes with generated FunGraph adapter packet files: 0/20
+- Scenes with generated FunGraph adapter packet files: 20/20
 
 ## Interpretation
 

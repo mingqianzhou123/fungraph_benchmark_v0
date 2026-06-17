@@ -95,7 +95,7 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 def write_report(path: Path, rows: list[dict[str, Any]], schema: dict[str, Any]) -> None:
     n_scenes = len(rows)
     native_ready = sum(row["status"] == "native_feature_ready" for row in rows)
-    packet_ready = sum(row["status"] in {"native_feature_ready", "adapter_packet_ready"} for row in rows)
+    packet_ready = sum(row["status"] in {"native_feature_ready", "adapter_packet_ready", "real_modality_adapter_ready"} for row in rows)
     missing_native = [row["source_scene_id"] for row in rows if row["status"] != "native_feature_ready"]
 
     text = f"""# Native 3DGraphLLM Asset Alignment Report
