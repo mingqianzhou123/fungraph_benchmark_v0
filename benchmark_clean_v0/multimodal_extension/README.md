@@ -2,24 +2,30 @@
 
 Write all geometry or multimodal extension outputs here.
 
-## Current Intern Task
+## Current Mainline Task
 
-The current intern task is:
+The current mainline task for the 3DGraphLLM+ project is:
+
+```text
+../INTERN_3DGRAPHLLM_EXPORT_TASK_PLAN.md
+```
+
+That task builds the clean model-facing export under:
+
+```text
+../exports/3dgraphllm_functional_eval_v1/
+```
+
+This `multimodal_extension/` directory is now a sidecar workspace. The geometry
+and perception files here remain useful inputs, but they are not the primary
+entry point for native 3DGraphLLM evaluation.
+
+The perception task plan remains valid only for P0 availability/remap/QC and
+small pilots:
 
 ```text
 ../INTERN_PERCEPTION_TASK_PLAN_v2.md
 ```
-
-That task plan is authoritative for the next round of intern work. It starts a
-new relation-conditioned perception extension under:
-
-```text
-perception/
-```
-
-The geometry deliverables below are legacy v1 sidecar outputs. They remain
-useful inputs for Phase 1 stratification, but they are not the current first
-task. The current first task is the P0 raw-modality availability audit.
 
 Do not edit the frozen benchmark files in:
 
@@ -64,10 +70,11 @@ functional queries
 same-label distractor cases
 ```
 
-## Current Perception Task
+## Perception Sidecar Task
 
-Follow `../INTERN_PERCEPTION_TASK_PLAN_v2.md`. The required first step is the
-raw modality availability audit:
+Follow `../INTERN_PERCEPTION_TASK_PLAN_v2.md` only after confirming it does not
+block the 3DGraphLLM export. The required first step is the raw modality
+availability audit:
 
 ```text
 perception/p0_raw_modality_availability.csv
@@ -75,5 +82,6 @@ perception/p0_availability_summary.md
 ```
 
 Do not start crop generation, point-cloud export, DINOv2, CLIP, Uni3D, or
-3DGraphLLM preprocessing until P0 has been reviewed by Mingqian.
+3DGraphLLM preprocessing until P0 has been reviewed by Mingqian. Native
+3DGraphLLM evaluation should use `../exports/3dgraphllm_functional_eval_v1/`.
 

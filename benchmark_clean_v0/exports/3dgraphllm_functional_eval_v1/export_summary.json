@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "candidate_nodes": 317,
+    "candidate_scenes": 20,
+    "functional_500_eval": 500,
+    "human_133_eval": 133,
+    "long_range_50_eval": 50,
+    "minimal_pairs_28_eval": 28,
+    "p0_image_projection_ready_scenes": 6,
+    "p0_point_segment_ready_scenes": 6
+  },
+  "generated_at": "2026-06-17T23:15:40.851894+00:00",
+  "source_files": {
+    "feature_index": "multimodal_extension/feature_index.json",
+    "human_functional": "human_annotations/functional_queries_v1/functional_queries_v1.jsonl",
+    "long_range": "human_annotations/functional_queries_v1/long_range_stress_queries_v1.jsonl",
+    "minimal_pairs": "human_annotations/functional_queries_v1/minimal_pairs_v1.jsonl",
+    "p0_availability": "multimodal_extension/perception/p0_raw_modality_availability.csv",
+    "query_index": "queries/all_queries_index.jsonl",
+    "raw_asset_manifest": "raw_assets/scenefun3d_raw_asset_manifest.csv"
+  }
+}

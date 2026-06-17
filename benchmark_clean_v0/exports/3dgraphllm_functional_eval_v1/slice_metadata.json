@@ -1,0 +1,87 @@
+{
+  "functional_500": {
+    "difficulty_tag_counts": {
+      "endpoint_ambiguity": 500,
+      "functional_relation": 500,
+      "same_label_disambiguation": 420
+    },
+    "n": 500,
+    "scene_counts": {
+      "421380": 84,
+      "422391": 18,
+      "422813": 42,
+      "422826": 33,
+      "460417": 36,
+      "460419": 42,
+      "466183": 36,
+      "466192": 30,
+      "466803": 23,
+      "467293": 24,
+      "468076": 18,
+      "469011": 114
+    },
+    "selection_policy": "SceneFun3D functional test split, sorted by query_id, first 500 rows"
+  },
+  "human_133": {
+    "difficulty_tag_counts": {
+      "endpoint_ambiguity": 21,
+      "functional_relation": 58,
+      "geometry_aware": 99,
+      "hard_negative": 15,
+      "minimal_pair": 56,
+      "multi_anchor": 51,
+      "same_label_disambiguation": 119,
+      "simple_functional": 7
+    },
+    "n": 133,
+    "scene_counts": {
+      "420683": 14,
+      "421013": 14,
+      "421254": 27,
+      "421380": 32,
+      "421602": 13,
+      "469011": 33
+    }
+  },
+  "long_range_50": {
+    "difficulty_tag_counts": {
+      "functional_relation": 50,
+      "geometry_aware": 32,
+      "hard_negative": 5,
+      "long_range": 50,
+      "multi_anchor": 4,
+      "same_label_disambiguation": 33
+    },
+    "n": 50,
+    "scene_counts": {
+      "421063": 4,
+      "421254": 4,
+      "421267": 3,
+      "421380": 8,
+      "422007": 3,
+      "422391": 2,
+      "422813": 4,
+      "460417": 6,
+      "466192": 2,
+      "466803": 2,
+      "469011": 12
+    }
+  },
+  "minimal_pairs_28": {
+    "changed_factor_counts": {
+      "anchor_object": 9,
+      "functional_relation": 1,
+      "geometry_direction": 7,
+      "spatial_qualifier": 11
+    },
+    "n": 28,
+    "scene_counts": {
+      "420683": 2,
+      "421013": 2,
+      "421254": 3,
+      "421380": 12,
+      "421602": 2,
+      "469011": 7
+    }
+  }
+}
