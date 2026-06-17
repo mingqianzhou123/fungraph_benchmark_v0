@@ -7,6 +7,8 @@ It is an adapter layer, not a new benchmark source of truth. Rebuild it with:
 
 ```bash
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_export.py
+/home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_native_3dgraphllm_packet.py
+/home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
 
@@ -25,6 +27,11 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `slice_metadata.json` | Counts and slice definitions for reporting |
 | `export_summary.json` | Build metadata and high-level counts |
 | `DATASET_AUDIT.md` | Cleanup/audit notes and current decisions |
+| `native_3dgraphllm/` | 3DGraphLLM `ValDataset`-readable packet for loader/model smoke tests |
+| `native_3dgraphllm_asset_manifest.csv` | Scene-level native feature alignment audit |
+| `asset_alignment_report.md` | Human-readable report on real native features vs fallback packet |
+| `native_3dgraphllm_asset_schema.json` | Torch feature schema snapshot for adapter debugging |
+| `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 
 ## Current Policy
 
@@ -32,10 +39,14 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   functional test queries sorted by `query_id`, first 500 rows.
 - Human 133, minimal pairs, and long-range stress queries are evaluation-only by
   default. Do not train or tune thresholds on them.
-- This export does not modify native 3DGraphLLM. It only adapts benchmark format,
-  candidate sets, answer keys, and slice metadata.
-- Perception assets are optional sidecars. Native Gate 1 should not wait for a
-  full RGB-D perception benchmark.
+- This export does not modify native 3DGraphLLM. It adapts benchmark format,
+  candidate sets, answer keys, slice metadata, and a loader-ready native packet.
+- `native_3dgraphllm/` is smoke-test ready, not full-modality ready. Its current
+  Uni3D/video/GNN tensors are deterministic zero fallbacks until replaced by real
+  SceneFun3D features extracted through the 3DGraphLLM modality pipeline.
+- Gate 1 scientific reporting must use `asset_alignment_report.md`: results from
+  fallback tensors can validate integration, but cannot support a multimodal
+  performance claim.
 
 ## Validation Invariants
 
@@ -47,3 +58,20 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - every exported query has a scene, target, source, and difficulty tags;
 - the frozen generated eval has exactly 500 rows;
 - human/minimal-pair/long-range counts match the expected local files.
+
+## Native 3DGraphLLM Smoke Test
+
+After copying or keeping this export accessible from the 3DGraphLLM machine, run
+from the 3DGraphLLM repository root:
+
+```bash
+PYTHONPATH=. CUDA_VISIBLE_DEVICES=7 python tasks/train.py /home/mz560/fungraph_benchmark_v0/benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/native_3dgraphllm/config_fungraph_eval.py \
+  evaluate True \
+  pretrained_path ./demo/3dgraphllm.pth \
+  val_tag fungraph_smoke_1 \
+  output_dir /home/mz560/3dgraphllm_plus_data/eval_out/fungraph_smoke_1
+```
+
+This has been run successfully on 2026-06-18; see `SMOKE_TEST.md`. Treat those
+predictions as smoke-test outputs until the fallback feature files are replaced
+with real SceneFun3D-native 3D features.

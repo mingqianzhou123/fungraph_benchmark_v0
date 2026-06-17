@@ -1,0 +1,21 @@
+{
+  "annotation_counts": {
+    "functional_500": 500,
+    "human_133": 133,
+    "long_range_50": 50,
+    "smoke_1": 1
+  },
+  "feature_provenance": {
+    "attributes": "SceneFun3D graph node 3D bounding boxes",
+    "gnn_feats": "zero fallback tensors; replace with extracted graph-neighborhood features before scientific evaluation",
+    "uni3d_feats": "zero fallback tensors; replace with real SceneFun3D Uni3D object features before scientific evaluation",
+    "videofeats": "zero fallback tensors; replace with real RGB-D/video object features before scientific evaluation"
+  },
+  "native_scene_id_rule": "sf3d{source_scene_id}_00",
+  "required_replacement_files_for_full_modality": [
+    "fungraph_scene3d_uni3d_feats.pt",
+    "fungraph_scene3d_videofeats.pt",
+    "fungraph_scene3d_gnn_feats.pt"
+  ],
+  "status": "loader_smoke_test_ready_not_full_modality"
+}

@@ -1,0 +1,702 @@
+[
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 38,
+    "pred_id": 38,
+    "prompt": "Rotate the leftmost knob that adjusts a kitchen appliance whose door is pulled open by a handle.",
+    "qid": "lr_v1_000001",
+    "ref_captions": [
+      "<OBJ038>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "d003c3b8-3330-4adf-8c1e-6c8c9f2245f8"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Rotate the second-from-left knob that adjusts a kitchen appliance whose door is pulled open by a handle.",
+    "qid": "lr_v1_000002",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "06b684bb-7a5c-4717-847a-d343bd6824d9"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 7,
+    "pred_id": 7,
+    "prompt": "Rotate the middle knob that adjusts a kitchen appliance whose door is pulled open by a handle.",
+    "qid": "lr_v1_000003",
+    "ref_captions": [
+      "<OBJ007>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "28e9ec26-d38b-45a2-9614-9fe6a8d69211"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 19,
+    "pred_id": 19,
+    "prompt": "Rotate the second-from-right knob that adjusts a kitchen appliance whose door is pulled open by a handle.",
+    "qid": "lr_v1_000004",
+    "ref_captions": [
+      "<OBJ019>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "76002344-9de9-476f-a43e-d822d1cdb592"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 25,
+    "pred_id": 25,
+    "prompt": "Rotate the rightmost knob that adjusts a kitchen appliance whose door is pulled open by a handle.",
+    "qid": "lr_v1_000005",
+    "ref_captions": [
+      "<OBJ025>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "85f5f2f0-ef9b-4e32-a0de-cd8a7f54db4b"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Which electric outlet provides power to an appliance whose door is pulled open by a handle?",
+    "qid": "lr_v1_000006",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "548a6569-5c70-4d7b-9f10-0ece005e6c00"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Which handle pulls open the door of an appliance that is also powered by an electric outlet?",
+    "qid": "lr_v1_000007",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "2abcdace-ba3f-45c0-8dce-eac4de015ee8"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 15,
+    "pred_id": 15,
+    "prompt": "Pull the leftmost knob that opens a cabinet door of a television stand whose top-row drawer is opened by another knob.",
+    "qid": "lr_v1_000008",
+    "ref_captions": [
+      "<OBJ015>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "bc40c514-1f23-4a0f-b9c6-a3aee1416269"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the second-from-left knob that opens a cabinet door of a television stand whose second-row drawer is opened by another knob.",
+    "qid": "lr_v1_000009",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "9db14ed4-ed96-4e43-a12d-7a1a865f0161"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 19,
+    "pred_id": 19,
+    "prompt": "Pull the second-from-right knob that opens a cabinet door of a television stand whose middle drawer is opened by another knob.",
+    "qid": "lr_v1_000010",
+    "ref_captions": [
+      "<OBJ019>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "f263ca02-a3c0-4b5f-bd3e-2866f0c9a9ec"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 7,
+    "pred_id": 7,
+    "prompt": "Pull the rightmost knob that opens a cabinet door of a television stand whose bottom-row drawer is opened by another knob.",
+    "qid": "lr_v1_000011",
+    "ref_captions": [
+      "<OBJ007>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "64dde80b-d956-4d15-8305-58466e31648f"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Pull the topmost drawer knob in the inner-left column of a television stand whose leftmost cabinet door is opened by another knob.",
+    "qid": "lr_v1_000012",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "282c10c9-3020-4333-b468-cb3197b80940"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Pull the topmost drawer knob in the inner-right column of a television stand whose rightmost cabinet door is opened by another knob.",
+    "qid": "lr_v1_000013",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "352d3a71-9681-4a32-aecd-1d89a929bd7b"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Pull the bottommost drawer knob in the inner-left column of a television stand whose leftmost cabinet door is opened by another knob.",
+    "qid": "lr_v1_000014",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "08a1222a-4837-49cf-a0c6-836d236311a0"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Pull the bottommost drawer knob in the inner-right column of a television stand whose rightmost cabinet door is opened by another knob.",
+    "qid": "lr_v1_000015",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "2569559b-e5fd-4e92-a533-308098b6becd"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Press the button on an appliance whose setting is also adjusted by a separate rotate-and-press knob/button.",
+    "qid": "lr_v1_000016",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d460417_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "460417",
+    "target_node_id": "ca9e7157-7222-4429-8629-add94f3fc620"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Rotate the knob that adjusts an appliance also operated by a press button.",
+    "qid": "lr_v1_000017",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d460417_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "460417",
+    "target_node_id": "a6956e03-3809-409c-b16d-cee0ef3e1246"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Which electric outlet provides power to an appliance whose setting is adjusted by pressing a button?",
+    "qid": "lr_v1_000018",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d460417_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "460417",
+    "target_node_id": "59552624-a2f6-4e2b-9a25-9d62b675cada"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 7,
+    "pred_id": 7,
+    "prompt": "Which electric outlet provides power to an appliance whose setting is adjusted by rotating a knob, without any press button?",
+    "qid": "lr_v1_000019",
+    "ref_captions": [
+      "<OBJ007>."
+    ],
+    "scene_id": "sf3d460417_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "460417",
+    "target_node_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Rotate the knob that adjusts an appliance whose only control elements are this knob and an outlet providing power.",
+    "qid": "lr_v1_000020",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d460417_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "460417",
+    "target_node_id": "f845e4b3-a202-4e17-8100-a41736068ffc"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Press or rotate the button/knob that controls water flow into the sink, where the same flow is also controlled by a faucet/handle.",
+    "qid": "lr_v1_000021",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d421063_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421063",
+    "target_node_id": "b0e7459d-07a3-41a9-af61-18f99260e1d3"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Press or rotate the button/knob that controls water flow into the bathtub, where the same flow is also controlled by a faucet/handle.",
+    "qid": "lr_v1_000022",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d421063_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421063",
+    "target_node_id": "1e33ac6a-7344-4c07-a5a0-d3ff74760222"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Press or rotate the button/knob that controls water flow into the bathroom sink, where the same flow is also controlled by a handle/faucet.",
+    "qid": "lr_v1_000023",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d422813_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422813",
+    "target_node_id": "1deb7d86-ff85-4dd9-bab3-fefffa2ddcdb"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 7,
+    "pred_id": 7,
+    "prompt": "Press or rotate the button/knob that controls water flow into the bathtub, where the same flow is also controlled by a handle/faucet.",
+    "qid": "lr_v1_000024",
+    "ref_captions": [
+      "<OBJ007>."
+    ],
+    "scene_id": "sf3d422813_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422813",
+    "target_node_id": "8315a573-603f-4a3c-9fc6-902a8ab19ad0"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Which electric outlet or power strip provides power to a device that is also operated by a remote control?",
+    "qid": "lr_v1_000025",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d422391_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422391",
+    "target_node_id": "661e73fc-d5d2-4fb5-bf4b-c58fd161a5f0"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Which remote control operates the television that is powered by an electric outlet or power strip?",
+    "qid": "lr_v1_000026",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d422391_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422391",
+    "target_node_id": "e4a3d21d-915d-43d2-8559-8b9d2974a622"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Which faucet/knob/handle controls water flow into the bathroom sink, where the same flow is also controlled by a button/knob that can be pressed or rotated?",
+    "qid": "lr_v1_000027",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d466192_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "466192",
+    "target_node_id": "9311f0c0-33b1-4b61-8ef7-1d2dc24c903a"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Press or rotate the button/knob that controls water flow into the bathroom sink, where the same flow is also controlled by a faucet/knob/handle.",
+    "qid": "lr_v1_000028",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d466192_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "466192",
+    "target_node_id": "83da9fe4-5d04-4f73-b9dd-f3a91d273cd0"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Rotate the knob that adjusts the setting of a washing machine which is powered by a power strip.",
+    "qid": "lr_v1_000029",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d466803_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "466803",
+    "target_node_id": "94276ce1-f267-425a-87fb-7cd12d491730"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Which power strip provides power to a washing machine whose setting is adjusted by rotating a knob?",
+    "qid": "lr_v1_000030",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d466803_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "466803",
+    "target_node_id": "ab926265-13ac-459c-8d19-b6b66ef491da"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle that opens the door of the kitchen appliance whose settings are also adjusted by the leftmost rotating knob on its panel.",
+    "qid": "lr_v1_000031",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle that opens the door of the kitchen appliance whose settings are also regulated by the rightmost rotating knob on its panel.",
+    "qid": "lr_v1_000032",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Rotate the knob/button that adjusts the appliance which has a dedicated electric outlet supplying power exclusively to that one appliance.",
+    "qid": "lr_v1_000033",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d460417_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "460417",
+    "target_node_id": "a6956e03-3809-409c-b16d-cee0ef3e1246"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 6,
+    "pred_id": 6,
+    "prompt": "In this bathroom, which faucet/handle controls water flow for the fixture that also has the higher-mounted button/knob?",
+    "qid": "lr_v1_000034",
+    "ref_captions": [
+      "<OBJ006>."
+    ],
+    "scene_id": "sf3d421063_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421063",
+    "target_node_id": "a54cd1df-50ca-4ca9-b3c0-136fe9224393"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "In this bathroom, which faucet/handle controls water flow for the fixture that also has the lower-mounted button/knob?",
+    "qid": "lr_v1_000035",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d421063_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421063",
+    "target_node_id": "8c74ba89-2f15-4638-97e0-c1a8c294a25e"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Which handle/faucet is connected to the water fixture whose flow-control button is mounted higher than the other control button in the scene?",
+    "qid": "lr_v1_000036",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d422813_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422813",
+    "target_node_id": "b012412a-0a59-46b6-a39c-0be4984a68b3"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Which handle/faucet is connected to the water fixture whose flow-control button is mounted lower than the other control button in the scene?",
+    "qid": "lr_v1_000037",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d422813_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422813",
+    "target_node_id": "381968b3-9045-484b-bf77-ea95b427a529"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle that opens the door of the kitchen appliance whose settings are also adjusted by the second-from-left rotating knob on its panel.",
+    "qid": "lr_v1_000038",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle that opens the door of the kitchen appliance whose settings are also adjusted by the middle rotating knob on its panel.",
+    "qid": "lr_v1_000039",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle that opens the door of the kitchen appliance whose settings are also adjusted by the second-from-right rotating knob on its panel.",
+    "qid": "lr_v1_000040",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the topmost left-column knob on the larger dresser whose second-row left-column knob is directly below it on the same piece of furniture.",
+    "qid": "lr_v1_000041",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "8ab6af8d-3cad-4fad-bf78-157916578132"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Pull the topmost right-column knob on the dresser that also has a third-row right-column knob on the same piece of furniture.",
+    "qid": "lr_v1_000042",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 20,
+    "pred_id": 20,
+    "prompt": "Pull the right-side knob in the topmost row of the dresser whose left-side knob in the same top row is positioned immediately to the left of it.",
+    "qid": "lr_v1_000043",
+    "ref_captions": [
+      "<OBJ020>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "addeffee-87e2-4f20-98bd-589c425f0f07"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the right-column knob in the lowest drawer row of the dresser that also has a left-column knob at the same height in its bottom row.",
+    "qid": "lr_v1_000044",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "877bb40d-b6d8-4716-b958-320b07e6f8d8"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the top-row left-column knob on the dresser whose top-row right-column knob is directly beside it on the same piece of furniture.",
+    "qid": "lr_v1_000045",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d422007_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422007",
+    "target_node_id": "e46875af-6491-4159-9306-19911e41515c"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Pull the bottom-row left-column knob on the dresser that also has a bottom-row right-column knob at the same height on the same furniture.",
+    "qid": "lr_v1_000046",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d422007_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422007",
+    "target_node_id": "43347ad2-c581-495f-a584-e6ac18620789"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Pull the middle-row right-column knob on the dresser that also has a middle-row left-column knob on its same furniture piece.",
+    "qid": "lr_v1_000047",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d422007_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "422007",
+    "target_node_id": "61397967-d5dc-4a02-905a-fadb3e966abc"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the top-row left-column handle on the dresser whose top-row right-column handle is directly to its right on the same piece of furniture.",
+    "qid": "lr_v1_000048",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421267_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421267",
+    "target_node_id": "d4851784-f51f-426a-acf3-ca0eeb595add"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 6,
+    "pred_id": 6,
+    "prompt": "Pull the bottom-row left-column handle on the dresser that also has a bottom-row right-column handle at the same height on its furniture.",
+    "qid": "lr_v1_000049",
+    "ref_captions": [
+      "<OBJ006>."
+    ],
+    "scene_id": "sf3d421267_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421267",
+    "target_node_id": "9a1fc970-494b-4e42-8529-98a91f255ba7"
+  },
+  {
+    "eval_type": "long_range_50",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Pull the middle-row right-column handle on the dresser that also has a middle-row left-column handle on the same piece of furniture.",
+    "qid": "lr_v1_000050",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d421267_00",
+    "source": "human_long_range_v1",
+    "source_scene_id": "421267",
+    "target_node_id": "64769d1c-3a54-4e23-872d-cf2a5770db2b"
+  }
+]

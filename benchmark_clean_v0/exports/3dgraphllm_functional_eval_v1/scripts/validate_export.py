@@ -105,6 +105,33 @@ def main() -> None:
     assert summary["counts"]["minimal_pairs_28_eval"] == 28
     assert summary["counts"]["long_range_50_eval"] == 50
 
+    native_dir = EXPORT_DIR / "native_3dgraphllm"
+    native_manifest = native_dir / "native_packet_manifest.json"
+    if native_manifest.exists():
+        manifest = json.loads(native_manifest.read_text(encoding="utf-8"))
+        assert manifest["status"] == "loader_smoke_test_ready_not_full_modality"
+        expected_native_files = [
+            "fungraph_scene3d_attributes.pt",
+            "fungraph_scene3d_uni3d_feats.pt",
+            "fungraph_scene3d_videofeats.pt",
+            "fungraph_scene3d_gnn_feats.pt",
+            "fungraph_functional_500_val.json",
+            "fungraph_human_133_val.json",
+            "fungraph_long_range_50_val.json",
+            "fungraph_smoke_1_val.json",
+            "config_fungraph_eval.py",
+        ]
+        for filename in expected_native_files:
+            assert (native_dir / filename).exists(), f"missing native packet file: {filename}"
+
+    audit_report = EXPORT_DIR / "asset_alignment_report.md"
+    audit_manifest = EXPORT_DIR / "native_3dgraphllm_asset_manifest.csv"
+    audit_schema = EXPORT_DIR / "native_3dgraphllm_asset_schema.json"
+    if audit_report.exists() or audit_manifest.exists() or audit_schema.exists():
+        assert audit_report.exists(), "missing asset_alignment_report.md"
+        assert audit_manifest.exists(), "missing native_3dgraphllm_asset_manifest.csv"
+        assert audit_schema.exists(), "missing native_3dgraphllm_asset_schema.json"
+
     print("3DGraphLLM export validation passed")
 
 
