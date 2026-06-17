@@ -45,3 +45,19 @@ geometry-aligned attributes plus zero fallback Uni3D/video/GNN tensors. Do not
 use these predictions as evidence for a multimodal performance claim. Replace
 the fallback tensor files with real SceneFun3D-native 3DGraphLLM features before
 running Gate 1.
+
+## Real Modality Adapter Smoke Test
+
+After replacing the zero fallback tensors with real SceneFun3D point/color,
+RGB-D/camera, and relative-geometry adapter features, the one-query full-model
+smoke test completed again.
+
+Output directory:
+
+```text
+/home/mz560/3dgraphllm_plus_data/eval_out/fungraph_smoke_1_real_modalities
+```
+
+This confirms that the modality-complete native packet passes through the
+original 3DGraphLLM model entrypoint. The features are real SceneFun3D modality
+features but not pretrained Uni3D/video-network embeddings.

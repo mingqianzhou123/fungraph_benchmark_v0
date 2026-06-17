@@ -109,7 +109,7 @@ def main() -> None:
     native_manifest = native_dir / "native_packet_manifest.json"
     if native_manifest.exists():
         manifest = json.loads(native_manifest.read_text(encoding="utf-8"))
-        assert manifest["status"] == "loader_smoke_test_ready_not_full_modality"
+        assert manifest["status"] in {"loader_smoke_test_ready_not_full_modality", "real_scene3d_modality_features_ready_not_pretrained_uni3d"}
         expected_native_files = [
             "fungraph_scene3d_attributes.pt",
             "fungraph_scene3d_uni3d_feats.pt",
@@ -131,6 +131,22 @@ def main() -> None:
         assert audit_report.exists(), "missing asset_alignment_report.md"
         assert audit_manifest.exists(), "missing native_3dgraphllm_asset_manifest.csv"
         assert audit_schema.exists(), "missing native_3dgraphllm_asset_schema.json"
+
+    object_manifest = EXPORT_DIR / "object_modality_manifest.csv"
+    scene_rgbd_manifest = EXPORT_DIR / "scene_rgbd_manifest.csv"
+    if object_manifest.exists() or scene_rgbd_manifest.exists():
+        assert object_manifest.exists(), "missing object_modality_manifest.csv"
+        assert scene_rgbd_manifest.exists(), "missing scene_rgbd_manifest.csv"
+        with object_manifest.open("r", encoding="utf-8", newline="") as f:
+            rows = list(__import__("csv").DictReader(f))
+        assert rows, "object_modality_manifest.csv is empty"
+        assert all(row["has_point_xyz"] == "True" for row in rows), "not all objects have point xyz"
+        assert all(row["has_point_rgb"] == "True" for row in rows), "not all objects have point rgb"
+        with scene_rgbd_manifest.open("r", encoding="utf-8", newline="") as f:
+            scene_rows = list(__import__("csv").DictReader(f))
+        assert len(scene_rows) == len(candidates_by_scene), "scene_rgbd_manifest scene count mismatch"
+        assert all(row["has_rgb"] == "True" for row in scene_rows), "not all scenes have RGB frames"
+        assert all(row["has_depth"] == "True" for row in scene_rows), "not all scenes have depth frames"
 
     print("3DGraphLLM export validation passed")
 

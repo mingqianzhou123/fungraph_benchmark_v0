@@ -114,11 +114,12 @@ feature keys such as `scene0011_00_00`. Therefore the original downloaded
 3DGraphLLM feature bundle does not directly cover the FunGraph/SceneFun3D eval
 scenes.
 
-`native_3dgraphllm/` is loader-ready and can be used for smoke tests of the
-3DGraphLLM integration. It is not a full-modality scientific eval until its
-zero fallback tensors are replaced by real SceneFun3D object features extracted
-with the same modality pipeline: segmentation/object proposals, Uni3D point
-features, RGB-D/video features, and GNN scene features.
+`native_3dgraphllm/` is loader-ready and can be used for 3DGraphLLM integration
+runs. If the packet status is `real_scene3d_modality_features_ready_not_pretrained_uni3d`,
+its tensors are real SceneFun3D point/color/RGB-D/camera/geometry features. They
+are still not the original pretrained Uni3D/video-network embeddings, so results
+should be reported as adapter-feature results unless those encoder-specific
+features are later regenerated.
 
 ## Missing Real Native Features
 
@@ -165,6 +166,10 @@ def main() -> None:
         name: load_torch_dict(args.packet_dir / filename)
         for name, filename in PACKET_FILENAMES.items()
     }
+    packet_manifest_path = args.packet_dir / "native_packet_manifest.json"
+    packet_status = "unknown"
+    if packet_manifest_path.exists():
+        packet_status = json.loads(packet_manifest_path.read_text(encoding="utf-8")).get("status", "unknown")
 
     native_attr_scenes = set(native_data["attributes"])
     native_uni3d_scenes = {scene_from_feature_key(key) for key in native_data["uni3d_feats"]}
@@ -195,8 +200,12 @@ def main() -> None:
             status = "native_feature_ready"
             note = "Original native 3DGraphLLM feature bundle covers this scene."
         elif all(packet_flags.values()):
-            status = "adapter_packet_ready"
-            note = "Generated adapter packet exists; feature tensors are fallback placeholders unless replaced."
+            if packet_status == "real_scene3d_modality_features_ready_not_pretrained_uni3d":
+                status = "real_modality_adapter_ready"
+                note = "Generated adapter packet exists with real SceneFun3D point/color/RGB-D/camera/geometry features; not original pretrained Uni3D/video embeddings."
+            else:
+                status = "adapter_packet_ready"
+                note = "Generated adapter packet exists; feature tensors are fallback placeholders unless replaced."
         else:
             status = "blocked"
             note = "Missing both native ScanNet features and generated adapter packet files."

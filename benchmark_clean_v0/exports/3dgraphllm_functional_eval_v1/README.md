@@ -8,6 +8,7 @@ It is an adapter layer, not a new benchmark source of truth. Rebuild it with:
 ```bash
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_export.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_native_3dgraphllm_packet.py
+/home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_real_scene3d_modalities.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -31,6 +32,8 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `native_3dgraphllm_asset_manifest.csv` | Scene-level native feature alignment audit |
 | `asset_alignment_report.md` | Human-readable report on real native features vs fallback packet |
 | `native_3dgraphllm_asset_schema.json` | Torch feature schema snapshot for adapter debugging |
+| `object_modality_manifest.csv` | Object-level point/color/camera coverage and feature keys |
+| `scene_rgbd_manifest.csv` | Scene-level RGB/depth/frame/trajectory coverage |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 
 ## Current Policy
@@ -41,12 +44,14 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   default. Do not train or tune thresholds on them.
 - This export does not modify native 3DGraphLLM. It adapts benchmark format,
   candidate sets, answer keys, slice metadata, and a loader-ready native packet.
-- `native_3dgraphllm/` is smoke-test ready, not full-modality ready. Its current
-  Uni3D/video/GNN tensors are deterministic zero fallbacks until replaced by real
-  SceneFun3D features extracted through the 3DGraphLLM modality pipeline.
-- Gate 1 scientific reporting must use `asset_alignment_report.md`: results from
-  fallback tensors can validate integration, but cannot support a multimodal
-  performance claim.
+- `native_3dgraphllm/` now contains nonzero real SceneFun3D modality adapter
+  features: point/color object features from PLY+indices, RGB-D/camera features
+  from frame coverage and annotation camera metadata, and relative-geometry GNN
+  features.
+- These are not pretrained Uni3D/video-network embeddings. Gate 1 scientific
+  reporting must use `asset_alignment_report.md` and describe them as
+  SceneFun3D adapter features unless encoder-specific Uni3D/video features are
+  regenerated later.
 
 ## Validation Invariants
 
@@ -72,6 +77,8 @@ PYTHONPATH=. CUDA_VISIBLE_DEVICES=7 python tasks/train.py /home/mz560/fungraph_b
   output_dir /home/mz560/3dgraphllm_plus_data/eval_out/fungraph_smoke_1
 ```
 
-This has been run successfully on 2026-06-18; see `SMOKE_TEST.md`. Treat those
-predictions as smoke-test outputs until the fallback feature files are replaced
-with real SceneFun3D-native 3D features.
+This has been run successfully on 2026-06-18 with both the original fallback
+packet and the real SceneFun3D modality adapter packet; see `SMOKE_TEST.md`.
+Treat the predictions as integration outputs, not final benchmark evidence,
+until Dennis/Mingqian approve the adapter-feature protocol or replace these
+features with encoder-specific Uni3D/video embeddings.

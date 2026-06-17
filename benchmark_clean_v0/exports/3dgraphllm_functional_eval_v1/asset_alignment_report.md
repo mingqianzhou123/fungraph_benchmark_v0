@@ -4,7 +4,7 @@
 
 - Export scenes audited: 20
 - Scenes with real original 3DGraphLLM/ScanNet native features: 0/20
-- Scenes with generated FunGraph adapter packet files: 20/20
+- Scenes with generated FunGraph adapter packet files: 0/20
 
 ## Interpretation
 
@@ -14,11 +14,12 @@ feature keys such as `scene0011_00_00`. Therefore the original downloaded
 3DGraphLLM feature bundle does not directly cover the FunGraph/SceneFun3D eval
 scenes.
 
-`native_3dgraphllm/` is loader-ready and can be used for smoke tests of the
-3DGraphLLM integration. It is not a full-modality scientific eval until its
-zero fallback tensors are replaced by real SceneFun3D object features extracted
-with the same modality pipeline: segmentation/object proposals, Uni3D point
-features, RGB-D/video features, and GNN scene features.
+`native_3dgraphllm/` is loader-ready and can be used for 3DGraphLLM integration
+runs. If the packet status is `real_scene3d_modality_features_ready_not_pretrained_uni3d`,
+its tensors are real SceneFun3D point/color/RGB-D/camera/geometry features. They
+are still not the original pretrained Uni3D/video-network embeddings, so results
+should be reported as adapter-feature results unless those encoder-specific
+features are later regenerated.
 
 ## Missing Real Native Features
 
