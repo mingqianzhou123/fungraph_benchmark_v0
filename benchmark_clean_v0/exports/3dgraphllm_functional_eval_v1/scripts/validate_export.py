@@ -296,6 +296,13 @@ def main() -> None:
             "balanced_unique_relation_candidate_v1.jsonl",
             "balanced_unique_relation_candidate_v1.csv",
             "review_queue_v1.html",
+            "FROZEN_CANDIDATE_STATUS.md",
+            "freeze_candidate_summary.json",
+            "functional_balanced_116_frozen_candidate.jsonl",
+            "minimal_pairs_expanded_60_frozen_candidate.jsonl",
+            "perception_evidence/EXPANSION_PERCEPTION_EVIDENCE_STATUS.md",
+            "perception_evidence/expansion_perception_evidence_summary.json",
+            "perception_evidence/expansion_perception_evidence_index.jsonl",
         ]
         for filename in required:
             assert (expansion_dir / filename).exists(), f"missing expansion_v1 file: {filename}"
@@ -305,10 +312,15 @@ def main() -> None:
         pair_summary = json.loads((expansion_dir / "minimal_pair_expansion_summary.json").read_text(encoding="utf-8"))
         review_summary = json.loads((expansion_dir / "review_queue_summary.json").read_text(encoding="utf-8"))
         balanced_summary = json.loads((expansion_dir / "balanced_unique_relation_candidate_summary.json").read_text(encoding="utf-8"))
+        freeze_summary = json.loads((expansion_dir / "freeze_candidate_summary.json").read_text(encoding="utf-8"))
+        expansion_evidence_summary = json.loads((expansion_dir / "perception_evidence" / "expansion_perception_evidence_summary.json").read_text(encoding="utf-8"))
         pool_rows = read_jsonl(expansion_dir / "unique_relation_pool_v1.jsonl")
         draft_rows = read_jsonl(expansion_dir / "functional_unique_relation_585_draft.jsonl")
         pair_rows = read_jsonl(expansion_dir / "minimal_pair_candidates_v1.jsonl")
         balanced_rows = read_jsonl(expansion_dir / "balanced_unique_relation_candidate_v1.jsonl")
+        freeze_functional_rows = read_jsonl(expansion_dir / "functional_balanced_116_frozen_candidate.jsonl")
+        freeze_pair_rows = read_jsonl(expansion_dir / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
+        expansion_evidence_rows = read_jsonl(expansion_dir / "perception_evidence" / "expansion_perception_evidence_index.jsonl")
 
         expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
         assert distribution["status"] == "distribution_audit_ready"
@@ -330,6 +342,17 @@ def main() -> None:
         assert len(balanced_rows) == balanced_summary["n_candidate_queries"]
         assert balanced_summary["n_candidate_queries"] > 80
         assert balanced_summary["n_candidate_queries"] < unique_summary["n_query_drafts"]
+        assert freeze_summary["status"] == "freeze_candidates_ready_not_paper_frozen"
+        assert freeze_summary["paper_use_allowed"] is False
+        assert len(freeze_functional_rows) == freeze_summary["n_functional_candidates"] == balanced_summary["n_candidate_queries"]
+        assert len(freeze_pair_rows) == freeze_summary["n_minimal_pair_candidates"] == 60
+        assert all(row.get("paper_use_allowed") is False for row in freeze_functional_rows), "freeze functional candidates must not be paper-enabled"
+        assert all(row.get("human_review_required") is True for row in freeze_functional_rows), "freeze functional candidates require human review"
+        assert expansion_evidence_summary["status"] == "expansion_perception_evidence_ready"
+        assert len(expansion_evidence_rows) == expansion_evidence_summary["n_functional_candidates"] == len(freeze_functional_rows)
+        assert expansion_evidence_summary["n_visual_evidence_ready"] == len(freeze_functional_rows)
+        assert expansion_evidence_summary["n_previously_missing_relations_now_have_pointcloud_evidence"] == freeze_summary["n_functional_needing_evidence_generation"]
+        assert (EXPORT_DIR / "BENCHMARK_CLAIM_AUDIT.md").exists(), "missing BENCHMARK_CLAIM_AUDIT.md"
 
         draft_ids = {row["query_id"] for row in draft_rows}
         allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
@@ -350,6 +373,14 @@ def main() -> None:
             for target in row.get("target_node_ids") or []:
                 assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
             assert row.get("review_status") == "todo", f"{qid}: balanced review status should start as todo"
+
+        freeze_functional_ids = {row["query_id"] for row in freeze_functional_rows}
+        evidence_ids = {row["query_id"] for row in expansion_evidence_rows}
+        assert freeze_functional_ids == {row["query_id"] for row in balanced_rows}, "freeze functional candidates must match balanced candidates"
+        assert evidence_ids == freeze_functional_ids, "expansion evidence rows must match freeze functional candidates"
+        if expansion_evidence_summary.get("images_written"):
+            for row in expansion_evidence_rows:
+                assert (expansion_dir / row["primary_visual_rel_path"]).exists(), f"missing expansion evidence image: {row['primary_visual_rel_path']}"
 
         pair_ids: set[str] = set()
         for row in pair_rows:
