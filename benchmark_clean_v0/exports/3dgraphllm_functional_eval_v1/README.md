@@ -35,6 +35,8 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `object_modality_manifest.csv` | Object-level point/color/camera coverage and feature keys |
 | `scene_rgbd_manifest.csv` | Scene-level RGB/depth/frame/trajectory coverage |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
+| `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
+| `scripts/evaluate_fungraph_predictions.py` | FunGraph functional evaluator for 3DGraphLLM `preds_*.json` files |
 
 ## Current Policy
 
@@ -82,3 +84,18 @@ packet and the real SceneFun3D modality adapter packet; see `SMOKE_TEST.md`.
 Treat the predictions as integration outputs, not final benchmark evidence,
 until Dennis/Mingqian approve the adapter-feature protocol or replace these
 features with encoder-specific Uni3D/video embeddings.
+
+## FunGraph Metrics
+
+3DGraphLLM's native `scores_*.json` is a language-generation score, not the
+functional localization metric. After each run, evaluate the predictions with:
+
+```bash
+/home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python \
+  benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/evaluate_fungraph_predictions.py \
+  --preds /home/mz560/3dgraphllm_plus_data/eval_out/<run_dir>/preds_<tag>.json
+```
+
+The primary metric requires an explicit `<OBJxxx>` token matching the target
+object id. Free-text label overlap is written as a diagnostic only and is not
+counted as accuracy.

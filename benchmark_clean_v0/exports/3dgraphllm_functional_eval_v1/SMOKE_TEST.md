@@ -40,11 +40,8 @@ through the original 3DGraphLLM model entrypoint.
 
 ## Scientific Status
 
-This is an integration smoke test only. The current native packet uses
-geometry-aligned attributes plus zero fallback Uni3D/video/GNN tensors. Do not
-use these predictions as evidence for a multimodal performance claim. Replace
-the fallback tensor files with real SceneFun3D-native 3DGraphLLM features before
-running Gate 1.
+This first smoke test was an integration-only run with fallback tensor files. It
+should not be used as evidence for a multimodal performance claim.
 
 ## Real Modality Adapter Smoke Test
 
@@ -61,3 +58,35 @@ Output directory:
 This confirms that the modality-complete native packet passes through the
 original 3DGraphLLM model entrypoint. The features are real SceneFun3D modality
 features but not pretrained Uni3D/video-network embeddings.
+
+## FunGraph Evaluator Smoke Test
+
+The real-modality smoke output was evaluated with:
+
+```bash
+/home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python \
+  benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/evaluate_fungraph_predictions.py \
+  --preds /home/mz560/3dgraphllm_plus_data/eval_out/fungraph_smoke_1_real_modalities/preds_fungraph_smoke_1.json
+```
+
+Result:
+
+```json
+{
+  "multiple_valid_obj_token_rate": 0.0,
+  "n": 1,
+  "n_target_obj_appears_anywhere": 0,
+  "n_with_multiple_valid_obj_tokens": 0,
+  "n_with_obj_token": 0,
+  "n_with_single_valid_obj_token": 0,
+  "n_without_obj_token": 1,
+  "obj_token_rate": 0.0,
+  "primary_acc_all": 0.0,
+  "primary_acc_when_obj_token": null,
+  "single_valid_obj_token_rate": 0.0,
+  "target_obj_anywhere_rate": 0.0
+}
+```
+
+The model ran end-to-end but did not emit an explicit `<OBJxxx>` token, so the
+FunGraph primary localization metric is zero for this smoke sample.
