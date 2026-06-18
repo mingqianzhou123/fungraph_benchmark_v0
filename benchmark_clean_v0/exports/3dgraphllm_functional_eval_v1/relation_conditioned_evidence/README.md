@@ -19,6 +19,12 @@ Files:
 - `projection_dryrun_index.jsonl`: placeholder projection metadata for target/anchor point segments in candidate RGB-D frames.
 - `projection_dryrun_summary.json`: projection dry-run coverage summary.
 - `PROJECTION_DRYRUN_STATUS.md`: human-readable projection dry-run status and boundary notes.
+- `official_crop_index.jsonl`: one row per relation with selected depth-tested co-visible crop views, or a failure reason.
+- `official_frame_projection_index.jsonl`: depth-tested projection metadata for top full-frame-mined candidates.
+- `official_crop_summary.json`: machine-readable frozen crop/QC coverage summary.
+- `OFFICIAL_CROP_STATUS.md`: human-readable frozen crop/QC status.
+- `p4_qc_report.csv`: relation-level QC table with readiness and failure reasons.
+- `p4_sanity_examples.html` and `qc_overlays/`: small diagnostic overlay page for visual spot-checking.
 - `sample_load_relation_evidence.py`: tiny loader for querying this layer.
 
-Important boundary: projection dry-run rows are not official crop evidence. They use a placeholder ARKit pose convention, no depth z-test, and a provisional visible-point threshold. Large raw crops and exported pointclouds should remain local unless explicitly approved.
+Important boundary: `official_*` crop metadata is the frozen depth-tested evidence layer. Large crop images are generated under ignored `crops_local/` and are not committed; `qc_overlays/` are small diagnostic spot-check artifacts, not training data.

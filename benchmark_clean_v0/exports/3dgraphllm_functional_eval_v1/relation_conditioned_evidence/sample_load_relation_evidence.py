@@ -20,6 +20,10 @@ def main() -> None:
     frames_by_relation = {}
     for row in read_jsonl(ROOT / 'relation_frame_candidates.jsonl'):
         frames_by_relation.setdefault(row['relation_key'], []).append(row)
+    official_crops = {}
+    official_path = ROOT / 'official_crop_index.jsonl'
+    if official_path.exists():
+        official_crops = {row['relation_key']: row for row in read_jsonl(official_path)}
     if args.relation_key:
         keys = [args.relation_key]
     elif args.query_id:
@@ -30,6 +34,7 @@ def main() -> None:
     for key in keys:
         item = dict(relations[key])
         item['frame_candidates'] = frames_by_relation.get(key, [])
+        item['official_crop'] = official_crops.get(key)
         out.append(item)
     print(json.dumps(out, indent=2, ensure_ascii=False))
 if __name__ == '__main__':

@@ -218,6 +218,37 @@ def main() -> None:
             assert all(row["depth_z_test_applied"] is False for row in projection_rows), "projection dry-run unexpectedly applied depth z-test"
             assert all(row["selection_rule_version"].startswith("placeholder_dryrun_") for row in projection_rows), "projection dry-run selection rule must be placeholder"
 
+        official_summary_path = evidence_dir / "official_crop_summary.json"
+        official_crop_index_path = evidence_dir / "official_crop_index.jsonl"
+        official_frame_index_path = evidence_dir / "official_frame_projection_index.jsonl"
+        official_status_path = evidence_dir / "OFFICIAL_CROP_STATUS.md"
+        qc_report_path = evidence_dir / "p4_qc_report.csv"
+        qc_html_path = evidence_dir / "p4_sanity_examples.html"
+        if any(path.exists() for path in [official_summary_path, official_crop_index_path, official_frame_index_path, official_status_path]):
+            assert official_summary_path.exists(), "missing official_crop_summary.json"
+            assert official_crop_index_path.exists(), "missing official_crop_index.jsonl"
+            assert official_frame_index_path.exists(), "missing official_frame_projection_index.jsonl"
+            assert official_status_path.exists(), "missing OFFICIAL_CROP_STATUS.md"
+            assert qc_report_path.exists(), "missing p4_qc_report.csv"
+            assert qc_html_path.exists(), "missing p4_sanity_examples.html"
+            official_summary = json.loads(official_summary_path.read_text(encoding="utf-8"))
+            official_rows = read_jsonl(official_crop_index_path)
+            official_frame_rows = read_jsonl(official_frame_index_path)
+            assert official_summary["status"] == "official_relation_crop_metadata_ready"
+            assert official_summary["selection_rule_version"] == "covisible_depth_ztest_v1_20260618_full_frame_mining"
+            assert official_summary["n_relations"] == expected_relations
+            assert len(official_rows) == expected_relations
+            assert len(official_frame_rows) == official_summary["n_depth_tested_frame_rows"]
+            assert official_summary["n_relations_crop_ready"] == sum(row["relation_crop_ready"] for row in official_rows)
+            assert official_summary["n_relations_crop_ready"] > 0, "official crop layer has no ready relations"
+            assert official_summary["depth_z_test_applied"] is True
+            assert all(row["depth_z_test_applied"] is True for row in official_rows), "official crop rows must be depth-tested"
+            assert all(row["selection_rule_version"] == official_summary["selection_rule_version"] for row in official_rows), "official crop rule mismatch"
+            assert all(row["is_placeholder_rule"] is False for row in official_frame_rows), "official frame rows must not be placeholder"
+            assert all(row["depth_z_test_applied"] is True for row in official_frame_rows), "official frame rows must be depth-tested"
+            assert (evidence_dir / "qc_overlays").exists(), "missing qc_overlays directory"
+            assert len(list((evidence_dir / "qc_overlays").glob("*.jpg"))) >= 1, "missing QC overlay images"
+
     print("3DGraphLLM export validation passed")
 
 
