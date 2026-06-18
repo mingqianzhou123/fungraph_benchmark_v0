@@ -33,12 +33,9 @@ multimodal_extension/perception/p0_raw_modality_availability.csv
 
 ## Current Cleanup Decisions
 
-- P0 raw modality files belong under `multimodal_extension/perception/`, matching
-  `INTERN_PERCEPTION_TASK_PLAN_v2.md`.
-- The current mainline benchmark task is native 3DGraphLLM functional evaluation,
-  not full RGB-D perception benchmark construction.
-- Full perception assets remain a sidecar/pilot until 20/20 scene availability
-  and projection QC are complete.
+- P0 raw modality files remain under `multimodal_extension/perception/` as legacy provenance; the old intern perception task plan has been removed.
+- The current mainline benchmark task is native 3DGraphLLM functional evaluation plus the relation-conditioned multimodal evidence layer under this export.
+- Full raw modality manifests and official relation crop/QC metadata now live in `relation_conditioned_evidence/`.
 - Human-authored queries are held out as hard evaluation by default.
 
 ## Known Limitations

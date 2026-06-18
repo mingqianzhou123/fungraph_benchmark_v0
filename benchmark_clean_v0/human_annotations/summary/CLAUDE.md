@@ -16,7 +16,6 @@ There is **no package manager, no test framework, no lint config**. Scripts are 
 benchmark_clean_v0/queries/        benchmark_clean_v0/graphs/
 benchmark_clean_v0/geometry/       benchmark_clean_v0/annotations/
 benchmark_clean_v0/manifests/      benchmark_clean_v0/multimodal_extension/
-benchmark_clean_v0/INTERN_GEOMETRY_TASK_PLAN.md
 ```
 
 When you find a problem in a frozen file, **do not fix it in place**. Append a log entry to the relevant `annotation_notes.md` or `validation_report.md` using the convention:

@@ -1,13 +1,13 @@
 # Perception Extension Workspace
 
-Current task plan:
+The old intern perception task plan has been removed. This directory now keeps
+only the legacy P0 raw-modality availability audit.
+
+The current relation-conditioned perceptual evidence lives in:
 
 ```text
-../../INTERN_PERCEPTION_TASK_PLAN_v2.md
+../../exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/
 ```
-
-This directory is reserved for relation-conditioned perceptual evidence: target
-part plus its query-specific anchor, not generic instance-level crops.
 
 ## Current Status
 
@@ -26,8 +26,8 @@ point_segment_ready: 6 / 20 scenes
 bbox_only: 14 / 20 scenes
 ```
 
-This is enough for a small perception pilot, but not enough to claim a complete
-20-scene RGB-D perception benchmark.
+This P0 report is retained for provenance. It has been superseded by the full
+raw-modality manifests and official crop/QC metadata in the 3DGraphLLM export.
 
 ## Relationship to 3DGraphLLM Export
 
@@ -40,8 +40,7 @@ Native 3DGraphLLM functional evaluation should use:
 Do not block native 3DGraphLLM reproduction or Gate 1 on full perception asset
 completion.
 
-## Stop Rule
+## Rule
 
-After P0, stop and sync with Mingqian before starting Phase 1. Do not write
-large image crops or point-cloud assets to git; `crops/` and `pointclouds/` are
-ignored here.
+Do not add new outputs here. Use the 3DGraphLLM export relation-conditioned
+evidence directory for current multimodal benchmark work.

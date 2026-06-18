@@ -2,30 +2,17 @@
 
 Write all geometry or multimodal extension outputs here.
 
-## Current Mainline Task
+## Current Mainline
 
-The current mainline task for the 3DGraphLLM+ project is:
-
-```text
-../INTERN_3DGRAPHLLM_EXPORT_TASK_PLAN.md
-```
-
-That task builds the clean model-facing export under:
+The current 3DGraphLLM+ mainline is the clean model-facing export under:
 
 ```text
 ../exports/3dgraphllm_functional_eval_v1/
 ```
 
-This `multimodal_extension/` directory is now a sidecar workspace. The geometry
-and perception files here remain useful inputs, but they are not the primary
-entry point for native 3DGraphLLM evaluation.
-
-The perception task plan remains valid only for P0 availability/remap/QC and
-small pilots:
-
-```text
-../INTERN_PERCEPTION_TASK_PLAN_v2.md
-```
+This `multimodal_extension/` directory is now a legacy sidecar workspace. The geometry
+and P0 perception files here remain useful inputs, but they are not the primary
+entry point for native 3DGraphLLM evaluation or relation-conditioned crop QC.
 
 Do not edit the frozen benchmark files in:
 
@@ -70,18 +57,17 @@ functional queries
 same-label distractor cases
 ```
 
-## Perception Sidecar Task
+## Perception Sidecar Status
 
-Follow `../INTERN_PERCEPTION_TASK_PLAN_v2.md` only after confirming it does not
-block the 3DGraphLLM export. The required first step is the raw modality
-availability audit:
+The old perception task plan has been removed. This directory only retains the
+raw modality availability audit:
 
 ```text
 perception/p0_raw_modality_availability.csv
 perception/p0_availability_summary.md
 ```
 
-Do not start crop generation, point-cloud export, DINOv2, CLIP, Uni3D, or
-3DGraphLLM preprocessing until P0 has been reviewed by Mingqian. Native
-3DGraphLLM evaluation should use `../exports/3dgraphllm_functional_eval_v1/`.
+Do not add new crop generation or 3DGraphLLM preprocessing here. Native
+3DGraphLLM evaluation and official crop/QC metadata should use
+`../exports/3dgraphllm_functional_eval_v1/`.
 

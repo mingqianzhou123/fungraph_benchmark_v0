@@ -87,7 +87,6 @@ benchmark_clean_v0/geometry/
 benchmark_clean_v0/annotations/
 benchmark_clean_v0/manifests/
 benchmark_clean_v0/multimodal_extension/
-benchmark_clean_v0/INTERN_GEOMETRY_TASK_PLAN.md
 ```
 
 如果你觉得某个原始 query 或 graph 有问题，不要直接改。请写到：

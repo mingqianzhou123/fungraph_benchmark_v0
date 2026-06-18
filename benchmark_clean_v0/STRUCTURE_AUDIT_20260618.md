@@ -48,16 +48,16 @@ These should not be committed. Metadata, reports, and small QC overlays are comm
 
 - `multimodal_extension/`: earlier geometry and P0 perception sidecar. It is retained for provenance, but it is no longer the main multimodal interface.
 - `robot_trials/`: execution sidecar, not part of the current 3DGraphLLM functional benchmark export.
-- `INTERN_*TASK_PLAN*.md`: historical task plans. They are retained because older reports and sidecar READMEs reference them.
 
 ## Cleanup Decision
 
 Deleted from the working tree:
 
 - `exports/3dgraphllm_functional_eval_v1/scripts/__pycache__/`
+- top-level old intern task plans: `INTERN_PERCEPTION_TASK_PLAN_v2.md`, `INTERN_GEOMETRY_TASK_PLAN.md`, `INTERN_3DGRAPHLLM_EXPORT_TASK_PLAN.md`
 
 Kept intentionally:
 
-- historical task plans and older sidecars, because they are tracked provenance;
+- older sidecars, because they are tracked provenance;
 - `projection_dryrun_*` metadata, because it documents the pre-official projection audit and is still validated as a placeholder layer;
 - local `crops_local/`, because it is useful for visual inspection and can be regenerated, but it remains ignored by Git.
