@@ -16,6 +16,9 @@ Files:
 - `minimal_pair_relation_index.jsonl`: minimal-pair rows linked to relation keys.
 - `relation_evidence_summary.json`: machine-readable coverage summary.
 - `RELATION_EVIDENCE_STATUS.md`: human-readable status and boundary notes.
+- `projection_dryrun_index.jsonl`: placeholder projection metadata for target/anchor point segments in candidate RGB-D frames.
+- `projection_dryrun_summary.json`: projection dry-run coverage summary.
+- `PROJECTION_DRYRUN_STATUS.md`: human-readable projection dry-run status and boundary notes.
 - `sample_load_relation_evidence.py`: tiny loader for querying this layer.
 
-Important boundary: frame candidates are not yet co-visible crop evidence. They are full RGB-D-camera triplets ready for a projection/visibility pass. Large raw crops and exported pointclouds should remain local unless explicitly approved.
+Important boundary: projection dry-run rows are not official crop evidence. They use a placeholder ARKit pose convention, no depth z-test, and a provisional visible-point threshold. Large raw crops and exported pointclouds should remain local unless explicitly approved.

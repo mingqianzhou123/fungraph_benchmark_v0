@@ -200,6 +200,24 @@ def main() -> None:
         assert all(row["relation_evidence_ready"] is True for row in relation_rows), "not all relation evidence rows are ready"
         assert all("|" in row["relation_key"] for row in relation_rows), "invalid relation key format"
 
+        projection_summary_path = evidence_dir / "projection_dryrun_summary.json"
+        projection_index_path = evidence_dir / "projection_dryrun_index.jsonl"
+        projection_status_path = evidence_dir / "PROJECTION_DRYRUN_STATUS.md"
+        if any(path.exists() for path in [projection_summary_path, projection_index_path, projection_status_path]):
+            assert projection_summary_path.exists(), "missing projection_dryrun_summary.json"
+            assert projection_index_path.exists(), "missing projection_dryrun_index.jsonl"
+            assert projection_status_path.exists(), "missing PROJECTION_DRYRUN_STATUS.md"
+            projection_summary = json.loads(projection_summary_path.read_text(encoding="utf-8"))
+            projection_rows = read_jsonl(projection_index_path)
+            assert projection_summary["status"] == "projection_dryrun_placeholder_ready"
+            assert projection_summary["n_relations"] == expected_relations
+            assert projection_summary["n_projection_rows"] == summary["n_frame_candidates"]
+            assert len(projection_rows) == summary["n_frame_candidates"]
+            assert projection_summary["depth_z_test_applied"] is False
+            assert all(row["is_placeholder_rule"] is True for row in projection_rows), "projection dry-run rows must remain placeholder"
+            assert all(row["depth_z_test_applied"] is False for row in projection_rows), "projection dry-run unexpectedly applied depth z-test"
+            assert all(row["selection_rule_version"].startswith("placeholder_dryrun_") for row in projection_rows), "projection dry-run selection rule must be placeholder"
+
     print("3DGraphLLM export validation passed")
 
 

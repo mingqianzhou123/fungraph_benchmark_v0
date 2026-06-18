@@ -1,0 +1,30 @@
+{
+  "by_split": {
+    "functional_500": {
+      "n_projection_rows": 3000,
+      "n_relations": 500,
+      "n_relations_with_placeholder_coview": 228
+    },
+    "human_133": {
+      "n_projection_rows": 798,
+      "n_relations": 133,
+      "n_relations_with_placeholder_coview": 80
+    },
+    "long_range_50": {
+      "n_projection_rows": 291,
+      "n_relations": 50,
+      "n_relations_with_placeholder_coview": 23
+    }
+  },
+  "depth_z_test_applied": false,
+  "important_boundary": "This is a placeholder dry-run projection index, not official crop evidence. Pose convention and visibility thresholds must be audited before using crops as benchmark evidence.",
+  "max_points_per_object": 5000,
+  "min_visible_points_placeholder": 10,
+  "n_projection_rows": 4089,
+  "n_relations": 683,
+  "n_relations_with_placeholder_coview": 331,
+  "n_relations_without_placeholder_coview": 352,
+  "n_rows_with_placeholder_coview": 355,
+  "selection_rule_version": "placeholder_dryrun_arkit_negative_z_no_depth_ztest_v1",
+  "status": "projection_dryrun_placeholder_ready"
+}

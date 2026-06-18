@@ -11,6 +11,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_e
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_real_scene3d_modalities.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_multimodal_index.py
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_relation_conditioned_evidence.py
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_projection_dryrun.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -49,6 +50,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `scripts/build_object_selection_splits.py` | Builds native prompt variants that ask for exactly one `<OBJxxx>` answer |
 | `scripts/build_full_multimodal_index.py` | Builds full raw-modality indexes and readiness gates |
 | `scripts/build_relation_conditioned_evidence.py` | Builds query-level target-anchor evidence manifests |
+| `scripts/build_projection_dryrun.py` | Builds placeholder target/anchor projection metadata for candidate RGB-D frames |
 | `scripts/export_relation_point_segments.py` | Optional local exporter for target/anchor PLY point segments; outputs should not be committed |
 
 ## Current Policy
@@ -69,8 +71,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   metadata, and native feature keys.
 - `relation_conditioned_evidence/` maps every functional query to a stable
   `relation_key = query_id|target_node_id|anchor_node_id`, target/anchor point
-  sidecars, native feature keys, supporting edges, and RGB-D-camera frame
-  candidates for the later projection/crop pass.
+  sidecars, native feature keys, supporting edges, RGB-D-camera frame
+  candidates, and placeholder projection dry-run metadata for the later audited
+  crop pass.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a
