@@ -33,12 +33,10 @@ multimodal_extension/perception/p0_raw_modality_availability.csv
 
 ## Current Cleanup Decisions
 
-- P0 raw modality files belong under `multimodal_extension/perception/`, matching
-  `INTERN_PERCEPTION_TASK_PLAN_v2.md`.
-- The current mainline benchmark task is native 3DGraphLLM functional evaluation,
-  not full RGB-D perception benchmark construction.
-- Full perception assets remain a sidecar/pilot until 20/20 scene availability
-  and projection QC are complete.
+- P0 raw modality files remain under `multimodal_extension/perception/` as legacy provenance; the old intern perception task plan has been removed.
+- The current mainline benchmark task is native 3DGraphLLM functional evaluation plus the relation-conditioned multimodal evidence layer under this export.
+- Full raw modality manifests and official relation crop/QC metadata now live in `relation_conditioned_evidence/`.
+- The full-coverage perception layer is `relation_conditioned_evidence/full_perception_evidence_index.jsonl`: 683 / 683 relations have one inspectable evidence card; 240 use strict depth-tested RGB-D crop metadata and 443 use GT pointcloud-render fallback.
 - Human-authored queries are held out as hard evaluation by default.
 
 ## Known Limitations
@@ -56,6 +54,10 @@ multimodal_extension/perception/p0_raw_modality_availability.csv
   scene-object features, and relative-geometry GNN features.
 - These tensors are not pretrained Uni3D/video-network embeddings; report them
   as adapter features unless encoder-specific features are regenerated.
+- Full perception evidence fallback rows are visual pointcloud renders, not real
+  camera crops. Do not use the 683 / 683 coverage number to claim that every
+  relation is visible in RGB-D frames; use the stricter 240 / 683 number for
+  depth-tested co-visible RGB-D crop claims.
 - Original downloaded 3DGraphLLM features are ScanNet keyed (`sceneXXXX_YY`) and
   do not directly cover SceneFun3D numeric scene ids. This is audited in
   `asset_alignment_report.md`.

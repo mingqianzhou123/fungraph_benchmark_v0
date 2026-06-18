@@ -69,7 +69,6 @@ validator / validation report
   benchmark_clean_v0/annotations/
   benchmark_clean_v0/manifests/
   benchmark_clean_v0/multimodal_extension/
-  benchmark_clean_v0/INTERN_GEOMETRY_TASK_PLAN.md
 
 所有新文件只能写到：
   benchmark_clean_v0/human_annotations/functional_queries_v1/

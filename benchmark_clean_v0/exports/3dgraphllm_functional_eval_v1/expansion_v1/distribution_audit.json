@@ -1,0 +1,271 @@
+{
+  "by_split": {
+    "functional_500": {
+      "n_query_rows": 500,
+      "n_unique_relations": 83
+    },
+    "human_133": {
+      "n_query_rows": 133,
+      "n_unique_relations": 94
+    },
+    "long_range_50": {
+      "n_query_rows": 50,
+      "n_unique_relations": 45
+    }
+  },
+  "max_paraphrases_per_relation": 10,
+  "n_query_rows": 683,
+  "n_relation_groups_with_multiple_paraphrases": 102,
+  "n_unique_scene_target_anchor_relation": 160,
+  "status": "distribution_audit_ready",
+  "top_relations": [
+    {
+      "n": 196,
+      "relation": "pull to open or close"
+    },
+    {
+      "n": 148,
+      "relation": "pull to open or close a drawer"
+    },
+    {
+      "n": 71,
+      "relation": "provide power"
+    },
+    {
+      "n": 46,
+      "relation": "rotate to adjust the setting"
+    },
+    {
+      "n": 45,
+      "relation": "control"
+    },
+    {
+      "n": 39,
+      "relation": "rotate to open or close"
+    },
+    {
+      "n": 30,
+      "relation": "control the water flow"
+    },
+    {
+      "n": 21,
+      "relation": "rotate to adjust the temperature"
+    },
+    {
+      "n": 18,
+      "relation": "control, turn on or turn off"
+    },
+    {
+      "n": 16,
+      "relation": "press or rotate to control the water flow"
+    },
+    {
+      "n": 12,
+      "relation": "rotate to control the water flow"
+    },
+    {
+      "n": 8,
+      "relation": "rotate or press to adjust the setting"
+    },
+    {
+      "n": 7,
+      "relation": "rotate to adjust the setting or open or close"
+    },
+    {
+      "n": 7,
+      "relation": "press to open or close, or adjust the setting"
+    },
+    {
+      "n": 7,
+      "relation": "press or rotate to  control the water flow"
+    },
+    {
+      "n": 6,
+      "relation": "pull or rotate to open or close"
+    },
+    {
+      "n": 6,
+      "relation": "rotate to flush"
+    }
+  ],
+  "top_scenes": [
+    {
+      "n": 159,
+      "scene_id": "469011"
+    },
+    {
+      "n": 124,
+      "scene_id": "421380"
+    },
+    {
+      "n": 46,
+      "scene_id": "422813"
+    },
+    {
+      "n": 42,
+      "scene_id": "460417"
+    },
+    {
+      "n": 42,
+      "scene_id": "460419"
+    },
+    {
+      "n": 36,
+      "scene_id": "466183"
+    },
+    {
+      "n": 33,
+      "scene_id": "422826"
+    },
+    {
+      "n": 32,
+      "scene_id": "466192"
+    },
+    {
+      "n": 31,
+      "scene_id": "421254"
+    },
+    {
+      "n": 25,
+      "scene_id": "466803"
+    },
+    {
+      "n": 24,
+      "scene_id": "467293"
+    },
+    {
+      "n": 20,
+      "scene_id": "422391"
+    },
+    {
+      "n": 18,
+      "scene_id": "468076"
+    },
+    {
+      "n": 14,
+      "scene_id": "420683"
+    },
+    {
+      "n": 14,
+      "scene_id": "421013"
+    },
+    {
+      "n": 13,
+      "scene_id": "421602"
+    },
+    {
+      "n": 4,
+      "scene_id": "421063"
+    },
+    {
+      "n": 3,
+      "scene_id": "422007"
+    },
+    {
+      "n": 3,
+      "scene_id": "421267"
+    }
+  ],
+  "top_target_anchor_label_pairs": [
+    {
+      "anchor_label": "television stand / cabinet",
+      "n": 101,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "kitchen cabinet",
+      "n": 71,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "television",
+      "n": 45,
+      "target_label": "remote"
+    },
+    {
+      "anchor_label": "oven",
+      "n": 38,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "door",
+      "n": 27,
+      "target_label": "handle"
+    },
+    {
+      "anchor_label": "dresser / chest of drawers",
+      "n": 26,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "television",
+      "n": 24,
+      "target_label": "electric outlet"
+    },
+    {
+      "anchor_label": "wardrobe",
+      "n": 24,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "radiator",
+      "n": 21,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "cabinet",
+      "n": 19,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "cabinet / dresser / nightstand",
+      "n": 18,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "bathroom sink",
+      "n": 14,
+      "target_label": "button / knob"
+    },
+    {
+      "anchor_label": "cabinet",
+      "n": 12,
+      "target_label": "handle"
+    },
+    {
+      "anchor_label": "bathtub",
+      "n": 12,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "doors",
+      "n": 12,
+      "target_label": "handle"
+    },
+    {
+      "anchor_label": "drawer",
+      "n": 12,
+      "target_label": "knob"
+    },
+    {
+      "anchor_label": "dresser / chest of drawers",
+      "n": 12,
+      "target_label": "handle"
+    },
+    {
+      "anchor_label": "chandelier / ceiling light",
+      "n": 9,
+      "target_label": "light switch"
+    },
+    {
+      "anchor_label": "exhaust hood / ventilation fan",
+      "n": 9,
+      "target_label": "electric outlet"
+    },
+    {
+      "anchor_label": "fridge",
+      "n": 9,
+      "target_label": "handle"
+    }
+  ]
+}

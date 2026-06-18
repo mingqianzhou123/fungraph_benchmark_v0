@@ -218,6 +218,148 @@ def main() -> None:
             assert all(row["depth_z_test_applied"] is False for row in projection_rows), "projection dry-run unexpectedly applied depth z-test"
             assert all(row["selection_rule_version"].startswith("placeholder_dryrun_") for row in projection_rows), "projection dry-run selection rule must be placeholder"
 
+        official_summary_path = evidence_dir / "official_crop_summary.json"
+        official_crop_index_path = evidence_dir / "official_crop_index.jsonl"
+        official_frame_index_path = evidence_dir / "official_frame_projection_index.jsonl"
+        official_status_path = evidence_dir / "OFFICIAL_CROP_STATUS.md"
+        qc_report_path = evidence_dir / "p4_qc_report.csv"
+        qc_html_path = evidence_dir / "p4_sanity_examples.html"
+        if any(path.exists() for path in [official_summary_path, official_crop_index_path, official_frame_index_path, official_status_path]):
+            assert official_summary_path.exists(), "missing official_crop_summary.json"
+            assert official_crop_index_path.exists(), "missing official_crop_index.jsonl"
+            assert official_frame_index_path.exists(), "missing official_frame_projection_index.jsonl"
+            assert official_status_path.exists(), "missing OFFICIAL_CROP_STATUS.md"
+            assert qc_report_path.exists(), "missing p4_qc_report.csv"
+            assert qc_html_path.exists(), "missing p4_sanity_examples.html"
+            official_summary = json.loads(official_summary_path.read_text(encoding="utf-8"))
+            official_rows = read_jsonl(official_crop_index_path)
+            official_frame_rows = read_jsonl(official_frame_index_path)
+            assert official_summary["status"] == "official_relation_crop_metadata_ready"
+            assert official_summary["selection_rule_version"] == "covisible_depth_ztest_v1_20260618_full_frame_mining"
+            assert official_summary["n_relations"] == expected_relations
+            assert len(official_rows) == expected_relations
+            assert len(official_frame_rows) == official_summary["n_depth_tested_frame_rows"]
+            assert official_summary["n_relations_crop_ready"] == sum(row["relation_crop_ready"] for row in official_rows)
+            assert official_summary["n_relations_crop_ready"] > 0, "official crop layer has no ready relations"
+            assert official_summary["depth_z_test_applied"] is True
+            assert all(row["depth_z_test_applied"] is True for row in official_rows), "official crop rows must be depth-tested"
+            assert all(row["selection_rule_version"] == official_summary["selection_rule_version"] for row in official_rows), "official crop rule mismatch"
+            assert all(row["is_placeholder_rule"] is False for row in official_frame_rows), "official frame rows must not be placeholder"
+            assert all(row["depth_z_test_applied"] is True for row in official_frame_rows), "official frame rows must be depth-tested"
+            assert (evidence_dir / "qc_overlays").exists(), "missing qc_overlays directory"
+            assert len(list((evidence_dir / "qc_overlays").glob("*.jpg"))) >= 1, "missing QC overlay images"
+
+        full_perception_summary_path = evidence_dir / "full_perception_evidence_summary.json"
+        full_perception_index_path = evidence_dir / "full_perception_evidence_index.jsonl"
+        full_perception_status_path = evidence_dir / "FULL_PERCEPTION_EVIDENCE_STATUS.md"
+        full_perception_image_dir = evidence_dir / "full_perception_evidence" / "images"
+        if any(path.exists() for path in [full_perception_summary_path, full_perception_index_path, full_perception_status_path]):
+            assert full_perception_summary_path.exists(), "missing full_perception_evidence_summary.json"
+            assert full_perception_index_path.exists(), "missing full_perception_evidence_index.jsonl"
+            assert full_perception_status_path.exists(), "missing FULL_PERCEPTION_EVIDENCE_STATUS.md"
+            full_perception_summary = json.loads(full_perception_summary_path.read_text(encoding="utf-8"))
+            full_perception_rows = read_jsonl(full_perception_index_path)
+            assert full_perception_summary["status"] == "full_perception_evidence_ready"
+            assert full_perception_summary["selection_rule_version"] == "full_perception_evidence_v1_20260618_rgbd_or_pointcloud"
+            assert full_perception_summary["n_relations"] == expected_relations
+            assert full_perception_summary["n_visual_evidence_ready"] == expected_relations
+            assert len(full_perception_rows) == expected_relations
+            assert all(row["visual_evidence_ready"] is True for row in full_perception_rows), "not all relations have visual evidence"
+            assert all(row["evidence_tier"] in {"rgbd_crop_plus_pointcloud_render", "pointcloud_render_fallback"} for row in full_perception_rows), "unknown perception evidence tier"
+            assert full_perception_summary["n_depth_tested_rgbd_crop_relations"] == sum(row["has_depth_tested_rgbd_crop"] for row in full_perception_rows)
+            assert full_perception_summary["n_pointcloud_render_fallback_relations"] == sum(not row["has_depth_tested_rgbd_crop"] for row in full_perception_rows)
+            if full_perception_summary.get("images_written"):
+                assert full_perception_image_dir.exists(), "missing full perception image directory"
+                image_count = len(list(full_perception_image_dir.glob("*/*.jpg")))
+                assert image_count == expected_relations, f"expected {expected_relations} perception images, got {image_count}"
+                for row in full_perception_rows:
+                    assert (evidence_dir.parent / row["primary_visual_rel_path"]).exists(), f"missing perception image: {row['primary_visual_rel_path']}"
+
+    expansion_dir = EXPORT_DIR / "expansion_v1"
+    if expansion_dir.exists():
+        required = [
+            "README.md",
+            "EXPANSION_STATUS.md",
+            "distribution_audit.json",
+            "unique_relation_expansion_summary.json",
+            "minimal_pair_expansion_summary.json",
+            "unique_relation_pool_v1.jsonl",
+            "functional_unique_relation_585_draft.jsonl",
+            "minimal_pair_candidates_v1.jsonl",
+            "unique_relation_pool_v1.csv",
+            "minimal_pair_candidates_v1.csv",
+            "review_queue_summary.json",
+            "balanced_unique_relation_candidate_summary.json",
+            "unique_relation_review_queue_v1.csv",
+            "query_review_queue_v1.csv",
+            "minimal_pair_review_queue_v1.csv",
+            "balanced_unique_relation_candidate_v1.jsonl",
+            "balanced_unique_relation_candidate_v1.csv",
+            "review_queue_v1.html",
+        ]
+        for filename in required:
+            assert (expansion_dir / filename).exists(), f"missing expansion_v1 file: {filename}"
+
+        distribution = json.loads((expansion_dir / "distribution_audit.json").read_text(encoding="utf-8"))
+        unique_summary = json.loads((expansion_dir / "unique_relation_expansion_summary.json").read_text(encoding="utf-8"))
+        pair_summary = json.loads((expansion_dir / "minimal_pair_expansion_summary.json").read_text(encoding="utf-8"))
+        review_summary = json.loads((expansion_dir / "review_queue_summary.json").read_text(encoding="utf-8"))
+        balanced_summary = json.loads((expansion_dir / "balanced_unique_relation_candidate_summary.json").read_text(encoding="utf-8"))
+        pool_rows = read_jsonl(expansion_dir / "unique_relation_pool_v1.jsonl")
+        draft_rows = read_jsonl(expansion_dir / "functional_unique_relation_585_draft.jsonl")
+        pair_rows = read_jsonl(expansion_dir / "minimal_pair_candidates_v1.jsonl")
+        balanced_rows = read_jsonl(expansion_dir / "balanced_unique_relation_candidate_v1.jsonl")
+
+        expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
+        assert distribution["status"] == "distribution_audit_ready"
+        assert distribution["n_query_rows"] == expected_relations
+        assert unique_summary["status"] == "unique_relation_expansion_pool_ready"
+        assert unique_summary["n_unique_relations"] == 195
+        assert len(pool_rows) == unique_summary["n_unique_relations"]
+        assert unique_summary["n_query_drafts"] == 3 * unique_summary["n_unique_relations"]
+        assert len(draft_rows) == unique_summary["n_query_drafts"]
+        assert pair_summary["status"] == "minimal_pair_expansion_candidates_ready"
+        assert len(pair_rows) == pair_summary["n_pair_candidates"]
+        assert pair_summary["n_pair_candidates"] > EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
+        assert review_summary["status"] == "review_queues_ready"
+        assert review_summary["n_unique_relation_review_rows"] == unique_summary["n_unique_relations"]
+        assert review_summary["n_query_review_rows"] == unique_summary["n_query_drafts"]
+        assert review_summary["n_minimal_pair_review_rows"] == pair_summary["n_pair_candidates"]
+        assert balanced_summary["status"] == "balanced_unique_relation_candidate_ready"
+        assert balanced_summary["max_selected_per_relation"] <= balanced_summary["max_per_exact_relation"]
+        assert len(balanced_rows) == balanced_summary["n_candidate_queries"]
+        assert balanced_summary["n_candidate_queries"] > 80
+        assert balanced_summary["n_candidate_queries"] < unique_summary["n_query_drafts"]
+
+        draft_ids = {row["query_id"] for row in draft_rows}
+        allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
+        for row in draft_rows:
+            qid = row["query_id"]
+            scene_id = row["scene_id"]
+            assert row.get("annotation_source") == "template_generated_needs_human_review", f"{qid}: unexpected annotation source"
+            assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
+            for target in row.get("target_node_ids") or []:
+                assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
+            assert set(row.get("candidate_node_ids") or []) == candidates_by_scene[scene_id], f"{qid}: embedded candidates mismatch scene candidates"
+
+        for row in balanced_rows:
+            qid = row["query_id"]
+            scene_id = row["scene_id"]
+            assert qid in draft_ids, f"balanced candidate {qid} not in expansion draft"
+            assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
+            for target in row.get("target_node_ids") or []:
+                assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
+            assert row.get("review_status") == "todo", f"{qid}: balanced review status should start as todo"
+
+        pair_ids: set[str] = set()
+        for row in pair_rows:
+            pair_id = row.get("pair_id")
+            assert pair_id and pair_id not in pair_ids, f"duplicate or missing expansion pair_id: {pair_id}"
+            pair_ids.add(pair_id)
+            assert row.get("query_a_id") in draft_ids, f"{pair_id}: query_a_id not in expansion draft"
+            assert row.get("query_b_id") in draft_ids, f"{pair_id}: query_b_id not in expansion draft"
+            assert row.get("changed_factor") in allowed_factors, f"{pair_id}: invalid changed_factor"
+
     print("3DGraphLLM export validation passed")
 
 

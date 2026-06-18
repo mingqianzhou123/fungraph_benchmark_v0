@@ -1,0 +1,32 @@
+{
+  "by_split": {
+    "functional_500": {
+      "n_depth_tested_rgbd_crop_relations": 186,
+      "n_pointcloud_render_fallback_relations": 314,
+      "n_relations": 500,
+      "n_visual_evidence_ready": 500
+    },
+    "human_133": {
+      "n_depth_tested_rgbd_crop_relations": 35,
+      "n_pointcloud_render_fallback_relations": 98,
+      "n_relations": 133,
+      "n_visual_evidence_ready": 133
+    },
+    "long_range_50": {
+      "n_depth_tested_rgbd_crop_relations": 19,
+      "n_pointcloud_render_fallback_relations": 31,
+      "n_relations": 50,
+      "n_visual_evidence_ready": 50
+    }
+  },
+  "image_root_rel_path": "relation_conditioned_evidence/full_perception_evidence/images",
+  "images_written": true,
+  "important_boundary": "Full coverage is achieved with a tiered evidence policy: strict RGB-D crop when available, otherwise a GT pointcloud-render fallback. Do not report the fallback rows as depth-tested camera evidence.",
+  "n_depth_tested_rgbd_crop_relations": 240,
+  "n_pointcloud_render_fallback_relations": 443,
+  "n_pointcloud_render_images": 683,
+  "n_relations": 683,
+  "n_visual_evidence_ready": 683,
+  "selection_rule_version": "full_perception_evidence_v1_20260618_rgbd_or_pointcloud",
+  "status": "full_perception_evidence_ready"
+}

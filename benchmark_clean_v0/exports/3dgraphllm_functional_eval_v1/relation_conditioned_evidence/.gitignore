@@ -1,0 +1,6 @@
+__pycache__/
+crops_local/
+pointclouds_local/
+*.ply
+*.npy
+*.npz

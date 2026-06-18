@@ -1,0 +1,45 @@
+{
+  "by_split": {
+    "functional_500": {
+      "n_covisible_frame_rows": 1080,
+      "n_depth_tested_frame_rows": 10110,
+      "n_relations": 500,
+      "n_relations_crop_ready": 186
+    },
+    "human_133": {
+      "n_covisible_frame_rows": 249,
+      "n_depth_tested_frame_rows": 3153,
+      "n_relations": 133,
+      "n_relations_crop_ready": 35
+    },
+    "long_range_50": {
+      "n_covisible_frame_rows": 197,
+      "n_depth_tested_frame_rows": 1004,
+      "n_relations": 50,
+      "n_relations_crop_ready": 19
+    }
+  },
+  "depth_scale_m": 1000.0,
+  "depth_tolerance_m": 0.15,
+  "depth_z_test_applied": true,
+  "frame_source": "all_scene_rgbd_frames",
+  "important_boundary": "Crop metadata is frozen and depth-tested. Crop images are generated locally under ignored crops_local/ and are not committed; QC overlays are diagnostic spot-check artifacts.",
+  "n_covisible_frame_rows": 1526,
+  "n_depth_tested_frame_rows": 14267,
+  "n_relations": 683,
+  "n_relations_crop_ready": 240,
+  "n_relations_without_crop": 443,
+  "prefilter_points_per_object": 750,
+  "prefilter_top_n": 24,
+  "selection_rule_version": "covisible_depth_ztest_v1_20260618_full_frame_mining",
+  "status": "official_relation_crop_metadata_ready",
+  "thresholds": {
+    "anchor_min_z_fraction": 0.03,
+    "anchor_min_z_visible": 20,
+    "min_bbox_area_px": 16.0,
+    "target_min_z_fraction": 0.1,
+    "target_min_z_visible": 5
+  },
+  "top_k": 3,
+  "ztest_points_per_object": 5000
+}
