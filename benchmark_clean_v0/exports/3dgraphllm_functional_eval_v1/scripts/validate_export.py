@@ -109,7 +109,11 @@ def main() -> None:
     native_manifest = native_dir / "native_packet_manifest.json"
     if native_manifest.exists():
         manifest = json.loads(native_manifest.read_text(encoding="utf-8"))
-        assert manifest["status"] in {"loader_smoke_test_ready_not_full_modality", "real_scene3d_modality_features_ready_not_pretrained_uni3d"}
+        assert manifest["status"] in {
+            "loader_smoke_test_ready_not_full_modality",
+            "real_scene3d_modality_features_ready_not_pretrained_uni3d",
+            "full_scene3d_multimodal_adapter_ready_not_pretrained_encoder_features",
+        }
         expected_native_files = [
             "fungraph_scene3d_attributes.pt",
             "fungraph_scene3d_uni3d_feats.pt",
@@ -151,6 +155,24 @@ def main() -> None:
         assert len(scene_rows) == len(candidates_by_scene), "scene_rgbd_manifest scene count mismatch"
         assert all(row["has_rgb"] == "True" for row in scene_rows), "not all scenes have RGB frames"
         assert all(row["has_depth"] == "True" for row in scene_rows), "not all scenes have depth frames"
+
+    full_summary = EXPORT_DIR / "full_multimodal_readiness.json"
+    full_capture_manifest = EXPORT_DIR / "full_scene_capture_manifest.csv"
+    full_frame_index = EXPORT_DIR / "full_scene_frame_index.jsonl"
+    full_object_manifest = EXPORT_DIR / "full_object_modality_manifest.csv"
+    full_status_doc = EXPORT_DIR / "FULL_MULTIMODAL_BENCHMARK_STATUS.md"
+    if any(path.exists() for path in [full_summary, full_capture_manifest, full_frame_index, full_object_manifest, full_status_doc]):
+        assert full_summary.exists(), "missing full_multimodal_readiness.json"
+        assert full_capture_manifest.exists(), "missing full_scene_capture_manifest.csv"
+        assert full_frame_index.exists(), "missing full_scene_frame_index.jsonl"
+        assert full_object_manifest.exists(), "missing full_object_modality_manifest.csv"
+        assert full_status_doc.exists(), "missing FULL_MULTIMODAL_BENCHMARK_STATUS.md"
+        summary = json.loads(full_summary.read_text(encoding="utf-8"))
+        assert summary["status"] == "full_raw_multimodal_benchmark_ready"
+        assert summary["n_scenes"] == len(candidates_by_scene)
+        assert summary["all_scenes_full_ready"] is True, "not all scenes are full multimodal ready"
+        assert summary["n_export_candidate_objects"] == sum(len(x) for x in candidates_by_scene.values())
+        assert summary["n_full_export_candidate_objects"] == summary["n_export_candidate_objects"], "not all exported candidate objects are full ready"
 
     print("3DGraphLLM export validation passed")
 

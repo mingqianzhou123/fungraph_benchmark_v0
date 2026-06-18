@@ -9,6 +9,7 @@ It is an adapter layer, not a new benchmark source of truth. Rebuild it with:
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_export.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_native_3dgraphllm_packet.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_real_scene3d_modalities.py
+/home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_multimodal_index.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -34,11 +35,17 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `native_3dgraphllm_asset_schema.json` | Torch feature schema snapshot for adapter debugging |
 | `object_modality_manifest.csv` | Object-level point/color/camera coverage and feature keys |
 | `scene_rgbd_manifest.csv` | Scene-level RGB/depth/frame/trajectory coverage |
+| `full_scene_capture_manifest.csv` | Capture-level RGB/depth/intrinsics/trajectory/laser-scan readiness |
+| `full_scene_frame_index.jsonl` | Frame-level RGB/depth/intrinsics path index for all exported scenes |
+| `full_object_modality_manifest.csv` | Object-level full-modality readiness for every exported candidate object |
+| `full_multimodal_readiness.json` | Machine-readable full benchmark readiness summary |
+| `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
 | `scripts/evaluate_fungraph_predictions.py` | FunGraph functional evaluator for 3DGraphLLM `preds_*.json` files |
 | `scripts/build_object_selection_splits.py` | Builds native prompt variants that ask for exactly one `<OBJxxx>` answer |
+| `scripts/build_full_multimodal_index.py` | Builds full raw-modality indexes and readiness gates |
 
 ## Current Policy
 
@@ -52,6 +59,10 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   features: point/color object features from PLY+indices, RGB-D/camera features
   from frame coverage and annotation camera metadata, and relative-geometry GNN
   features.
+- The export now has a full raw-multimodal benchmark index: each exported scene
+  is linked to laser scan, RGB frames, depth frames, intrinsics, trajectory, and
+  each exported candidate object is linked to point indices, geometry, camera
+  metadata, and native feature keys.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a
@@ -72,7 +83,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - the frozen generated eval has exactly 500 rows;
 - human/minimal-pair/long-range counts match the expected local files;
 - the native 3DGraphLLM packet contains the base and object-selection eval
-  annotation files.
+  annotation files;
+- the full multimodal readiness summary exists and every exported scene/object
+  passes the raw-modality readiness gate.
 
 ## Native 3DGraphLLM Smoke Test
 

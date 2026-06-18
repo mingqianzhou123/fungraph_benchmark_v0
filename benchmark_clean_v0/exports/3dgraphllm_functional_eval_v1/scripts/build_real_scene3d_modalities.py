@@ -343,7 +343,7 @@ def main() -> None:
 
     manifest_path = args.packet_dir / "native_packet_manifest.json"
     manifest = read_json(manifest_path)
-    manifest["status"] = "real_scene3d_modality_features_ready_not_pretrained_uni3d"
+    manifest["status"] = "full_scene3d_multimodal_adapter_ready_not_pretrained_encoder_features"
     manifest["feature_provenance"] = {
         "attributes": "SceneFun3D graph node 3D bounding boxes",
         "uni3d_feats": "1024-D real point/color/statistical object features from laser-scan PLY and annotation point indices; not pretrained Uni3D embeddings",

@@ -5,11 +5,20 @@
     "long_range_50": 50,
     "smoke_1": 1
   },
+  "benchmark_modality_status": "full_raw_multimodal_benchmark_ready",
   "feature_provenance": {
     "attributes": "SceneFun3D graph node 3D bounding boxes",
     "gnn_feats": "512-D real relative-geometry kNN edge features from SceneFun3D object boxes",
     "uni3d_feats": "1024-D real point/color/statistical object features from laser-scan PLY and annotation point indices; not pretrained Uni3D embeddings",
     "videofeats": "1024-D real RGB-D/camera statistical features from SceneFun3D image/depth frame coverage and annotation camera metadata; not pretrained video-network embeddings"
+  },
+  "full_multimodal_readiness": {
+    "all_scenes_full_ready": true,
+    "n_export_candidate_objects": 317,
+    "n_frame_rgbd_camera_triplets": 13039,
+    "n_full_export_candidate_objects": 317,
+    "n_scenes": 20,
+    "n_scenes_full_ready": 20
   },
   "modality_counts": {
     "objects": 317,
