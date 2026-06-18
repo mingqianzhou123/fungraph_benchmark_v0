@@ -1,0 +1,175 @@
+{
+  "all_scenes_full_ready": true,
+  "feature_note": "Raw modalities are complete and native packet feature keys are aligned. Existing 1024-D packet tensors are deterministic SceneFun3D adapter features, not pretrained Uni3D/DINO/VLSAT encoder embeddings.",
+  "n_captures": 55,
+  "n_export_candidate_objects": 317,
+  "n_frame_rgbd_camera_triplets": 13039,
+  "n_frames_indexed": 13039,
+  "n_full_export_candidate_objects": 317,
+  "n_objects": 317,
+  "n_scenes": 20,
+  "n_scenes_full_ready": 20,
+  "scene_ready": {
+    "420683": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 21,
+      "n_full_captures": 3,
+      "n_full_objects": 21,
+      "n_rgb_depth_intrinsic_triplets": 773
+    },
+    "421013": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 22,
+      "n_full_captures": 3,
+      "n_full_objects": 22,
+      "n_rgb_depth_intrinsic_triplets": 993
+    },
+    "421015": {
+      "full_scene_ready": true,
+      "n_captures": 2,
+      "n_export_candidate_objects": 11,
+      "n_full_captures": 2,
+      "n_full_objects": 11,
+      "n_rgb_depth_intrinsic_triplets": 648
+    },
+    "421063": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 12,
+      "n_full_captures": 3,
+      "n_full_objects": 12,
+      "n_rgb_depth_intrinsic_triplets": 692
+    },
+    "421254": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 28,
+      "n_full_captures": 3,
+      "n_full_objects": 28,
+      "n_rgb_depth_intrinsic_triplets": 741
+    },
+    "421267": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 18,
+      "n_full_captures": 3,
+      "n_full_objects": 18,
+      "n_rgb_depth_intrinsic_triplets": 502
+    },
+    "421380": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 22,
+      "n_full_captures": 3,
+      "n_full_objects": 22,
+      "n_rgb_depth_intrinsic_triplets": 654
+    },
+    "421602": {
+      "full_scene_ready": true,
+      "n_captures": 2,
+      "n_export_candidate_objects": 19,
+      "n_full_captures": 2,
+      "n_full_objects": 19,
+      "n_rgb_depth_intrinsic_triplets": 1124
+    },
+    "422007": {
+      "full_scene_ready": true,
+      "n_captures": 1,
+      "n_export_candidate_objects": 16,
+      "n_full_captures": 1,
+      "n_full_objects": 16,
+      "n_rgb_depth_intrinsic_triplets": 118
+    },
+    "422391": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 10,
+      "n_full_captures": 3,
+      "n_full_objects": 10,
+      "n_rgb_depth_intrinsic_triplets": 899
+    },
+    "422813": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 13,
+      "n_full_captures": 3,
+      "n_full_objects": 13,
+      "n_rgb_depth_intrinsic_triplets": 611
+    },
+    "422826": {
+      "full_scene_ready": true,
+      "n_captures": 2,
+      "n_export_candidate_objects": 10,
+      "n_full_captures": 2,
+      "n_full_objects": 10,
+      "n_rgb_depth_intrinsic_triplets": 231
+    },
+    "460417": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 14,
+      "n_full_captures": 3,
+      "n_full_objects": 14,
+      "n_rgb_depth_intrinsic_triplets": 832
+    },
+    "460419": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 14,
+      "n_full_captures": 3,
+      "n_full_objects": 14,
+      "n_rgb_depth_intrinsic_triplets": 784
+    },
+    "466183": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 14,
+      "n_full_captures": 3,
+      "n_full_objects": 14,
+      "n_rgb_depth_intrinsic_triplets": 375
+    },
+    "466192": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 8,
+      "n_full_captures": 3,
+      "n_full_objects": 8,
+      "n_rgb_depth_intrinsic_triplets": 205
+    },
+    "466803": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 6,
+      "n_full_captures": 3,
+      "n_full_objects": 6,
+      "n_rgb_depth_intrinsic_triplets": 1066
+    },
+    "467293": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 7,
+      "n_full_captures": 3,
+      "n_full_objects": 7,
+      "n_rgb_depth_intrinsic_triplets": 570
+    },
+    "468076": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 9,
+      "n_full_captures": 3,
+      "n_full_objects": 9,
+      "n_rgb_depth_intrinsic_triplets": 749
+    },
+    "469011": {
+      "full_scene_ready": true,
+      "n_captures": 3,
+      "n_export_candidate_objects": 43,
+      "n_full_captures": 3,
+      "n_full_objects": 43,
+      "n_rgb_depth_intrinsic_triplets": 472
+    }
+  },
+  "status": "full_raw_multimodal_benchmark_ready"
+}

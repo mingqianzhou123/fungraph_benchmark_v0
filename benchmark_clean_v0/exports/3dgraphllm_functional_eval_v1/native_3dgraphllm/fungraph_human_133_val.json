@@ -1,0 +1,1864 @@
+[
+  {
+    "eval_type": "human_133",
+    "obj_id": 19,
+    "pred_id": 19,
+    "prompt": "Pull the door handle to open the bedroom door",
+    "qid": "human_func_v1_000021",
+    "ref_captions": [
+      "<OBJ019>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "eb945e52-a2d5-4257-8de1-3f340deb71c9"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Pull the knob on the right-side nightstand drawer (near the second lamp)",
+    "qid": "human_func_v1_000022",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "7478eaa4-362a-4613-9d6e-d41b794f41b9"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the knob on the center nightstand drawer (the one near the bed lamp, not the one at far right)",
+    "qid": "human_func_v1_000023",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "875242c5-10d3-4dd4-95ec-d20799e913c3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Pull the upper-left knob on the chest of drawers to open the top-left drawer",
+    "qid": "human_func_v1_000024",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "1b45ca90-7c63-4bed-945b-ee564321a724"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Pull the middle-left knob on the chest of drawers (the one between the top-left and bottom-left knobs)",
+    "qid": "human_func_v1_000025",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "d9876b50-2eaf-4c07-8543-3f57f6813b25"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the lower-left knob on the chest of drawers to open the bottom-left drawer",
+    "qid": "human_func_v1_000026",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "8dec8ba5-ee16-44b1-a131-611ee615bba7"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 16,
+    "pred_id": 16,
+    "prompt": "Pull the middle-right knob on the chest of drawers (the one between the upper-right and lower-right knobs)",
+    "qid": "human_func_v1_000027",
+    "ref_captions": [
+      "<OBJ016>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "d8c8183c-8054-4101-9a2b-1d2645194360"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 15,
+    "pred_id": 15,
+    "prompt": "Pull the lower-right knob on the chest of drawers to open the bottom-right drawer",
+    "qid": "human_func_v1_000028",
+    "ref_captions": [
+      "<OBJ015>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "bd7938dd-0f75-4e1c-84a3-aa6294dc6b36"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 10,
+    "pred_id": 10,
+    "prompt": "Pull the topmost handle on the tall wardrobe to open its upper compartment",
+    "qid": "human_func_v1_000029",
+    "ref_captions": [
+      "<OBJ010>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "5c71b546-bf86-49cd-9c7f-158a9c4b24e5"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the second-highest handle on the tall wardrobe (the one just below the top)",
+    "qid": "human_func_v1_000030",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "6ce409f0-d503-4282-bbda-8dd62e3d2ae3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Pull the third-from-top handle on the tall wardrobe (the one above the lowest handle)",
+    "qid": "human_func_v1_000031",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "d1cb8681-bd37-49eb-8d89-5f09d782a627"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the lower handle on the left-side nightstand to open its bottom drawer",
+    "qid": "human_func_v1_000032",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "763b8e1e-ca12-4f8d-a0d9-cbdad0b699c2"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Pull the upper handle on the right-side nightstand (the one near the bed) to open its top drawer",
+    "qid": "human_func_v1_000033",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "4375aca4-619a-49e3-9bb5-abcd2fdc203f"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 5,
+    "pred_id": 5,
+    "prompt": "Pull the lower handle on the right-side nightstand to open its bottom drawer",
+    "qid": "human_func_v1_000034",
+    "ref_captions": [
+      "<OBJ005>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "363a1c6d-0870-419a-a9e1-539b68463700"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Press the switch that turns the ceiling light on or off",
+    "qid": "human_func_v1_000035",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "1901053a-2215-40c3-8e3e-10ca3b402428"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 5,
+    "pred_id": 5,
+    "prompt": "Pull the upper handle on the right-side dresser to open its top drawer",
+    "qid": "human_func_v1_000036",
+    "ref_captions": [
+      "<OBJ005>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "2e9cd70e-9bcb-463e-8609-dc8c63d1facc"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Pull the middle handle on the right-side dresser, the one between the upper and lowest handles",
+    "qid": "human_func_v1_000037",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "d54793bc-ed8e-4883-a708-1299c03d038d"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 16,
+    "pred_id": 16,
+    "prompt": "Pull the second-from-top handle on the left-side dresser, the one just below the topmost handle",
+    "qid": "human_func_v1_000038",
+    "ref_captions": [
+      "<OBJ016>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "cde51d66-3837-4fc6-bf48-16cb2189a7ed"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the middle handle on the left-side dresser, the third one from the top of five drawers",
+    "qid": "human_func_v1_000039",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "7f9d7574-57e9-4963-af14-e6278c288313"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the second-from-bottom handle on the left-side dresser, the one just above the lowest handle",
+    "qid": "human_func_v1_000040",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "70b0480d-4014-4c34-a7c1-b8c37aa7faaa"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Pull the lowest handle on the left-side dresser to open its bottom drawer",
+    "qid": "human_func_v1_000041",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "1fff26d6-a1bc-4a03-bfa9-b4baf44f058d"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 15,
+    "pred_id": 15,
+    "prompt": "Rotate the knob on the radiator to adjust the room temperature",
+    "qid": "human_func_v1_000042",
+    "ref_captions": [
+      "<OBJ015>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "c9adafa4-e9f4-469b-9f85-1fefacb17b22"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Rotate the door handle to open the door to the bedroom",
+    "qid": "human_func_v1_000043",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "13b01e96-5010-4c1a-8b09-c8346e420ea3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Which remote on the left side controls the television",
+    "qid": "human_func_v1_000044",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "c44a2818-7f0c-4200-bda1-915f3ade1731"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Which remote on the right side controls the television",
+    "qid": "human_func_v1_000045",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "d75da7cf-4a4b-40fc-ac77-ffd1dd8edb6b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the second-leftmost knob on the television stand (the knob just right of the leftmost knob)",
+    "qid": "human_func_v1_000046",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "9db14ed4-ed96-4e43-a12d-7a1a865f0161"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Pull the handle on the refrigerator to open the fridge door",
+    "qid": "human_func_v1_000047",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "2abcdace-ba3f-45c0-8dce-eac4de015ee8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle on the oven door to open the oven",
+    "qid": "human_func_v1_000048",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 38,
+    "pred_id": 38,
+    "prompt": "Rotate the leftmost burner knob on the oven control panel to adjust the heat setting",
+    "qid": "human_func_v1_000049",
+    "ref_captions": [
+      "<OBJ038>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "d003c3b8-3330-4adf-8c1e-6c8c9f2245f8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Rotate the second-from-left burner knob on the oven control panel to adjust its heat setting",
+    "qid": "human_func_v1_000050",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "06b684bb-7a5c-4717-847a-d343bd6824d9"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 7,
+    "pred_id": 7,
+    "prompt": "Rotate the middle burner knob on the oven control panel to adjust its heat setting",
+    "qid": "human_func_v1_000051",
+    "ref_captions": [
+      "<OBJ007>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "28e9ec26-d38b-45a2-9614-9fe6a8d69211"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 19,
+    "pred_id": 19,
+    "prompt": "Rotate the second-from-right burner knob on the oven control panel to adjust its heat setting",
+    "qid": "human_func_v1_000052",
+    "ref_captions": [
+      "<OBJ019>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "76002344-9de9-476f-a43e-d822d1cdb592"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 25,
+    "pred_id": 25,
+    "prompt": "Rotate the rightmost burner knob on the oven control panel to adjust its heat setting",
+    "qid": "human_func_v1_000053",
+    "ref_captions": [
+      "<OBJ025>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "85f5f2f0-ef9b-4e32-a0de-cd8a7f54db4b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 5,
+    "pred_id": 5,
+    "prompt": "Pull the upper knob on the left-side tall kitchen cabinet to open its top compartment",
+    "qid": "human_func_v1_000054",
+    "ref_captions": [
+      "<OBJ005>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "26d01e98-de8b-4574-91a6-6b4f62371315"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 6,
+    "pred_id": 6,
+    "prompt": "Pull the middle knob on the left-side tall kitchen cabinet (the one between the top and bottom knobs)",
+    "qid": "human_func_v1_000055",
+    "ref_captions": [
+      "<OBJ006>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "26facf7e-0a3c-4c02-ae11-e6ce94dcdc33"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 24,
+    "pred_id": 24,
+    "prompt": "Pull the lowest knob on the left-side tall kitchen cabinet to open its bottom compartment",
+    "qid": "human_func_v1_000056",
+    "ref_captions": [
+      "<OBJ024>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "8572a9c1-67b2-4493-8cfe-d492a255c623"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 15,
+    "pred_id": 15,
+    "prompt": "Pull the knob on the leftmost lower kitchen cabinet (the one farthest to the left in the lower row)",
+    "qid": "human_func_v1_000057",
+    "ref_captions": [
+      "<OBJ015>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "60c75bed-76ac-430f-9ed8-790350f059b6"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 39,
+    "pred_id": 39,
+    "prompt": "Pull the knob on the second-from-left lower kitchen cabinet to open it",
+    "qid": "human_func_v1_000058",
+    "ref_captions": [
+      "<OBJ039>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "d4432013-4335-4218-8276-da26c1bf64e4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Pull the knob on the middle lower kitchen cabinet to open it",
+    "qid": "human_func_v1_000059",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "6dcb0d35-1950-4621-a2d7-c4ba3cb0f5d1"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 28,
+    "pred_id": 28,
+    "prompt": "Pull the knob on the right-center lower kitchen cabinet to open it",
+    "qid": "human_func_v1_000060",
+    "ref_captions": [
+      "<OBJ028>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "9f732c04-b269-4e3b-982c-fb29cf75d515"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 16,
+    "pred_id": 16,
+    "prompt": "Pull the knob on the rightmost lower kitchen cabinet to open it",
+    "qid": "human_func_v1_000061",
+    "ref_captions": [
+      "<OBJ016>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "65d617ff-232c-4148-99bb-0286d46995b5"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 21,
+    "pred_id": 21,
+    "prompt": "Pull the upper knob on the right-center lower kitchen cabinet to open its upper drawer (the cabinet has two knobs stacked together)",
+    "qid": "human_func_v1_000062",
+    "ref_captions": [
+      "<OBJ021>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "79d81cf3-381e-48cd-9bf6-aea8e7bd017c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 31,
+    "pred_id": 31,
+    "prompt": "Pull the knob on the right-side upper kitchen cabinet to open its upper compartment",
+    "qid": "human_func_v1_000063",
+    "ref_captions": [
+      "<OBJ031>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "a6844581-85cd-4300-9fed-bc1d7e5971a5"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 27,
+    "pred_id": 27,
+    "prompt": "Pull the knob on the left-side upper kitchen cabinet to open its upper compartment",
+    "qid": "human_func_v1_000064",
+    "ref_captions": [
+      "<OBJ027>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "98aa04b7-41b4-4339-aed9-0a1e01d51fd8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 36,
+    "pred_id": 36,
+    "prompt": "Pull the knob on the standalone cabinet (not a kitchen cabinet) to open it",
+    "qid": "human_func_v1_000065",
+    "ref_captions": [
+      "<OBJ036>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "cb5cccda-b4e9-4933-8516-6c775c1f91f8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Which remote on the left-hand side (the one closer to the nightstand) controls the television",
+    "qid": "human_func_v1_000066",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "9c06f662-e551-484e-9559-a7d3c0b5b31d"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 16,
+    "pred_id": 16,
+    "prompt": "Pull the top-left knob on the right-side dresser (the topmost of the left column of drawers)",
+    "qid": "human_func_v1_000067",
+    "ref_captions": [
+      "<OBJ016>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 25,
+    "pred_id": 25,
+    "prompt": "Pull the second-from-top left-column knob on the right-side dresser",
+    "qid": "human_func_v1_000068",
+    "ref_captions": [
+      "<OBJ025>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "da2d25fc-56d3-4b0f-8ada-778acac16871"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 6,
+    "pred_id": 6,
+    "prompt": "Pull the third-from-top left-column knob on the right-side dresser",
+    "qid": "human_func_v1_000069",
+    "ref_captions": [
+      "<OBJ006>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "3025d034-e4c9-4dc8-8711-ba7cda23b8e1"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Pull the bottom-left knob on the right-side dresser (lowest knob in the left column)",
+    "qid": "human_func_v1_000070",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "0635ce47-455a-4933-b421-cd5601b7203f"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 20,
+    "pred_id": 20,
+    "prompt": "Pull the top-right knob on the right-side dresser (topmost in the right column)",
+    "qid": "human_func_v1_000071",
+    "ref_captions": [
+      "<OBJ020>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "addeffee-87e2-4f20-98bd-589c425f0f07"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 5,
+    "pred_id": 5,
+    "prompt": "Pull the second-from-top right-column knob on the right-side dresser",
+    "qid": "human_func_v1_000072",
+    "ref_captions": [
+      "<OBJ005>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "2ffdc7cc-6746-4b6d-a2e5-35c078befc56"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 27,
+    "pred_id": 27,
+    "prompt": "Pull the third-from-top right-column knob on the right-side dresser",
+    "qid": "human_func_v1_000073",
+    "ref_captions": [
+      "<OBJ027>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "f75e1a27-55d7-4b2e-be1a-2d5596d69dd8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the bottom-right knob on the right-side dresser (lowest knob in the right column)",
+    "qid": "human_func_v1_000074",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "877bb40d-b6d8-4716-b958-320b07e6f8d8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the top-left knob on the left-side dresser (topmost in the left column)",
+    "qid": "human_func_v1_000075",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "8ab6af8d-3cad-4fad-bf78-157916578132"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 19,
+    "pred_id": 19,
+    "prompt": "Pull the second-from-top left-column knob on the left-side dresser",
+    "qid": "human_func_v1_000076",
+    "ref_captions": [
+      "<OBJ019>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "ac42e1c2-3ed4-447f-8147-cd903d8eefc5"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Pull the third-from-top left-column knob on the left-side dresser",
+    "qid": "human_func_v1_000077",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "044038ae-cd3a-4874-837c-9f2e32a83b04"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Pull the bottom-left knob on the left-side dresser (lowest knob in the left column)",
+    "qid": "human_func_v1_000078",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Pull the top-right knob on the left-side dresser (topmost in the right column of 5 drawers)",
+    "qid": "human_func_v1_000079",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 21,
+    "pred_id": 21,
+    "prompt": "Pull the second-from-top right-column knob on the left-side dresser",
+    "qid": "human_func_v1_000080",
+    "ref_captions": [
+      "<OBJ021>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "b0aa5f30-4fae-4ca8-bc66-c0595b8fc754"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 10,
+    "pred_id": 10,
+    "prompt": "Pull the third-from-top right-column knob on the left-side dresser",
+    "qid": "human_func_v1_000081",
+    "ref_captions": [
+      "<OBJ010>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "6aa841fa-6898-401d-a750-0f521b4cafe7"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Pull the fourth-from-top right-column knob on the left-side dresser",
+    "qid": "human_func_v1_000082",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "15a1acd9-d48d-4011-bbdc-297619dfb62c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 7,
+    "pred_id": 7,
+    "prompt": "Pull the bottom-right knob on the left-side dresser (lowest in the right column of 5 drawers)",
+    "qid": "human_func_v1_000083",
+    "ref_captions": [
+      "<OBJ007>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "482d7642-61c9-4161-b651-45dc8cb9e2ae"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 23,
+    "pred_id": 23,
+    "prompt": "Pull the middle knob on the nightstand at the back of the room to open the middle drawer",
+    "qid": "human_func_v1_000084",
+    "ref_captions": [
+      "<OBJ023>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "c0685f07-46ed-41c9-b3ce-4fc476c86c7c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 24,
+    "pred_id": 24,
+    "prompt": "Pull the bottom knob on the nightstand at the back of the room to open the bottom drawer",
+    "qid": "human_func_v1_000085",
+    "ref_captions": [
+      "<OBJ024>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "d2174346-66bb-4a99-8177-edcc8c7cd20b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Rotate the radiator knob at the far-left of the room to make the bedroom warmer",
+    "qid": "human_func_v1_000086",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "e0047d50-015b-40d0-8910-f0c4b1fb5b7a"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Rotate the door handle (not push the door itself) to open the bedroom door",
+    "qid": "human_func_v1_000087",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "5c383fa1-c2de-46d9-8c87-969486e5e28d"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 5,
+    "pred_id": 5,
+    "prompt": "Pull the upper-right knob on the chest of drawers (the topmost knob in the right column) to open the top-right drawer",
+    "qid": "human_func_v1_000088",
+    "ref_captions": [
+      "<OBJ005>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "465347e8-606a-4807-b89e-085cf8c578f3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "I need to wash my hands — which device do I turn to make water come out of the kitchen sink",
+    "qid": "human_func_v1_000089",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "4af16074-57d0-47e7-8be9-aa361472ae26"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "While cooking, I need to remove smoke from the kitchen — which power source must I check first to make sure the exhaust hood above the stove is plugged in",
+    "qid": "human_func_v1_000090",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "0146b63e-698d-4337-9a8b-f7b1a25c05f7"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 5,
+    "pred_id": 5,
+    "prompt": "The living room feels cold tonight — which dial do I rotate on the radiator to make it warmer",
+    "qid": "human_func_v1_000091",
+    "ref_captions": [
+      "<OBJ005>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "44d68daa-9a11-483c-91fc-8771f75185a0"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 6,
+    "pred_id": 6,
+    "prompt": "Pull the handle on the wooden cabinet near the window (not push the cabinet door directly) to access the shelves inside",
+    "qid": "human_func_v1_000092",
+    "ref_captions": [
+      "<OBJ006>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "31afb664-5958-490b-ba2d-4de7e0d0e632"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "I want to change the TV channel from the bed — which device do I press, the remote on the right side, to send signals to the television",
+    "qid": "human_func_v1_000093",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "560f1e2c-e62d-4f1e-93e8-3acbf61433cd"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 22,
+    "pred_id": 22,
+    "prompt": "Pull the topmost knob on the back-of-room nightstand — the uppermost of three vertically stacked knobs — to open its top drawer",
+    "qid": "human_func_v1_000094",
+    "ref_captions": [
+      "<OBJ022>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "ba0e4f26-1e02-4745-92b6-e1035ba5252c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 33,
+    "pred_id": 33,
+    "prompt": "After loading dirty dishes, which control do I rotate to start the cleaning cycle on the dishwasher in the kitchen",
+    "qid": "human_func_v1_000095",
+    "ref_captions": [
+      "<OBJ033>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "ba5246d7-ea68-4bd5-b390-45a1b4e8d58e"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 20,
+    "pred_id": 20,
+    "prompt": "It's getting dark in the bedroom — which interface do I press to illuminate the room from the ceiling",
+    "qid": "human_func_v1_000096",
+    "ref_captions": [
+      "<OBJ020>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "eab8ec36-9674-4dc7-8c00-0c6478fc8f92"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 6,
+    "pred_id": 6,
+    "prompt": "I just walked into the dark bedroom — which control on the wall do I activate to turn on the ceiling light",
+    "qid": "human_func_v1_000097",
+    "ref_captions": [
+      "<OBJ006>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "560e4272-ce2c-4442-be41-413532b29fe2"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Pull the lowest handle on the tall wardrobe (not push the wardrobe door directly) to access its bottom compartment",
+    "qid": "human_func_v1_000098",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "217402c7-af78-4217-b70f-ef3bb65f71d4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "I want to retrieve socks from the top drawer of the left-side dresser — which handle do I pull, the highest of 5 stacked handles",
+    "qid": "human_func_v1_000099",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "9fcd23c1-4638-41a9-a8d8-02bffa3e6a7c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "While getting ready for bed, I want to grab a book — which handle do I pull on the left-side nightstand to access its upper drawer",
+    "qid": "human_func_v1_000100",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "7f13ad67-a21a-4ed2-9bc1-c0e330ebfbb4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Plug the appliance cord into the outlet that powers the fridge (the outlet, not the fridge plug itself), lower-left of the kitchen",
+    "qid": "human_func_v1_000101",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "548a6569-5c70-4d7b-9f10-0ece005e6c00"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Plug the bedside lamp's cord into the electric outlet near the bed to power the lamp",
+    "qid": "human_func_v1_000102",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "51097855-7ce4-4893-8f0a-4715abeaec1c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Rotate the window handle (not push the window itself) to crack open the window for fresh air",
+    "qid": "human_func_v1_000103",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "1bcde871-8765-4a7b-b2fa-92caeb16596e"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Pull the topmost knob in the center-left column of the television stand to open its top drawer",
+    "qid": "human_func_v1_000104",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "282c10c9-3020-4333-b468-cb3197b80940"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the second-from-top knob in the center-left column of the television stand to open the second drawer from the top",
+    "qid": "human_func_v1_000105",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "927cd15d-3bd7-4709-b88d-6e4c8b8afca4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 20,
+    "pred_id": 20,
+    "prompt": "Pull the middle knob in the center-left column of the television stand, the third drawer from the top of five",
+    "qid": "human_func_v1_000106",
+    "ref_captions": [
+      "<OBJ020>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "f26835a1-518e-4918-a492-c23cee451f0a"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the second-from-bottom knob in the center-left column of the television stand, the one just above the lowest drawer",
+    "qid": "human_func_v1_000107",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "bb923245-a044-4875-b548-bee144ca7d2a"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Pull the bottommost knob in the center-left column of the television stand to open its bottom drawer",
+    "qid": "human_func_v1_000108",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "08a1222a-4837-49cf-a0c6-836d236311a0"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Pull the topmost knob in the center-right column of the television stand to open its top drawer",
+    "qid": "human_func_v1_000109",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "352d3a71-9681-4a32-aecd-1d89a929bd7b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Pull the second-from-top knob in the center-right column of the television stand to open the second drawer from the top",
+    "qid": "human_func_v1_000110",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "73839439-0110-43e5-bb6e-d2883e193874"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Pull the middle knob in the center-right column of the television stand, the third drawer from the top of five",
+    "qid": "human_func_v1_000111",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "1365989c-2223-4888-8465-ec59a7adea8e"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the second-from-bottom knob in the center-right column of the television stand, the one just above the lowest drawer",
+    "qid": "human_func_v1_000112",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "8fa63b99-b099-4906-a608-5325add561e4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Pull the bottommost knob in the center-right column of the television stand to open its bottom drawer",
+    "qid": "human_func_v1_000113",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "2569559b-e5fd-4e92-a533-308098b6becd"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Which outlet provides power to the refrigerator?",
+    "qid": "human_func_v1_000114",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "548a6569-5c70-4d7b-9f10-0ece005e6c00"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Which outlet provides power to the exhaust hood above the stove?",
+    "qid": "human_func_v1_000115",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "0146b63e-698d-4337-9a8b-f7b1a25c05f7"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "I need to keep my groceries cold for the week. Which power source supports that appliance?",
+    "qid": "human_func_v1_000116",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "548a6569-5c70-4d7b-9f10-0ece005e6c00"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "I want to vent the cooking smoke out of the kitchen. Which power source supports that appliance?",
+    "qid": "human_func_v1_000117",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "0146b63e-698d-4337-9a8b-f7b1a25c05f7"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Pull the handle to open the refrigerator door.",
+    "qid": "human_func_v1_000118",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "2abcdace-ba3f-45c0-8dce-eac4de015ee8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the handle to open the oven door.",
+    "qid": "human_func_v1_000119",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "47d6518d-dce3-4c45-8cfc-34c56bbb3454"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 38,
+    "pred_id": 38,
+    "prompt": "Turn the leftmost burner control on the oven panel to adjust its heat.",
+    "qid": "human_func_v1_000120",
+    "ref_captions": [
+      "<OBJ038>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "d003c3b8-3330-4adf-8c1e-6c8c9f2245f8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Turn the knob just right of the leftmost on the oven control panel.",
+    "qid": "human_func_v1_000121",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "06b684bb-7a5c-4717-847a-d343bd6824d9"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 25,
+    "pred_id": 25,
+    "prompt": "Turn the rightmost burner control on the oven to adjust its heat.",
+    "qid": "human_func_v1_000122",
+    "ref_captions": [
+      "<OBJ025>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "85f5f2f0-ef9b-4e32-a0de-cd8a7f54db4b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 38,
+    "pred_id": 38,
+    "prompt": "Turn the burner control at the opposite end of the oven panel from the rightmost knob.",
+    "qid": "human_func_v1_000123",
+    "ref_captions": [
+      "<OBJ038>."
+    ],
+    "scene_id": "sf3d469011_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "469011",
+    "target_node_id": "d003c3b8-3330-4adf-8c1e-6c8c9f2245f8"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Pick up the remote sitting closer to the left edge of the TV stand and use it to change channels.",
+    "qid": "human_func_v1_000124",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "c44a2818-7f0c-4200-bda1-915f3ade1731"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Pick up the remote sitting closer to the right edge of the TV stand and use it to change channels.",
+    "qid": "human_func_v1_000125",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "d75da7cf-4a4b-40fc-ac77-ffd1dd8edb6b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Use the remote placed to the right side of the TV to change channels.",
+    "qid": "human_func_v1_000126",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "560f1e2c-e62d-4f1e-93e8-3acbf61433cd"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 17,
+    "pred_id": 17,
+    "prompt": "Use the remote placed to the left side of the TV to change channels.",
+    "qid": "human_func_v1_000127",
+    "ref_captions": [
+      "<OBJ017>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "9c06f662-e551-484e-9559-a7d3c0b5b31d"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Pull the highest knob in the left drawer column under the TV to open its top drawer.",
+    "qid": "human_func_v1_000128",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "282c10c9-3020-4333-b468-cb3197b80940"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the second-highest knob in the left drawer column under the TV.",
+    "qid": "human_func_v1_000129",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "927cd15d-3bd7-4709-b88d-6e4c8b8afca4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 20,
+    "pred_id": 20,
+    "prompt": "Pull the middle knob of the left drawer column under the television.",
+    "qid": "human_func_v1_000130",
+    "ref_captions": [
+      "<OBJ020>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "f26835a1-518e-4918-a492-c23cee451f0a"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the second-from-bottom knob in the left drawer column under the television.",
+    "qid": "human_func_v1_000131",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "bb923245-a044-4875-b548-bee144ca7d2a"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 0,
+    "pred_id": 0,
+    "prompt": "Pull the lowest knob in the left drawer column under the television to open the bottom drawer.",
+    "qid": "human_func_v1_000132",
+    "ref_captions": [
+      "<OBJ000>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "08a1222a-4837-49cf-a0c6-836d236311a0"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 3,
+    "pred_id": 3,
+    "prompt": "Pull the topmost knob of the left drawer column under the television, opposite end from the lowest.",
+    "qid": "human_func_v1_000133",
+    "ref_captions": [
+      "<OBJ003>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "282c10c9-3020-4333-b468-cb3197b80940"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 4,
+    "pred_id": 4,
+    "prompt": "Pull the topmost knob in the right drawer column under the TV stand.",
+    "qid": "human_func_v1_000134",
+    "ref_captions": [
+      "<OBJ004>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "352d3a71-9681-4a32-aecd-1d89a929bd7b"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 2,
+    "pred_id": 2,
+    "prompt": "Pull the bottommost knob in the right drawer column under the TV stand.",
+    "qid": "human_func_v1_000135",
+    "ref_captions": [
+      "<OBJ002>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "2569559b-e5fd-4e92-a533-308098b6becd"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Pull the second-from-top knob in the right drawer column under the TV.",
+    "qid": "human_func_v1_000136",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "73839439-0110-43e5-bb6e-d2883e193874"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 11,
+    "pred_id": 11,
+    "prompt": "Pull the second-from-bottom knob in the right drawer column under the TV.",
+    "qid": "human_func_v1_000137",
+    "ref_captions": [
+      "<OBJ011>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "8fa63b99-b099-4906-a608-5325add561e4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the upper-middle knob in the left column under the TV.",
+    "qid": "human_func_v1_000138",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "927cd15d-3bd7-4709-b88d-6e4c8b8afca4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Pull the upper-middle knob in the right column under the TV.",
+    "qid": "human_func_v1_000139",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "73839439-0110-43e5-bb6e-d2883e193874"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 16,
+    "pred_id": 16,
+    "prompt": "Open the top-left drawer of the right-hand dresser by pulling its knob.",
+    "qid": "human_func_v1_000140",
+    "ref_captions": [
+      "<OBJ016>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Open the top-left drawer of the left-hand dresser by pulling its knob.",
+    "qid": "human_func_v1_000141",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421254_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421254",
+    "target_node_id": "8ab6af8d-3cad-4fad-bf78-157916578132"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 9,
+    "pred_id": 9,
+    "prompt": "Pull the knob to open the drawer of the nightstand on the right side of the bed.",
+    "qid": "human_func_v1_000142",
+    "ref_captions": [
+      "<OBJ009>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "7478eaa4-362a-4613-9d6e-d41b794f41b9"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "Pull the knob to open the drawer of the nightstand on the other side of the bed.",
+    "qid": "human_func_v1_000143",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d420683_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "420683",
+    "target_node_id": "875242c5-10d3-4dd4-95ec-d20799e913c3"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the handle to open a drawer of the nightstand beside the headboard.",
+    "qid": "human_func_v1_000144",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "7f13ad67-a21a-4ed2-9bc1-c0e330ebfbb4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 8,
+    "pred_id": 8,
+    "prompt": "Pull the handle to open a drawer of the nightstand on the opposite side of the room.",
+    "qid": "human_func_v1_000145",
+    "ref_captions": [
+      "<OBJ008>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "4375aca4-619a-49e3-9bb5-abcd2fdc203f"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "Pull the handle of the topmost drawer on the dresser against the back wall.",
+    "qid": "human_func_v1_000146",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "9fcd23c1-4638-41a9-a8d8-02bffa3e6a7c"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the handle of the bottommost drawer on the dresser placed beside the window.",
+    "qid": "human_func_v1_000147",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421602_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421602",
+    "target_node_id": "90e6a8bd-5b0f-4991-8bbe-831acf0faa53"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Pull the bottommost handle of the tall wardrobe to open its bottom compartment.",
+    "qid": "human_func_v1_000148",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "217402c7-af78-4217-b70f-ef3bb65f71d4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 18,
+    "pred_id": 18,
+    "prompt": "Pull the second-from-bottom handle of the tall wardrobe.",
+    "qid": "human_func_v1_000149",
+    "ref_captions": [
+      "<OBJ018>."
+    ],
+    "scene_id": "sf3d421013_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421013",
+    "target_node_id": "d1cb8681-bd37-49eb-8d89-5f09d782a627"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 13,
+    "pred_id": 13,
+    "prompt": "Pull the knob on the surface-mounted handle of the TV stand to open its side compartment door.",
+    "qid": "human_func_v1_000150",
+    "ref_captions": [
+      "<OBJ013>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "9db14ed4-ed96-4e43-a12d-7a1a865f0161"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Pull the middle knob of the right drawer column on the TV stand to slide out the third drawer.",
+    "qid": "human_func_v1_000151",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "1365989c-2223-4888-8465-ec59a7adea8e"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 12,
+    "pred_id": 12,
+    "prompt": "I want to store a small remote in the upper half of the left drawer column. Which knob should I pull?",
+    "qid": "human_func_v1_000152",
+    "ref_captions": [
+      "<OBJ012>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "927cd15d-3bd7-4709-b88d-6e4c8b8afca4"
+  },
+  {
+    "eval_type": "human_133",
+    "obj_id": 14,
+    "pred_id": 14,
+    "prompt": "I want to store a heavy book in the lower half of the left drawer column. Which knob should I pull?",
+    "qid": "human_func_v1_000153",
+    "ref_captions": [
+      "<OBJ014>."
+    ],
+    "scene_id": "sf3d421380_00",
+    "source": "human_functional_v1",
+    "source_scene_id": "421380",
+    "target_node_id": "bb923245-a044-4875-b548-bee144ca7d2a"
+  }
+]

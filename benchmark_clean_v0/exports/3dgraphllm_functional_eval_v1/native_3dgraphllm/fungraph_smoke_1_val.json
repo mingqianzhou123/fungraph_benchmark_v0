@@ -1,0 +1,16 @@
+[
+  {
+    "eval_type": "functional_500",
+    "obj_id": 1,
+    "pred_id": 1,
+    "prompt": "Make the chandelier brighter for the evening.",
+    "qid": "auto_05156692a1372a7b_v2_v0",
+    "ref_captions": [
+      "<OBJ001>."
+    ],
+    "scene_id": "sf3d422826_00",
+    "source": "generated_scenefun3d_functional_test",
+    "source_scene_id": "422826",
+    "target_node_id": "41cc5be1-5368-47f0-8766-73641fe512d3"
+  }
+]

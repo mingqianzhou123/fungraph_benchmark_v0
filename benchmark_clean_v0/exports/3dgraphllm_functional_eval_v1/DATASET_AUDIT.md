@@ -48,5 +48,14 @@ multimodal_extension/perception/p0_raw_modality_availability.csv
 - `functional_500_eval.jsonl` uses a deterministic first-500 selection from the
   test split. This is frozen for Gate 1 unless Mingqian/Dennis choose a different
   sampling policy before running the confirmatory experiment.
-- Native 3DGraphLLM object-id mapping may require an additional adapter once the
-  reproduced 3DGraphLLM asset format is confirmed.
+- Native 3DGraphLLM object-id mapping is now generated in `node_id_mapping.json`
+  by `scripts/build_native_3dgraphllm_packet.py` using stable native ids of the
+  form `sf3d{scene_id}_00`.
+- The generated native packet is loader/model ready and now includes real
+  SceneFun3D modality adapter tensors: point/color object features, RGB-D/camera
+  scene-object features, and relative-geometry GNN features.
+- These tensors are not pretrained Uni3D/video-network embeddings; report them
+  as adapter features unless encoder-specific features are regenerated.
+- Original downloaded 3DGraphLLM features are ScanNet keyed (`sceneXXXX_YY`) and
+  do not directly cover SceneFun3D numeric scene ids. This is audited in
+  `asset_alignment_report.md`.

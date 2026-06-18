@@ -105,6 +105,119 @@ def main() -> None:
     assert summary["counts"]["minimal_pairs_28_eval"] == 28
     assert summary["counts"]["long_range_50_eval"] == 50
 
+    native_dir = EXPORT_DIR / "native_3dgraphllm"
+    native_manifest = native_dir / "native_packet_manifest.json"
+    if native_manifest.exists():
+        manifest = json.loads(native_manifest.read_text(encoding="utf-8"))
+        assert manifest["status"] in {
+            "loader_smoke_test_ready_not_full_modality",
+            "real_scene3d_modality_features_ready_not_pretrained_uni3d",
+            "full_scene3d_multimodal_adapter_ready_not_pretrained_encoder_features",
+        }
+        expected_native_files = [
+            "fungraph_scene3d_attributes.pt",
+            "fungraph_scene3d_uni3d_feats.pt",
+            "fungraph_scene3d_videofeats.pt",
+            "fungraph_scene3d_gnn_feats.pt",
+            "fungraph_functional_500_val.json",
+            "fungraph_functional_500_objselect_val.json",
+            "fungraph_human_133_val.json",
+            "fungraph_human_133_objselect_val.json",
+            "fungraph_long_range_50_val.json",
+            "fungraph_long_range_50_objselect_val.json",
+            "fungraph_smoke_1_val.json",
+            "fungraph_objselect_smoke_1_val.json",
+            "config_fungraph_eval.py",
+        ]
+        for filename in expected_native_files:
+            assert (native_dir / filename).exists(), f"missing native packet file: {filename}"
+
+    audit_report = EXPORT_DIR / "asset_alignment_report.md"
+    audit_manifest = EXPORT_DIR / "native_3dgraphllm_asset_manifest.csv"
+    audit_schema = EXPORT_DIR / "native_3dgraphllm_asset_schema.json"
+    if audit_report.exists() or audit_manifest.exists() or audit_schema.exists():
+        assert audit_report.exists(), "missing asset_alignment_report.md"
+        assert audit_manifest.exists(), "missing native_3dgraphllm_asset_manifest.csv"
+        assert audit_schema.exists(), "missing native_3dgraphllm_asset_schema.json"
+
+    object_manifest = EXPORT_DIR / "object_modality_manifest.csv"
+    scene_rgbd_manifest = EXPORT_DIR / "scene_rgbd_manifest.csv"
+    if object_manifest.exists() or scene_rgbd_manifest.exists():
+        assert object_manifest.exists(), "missing object_modality_manifest.csv"
+        assert scene_rgbd_manifest.exists(), "missing scene_rgbd_manifest.csv"
+        with object_manifest.open("r", encoding="utf-8", newline="") as f:
+            rows = list(__import__("csv").DictReader(f))
+        assert rows, "object_modality_manifest.csv is empty"
+        assert all(row["has_point_xyz"] == "True" for row in rows), "not all objects have point xyz"
+        assert all(row["has_point_rgb"] == "True" for row in rows), "not all objects have point rgb"
+        with scene_rgbd_manifest.open("r", encoding="utf-8", newline="") as f:
+            scene_rows = list(__import__("csv").DictReader(f))
+        assert len(scene_rows) == len(candidates_by_scene), "scene_rgbd_manifest scene count mismatch"
+        assert all(row["has_rgb"] == "True" for row in scene_rows), "not all scenes have RGB frames"
+        assert all(row["has_depth"] == "True" for row in scene_rows), "not all scenes have depth frames"
+
+    full_summary = EXPORT_DIR / "full_multimodal_readiness.json"
+    full_capture_manifest = EXPORT_DIR / "full_scene_capture_manifest.csv"
+    full_frame_index = EXPORT_DIR / "full_scene_frame_index.jsonl"
+    full_object_manifest = EXPORT_DIR / "full_object_modality_manifest.csv"
+    full_status_doc = EXPORT_DIR / "FULL_MULTIMODAL_BENCHMARK_STATUS.md"
+    if any(path.exists() for path in [full_summary, full_capture_manifest, full_frame_index, full_object_manifest, full_status_doc]):
+        assert full_summary.exists(), "missing full_multimodal_readiness.json"
+        assert full_capture_manifest.exists(), "missing full_scene_capture_manifest.csv"
+        assert full_frame_index.exists(), "missing full_scene_frame_index.jsonl"
+        assert full_object_manifest.exists(), "missing full_object_modality_manifest.csv"
+        assert full_status_doc.exists(), "missing FULL_MULTIMODAL_BENCHMARK_STATUS.md"
+        summary = json.loads(full_summary.read_text(encoding="utf-8"))
+        assert summary["status"] == "full_raw_multimodal_benchmark_ready"
+        assert summary["n_scenes"] == len(candidates_by_scene)
+        assert summary["all_scenes_full_ready"] is True, "not all scenes are full multimodal ready"
+        assert summary["n_export_candidate_objects"] == sum(len(x) for x in candidates_by_scene.values())
+        assert summary["n_full_export_candidate_objects"] == summary["n_export_candidate_objects"], "not all exported candidate objects are full ready"
+
+    evidence_dir = EXPORT_DIR / "relation_conditioned_evidence"
+    if evidence_dir.exists():
+        required = [
+            "README.md",
+            "RELATION_EVIDENCE_STATUS.md",
+            "relation_evidence_summary.json",
+            "relation_evidence_index.jsonl",
+            "relation_frame_candidates.jsonl",
+            "query_relation_index.jsonl",
+            "minimal_pair_relation_index.jsonl",
+            "sample_load_relation_evidence.py",
+        ]
+        for filename in required:
+            assert (evidence_dir / filename).exists(), f"missing relation evidence file: {filename}"
+        summary = json.loads((evidence_dir / "relation_evidence_summary.json").read_text(encoding="utf-8"))
+        expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
+        assert summary["status"] == "relation_conditioned_evidence_index_ready_not_projected"
+        assert summary["n_relations"] == expected_relations
+        assert summary["n_relation_evidence_ready"] == expected_relations
+        assert summary["n_minimal_pairs"] == EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
+        assert summary["n_minimal_pairs_ready"] == EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
+        relation_rows = read_jsonl(evidence_dir / "relation_evidence_index.jsonl")
+        assert len(relation_rows) == expected_relations
+        assert all(row["relation_evidence_ready"] is True for row in relation_rows), "not all relation evidence rows are ready"
+        assert all("|" in row["relation_key"] for row in relation_rows), "invalid relation key format"
+
+        projection_summary_path = evidence_dir / "projection_dryrun_summary.json"
+        projection_index_path = evidence_dir / "projection_dryrun_index.jsonl"
+        projection_status_path = evidence_dir / "PROJECTION_DRYRUN_STATUS.md"
+        if any(path.exists() for path in [projection_summary_path, projection_index_path, projection_status_path]):
+            assert projection_summary_path.exists(), "missing projection_dryrun_summary.json"
+            assert projection_index_path.exists(), "missing projection_dryrun_index.jsonl"
+            assert projection_status_path.exists(), "missing PROJECTION_DRYRUN_STATUS.md"
+            projection_summary = json.loads(projection_summary_path.read_text(encoding="utf-8"))
+            projection_rows = read_jsonl(projection_index_path)
+            assert projection_summary["status"] == "projection_dryrun_placeholder_ready"
+            assert projection_summary["n_relations"] == expected_relations
+            assert projection_summary["n_projection_rows"] == summary["n_frame_candidates"]
+            assert len(projection_rows) == summary["n_frame_candidates"]
+            assert projection_summary["depth_z_test_applied"] is False
+            assert all(row["is_placeholder_rule"] is True for row in projection_rows), "projection dry-run rows must remain placeholder"
+            assert all(row["depth_z_test_applied"] is False for row in projection_rows), "projection dry-run unexpectedly applied depth z-test"
+            assert all(row["selection_rule_version"].startswith("placeholder_dryrun_") for row in projection_rows), "projection dry-run selection rule must be placeholder"
+
     print("3DGraphLLM export validation passed")
 
 

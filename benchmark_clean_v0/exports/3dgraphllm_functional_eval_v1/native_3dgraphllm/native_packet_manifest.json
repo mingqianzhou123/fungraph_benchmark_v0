@@ -1,0 +1,39 @@
+{
+  "annotation_counts": {
+    "functional_500": 500,
+    "human_133": 133,
+    "long_range_50": 50,
+    "smoke_1": 1
+  },
+  "benchmark_modality_status": "full_raw_multimodal_benchmark_ready",
+  "feature_provenance": {
+    "attributes": "SceneFun3D graph node 3D bounding boxes",
+    "gnn_feats": "512-D real relative-geometry kNN edge features from SceneFun3D object boxes",
+    "uni3d_feats": "1024-D real point/color/statistical object features from laser-scan PLY and annotation point indices; not pretrained Uni3D embeddings",
+    "videofeats": "1024-D real RGB-D/camera statistical features from SceneFun3D image/depth frame coverage and annotation camera metadata; not pretrained video-network embeddings"
+  },
+  "full_multimodal_readiness": {
+    "all_scenes_full_ready": true,
+    "n_export_candidate_objects": 317,
+    "n_frame_rgbd_camera_triplets": 13039,
+    "n_full_export_candidate_objects": 317,
+    "n_scenes": 20,
+    "n_scenes_full_ready": 20
+  },
+  "modality_counts": {
+    "objects": 317,
+    "objects_with_points": 317,
+    "objects_with_record_camera": 317,
+    "scenes": 20,
+    "scenes_with_depth": 20,
+    "scenes_with_rgb": 20
+  },
+  "native_scene_id_rule": "sf3d{source_scene_id}_00",
+  "required_replacement_files_for_full_modality": [
+    "fungraph_scene3d_uni3d_feats.pt",
+    "fungraph_scene3d_videofeats.pt",
+    "fungraph_scene3d_gnn_feats.pt"
+  ],
+  "scientific_caveat": "These tensors are real SceneFun3D modality features but are not distribution-matched Uni3D/video embeddings used by the original 3DGraphLLM checkpoint.",
+  "status": "real_scene3d_modality_features_ready_not_pretrained_uni3d"
+}
