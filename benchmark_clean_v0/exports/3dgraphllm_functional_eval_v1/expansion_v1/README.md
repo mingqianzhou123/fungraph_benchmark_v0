@@ -15,11 +15,14 @@ This directory is a draft workspace for distribution audit, unique-relation expa
 - Previous-export depth-tested RGB-D crop relations: 48
 - Relations not present in previous full-perception export: 35
 - Target coverage policy: 3 query variants per unique relation.
+- Human-review unique relation rows: 195
+- Balanced candidate queries: 116 with max 15 per exact relation.
 
 ## Minimal-Pair Expansion
 
 - Auto-mined pair candidates: 105
 - Changed-factor distribution: {'spatial_qualifier': 89, 'anchor_object': 15, 'functional_relation': 1}
+- Minimal-pair review rows: 105
 
 ## Boundary
 

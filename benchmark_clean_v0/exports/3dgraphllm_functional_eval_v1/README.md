@@ -46,7 +46,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `full_multimodal_readiness.json` | Machine-readable full benchmark readiness summary |
 | `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
 | `relation_conditioned_evidence/` | Query-level target-anchor multimodal evidence manifests keyed by `relation_key` |
-| `expansion_v1/` | Draft distribution audit, 195 unique-relation expansion pool, and 105 minimal-pair candidates |
+| `expansion_v1/` | Draft distribution audit, 195 unique-relation expansion pool, 116-query balanced candidate split, review queues, and 105 minimal-pair candidates |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
@@ -90,8 +90,10 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - `expansion_v1/` is a draft expansion layer, not a frozen eval split. It audits
   the current 683 rows, exposes the true 160 unique scene-target-anchor-relation
   units, covers all 195 unique OpenFunGraph source relations with 585
-  template-generated query drafts, and mines 105 minimal-pair candidates. The
-  generated query wording and pair candidates need human review before paper use.
+  template-generated query drafts, creates human-review queues, builds a
+  116-query balanced candidate split with max 15 examples per exact relation,
+  and mines 105 minimal-pair candidates. The generated query wording and pair
+  candidates need human review before paper use.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a
@@ -120,7 +122,8 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - the full perception evidence layer covers all 683 relations and records which
   rows have strict RGB-D crop evidence versus pointcloud-render fallback;
 - the expansion draft exists, has 195 unique source relations, 585 template query
-  drafts, and more minimal-pair candidates than the frozen 28-pair eval.
+  drafts, 195 unique-relation review rows, 585 query-review rows, 105
+  minimal-pair review rows, and a 116-query balanced candidate split.
 
 ## Native 3DGraphLLM Smoke Test
 

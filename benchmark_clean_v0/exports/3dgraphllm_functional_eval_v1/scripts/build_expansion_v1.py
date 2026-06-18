@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import html
 import json
 import math
 from collections import Counter, defaultdict
@@ -371,7 +372,196 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> 
             writer.writerow({k: row.get(k) for k in fieldnames})
 
 
-def write_report(current: dict[str, Any], pool_summary: dict[str, Any], pair_summary: dict[str, Any]) -> None:
+def evidence_rank(row: dict[str, Any]) -> int:
+    if row.get("has_depth_tested_rgbd_crop"):
+        return 0
+    if row.get("perception_evidence_tier") != "not_in_previous_export":
+        return 1
+    return 2
+
+
+def review_priority(row: dict[str, Any]) -> str:
+    if row.get("perception_evidence_tier") == "not_in_previous_export":
+        return "needs_evidence_generation"
+    if row.get("has_depth_tested_rgbd_crop"):
+        return "rgbd_crop_ready"
+    if row.get("target_label_count_in_scene", 0) > 1:
+        return "same_label_disambiguation"
+    return "standard"
+
+
+def build_review_queues(unique_rows: list[dict[str, Any]], query_rows: list[dict[str, Any]], pair_rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+    canonical_queries = {row["unique_relation_id"]: row for row in query_rows if row["query_id"].endswith("_v0")}
+    unique_review = []
+    for row in unique_rows:
+        canonical = canonical_queries[row["unique_relation_id"]]
+        needs_evidence = row["perception_evidence_tier"] == "not_in_previous_export"
+        unique_review.append({
+            "review_status": "todo",
+            "review_decision": "",
+            "reject_reason": "",
+            "needs_query_rewrite": "",
+            "needs_evidence_generation": needs_evidence,
+            "review_priority": review_priority(row),
+            "unique_relation_id": row["unique_relation_id"],
+            "canonical_query_id": canonical["query_id"],
+            "scene_id": row["scene_id"],
+            "target_label": row["target_label"],
+            "target_node_id": row["target_node_id"],
+            "relation": row["relation"],
+            "anchor_label": row["anchor_label"],
+            "anchor_node_id": row["anchor_node_id"],
+            "canonical_query_text": canonical["query_text"],
+            "target_label_count_in_scene": row["target_label_count_in_scene"],
+            "relation_count_in_scene": row["relation_count_in_scene"],
+            "perception_evidence_tier": row["perception_evidence_tier"],
+            "has_depth_tested_rgbd_crop": row["has_depth_tested_rgbd_crop"],
+            "reviewer_rewrite_query_text": "",
+            "reviewer_notes": "",
+        })
+
+    query_review = []
+    for row in query_rows:
+        query_review.append({
+            "review_status": "todo",
+            "review_decision": "",
+            "reject_reason": "",
+            "needs_query_rewrite": "",
+            "query_id": row["query_id"],
+            "unique_relation_id": row["unique_relation_id"],
+            "scene_id": row["scene_id"],
+            "target_label": row["target_label"],
+            "target_node_id": row["target_node_id"],
+            "relation": parse_edge((row.get("supporting_edge_ids") or [""])[0])[1],
+            "anchor_label": row["anchor_label"],
+            "anchor_node_id": row["anchor_node_id"],
+            "query_text": row["query_text"],
+            "perception_evidence_tier": row["perception_evidence_tier"],
+            "has_depth_tested_rgbd_crop": row["has_depth_tested_rgbd_crop"],
+            "reviewer_rewrite_query_text": "",
+            "reviewer_notes": "",
+        })
+
+    pair_review = []
+    for row in pair_rows:
+        pair_review.append({
+            "review_status": "todo",
+            "review_decision": "",
+            "reject_reason": "",
+            **row,
+            "reviewer_notes": "",
+        })
+
+    summary = {
+        "status": "review_queues_ready",
+        "n_unique_relation_review_rows": len(unique_review),
+        "n_query_review_rows": len(query_review),
+        "n_minimal_pair_review_rows": len(pair_review),
+        "review_priority_counts": dict(Counter(r["review_priority"] for r in unique_review).most_common()),
+        "n_needing_evidence_generation": sum(bool(r["needs_evidence_generation"]) for r in unique_review),
+    }
+    return unique_review, query_review, pair_review, summary
+
+
+def build_balanced_candidates(unique_rows: list[dict[str, Any]], query_rows: list[dict[str, Any]], max_per_relation: int) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    canonical_queries = {row["unique_relation_id"]: row for row in query_rows if row["query_id"].endswith("_v0")}
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in unique_rows:
+        grouped[row["relation"]].append(row)
+
+    selected_ids: set[str] = set()
+    for relation, group in sorted(grouped.items()):
+        ordered = sorted(
+            group,
+            key=lambda r: (
+                evidence_rank(r),
+                -int(r.get("target_label_count_in_scene", 0)),
+                str(r.get("scene_id")),
+                str(r.get("target_label") or ""),
+                str(r.get("anchor_label") or ""),
+                str(r.get("target_node_id")),
+            ),
+        )
+        for row in ordered[:max_per_relation]:
+            selected_ids.add(row["unique_relation_id"])
+
+    selected_unique = [row for row in unique_rows if row["unique_relation_id"] in selected_ids]
+    selected_unique = sorted(selected_unique, key=lambda r: (r["relation"], evidence_rank(r), r["scene_id"], r["target_node_id"]))
+    balanced_queries = []
+    for row in selected_unique:
+        q = dict(canonical_queries[row["unique_relation_id"]])
+        q["split"] = "balanced_unique_relation_candidate_v1_draft"
+        q["source"] = "balanced_openfungraph_unique_relation_candidate_v1"
+        q["balanced_selection_rule"] = f"max_{max_per_relation}_per_exact_relation_prefer_rgbd_then_previous_export"
+        q["review_status"] = "todo"
+        q["review_decision"] = ""
+        q["needs_evidence_generation"] = row["perception_evidence_tier"] == "not_in_previous_export"
+        balanced_queries.append(q)
+
+    relation_counts = Counter(row["relation"] for row in selected_unique)
+    summary = {
+        "status": "balanced_unique_relation_candidate_ready",
+        "selection_rule": f"max_{max_per_relation}_per_exact_relation_prefer_rgbd_then_previous_export",
+        "max_per_exact_relation": max_per_relation,
+        "n_candidate_queries": len(balanced_queries),
+        "n_exact_relation_types": len(relation_counts),
+        "max_selected_per_relation": max(relation_counts.values()) if relation_counts else 0,
+        "n_candidates_needing_evidence_generation": sum(bool(q["needs_evidence_generation"]) for q in balanced_queries),
+        "relation_counts": dict(relation_counts.most_common()),
+    }
+    return balanced_queries, summary
+
+
+def write_review_html(path: Path, unique_review: list[dict[str, Any]], balanced_queries: list[dict[str, Any]], pair_review: list[dict[str, Any]], summary: dict[str, Any], balanced_summary: dict[str, Any]) -> None:
+    def table(rows: list[dict[str, Any]], cols: list[str], limit: int | None = None) -> str:
+        clipped = rows if limit is None else rows[:limit]
+        head = "".join(f"<th>{html.escape(c)}</th>" for c in cols)
+        body = []
+        for row in clipped:
+            cells = "".join(f"<td>{html.escape(str(row.get(c, '')))}</td>" for c in cols)
+            body.append(f"<tr>{cells}</tr>")
+        suffix = "" if limit is None or len(rows) <= limit else f"<p>Showing {limit} / {len(rows)} rows.</p>"
+        return f"<table><thead><tr>{head}</tr></thead><tbody>{''.join(body)}</tbody></table>{suffix}"
+
+    html_text = f"""<!doctype html>
+<html lang=\"en\">
+<head>
+<meta charset=\"utf-8\">
+<title>Benchmark Expansion v1 Review Queue</title>
+<style>
+body {{ font-family: Arial, sans-serif; margin: 24px; color: #202124; }}
+h1, h2 {{ margin: 20px 0 8px; }}
+.summary {{ display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 12px; margin: 16px 0 24px; }}
+.card {{ border: 1px solid #d0d7de; border-radius: 6px; padding: 12px; background: #f8fafc; }}
+.card strong {{ display: block; font-size: 22px; }}
+table {{ border-collapse: collapse; width: 100%; font-size: 13px; margin-bottom: 24px; }}
+th, td {{ border: 1px solid #d0d7de; padding: 6px 8px; vertical-align: top; }}
+th {{ background: #eef2f7; position: sticky; top: 0; }}
+code {{ background: #eef2f7; padding: 1px 4px; border-radius: 4px; }}
+</style>
+</head>
+<body>
+<h1>Benchmark Expansion v1 Review Queue</h1>
+<p>This is a human-review workspace for draft expansion data. It does not replace frozen eval files.</p>
+<div class=\"summary\">
+  <div class=\"card\"><strong>{summary['n_unique_relation_review_rows']}</strong>unique relations to review</div>
+  <div class=\"card\"><strong>{summary['n_query_review_rows']}</strong>template query variants</div>
+  <div class=\"card\"><strong>{summary['n_minimal_pair_review_rows']}</strong>minimal-pair candidates</div>
+  <div class=\"card\"><strong>{balanced_summary['n_candidate_queries']}</strong>balanced candidate queries</div>
+</div>
+<h2>Unique Relation Review Queue</h2>
+{table(unique_review, ['review_status', 'review_priority', 'unique_relation_id', 'scene_id', 'target_label', 'relation', 'anchor_label', 'canonical_query_text', 'perception_evidence_tier', 'needs_evidence_generation'])}
+<h2>Balanced Candidate Draft</h2>
+{table(balanced_queries, ['query_id', 'scene_id', 'target_label', 'query_text', 'perception_evidence_tier', 'needs_evidence_generation', 'balanced_selection_rule'])}
+<h2>Minimal Pair Review Queue</h2>
+{table(pair_review, ['review_status', 'pair_id', 'changed_factor', 'scene_id', 'target_label', 'relation_a', 'relation_b', 'anchor_a_label', 'anchor_b_label', 'target_geom_diff_m', 'why_hard'])}
+</body>
+</html>
+"""
+    path.write_text(html_text, encoding="utf-8")
+
+
+def write_report(current: dict[str, Any], pool_summary: dict[str, Any], pair_summary: dict[str, Any], review_summary: dict[str, Any], balanced_summary: dict[str, Any]) -> None:
     lines = [
         "# Benchmark Expansion v1 Status",
         "",
@@ -390,11 +580,14 @@ def write_report(current: dict[str, Any], pool_summary: dict[str, Any], pair_sum
         f"- Previous-export depth-tested RGB-D crop relations: {pool_summary['n_depth_tested_rgbd_crop_relations']}",
         f"- Relations not present in previous full-perception export: {pool_summary['n_non_previous_export_relations']}",
         f"- Target coverage policy: 3 query variants per unique relation.",
+        f"- Human-review unique relation rows: {review_summary['n_unique_relation_review_rows']}",
+        f"- Balanced candidate queries: {balanced_summary['n_candidate_queries']} with max {balanced_summary['max_per_exact_relation']} per exact relation.",
         "",
         "## Minimal-Pair Expansion",
         "",
         f"- Auto-mined pair candidates: {pair_summary['n_pair_candidates']}",
         f"- Changed-factor distribution: {pair_summary['changed_factor_counts']}",
+        f"- Minimal-pair review rows: {review_summary['n_minimal_pair_review_rows']}",
         "",
         "## Boundary",
         "",
@@ -433,13 +626,18 @@ def main() -> None:
         "n_pair_candidates": len(pair_rows),
         "changed_factor_counts": dict(Counter(r["changed_factor"] for r in pair_rows).most_common()),
     }
+    unique_review_rows, query_review_rows, pair_review_rows, review_summary = build_review_queues(unique_rows, query_rows, pair_rows)
+    balanced_rows, balanced_summary = build_balanced_candidates(unique_rows, query_rows, max_per_relation=15)
 
     write_json(OUT_DIR / "distribution_audit.json", current_summary)
     write_json(OUT_DIR / "unique_relation_expansion_summary.json", pool_summary)
     write_json(OUT_DIR / "minimal_pair_expansion_summary.json", pair_summary)
+    write_json(OUT_DIR / "review_queue_summary.json", review_summary)
+    write_json(OUT_DIR / "balanced_unique_relation_candidate_summary.json", balanced_summary)
     write_jsonl(OUT_DIR / "unique_relation_pool_v1.jsonl", unique_rows)
     write_jsonl(OUT_DIR / "functional_unique_relation_585_draft.jsonl", query_rows)
     write_jsonl(OUT_DIR / "minimal_pair_candidates_v1.jsonl", pair_rows)
+    write_jsonl(OUT_DIR / "balanced_unique_relation_candidate_v1.jsonl", balanced_rows)
     write_csv(
         OUT_DIR / "unique_relation_pool_v1.csv",
         unique_rows,
@@ -450,8 +648,29 @@ def main() -> None:
         pair_rows,
         ["pair_id", "changed_factor", "scene_id", "target_label", "relation_a", "relation_b", "anchor_a_label", "anchor_b_label", "target_geom_diff_m", "pair_evidence_used", "query_a_id", "query_b_id"],
     )
-    write_report(current_summary, pool_summary, pair_summary)
-    print(json.dumps({"current": current_summary, "pool": pool_summary, "pairs": pair_summary}, indent=2, sort_keys=True))
+    write_csv(
+        OUT_DIR / "unique_relation_review_queue_v1.csv",
+        unique_review_rows,
+        ["review_status", "review_decision", "reject_reason", "needs_query_rewrite", "needs_evidence_generation", "review_priority", "unique_relation_id", "canonical_query_id", "scene_id", "target_label", "target_node_id", "relation", "anchor_label", "anchor_node_id", "canonical_query_text", "target_label_count_in_scene", "relation_count_in_scene", "perception_evidence_tier", "has_depth_tested_rgbd_crop", "reviewer_rewrite_query_text", "reviewer_notes"],
+    )
+    write_csv(
+        OUT_DIR / "query_review_queue_v1.csv",
+        query_review_rows,
+        ["review_status", "review_decision", "reject_reason", "needs_query_rewrite", "query_id", "unique_relation_id", "scene_id", "target_label", "target_node_id", "relation", "anchor_label", "anchor_node_id", "query_text", "perception_evidence_tier", "has_depth_tested_rgbd_crop", "reviewer_rewrite_query_text", "reviewer_notes"],
+    )
+    write_csv(
+        OUT_DIR / "minimal_pair_review_queue_v1.csv",
+        pair_review_rows,
+        ["review_status", "review_decision", "reject_reason", "pair_id", "changed_factor", "scene_id", "target_label", "relation_a", "relation_b", "anchor_a_label", "anchor_b_label", "target_geom_diff_m", "why_hard", "query_a_id", "query_b_id", "reviewer_notes"],
+    )
+    write_csv(
+        OUT_DIR / "balanced_unique_relation_candidate_v1.csv",
+        balanced_rows,
+        ["review_status", "review_decision", "query_id", "unique_relation_id", "scene_id", "target_label", "target_node_id", "anchor_label", "anchor_node_id", "query_text", "perception_evidence_tier", "has_depth_tested_rgbd_crop", "needs_evidence_generation", "balanced_selection_rule"],
+    )
+    write_review_html(OUT_DIR / "review_queue_v1.html", unique_review_rows, balanced_rows, pair_review_rows, review_summary, balanced_summary)
+    write_report(current_summary, pool_summary, pair_summary, review_summary, balanced_summary)
+    print(json.dumps({"current": current_summary, "pool": pool_summary, "pairs": pair_summary, "review": review_summary, "balanced": balanced_summary}, indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":
