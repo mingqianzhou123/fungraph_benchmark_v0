@@ -275,6 +275,62 @@ def main() -> None:
                 for row in full_perception_rows:
                     assert (evidence_dir.parent / row["primary_visual_rel_path"]).exists(), f"missing perception image: {row['primary_visual_rel_path']}"
 
+    expansion_dir = EXPORT_DIR / "expansion_v1"
+    if expansion_dir.exists():
+        required = [
+            "README.md",
+            "EXPANSION_STATUS.md",
+            "distribution_audit.json",
+            "unique_relation_expansion_summary.json",
+            "minimal_pair_expansion_summary.json",
+            "unique_relation_pool_v1.jsonl",
+            "functional_unique_relation_585_draft.jsonl",
+            "minimal_pair_candidates_v1.jsonl",
+            "unique_relation_pool_v1.csv",
+            "minimal_pair_candidates_v1.csv",
+        ]
+        for filename in required:
+            assert (expansion_dir / filename).exists(), f"missing expansion_v1 file: {filename}"
+
+        distribution = json.loads((expansion_dir / "distribution_audit.json").read_text(encoding="utf-8"))
+        unique_summary = json.loads((expansion_dir / "unique_relation_expansion_summary.json").read_text(encoding="utf-8"))
+        pair_summary = json.loads((expansion_dir / "minimal_pair_expansion_summary.json").read_text(encoding="utf-8"))
+        pool_rows = read_jsonl(expansion_dir / "unique_relation_pool_v1.jsonl")
+        draft_rows = read_jsonl(expansion_dir / "functional_unique_relation_585_draft.jsonl")
+        pair_rows = read_jsonl(expansion_dir / "minimal_pair_candidates_v1.jsonl")
+
+        expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
+        assert distribution["status"] == "distribution_audit_ready"
+        assert distribution["n_query_rows"] == expected_relations
+        assert unique_summary["status"] == "unique_relation_expansion_pool_ready"
+        assert unique_summary["n_unique_relations"] == 195
+        assert len(pool_rows) == unique_summary["n_unique_relations"]
+        assert unique_summary["n_query_drafts"] == 3 * unique_summary["n_unique_relations"]
+        assert len(draft_rows) == unique_summary["n_query_drafts"]
+        assert pair_summary["status"] == "minimal_pair_expansion_candidates_ready"
+        assert len(pair_rows) == pair_summary["n_pair_candidates"]
+        assert pair_summary["n_pair_candidates"] > EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
+
+        draft_ids = {row["query_id"] for row in draft_rows}
+        allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
+        for row in draft_rows:
+            qid = row["query_id"]
+            scene_id = row["scene_id"]
+            assert row.get("annotation_source") == "template_generated_needs_human_review", f"{qid}: unexpected annotation source"
+            assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
+            for target in row.get("target_node_ids") or []:
+                assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
+            assert set(row.get("candidate_node_ids") or []) == candidates_by_scene[scene_id], f"{qid}: embedded candidates mismatch scene candidates"
+
+        pair_ids: set[str] = set()
+        for row in pair_rows:
+            pair_id = row.get("pair_id")
+            assert pair_id and pair_id not in pair_ids, f"duplicate or missing expansion pair_id: {pair_id}"
+            pair_ids.add(pair_id)
+            assert row.get("query_a_id") in draft_ids, f"{pair_id}: query_a_id not in expansion draft"
+            assert row.get("query_b_id") in draft_ids, f"{pair_id}: query_b_id not in expansion draft"
+            assert row.get("changed_factor") in allowed_factors, f"{pair_id}: invalid changed_factor"
+
     print("3DGraphLLM export validation passed")
 
 

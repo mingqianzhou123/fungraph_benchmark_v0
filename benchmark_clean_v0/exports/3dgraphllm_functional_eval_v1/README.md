@@ -14,6 +14,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_r
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_projection_dryrun.py
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_frame_crop_qc.py --write-local-crops
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_perception_evidence.py --write-images
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_v1.py --pair-cap 200
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -45,6 +46,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `full_multimodal_readiness.json` | Machine-readable full benchmark readiness summary |
 | `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
 | `relation_conditioned_evidence/` | Query-level target-anchor multimodal evidence manifests keyed by `relation_key` |
+| `expansion_v1/` | Draft distribution audit, 195 unique-relation expansion pool, and 105 minimal-pair candidates |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
@@ -55,6 +57,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `scripts/build_projection_dryrun.py` | Builds placeholder target/anchor projection metadata for candidate RGB-D frames |
 | `scripts/build_full_frame_crop_qc.py` | Mines all scene RGB-D frames, applies depth z-test, and builds frozen crop metadata/QC |
 | `scripts/build_full_perception_evidence.py` | Builds 683/683 full-coverage perception evidence cards with RGB-D crop when available and pointcloud-render fallback otherwise |
+| `scripts/build_expansion_v1.py` | Builds expansion_v1 distribution audit, all-source unique-relation drafts, and auto-mined minimal-pair candidates |
 | `scripts/export_relation_point_segments.py` | Optional local exporter for target/anchor PLY point segments; outputs should not be committed |
 
 ## Current Policy
@@ -84,6 +87,11 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   evidence keep their strict `official_crop_*` crop metadata; rows without such
   views use a GT pointcloud-render fallback and must not be described as
   depth-tested camera crops.
+- `expansion_v1/` is a draft expansion layer, not a frozen eval split. It audits
+  the current 683 rows, exposes the true 160 unique scene-target-anchor-relation
+  units, covers all 195 unique OpenFunGraph source relations with 585
+  template-generated query drafts, and mines 105 minimal-pair candidates. The
+  generated query wording and pair candidates need human review before paper use.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a
@@ -110,7 +118,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - the relation-conditioned evidence layer exists and covers every exported
   functional relation plus all minimal-pair links;
 - the full perception evidence layer covers all 683 relations and records which
-  rows have strict RGB-D crop evidence versus pointcloud-render fallback.
+  rows have strict RGB-D crop evidence versus pointcloud-render fallback;
+- the expansion draft exists, has 195 unique source relations, 585 template query
+  drafts, and more minimal-pair candidates than the frozen 28-pair eval.
 
 ## Native 3DGraphLLM Smoke Test
 

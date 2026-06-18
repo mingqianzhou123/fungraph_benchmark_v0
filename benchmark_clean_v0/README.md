@@ -148,6 +148,7 @@ exports/3dgraphllm_functional_eval_v1/FULL_MULTIMODAL_BENCHMARK_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/RELATION_EVIDENCE_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/OFFICIAL_CROP_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/FULL_PERCEPTION_EVIDENCE_STATUS.md
+exports/3dgraphllm_functional_eval_v1/expansion_v1/EXPANSION_STATUS.md
 ```
 
 Validate the export with:

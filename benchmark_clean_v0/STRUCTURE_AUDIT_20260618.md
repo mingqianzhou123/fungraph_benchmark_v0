@@ -28,6 +28,7 @@ It contains:
 - native 3DGraphLLM packet: `native_3dgraphllm/`;
 - full raw modality manifests: `full_scene_capture_manifest.csv`, `full_scene_frame_index.jsonl`, `full_object_modality_manifest.csv`;
 - relation-conditioned evidence: `relation_conditioned_evidence/`;
+- draft expansion/audit layer: `expansion_v1/`;
 - rebuild and validation scripts: `scripts/`.
 
 The most important final status files are:
@@ -36,6 +37,7 @@ The most important final status files are:
 - `relation_conditioned_evidence/RELATION_EVIDENCE_STATUS.md`
 - `relation_conditioned_evidence/OFFICIAL_CROP_STATUS.md`
 - `relation_conditioned_evidence/FULL_PERCEPTION_EVIDENCE_STATUS.md`
+- `expansion_v1/EXPANSION_STATUS.md`
 
 ## Generated But Ignored Local Assets
 
@@ -66,4 +68,5 @@ Kept intentionally:
 - older sidecars, because they are tracked provenance;
 - `projection_dryrun_*` metadata, because it documents the pre-official projection audit and is still validated as a placeholder layer;
 - local `crops_local/`, because it is useful for visual inspection and can be regenerated, but it remains ignored by Git;
-- `full_perception_evidence/`, because it is lightweight committed evidence-card output needed for 683 / 683 perception coverage.
+- `full_perception_evidence/`, because it is lightweight committed evidence-card output needed for 683 / 683 perception coverage;
+- `expansion_v1/`, because it is a committed draft audit layer for relation distribution, unique-relation expansion, and minimal-pair expansion.
