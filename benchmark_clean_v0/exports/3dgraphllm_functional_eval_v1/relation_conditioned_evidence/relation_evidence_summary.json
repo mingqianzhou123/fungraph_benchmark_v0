@@ -1,0 +1,23 @@
+{
+  "by_split": {
+    "functional_500": {
+      "n": 500,
+      "ready": 500
+    },
+    "human_133": {
+      "n": 133,
+      "ready": 133
+    },
+    "long_range_50": {
+      "n": 50,
+      "ready": 50
+    }
+  },
+  "important_boundary": "Frame candidates are RGB-D-camera triplets from the same scene, not yet projection-certified co-visible crops. Use them as projector/crop inputs, not final crop evidence.",
+  "n_frame_candidates": 4089,
+  "n_minimal_pairs": 28,
+  "n_minimal_pairs_ready": 28,
+  "n_relation_evidence_ready": 683,
+  "n_relations": 683,
+  "status": "relation_conditioned_evidence_index_ready_not_projected"
+}

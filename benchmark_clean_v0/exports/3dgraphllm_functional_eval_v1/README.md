@@ -10,6 +10,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_e
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_native_3dgraphllm_packet.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_real_scene3d_modalities.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_multimodal_index.py
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_relation_conditioned_evidence.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -40,12 +41,15 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `full_object_modality_manifest.csv` | Object-level full-modality readiness for every exported candidate object |
 | `full_multimodal_readiness.json` | Machine-readable full benchmark readiness summary |
 | `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
+| `relation_conditioned_evidence/` | Query-level target-anchor multimodal evidence manifests keyed by `relation_key` |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
 | `scripts/evaluate_fungraph_predictions.py` | FunGraph functional evaluator for 3DGraphLLM `preds_*.json` files |
 | `scripts/build_object_selection_splits.py` | Builds native prompt variants that ask for exactly one `<OBJxxx>` answer |
 | `scripts/build_full_multimodal_index.py` | Builds full raw-modality indexes and readiness gates |
+| `scripts/build_relation_conditioned_evidence.py` | Builds query-level target-anchor evidence manifests |
+| `scripts/export_relation_point_segments.py` | Optional local exporter for target/anchor PLY point segments; outputs should not be committed |
 
 ## Current Policy
 
@@ -63,6 +67,10 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   is linked to laser scan, RGB frames, depth frames, intrinsics, trajectory, and
   each exported candidate object is linked to point indices, geometry, camera
   metadata, and native feature keys.
+- `relation_conditioned_evidence/` maps every functional query to a stable
+  `relation_key = query_id|target_node_id|anchor_node_id`, target/anchor point
+  sidecars, native feature keys, supporting edges, and RGB-D-camera frame
+  candidates for the later projection/crop pass.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a
@@ -85,7 +93,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - the native 3DGraphLLM packet contains the base and object-selection eval
   annotation files;
 - the full multimodal readiness summary exists and every exported scene/object
-  passes the raw-modality readiness gate.
+  passes the raw-modality readiness gate;
+- the relation-conditioned evidence layer exists and covers every exported
+  functional relation plus all minimal-pair links.
 
 ## Native 3DGraphLLM Smoke Test
 

@@ -174,6 +174,32 @@ def main() -> None:
         assert summary["n_export_candidate_objects"] == sum(len(x) for x in candidates_by_scene.values())
         assert summary["n_full_export_candidate_objects"] == summary["n_export_candidate_objects"], "not all exported candidate objects are full ready"
 
+    evidence_dir = EXPORT_DIR / "relation_conditioned_evidence"
+    if evidence_dir.exists():
+        required = [
+            "README.md",
+            "RELATION_EVIDENCE_STATUS.md",
+            "relation_evidence_summary.json",
+            "relation_evidence_index.jsonl",
+            "relation_frame_candidates.jsonl",
+            "query_relation_index.jsonl",
+            "minimal_pair_relation_index.jsonl",
+            "sample_load_relation_evidence.py",
+        ]
+        for filename in required:
+            assert (evidence_dir / filename).exists(), f"missing relation evidence file: {filename}"
+        summary = json.loads((evidence_dir / "relation_evidence_summary.json").read_text(encoding="utf-8"))
+        expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
+        assert summary["status"] == "relation_conditioned_evidence_index_ready_not_projected"
+        assert summary["n_relations"] == expected_relations
+        assert summary["n_relation_evidence_ready"] == expected_relations
+        assert summary["n_minimal_pairs"] == EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
+        assert summary["n_minimal_pairs_ready"] == EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
+        relation_rows = read_jsonl(evidence_dir / "relation_evidence_index.jsonl")
+        assert len(relation_rows) == expected_relations
+        assert all(row["relation_evidence_ready"] is True for row in relation_rows), "not all relation evidence rows are ready"
+        assert all("|" in row["relation_key"] for row in relation_rows), "invalid relation key format"
+
     print("3DGraphLLM export validation passed")
 
 
