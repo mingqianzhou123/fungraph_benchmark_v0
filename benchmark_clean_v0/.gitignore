@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+*.tmp
+*.bak
+
+# Regenerable local visual/point-cloud assets. Commit manifests/QC metadata, not
+# bulk crops or exported point segments.
+exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/crops_local/
+exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/pointclouds_local/
