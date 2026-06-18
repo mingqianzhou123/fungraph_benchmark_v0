@@ -116,9 +116,13 @@ def main() -> None:
             "fungraph_scene3d_videofeats.pt",
             "fungraph_scene3d_gnn_feats.pt",
             "fungraph_functional_500_val.json",
+            "fungraph_functional_500_objselect_val.json",
             "fungraph_human_133_val.json",
+            "fungraph_human_133_objselect_val.json",
             "fungraph_long_range_50_val.json",
+            "fungraph_long_range_50_objselect_val.json",
             "fungraph_smoke_1_val.json",
+            "fungraph_objselect_smoke_1_val.json",
             "config_fungraph_eval.py",
         ]
         for filename in expected_native_files:

@@ -38,6 +38,16 @@ QUERY_FILES = {
 }
 
 
+def object_selection_prompt(task_prompt: str) -> str:
+    prompt = " ".join(str(task_prompt).split())
+    return (
+        "Select the single object in the 3D scene that best satisfies this functional request. "
+        f"Request: {prompt} "
+        "Answer with exactly one object id token in the format <OBJ###>. "
+        "Do not explain. Do not output more than one object id."
+    )
+
+
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     with path.open("r", encoding="utf-8") as f:
@@ -163,6 +173,17 @@ def build_native_annos(name: str, rows: list[dict[str, Any]], geometry: dict[str
     return annos
 
 
+def build_object_selection_annos(name: str, annos: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    converted: list[dict[str, Any]] = []
+    for row in annos:
+        new_row = dict(row)
+        new_row["base_prompt"] = row.get("prompt", "")
+        new_row["prompt"] = object_selection_prompt(str(row.get("prompt", "")))
+        new_row["eval_type"] = f"{name}_objselect"
+        converted.append(new_row)
+    return converted
+
+
 def update_node_mapping(geometry: dict[str, dict[str, Any]]) -> None:
     mapping = json.loads(NODE_MAPPING_JSON.read_text(encoding="utf-8"))
     for key, item in mapping.items():
@@ -204,9 +225,13 @@ val_tag = "fungraph_functional_500"
 train_file_dict = {{}}
 val_file_dict = {{
     "fungraph_functional_500": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_functional_500_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_functional_500_objselect": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_functional_500_objselect_val.json", seg_val_gnn_file, "gt"],
     "fungraph_human_133": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_human_133_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_human_133_objselect": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_human_133_objselect_val.json", seg_val_gnn_file, "gt"],
     "fungraph_long_range_50": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_long_range_50_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_long_range_50_objselect": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_long_range_50_objselect_val.json", seg_val_gnn_file, "gt"],
     "fungraph_smoke_1": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_smoke_1_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_objselect_smoke_1": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{{anno_root}}/fungraph_objselect_smoke_1_val.json", seg_val_gnn_file, "gt"],
 }}
 
 num_workers = 0
@@ -263,9 +288,17 @@ def main() -> None:
         write_json(packet_dir / f"fungraph_{name}_val.json", annos)
         counts[name] = len(annos)
 
+        objselect_annos = build_object_selection_annos(name, annos)
+        write_json(packet_dir / f"fungraph_{name}_objselect_val.json", objselect_annos)
+        counts[f"{name}_objselect"] = len(objselect_annos)
+
     smoke_annos = built_annos["functional_500"][:1]
     write_json(packet_dir / "fungraph_smoke_1_val.json", smoke_annos)
     counts["smoke_1"] = len(smoke_annos)
+
+    objselect_smoke_annos = build_object_selection_annos("functional_500", smoke_annos)
+    write_json(packet_dir / "fungraph_objselect_smoke_1_val.json", objselect_smoke_annos)
+    counts["objselect_smoke_1"] = len(objselect_smoke_annos)
 
     update_node_mapping(geometry)
     write_config(packet_dir)

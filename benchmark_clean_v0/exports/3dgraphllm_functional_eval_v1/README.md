@@ -36,7 +36,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `scene_rgbd_manifest.csv` | Scene-level RGB/depth/frame/trajectory coverage |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
+| `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
 | `scripts/evaluate_fungraph_predictions.py` | FunGraph functional evaluator for 3DGraphLLM `preds_*.json` files |
+| `scripts/build_object_selection_splits.py` | Builds native prompt variants that ask for exactly one `<OBJxxx>` answer |
 
 ## Current Policy
 
@@ -50,6 +52,10 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   features: point/color object features from PLY+indices, RGB-D/camera features
   from frame coverage and annotation camera metadata, and relative-geometry GNN
   features.
+- `native_3dgraphllm/` also includes object-selection prompt variants for
+  `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
+  These preserve the original target objects and query ids while forcing a
+  stricter `<OBJxxx>` answer protocol.
 - These are not pretrained Uni3D/video-network embeddings. Gate 1 scientific
   reporting must use `asset_alignment_report.md` and describe them as
   SceneFun3D adapter features unless encoder-specific Uni3D/video features are
@@ -64,7 +70,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - every answer key references an exported query;
 - every exported query has a scene, target, source, and difficulty tags;
 - the frozen generated eval has exactly 500 rows;
-- human/minimal-pair/long-range counts match the expected local files.
+- human/minimal-pair/long-range counts match the expected local files;
+- the native 3DGraphLLM packet contains the base and object-selection eval
+  annotation files.
 
 ## Native 3DGraphLLM Smoke Test
 
@@ -99,3 +107,7 @@ functional localization metric. After each run, evaluate the predictions with:
 The primary metric requires an explicit `<OBJxxx>` token matching the target
 object id. Free-text label overlap is written as a diagnostic only and is not
 counted as accuracy.
+
+The original free-form `functional_500` run and controlled object-selection
+variant are recorded in `FULL_EVAL_20260618.md` and
+`OBJECT_SELECTION_EVAL_20260618.md`.

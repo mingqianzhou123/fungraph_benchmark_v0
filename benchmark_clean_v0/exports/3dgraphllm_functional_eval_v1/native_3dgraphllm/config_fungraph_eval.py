@@ -21,9 +21,13 @@ val_tag = "fungraph_functional_500"
 train_file_dict = {}
 val_file_dict = {
     "fungraph_functional_500": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_functional_500_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_functional_500_objselect": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_functional_500_objselect_val.json", seg_val_gnn_file, "gt"],
     "fungraph_human_133": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_human_133_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_human_133_objselect": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_human_133_objselect_val.json", seg_val_gnn_file, "gt"],
     "fungraph_long_range_50": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_long_range_50_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_long_range_50_objselect": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_long_range_50_objselect_val.json", seg_val_gnn_file, "gt"],
     "fungraph_smoke_1": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_smoke_1_val.json", seg_val_gnn_file, "gt"],
+    "fungraph_objselect_smoke_1": [seg_feat_file, seg_img_feat_file, seg_val_attr_file, f"{anno_root}/fungraph_objselect_smoke_1_val.json", seg_val_gnn_file, "gt"],
 }
 
 num_workers = 0
