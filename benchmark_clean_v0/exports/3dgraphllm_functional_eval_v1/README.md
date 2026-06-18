@@ -13,6 +13,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_e
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_relation_conditioned_evidence.py
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_projection_dryrun.py
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_frame_crop_qc.py --write-local-crops
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_full_perception_evidence.py --write-images
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -53,6 +54,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `scripts/build_relation_conditioned_evidence.py` | Builds query-level target-anchor evidence manifests |
 | `scripts/build_projection_dryrun.py` | Builds placeholder target/anchor projection metadata for candidate RGB-D frames |
 | `scripts/build_full_frame_crop_qc.py` | Mines all scene RGB-D frames, applies depth z-test, and builds frozen crop metadata/QC |
+| `scripts/build_full_perception_evidence.py` | Builds 683/683 full-coverage perception evidence cards with RGB-D crop when available and pointcloud-render fallback otherwise |
 | `scripts/export_relation_point_segments.py` | Optional local exporter for target/anchor PLY point segments; outputs should not be committed |
 
 ## Current Policy
@@ -76,6 +78,12 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   sidecars, native feature keys, supporting edges, RGB-D-camera frame
   candidates, placeholder projection dry-run metadata, and frozen full-frame
   mined depth-tested crop metadata/QC artifacts.
+- `relation_conditioned_evidence/full_perception_evidence_index.jsonl` is the
+  current full-coverage perception layer: all 683 / 683 functional relations
+  have one inspectable visual evidence card. Rows with real co-visible RGB-D
+  evidence keep their strict `official_crop_*` crop metadata; rows without such
+  views use a GT pointcloud-render fallback and must not be described as
+  depth-tested camera crops.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a
@@ -100,7 +108,9 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 - the full multimodal readiness summary exists and every exported scene/object
   passes the raw-modality readiness gate;
 - the relation-conditioned evidence layer exists and covers every exported
-  functional relation plus all minimal-pair links.
+  functional relation plus all minimal-pair links;
+- the full perception evidence layer covers all 683 relations and records which
+  rows have strict RGB-D crop evidence versus pointcloud-render fallback.
 
 ## Native 3DGraphLLM Smoke Test
 

@@ -249,6 +249,32 @@ def main() -> None:
             assert (evidence_dir / "qc_overlays").exists(), "missing qc_overlays directory"
             assert len(list((evidence_dir / "qc_overlays").glob("*.jpg"))) >= 1, "missing QC overlay images"
 
+        full_perception_summary_path = evidence_dir / "full_perception_evidence_summary.json"
+        full_perception_index_path = evidence_dir / "full_perception_evidence_index.jsonl"
+        full_perception_status_path = evidence_dir / "FULL_PERCEPTION_EVIDENCE_STATUS.md"
+        full_perception_image_dir = evidence_dir / "full_perception_evidence" / "images"
+        if any(path.exists() for path in [full_perception_summary_path, full_perception_index_path, full_perception_status_path]):
+            assert full_perception_summary_path.exists(), "missing full_perception_evidence_summary.json"
+            assert full_perception_index_path.exists(), "missing full_perception_evidence_index.jsonl"
+            assert full_perception_status_path.exists(), "missing FULL_PERCEPTION_EVIDENCE_STATUS.md"
+            full_perception_summary = json.loads(full_perception_summary_path.read_text(encoding="utf-8"))
+            full_perception_rows = read_jsonl(full_perception_index_path)
+            assert full_perception_summary["status"] == "full_perception_evidence_ready"
+            assert full_perception_summary["selection_rule_version"] == "full_perception_evidence_v1_20260618_rgbd_or_pointcloud"
+            assert full_perception_summary["n_relations"] == expected_relations
+            assert full_perception_summary["n_visual_evidence_ready"] == expected_relations
+            assert len(full_perception_rows) == expected_relations
+            assert all(row["visual_evidence_ready"] is True for row in full_perception_rows), "not all relations have visual evidence"
+            assert all(row["evidence_tier"] in {"rgbd_crop_plus_pointcloud_render", "pointcloud_render_fallback"} for row in full_perception_rows), "unknown perception evidence tier"
+            assert full_perception_summary["n_depth_tested_rgbd_crop_relations"] == sum(row["has_depth_tested_rgbd_crop"] for row in full_perception_rows)
+            assert full_perception_summary["n_pointcloud_render_fallback_relations"] == sum(not row["has_depth_tested_rgbd_crop"] for row in full_perception_rows)
+            if full_perception_summary.get("images_written"):
+                assert full_perception_image_dir.exists(), "missing full perception image directory"
+                image_count = len(list(full_perception_image_dir.glob("*/*.jpg")))
+                assert image_count == expected_relations, f"expected {expected_relations} perception images, got {image_count}"
+                for row in full_perception_rows:
+                    assert (evidence_dir.parent / row["primary_visual_rel_path"]).exists(), f"missing perception image: {row['primary_visual_rel_path']}"
+
     print("3DGraphLLM export validation passed")
 
 

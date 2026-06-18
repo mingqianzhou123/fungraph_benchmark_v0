@@ -23,8 +23,14 @@ Files:
 - `official_frame_projection_index.jsonl`: depth-tested projection metadata for top full-frame-mined candidates.
 - `official_crop_summary.json`: machine-readable frozen crop/QC coverage summary.
 - `OFFICIAL_CROP_STATUS.md`: human-readable frozen crop/QC status.
+- `full_perception_evidence_index.jsonl`: one row per relation with the benchmark-facing visual evidence artifact; strict RGB-D crop rows keep their official metadata, and non-crop rows use pointcloud-render fallback.
+- `full_perception_evidence_summary.json`: machine-readable 683/683 full perception coverage summary.
+- `FULL_PERCEPTION_EVIDENCE_STATUS.md`: human-readable full perception evidence status and boundary notes.
+- `full_perception_evidence/images/`: lightweight JPEG evidence cards for all relations.
 - `p4_qc_report.csv`: relation-level QC table with readiness and failure reasons.
 - `p4_sanity_examples.html` and `qc_overlays/`: small diagnostic overlay page for visual spot-checking.
 - `sample_load_relation_evidence.py`: tiny loader for querying this layer.
 
 Important boundary: `official_*` crop metadata is the frozen depth-tested evidence layer. Large crop images are generated under ignored `crops_local/` and are not committed; `qc_overlays/` are small diagnostic spot-check artifacts, not training data.
+
+For full-coverage perception experiments, use `full_perception_evidence_index.jsonl`. It reaches 683 / 683 relation coverage by using depth-tested RGB-D crop evidence when available and GT pointcloud-render fallback otherwise. Do not report fallback rows as real camera crops.

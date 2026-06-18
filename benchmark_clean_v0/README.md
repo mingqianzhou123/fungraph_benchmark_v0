@@ -147,6 +147,7 @@ Important status files:
 exports/3dgraphllm_functional_eval_v1/FULL_MULTIMODAL_BENCHMARK_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/RELATION_EVIDENCE_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/OFFICIAL_CROP_STATUS.md
+exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/FULL_PERCEPTION_EVIDENCE_STATUS.md
 ```
 
 Validate the export with:
@@ -155,4 +156,4 @@ Validate the export with:
 python3 exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
 
-Large regenerated crops and point-cloud segments live in ignored local folders under `relation_conditioned_evidence/`; commit manifests, reports, and QC metadata, not bulk visual assets.
+Large regenerated crops and point-cloud segments live in ignored local folders under `relation_conditioned_evidence/`; commit manifests, reports, and QC metadata, not bulk raw visual assets. The exception is `relation_conditioned_evidence/full_perception_evidence/images/`, which contains lightweight committed evidence cards for the 683 / 683 full-coverage perception layer.
