@@ -1,0 +1,43 @@
+{
+  "functional_decision_counts": {
+    "ai_recommend_accept_after_human_spotcheck": 69,
+    "needs_human_review": 9,
+    "revise_wording_before_signoff": 38
+  },
+  "functional_flag_counts": {
+    "fallback_template_wording": 4,
+    "new_expansion_relation_pointcloud_only": 21,
+    "no_depth_tested_rgbd_crop": 70,
+    "same_label_disambiguation_requires_visual_check": 74,
+    "slash_label_needs_wording_cleanup": 34,
+    "source_relation_has_spacing_typo": 1
+  },
+  "n_functional_ai_accept": 69,
+  "n_functional_needs_review": 9,
+  "n_functional_reviewed": 116,
+  "n_functional_revise_wording": 38,
+  "n_pair_ai_accept": 16,
+  "n_pair_needs_review_or_reject": 10,
+  "n_pair_reviewed": 60,
+  "n_pair_secondary_only": 34,
+  "pair_decision_counts": {
+    "ai_recommend_accept_after_human_spotcheck": 16,
+    "keep_as_secondary_diagnostic_only": 34,
+    "needs_human_review": 9,
+    "needs_human_review_not_primary_pair": 1
+  },
+  "pair_flag_counts": {
+    "high_frequency_target_label": 55,
+    "pair_endpoint_not_in_116_functional_candidate_split": 34,
+    "same_target_answer_not_useful_for_object_selection_contrast": 1,
+    "small_spatial_separation": 25
+  },
+  "paper_use_allowed": false,
+  "required_before_paper_use": [
+    "human wording review",
+    "evidence spot-check",
+    "Dennis signoff",
+    "final paper manifest"
+  ],
+  "status": "ai_prereview_ready_not_human_annotation"
+}

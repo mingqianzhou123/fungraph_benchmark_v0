@@ -303,6 +303,15 @@ def main() -> None:
             "perception_evidence/EXPANSION_PERCEPTION_EVIDENCE_STATUS.md",
             "perception_evidence/expansion_perception_evidence_summary.json",
             "perception_evidence/expansion_perception_evidence_index.jsonl",
+            "ai_prereview_v1/AI_PREREVIEW_STATUS.md",
+            "ai_prereview_v1/ai_prereview_summary.json",
+            "ai_prereview_v1/functional_ai_prereview_v1.jsonl",
+            "ai_prereview_v1/functional_ai_prereview_v1.csv",
+            "ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl",
+            "ai_prereview_v1/minimal_pair_ai_prereview_v1.jsonl",
+            "ai_prereview_v1/minimal_pair_ai_prereview_v1.csv",
+            "ai_prereview_v1/minimal_pair_ai_recommended_accept_v1.jsonl",
+            "DENNIS_BENCHMARK_SIGNOFF_PACKET.md",
         ]
         for filename in required:
             assert (expansion_dir / filename).exists(), f"missing expansion_v1 file: {filename}"
@@ -314,6 +323,7 @@ def main() -> None:
         balanced_summary = json.loads((expansion_dir / "balanced_unique_relation_candidate_summary.json").read_text(encoding="utf-8"))
         freeze_summary = json.loads((expansion_dir / "freeze_candidate_summary.json").read_text(encoding="utf-8"))
         expansion_evidence_summary = json.loads((expansion_dir / "perception_evidence" / "expansion_perception_evidence_summary.json").read_text(encoding="utf-8"))
+        prereview_summary = json.loads((expansion_dir / "ai_prereview_v1" / "ai_prereview_summary.json").read_text(encoding="utf-8"))
         pool_rows = read_jsonl(expansion_dir / "unique_relation_pool_v1.jsonl")
         draft_rows = read_jsonl(expansion_dir / "functional_unique_relation_585_draft.jsonl")
         pair_rows = read_jsonl(expansion_dir / "minimal_pair_candidates_v1.jsonl")
@@ -321,6 +331,10 @@ def main() -> None:
         freeze_functional_rows = read_jsonl(expansion_dir / "functional_balanced_116_frozen_candidate.jsonl")
         freeze_pair_rows = read_jsonl(expansion_dir / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
         expansion_evidence_rows = read_jsonl(expansion_dir / "perception_evidence" / "expansion_perception_evidence_index.jsonl")
+        prereview_functional_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "functional_ai_prereview_v1.jsonl")
+        prereview_pair_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_prereview_v1.jsonl")
+        prereview_functional_accept_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "functional_ai_recommended_accept_v1.jsonl")
+        prereview_pair_accept_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_recommended_accept_v1.jsonl")
 
         expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
         assert distribution["status"] == "distribution_audit_ready"
@@ -353,6 +367,16 @@ def main() -> None:
         assert expansion_evidence_summary["n_visual_evidence_ready"] == len(freeze_functional_rows)
         assert expansion_evidence_summary["n_previously_missing_relations_now_have_pointcloud_evidence"] == freeze_summary["n_functional_needing_evidence_generation"]
         assert (EXPORT_DIR / "BENCHMARK_CLAIM_AUDIT.md").exists(), "missing BENCHMARK_CLAIM_AUDIT.md"
+        assert prereview_summary["status"] == "ai_prereview_ready_not_human_annotation"
+        assert prereview_summary["paper_use_allowed"] is False
+        assert len(prereview_functional_rows) == prereview_summary["n_functional_reviewed"] == len(freeze_functional_rows)
+        assert len(prereview_pair_rows) == prereview_summary["n_pair_reviewed"] == len(freeze_pair_rows)
+        assert len(prereview_functional_accept_rows) == prereview_summary["n_functional_ai_accept"]
+        assert len(prereview_pair_accept_rows) == prereview_summary["n_pair_ai_accept"]
+        assert all(row.get("paper_use_allowed") is False for row in prereview_functional_rows), "AI pre-review functional rows must not be paper-enabled"
+        assert all(row.get("dennis_signoff_required") is True for row in prereview_functional_rows), "AI pre-review functional rows require Dennis signoff"
+        assert prereview_summary["n_functional_ai_accept"] > 0
+        assert prereview_summary["n_functional_revise_wording"] > 0
 
         draft_ids = {row["query_id"] for row in draft_rows}
         allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
