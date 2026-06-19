@@ -39,6 +39,19 @@ For same-scene, same-label, same-relation functional elements, the protocol crea
 
 
 
+
+## FunGraph Factorized v2
+
+FunGraph/SceneFun3D v2 generates new queries directly from release functional relations. It uses the same controlled axes as FunTHOR v2:
+
+```text
+Functional Query Type x Spatial Scope x Anchor Visibility
+```
+
+Generated FunGraph/SceneFun3D factorized v2 queries: 2033
+
+These rows are paper-disabled until wording review, evidence spot-check, and Dennis signoff.
+
 ## FunGraph Existing Query Taxonomy v2
 
 The original FunGraph/SceneFun3D release queries are preserved unchanged. A derived categorized view adds the same analysis axes used for FunTHOR v2:

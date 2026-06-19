@@ -35,6 +35,34 @@
       },
       "n_rows": 799
     },
+    "fungraph_factorized_v2": {
+      "by_anchor_visibility": {
+        "anchor_explicit": 919,
+        "anchor_hidden": 724,
+        "anchor_implicit": 390
+      },
+      "by_answer_format": {
+        "boolean": 195,
+        "node_selection": 1643,
+        "text": 195
+      },
+      "by_functional_query_type": {
+        "ambiguous_instance_minimal_pair": 278,
+        "functional_affordance_selection": 195,
+        "functional_consequence_prediction": 195,
+        "functional_element_selection": 585,
+        "relation_verification": 195,
+        "state_change_goal_completion": 390,
+        "target_object_selection": 195
+      },
+      "by_spatial_scope": {
+        "local": 1689,
+        "remote": 344
+      },
+      "n_rows": 2033,
+      "n_scenes": 20,
+      "n_source_functional_relations": 195
+    },
     "n_candidate_nodes": 317,
     "n_external_funthor_factorized_v2_queries": 1655,
     "n_external_funthor_minimal_pairs": 200,
@@ -43,6 +71,7 @@
     "n_functional_part_like_nodes": 209,
     "n_functional_relations": 195,
     "n_fungraph_existing_queries_categorized_v2": 799,
+    "n_fungraph_factorized_v2_queries": 2033,
     "n_scenes": 20,
     "n_total_release_query_rows_including_external": 3547,
     "n_unique_functional_labels": 13,
@@ -88,6 +117,20 @@
       "n_scenes": 12,
       "paper_use_allowed": false,
       "query_split": "splits/funthor_functional_queries_v1.jsonl"
+    }
+  },
+  "generated_splits": {
+    "fungraph_functional_queries_factorized_v2": {
+      "axes": [
+        "functional_query_type",
+        "spatial_scope",
+        "anchor_visibility"
+      ],
+      "n_rows": 2033,
+      "paper_use_allowed": false,
+      "path": "splits/fungraph_functional_queries_factorized_v2.jsonl",
+      "source": "release scene functional_relations",
+      "summary": "fungraph_factorized_v2_summary.json"
     }
   },
   "query_protocol": "query_protocol_v1.md",

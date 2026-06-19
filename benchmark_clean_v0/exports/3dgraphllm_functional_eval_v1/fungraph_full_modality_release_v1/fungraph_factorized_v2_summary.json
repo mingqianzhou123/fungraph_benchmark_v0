@@ -1,0 +1,41 @@
+{
+  "counts": {
+    "by_anchor_visibility": {
+      "anchor_explicit": 919,
+      "anchor_hidden": 724,
+      "anchor_implicit": 390
+    },
+    "by_answer_format": {
+      "boolean": 195,
+      "node_selection": 1643,
+      "text": 195
+    },
+    "by_functional_query_type": {
+      "ambiguous_instance_minimal_pair": 278,
+      "functional_affordance_selection": 195,
+      "functional_consequence_prediction": 195,
+      "functional_element_selection": 585,
+      "relation_verification": 195,
+      "state_change_goal_completion": 390,
+      "target_object_selection": 195
+    },
+    "by_spatial_scope": {
+      "local": 1689,
+      "remote": 344
+    },
+    "n_rows": 2033,
+    "n_scenes": 20,
+    "n_source_functional_relations": 195
+  },
+  "dennis_signoff_required": true,
+  "human_review_required": true,
+  "notes": "Newly generated candidate split; canonical old eval splits are unchanged.",
+  "paper_use_allowed": false,
+  "source": "release scene functional_relations",
+  "status": "fungraph_factorized_v2_ready",
+  "taxonomy_axes": [
+    "functional_query_type",
+    "spatial_scope",
+    "anchor_visibility"
+  ]
+}

@@ -38,6 +38,7 @@ fungraph_full_modality_release_v1/
 4. `splits/expansion_functional_116_candidates.jsonl` only as paper-disabled candidates requiring human/Dennis signoff.
 
 
+- `splits/fungraph_functional_queries_factorized_v2.jsonl` contains 2033 newly generated FunGraph/SceneFun3D factorized queries over Functional Query Type x Spatial Scope x Anchor Visibility.
 - `splits/fungraph_existing_queries_categorized_v2.jsonl` contains 799 existing FunGraph/SceneFun3D queries annotated with Functional Query Type x Spatial Scope x Anchor Visibility.
 
 ## External FunTHOR Extension

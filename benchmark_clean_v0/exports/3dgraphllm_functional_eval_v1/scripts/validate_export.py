@@ -384,6 +384,8 @@ def main() -> None:
             "splits/funthor_functional_queries_factorized_v2.jsonl",
             "splits/fungraph_existing_queries_categorized_v2.jsonl",
             "fungraph_query_taxonomy_v2_summary.json",
+            "splits/fungraph_functional_queries_factorized_v2.jsonl",
+            "fungraph_factorized_v2_summary.json",
         ]
         for filename in required:
             assert (release_dir / filename).exists(), f"missing full-modality release file: {filename}"
@@ -421,6 +423,21 @@ def main() -> None:
         assert derived["axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
         assert set(fungraph_taxonomy_summary["counts"]["by_spatial_scope"]) == {"local", "remote"}
         assert set(fungraph_taxonomy_summary["counts"]["by_anchor_visibility"]) == {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
+
+        fungraph_factorized_summary = json.loads((release_dir / "fungraph_factorized_v2_summary.json").read_text(encoding="utf-8"))
+        fungraph_factorized_rows = read_jsonl(release_dir / "splits" / "fungraph_functional_queries_factorized_v2.jsonl")
+        assert fungraph_factorized_summary["status"] == "fungraph_factorized_v2_ready"
+        assert fungraph_factorized_summary["paper_use_allowed"] is False
+        assert len(fungraph_factorized_rows) == fungraph_factorized_summary["counts"]["n_rows"] == 2033
+        assert fungraph_factorized_summary["counts"]["n_source_functional_relations"] == 195
+        assert release_manifest["counts"]["n_fungraph_factorized_v2_queries"] == 2033
+        generated = release_manifest.get("generated_splits", {}).get("fungraph_functional_queries_factorized_v2")
+        assert generated, "missing FunGraph factorized v2 generated split"
+        assert generated["n_rows"] == 2033
+        assert generated["paper_use_allowed"] is False
+        assert generated["axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
+        assert set(fungraph_factorized_summary["counts"]["by_spatial_scope"]) == {"local", "remote"}
+        assert set(fungraph_factorized_summary["counts"]["by_anchor_visibility"]) == {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
 
         external = release_manifest.get("external_datasets", {}).get("funthor_v1")
         assert external, "missing FunTHOR external dataset entry in release manifest"
@@ -482,6 +499,28 @@ def main() -> None:
         allowed_scopes = {"local", "remote"}
         allowed_anchor_visibility = {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
         allowed_answer_formats = {"node_selection", "boolean", "text"}
+        fungraph_factorized_ids = {row["query_id"] for row in fungraph_factorized_rows}
+        assert len(fungraph_factorized_ids) == len(fungraph_factorized_rows), "duplicate FunGraph factorized v2 query ids"
+        for row in fungraph_factorized_rows:
+            qid = row["query_id"]
+            assert row["dataset"] == "scenefun3d"
+            assert row["generation_version"] == "factorized_v2"
+            assert row["paper_use_allowed"] is False
+            assert row["human_review_required"] is True
+            assert row["dennis_signoff_required"] is True
+            assert row["functional_query_type"] in allowed_query_types, f"{qid}: invalid FunGraph factorized query type"
+            assert row["spatial_scope"] in allowed_scopes, f"{qid}: invalid FunGraph factorized spatial scope"
+            assert row["anchor_visibility"] in allowed_anchor_visibility, f"{qid}: invalid FunGraph factorized anchor visibility"
+            assert row["answer_format"] in allowed_answer_formats, f"{qid}: invalid FunGraph factorized answer format"
+            assert row["functional_taxonomy"]["spatial_scope"] == row["spatial_scope"], f"{qid}: taxonomy scope mismatch"
+            assert row["functional_taxonomy"]["anchor_visibility"] == row["anchor_visibility"], f"{qid}: taxonomy anchor mismatch"
+            for target in row.get("target_node_ids") or []:
+                assert target in set(row["candidate_node_ids"]), f"{qid}: target outside candidate set"
+            if row["answer_format"] == "boolean":
+                assert row.get("answer_boolean") is True, f"{qid}: boolean query must carry answer_boolean"
+            if row["answer_format"] == "text":
+                assert row.get("answer_text"), f"{qid}: text query must carry answer_text"
+
         fungraph_categorized_ids = {row["query_id"] for row in fungraph_categorized_rows}
         assert len(fungraph_categorized_ids) == len(fungraph_categorized_rows), "duplicate FunGraph categorized v2 query ids"
         for row in fungraph_categorized_rows:
