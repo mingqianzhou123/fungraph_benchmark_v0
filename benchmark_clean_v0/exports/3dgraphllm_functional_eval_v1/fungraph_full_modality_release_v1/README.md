@@ -44,7 +44,8 @@ Dennis suggested defining one query protocol across functional-scenegraph datase
 
 - `query_protocol_v1.md` defines the shared generation protocol.
 - `external/funthor_v1/funthor_manifest.json` stores compact FunTHOR scene/node/edge metadata and HF raw asset pointers.
-- `splits/funthor_functional_queries_v1.jsonl` contains 805 protocol-generated FunTHOR functional queries.
+- `splits/funthor_functional_queries_v1.jsonl` contains 805 template-v1 FunTHOR functional queries for smoke testing.
+- `splits/funthor_functional_queries_factorized_v2.jsonl` contains 1655 factorized FunTHOR queries over Functional Query Type x Spatial Scope x Anchor Visibility.
 - `splits/funthor_minimal_pairs_v1.jsonl` contains 200 same-label functional-element diagnostic pairs.
 
 These rows are rule-grounded but still paper-disabled until human wording review, evidence spot-check, and Dennis signoff.

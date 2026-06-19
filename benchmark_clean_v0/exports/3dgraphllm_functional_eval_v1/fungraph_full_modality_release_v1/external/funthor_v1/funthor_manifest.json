@@ -1,5 +1,6 @@
 {
   "counts": {
+    "n_factorized_v2_queries": 1655,
     "n_functional_edges": 164,
     "n_generated_minimal_pairs": 200,
     "n_generated_queries": 805,
@@ -10,6 +11,38 @@
     "n_visible_endpoint_edges": 161
   },
   "dataset": "leggedrobotics/funthor-dataset",
+  "factorized_v2": {
+    "anchor_visibility_counts": {
+      "anchor_explicit": 747,
+      "anchor_hidden": 586,
+      "anchor_implicit": 322
+    },
+    "answer_format_counts": {
+      "boolean": 161,
+      "node_selection": 1333,
+      "text": 161
+    },
+    "axes": [
+      "functional_query_type",
+      "spatial_scope",
+      "anchor_visibility"
+    ],
+    "paper_use_allowed": false,
+    "query_split": "../../splits/funthor_functional_queries_factorized_v2.jsonl",
+    "query_type_counts": {
+      "ambiguous_instance_minimal_pair": 206,
+      "functional_affordance_selection": 161,
+      "functional_consequence_prediction": 161,
+      "functional_element_selection": 483,
+      "relation_verification": 161,
+      "state_change_goal_completion": 322,
+      "target_object_selection": 161
+    },
+    "spatial_scope_counts": {
+      "local": 1362,
+      "remote": 293
+    }
+  },
   "query_protocol": "../../query_protocol_v1.md",
   "raw_asset_policy": "Raw RGB-D, pose, intrinsics, and pointcloud files stay on Hugging Face and are referenced by URL/path; this manifest stores compact graph metadata only.",
   "relation_counts": {

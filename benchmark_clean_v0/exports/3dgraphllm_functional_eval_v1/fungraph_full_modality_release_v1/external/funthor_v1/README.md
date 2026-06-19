@@ -13,3 +13,8 @@ Generated queries: 805
 Generated minimal pairs: 200
 
 The generated rows are paper-disabled until human wording review, visual/evidence spot-check, and Dennis signoff.
+
+
+Factorized v2 queries: 1655
+
+`../../splits/funthor_functional_queries_factorized_v2.jsonl` is the newer controlled split. It keeps v1's grounded functional edges but varies `functional_query_type`, `spatial_scope`, and `anchor_visibility` so we can measure which factor drives model performance.

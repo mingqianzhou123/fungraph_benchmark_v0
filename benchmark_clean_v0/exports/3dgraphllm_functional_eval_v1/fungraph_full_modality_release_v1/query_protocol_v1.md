@@ -37,6 +37,23 @@ For same-scene, same-label, same-relation functional elements, the protocol crea
 - Generated FunTHOR functional queries: 805
 - Generated FunTHOR minimal pairs: 200
 
+
+## FunTHOR Factorized v2
+
+FunTHOR v2 keeps the same grounded functional edges but varies three controlled factors:
+
+```text
+Functional Query Type x Spatial Scope x Anchor Visibility
+```
+
+- `functional_query_type`: what the question asks, e.g. selecting a functional element, selecting an affected object, verifying a relation, completing a goal, or predicting a consequence.
+- `spatial_scope`: whether the functional relation is local or remote. This is assigned from the relation itself.
+- `anchor_visibility`: whether the query explicitly names the anchor object, only hints at it, or hides it behind a goal.
+
+Generated FunTHOR factorized v2 queries: 1655
+
+These rows are still paper-disabled until wording review, evidence spot-check, and Dennis signoff.
+
 ## Paper-Use Boundary
 
 The FunTHOR queries are rule-grounded but still protocol-generated. They are included in the benchmark release as external dataset coverage and should remain paper-disabled until wording review, evidence spot-check, and Dennis signoff.

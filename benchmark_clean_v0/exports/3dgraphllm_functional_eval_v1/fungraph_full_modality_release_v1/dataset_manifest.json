@@ -10,13 +10,14 @@
   },
   "counts": {
     "n_candidate_nodes": 317,
+    "n_external_funthor_factorized_v2_queries": 1655,
     "n_external_funthor_minimal_pairs": 200,
     "n_external_funthor_queries": 805,
     "n_frames": 13039,
     "n_functional_part_like_nodes": 209,
     "n_functional_relations": 195,
     "n_scenes": 20,
-    "n_total_release_query_rows_including_external": 1892,
+    "n_total_release_query_rows_including_external": 3547,
     "n_unique_functional_labels": 13,
     "n_unique_labels": 54,
     "n_unique_relations": 21
@@ -25,8 +26,15 @@
   "external_datasets": {
     "funthor_v1": {
       "dataset": "leggedrobotics/funthor-dataset",
+      "factorized_v2_axes": [
+        "functional_query_type",
+        "spatial_scope",
+        "anchor_visibility"
+      ],
+      "factorized_v2_query_split": "splits/funthor_functional_queries_factorized_v2.jsonl",
       "manifest": "external/funthor_v1/funthor_manifest.json",
       "minimal_pair_split": "splits/funthor_minimal_pairs_v1.jsonl",
+      "n_factorized_v2_queries": 1655,
       "n_functional_edges": 164,
       "n_generated_minimal_pairs": 200,
       "n_generated_queries": 805,

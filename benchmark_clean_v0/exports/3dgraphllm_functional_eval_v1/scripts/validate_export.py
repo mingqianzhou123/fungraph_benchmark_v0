@@ -381,6 +381,7 @@ def main() -> None:
             "external/funthor_v1/funthor_manifest.json",
             "splits/funthor_functional_queries_v1.jsonl",
             "splits/funthor_minimal_pairs_v1.jsonl",
+            "splits/funthor_functional_queries_factorized_v2.jsonl",
         ]
         for filename in required:
             assert (release_dir / filename).exists(), f"missing full-modality release file: {filename}"
@@ -412,9 +413,12 @@ def main() -> None:
         assert external["n_functional_edges"] == 164
         assert external["n_generated_queries"] == 805
         assert external["n_generated_minimal_pairs"] == 200
+        assert external["n_factorized_v2_queries"] == 1655
+        assert external["factorized_v2_axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
         assert release_manifest["counts"]["n_external_funthor_queries"] == 805
         assert release_manifest["counts"]["n_external_funthor_minimal_pairs"] == 200
-        assert release_manifest["counts"]["n_total_release_query_rows_including_external"] >= 1800
+        assert release_manifest["counts"]["n_external_funthor_factorized_v2_queries"] == 1655
+        assert release_manifest["counts"]["n_total_release_query_rows_including_external"] >= 3500
 
         funthor_manifest = json.loads((release_dir / "external" / "funthor_v1" / "funthor_manifest.json").read_text(encoding="utf-8"))
         assert funthor_manifest["status"] == "funthor_external_functional_extension_ready"
@@ -423,12 +427,17 @@ def main() -> None:
         assert funthor_manifest["counts"]["n_visible_endpoint_edges"] == 161
         assert funthor_manifest["counts"]["n_generated_queries"] == 805
         assert funthor_manifest["counts"]["n_generated_minimal_pairs"] == 200
+        assert funthor_manifest["counts"]["n_factorized_v2_queries"] == 1655
         assert funthor_manifest["counts"]["n_unique_relations"] == 18
+        assert funthor_manifest["factorized_v2"]["axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
+        assert funthor_manifest["factorized_v2"]["paper_use_allowed"] is False
 
         funthor_queries = read_jsonl(release_dir / "splits" / "funthor_functional_queries_v1.jsonl")
         funthor_pairs = read_jsonl(release_dir / "splits" / "funthor_minimal_pairs_v1.jsonl")
+        funthor_v2_queries = read_jsonl(release_dir / "splits" / "funthor_functional_queries_factorized_v2.jsonl")
         assert len(funthor_queries) == 805
         assert len(funthor_pairs) == 200
+        assert len(funthor_v2_queries) == 1655
         funthor_query_ids = {row["query_id"] for row in funthor_queries}
         assert len(funthor_query_ids) == len(funthor_queries), "duplicate FunTHOR query ids"
         for row in funthor_queries:
@@ -444,6 +453,43 @@ def main() -> None:
             assert row["paper_use_allowed"] is False
             assert row["query_a_id"] in funthor_query_ids
             assert row["query_b_id"] in funthor_query_ids
+
+        allowed_query_types = {
+            "functional_element_selection",
+            "target_object_selection",
+            "relation_verification",
+            "state_change_goal_completion",
+            "ambiguous_instance_minimal_pair",
+            "functional_affordance_selection",
+            "functional_consequence_prediction",
+        }
+        allowed_scopes = {"local", "remote"}
+        allowed_anchor_visibility = {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
+        allowed_answer_formats = {"node_selection", "boolean", "text"}
+        funthor_v2_ids = {row["query_id"] for row in funthor_v2_queries}
+        assert len(funthor_v2_ids) == len(funthor_v2_queries), "duplicate FunTHOR v2 query ids"
+        assert {row["spatial_scope"] for row in funthor_v2_queries} == allowed_scopes
+        assert {row["anchor_visibility"] for row in funthor_v2_queries} == allowed_anchor_visibility
+        for row in funthor_v2_queries:
+            qid = row["query_id"]
+            assert row["dataset"] == "funthor"
+            assert row["generation_version"] == "factorized_v2"
+            assert row["paper_use_allowed"] is False
+            assert row["human_review_required"] is True
+            assert row["dennis_signoff_required"] is True
+            assert row["functional_query_type"] in allowed_query_types, f"{qid}: invalid query type"
+            assert row["spatial_scope"] in allowed_scopes, f"{qid}: invalid spatial scope"
+            assert row["anchor_visibility"] in allowed_anchor_visibility, f"{qid}: invalid anchor visibility"
+            assert row["answer_format"] in allowed_answer_formats, f"{qid}: invalid answer format"
+            assert row["functional_taxonomy"]["spatial_scope"] == row["spatial_scope"], f"{qid}: taxonomy scope mismatch"
+            assert row["functional_taxonomy"]["anchor_visibility"] == row["anchor_visibility"], f"{qid}: taxonomy anchor mismatch"
+            assert row["target_node_ids"], f"{qid}: missing target_node_ids"
+            for target in row["target_node_ids"]:
+                assert target in set(row["candidate_node_ids"]), f"{qid}: target outside candidate set"
+            if row["answer_format"] == "boolean":
+                assert row.get("answer_boolean") is True, f"{qid}: boolean query must carry answer_boolean"
+            if row["answer_format"] == "text":
+                assert row.get("answer_text"), f"{qid}: text query must carry answer_text"
 
         scene_manifest = release_manifest["scene_manifest"]
         assert len(scene_manifest) == len(candidates_by_scene)
