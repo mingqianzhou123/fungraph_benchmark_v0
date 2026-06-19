@@ -18,7 +18,7 @@ For the current 3DGraphLLM+ project, do not start from the old intern task plans
 ```text
 exports/3dgraphllm_functional_eval_v1/README.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/README.md
-exports/3dgraphllm_functional_eval_v1/benchmark_quality_v2/FUNTHOR_STYLE_BENCHMARK_STATUS.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/README.md
 STRUCTURE_AUDIT_20260618.md
 ```
 
@@ -152,8 +152,8 @@ exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/FULL_PERCEPT
 exports/3dgraphllm_functional_eval_v1/expansion_v1/README.md
 exports/3dgraphllm_functional_eval_v1/expansion_v1/expansion_manifest_v1.json
 exports/3dgraphllm_functional_eval_v1/expansion_v1/DENNIS_BENCHMARK_SIGNOFF_PACKET.md
-exports/3dgraphllm_functional_eval_v1/benchmark_quality_v2/FUNTHOR_STYLE_BENCHMARK_STATUS.md
-exports/3dgraphllm_functional_eval_v1/benchmark_quality_v2/funthor_style_readiness.json
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/README.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/dataset_manifest.json
 exports/3dgraphllm_functional_eval_v1/BENCHMARK_CLAIM_AUDIT.md
 ```
 

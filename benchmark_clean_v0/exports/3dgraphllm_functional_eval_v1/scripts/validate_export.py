@@ -360,54 +360,63 @@ def main() -> None:
             assert row.get("paper_use_allowed") is False, f"{pair_id}: pair candidates must not be paper-enabled"
 
 
-    quality_dir = EXPORT_DIR / "benchmark_quality_v2"
-    if quality_dir.exists():
+
+    release_dir = EXPORT_DIR / "fungraph_full_modality_release_v1"
+    if release_dir.exists():
         required = [
-            "FUNTHOR_STYLE_BENCHMARK_STATUS.md",
-            "funthor_style_readiness.json",
-            "funthor_style_modality_audit.csv",
-            "relation_taxonomy_v2.json",
-            "query_relation_taxonomy_index.jsonl",
-            "minimal_pair_taxonomy_index.jsonl",
+            "README.md",
+            "dataset_manifest.json",
+            "dataset_unique_labels.json",
+            "dataset_functional_labels.json",
+            "dataset_unique_relations.json",
+            "annotation_rules/functional_relation_taxonomy.json",
+            "splits/functional_500.jsonl",
+            "splits/human_133.jsonl",
+            "splits/long_range_50.jsonl",
+            "splits/minimal_pairs_28.jsonl",
+            "splits/expansion_functional_116_candidates.jsonl",
+            "splits/expansion_minimal_pairs_60_candidates.jsonl",
         ]
         for filename in required:
-            assert (quality_dir / filename).exists(), f"missing benchmark_quality_v2 file: {filename}"
+            assert (release_dir / filename).exists(), f"missing full-modality release file: {filename}"
 
-        quality_summary = json.loads((quality_dir / "funthor_style_readiness.json").read_text(encoding="utf-8"))
-        relation_summary = json.loads((quality_dir / "relation_taxonomy_v2.json").read_text(encoding="utf-8"))
-        query_taxonomy_rows = read_jsonl(quality_dir / "query_relation_taxonomy_index.jsonl")
-        pair_taxonomy_rows = read_jsonl(quality_dir / "minimal_pair_taxonomy_index.jsonl")
-        with (quality_dir / "funthor_style_modality_audit.csv").open("r", encoding="utf-8", newline="") as f:
-            modality_rows = list(__import__("csv").DictReader(f))
+        release_manifest = json.loads((release_dir / "dataset_manifest.json").read_text(encoding="utf-8"))
+        assert release_manifest["status"] == "fungraph_full_modality_release_ready"
+        assert release_manifest["counts"]["n_scenes"] == len(candidates_by_scene)
+        assert release_manifest["counts"]["n_candidate_nodes"] == sum(len(x) for x in candidates_by_scene.values())
+        assert release_manifest["counts"]["n_frames"] == summary.get("n_frame_rgbd_camera_triplets", release_manifest["counts"]["n_frames"])
+        assert release_manifest["counts"]["n_functional_relations"] >= 160
+        assert release_manifest["counts"]["n_unique_relations"] >= 20
 
-        assert quality_summary["status"] == "funthor_style_quality_layer_ready"
-        assert relation_summary["status"] == "funthor_style_relation_taxonomy_ready"
-        assert quality_summary["full_modality_summary"]["status"] == "funthor_style_full_modality_audit_ready"
-        assert quality_summary["minimal_pair_taxonomy_summary"]["status"] == "funthor_style_minimal_pair_taxonomy_ready"
-        assert len(modality_rows) == quality_summary["full_modality_summary"]["our_export"]["scenes"] == len(candidates_by_scene)
-        assert all(row["has_rgb"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without RGB"
-        assert all(row["has_depth"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without depth"
-        assert all(row["has_intrinsics"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without intrinsics"
-        assert all(row["has_camera_trajectory"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without camera trajectory"
-        assert all(row["has_scene_pointcloud"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without pointcloud"
-        assert all(row["funthor_style_full_ready"] == "True" for row in modality_rows), "not all scenes meet FunTHOR-style raw readiness"
+        expected_release_splits = {
+            "functional_500": EXPECTED_COUNTS["functional_500_eval.jsonl"],
+            "human_133": EXPECTED_COUNTS["human_133_eval.jsonl"],
+            "long_range_50": EXPECTED_COUNTS["long_range_50_eval.jsonl"],
+            "minimal_pairs_28": EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"],
+            "expansion_functional_116_candidates": 116,
+            "expansion_minimal_pairs_60_candidates": 60,
+        }
+        for split_name, expected in expected_release_splits.items():
+            rows = read_jsonl(release_dir / "splits" / f"{split_name}.jsonl")
+            assert len(rows) == expected, f"release split {split_name}: expected {expected}, got {len(rows)}"
 
-        expected_taxonomy_queries = (
-            EXPECTED_COUNTS["functional_500_eval.jsonl"]
-            + EXPECTED_COUNTS["human_133_eval.jsonl"]
-            + EXPECTED_COUNTS["long_range_50_eval.jsonl"]
-        )
-        if expansion_dir.exists():
-            expected_taxonomy_queries += 116
-        assert len(query_taxonomy_rows) == relation_summary["n_queries_indexed"] == expected_taxonomy_queries
-        assert relation_summary["taxonomy_version"] == "funthor_style_v2_20260619"
-        allowed_categories = {"part_object_operation", "object_object_affordance", "proximity_dependent_relation"}
-        assert all(row["funthor_style_category"] in allowed_categories for row in query_taxonomy_rows), "unknown FunTHOR-style query category"
-        assert any(row["ambiguity_type"] == "ambiguous_one_to_one_assignment" for row in query_taxonomy_rows), "missing ambiguous one-to-one taxonomy rows"
-
-        expected_taxonomy_pairs = EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"] + (60 if expansion_dir.exists() else 0)
-        assert len(pair_taxonomy_rows) == quality_summary["minimal_pair_taxonomy_summary"]["n_pairs_indexed"] == expected_taxonomy_pairs
-        assert quality_summary["minimal_pair_taxonomy_summary"]["n_pairs_requiring_cardinality_or_global_scene_reasoning"] > 0
+        scene_manifest = release_manifest["scene_manifest"]
+        assert len(scene_manifest) == len(candidates_by_scene)
+        for scene_row in scene_manifest:
+            scene_id = str(scene_row["scene_id"])
+            scene_json_path = release_dir / scene_row["scene_json"]
+            frames_path = release_dir / scene_row["frames_jsonl"]
+            assert scene_json_path.exists(), f"missing release scene package: {scene_json_path}"
+            assert frames_path.exists(), f"missing release frame index: {frames_path}"
+            scene_pkg = json.loads(scene_json_path.read_text(encoding="utf-8"))
+            frame_rows = read_jsonl(frames_path)
+            assert scene_pkg["scene_id"] == scene_id
+            assert len(scene_pkg["node_list"]) == len(candidates_by_scene[scene_id])
+            assert len(frame_rows) == scene_row["n_frames"] == scene_pkg["dataset"]["frame_summary"]["n_frames"]
+            assert scene_pkg["readiness"]["full_scene_ready"] is True
+            assert scene_pkg["readiness"]["funthor_style_raw_modalities_present"] is True
+            assert scene_pkg["visible"]["visibility_stats"]["n_visible_nodes"] == len(scene_pkg["visible"]["node_ids"])
+            assert all("point_annotation" in node for node in scene_pkg["node_list"]), f"{scene_id}: node missing point annotation pointer"
 
     print("3DGraphLLM export validation passed")
 

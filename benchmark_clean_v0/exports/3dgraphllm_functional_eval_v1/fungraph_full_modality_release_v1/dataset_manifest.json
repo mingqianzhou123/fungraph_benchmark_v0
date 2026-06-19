@@ -1,0 +1,291 @@
+{
+  "canonical_structure": {
+    "annotation_rules": "annotation_rules/functional_relation_taxonomy.json",
+    "dataset_manifest": "dataset_manifest.json",
+    "functional_labels": "dataset_functional_labels.json",
+    "labels": "dataset_unique_labels.json",
+    "relations": "dataset_unique_relations.json",
+    "scenes": "scenes/<scene_id>/scene.json + frames.jsonl",
+    "splits": "splits/*.jsonl"
+  },
+  "counts": {
+    "n_candidate_nodes": 317,
+    "n_frames": 13039,
+    "n_functional_part_like_nodes": 209,
+    "n_functional_relations": 195,
+    "n_scenes": 20,
+    "n_unique_functional_labels": 13,
+    "n_unique_labels": 54,
+    "n_unique_relations": 21
+  },
+  "design_reference": "FunTHOR-style layout: dataset-level label/relation files, annotation rules, query splits, and one scene package per scene with RGB-D-camera-pointcloud references.",
+  "raw_asset_policy": "Large RGB/depth/pointcloud files are referenced by relative path and are not duplicated into this release folder.",
+  "release_version": "fungraph_full_modality_release_v1_20260619",
+  "remaining_semantic_gaps": [
+    "Object-part parent hierarchy is not fully asserted; functional parts are explicit nodes with source annotation pointers.",
+    "Visible subset is an explicit release field derived from record-camera/image-feature coverage, not a separate sensor ray-tracing table.",
+    "Expansion splits remain paper-disabled until human wording review, visual evidence spot-check, and Dennis signoff."
+  ],
+  "scene_manifest": [
+    {
+      "frames_jsonl": "scenes/420683/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 773,
+      "n_functional_part_like_nodes": 12,
+      "n_functional_relations": 12,
+      "n_nodes": 21,
+      "scene_id": "420683",
+      "scene_json": "scenes/420683/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/421013/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 993,
+      "n_functional_part_like_nodes": 15,
+      "n_functional_relations": 10,
+      "n_nodes": 22,
+      "scene_id": "421013",
+      "scene_json": "scenes/421013/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/421015/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 648,
+      "n_functional_part_like_nodes": 7,
+      "n_functional_relations": 7,
+      "n_nodes": 11,
+      "scene_id": "421015",
+      "scene_json": "scenes/421015/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/421063/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 692,
+      "n_functional_part_like_nodes": 7,
+      "n_functional_relations": 7,
+      "n_nodes": 12,
+      "scene_id": "421063",
+      "scene_json": "scenes/421063/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/421254/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 741,
+      "n_functional_part_like_nodes": 23,
+      "n_functional_relations": 23,
+      "n_nodes": 28,
+      "scene_id": "421254",
+      "scene_json": "scenes/421254/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/421267/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 502,
+      "n_functional_part_like_nodes": 13,
+      "n_functional_relations": 11,
+      "n_nodes": 18,
+      "scene_id": "421267",
+      "scene_json": "scenes/421267/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/421380/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 654,
+      "n_functional_part_like_nodes": 18,
+      "n_functional_relations": 17,
+      "n_nodes": 22,
+      "scene_id": "421380",
+      "scene_json": "scenes/421380/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/421602/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 1124,
+      "n_functional_part_like_nodes": 13,
+      "n_functional_relations": 13,
+      "n_nodes": 19,
+      "scene_id": "421602",
+      "scene_json": "scenes/421602/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/422007/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 118,
+      "n_functional_part_like_nodes": 13,
+      "n_functional_relations": 13,
+      "n_nodes": 16,
+      "scene_id": "422007",
+      "scene_json": "scenes/422007/scene.json",
+      "split": "dev"
+    },
+    {
+      "frames_jsonl": "scenes/422391/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 899,
+      "n_functional_part_like_nodes": 4,
+      "n_functional_relations": 4,
+      "n_nodes": 10,
+      "scene_id": "422391",
+      "scene_json": "scenes/422391/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/422813/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 611,
+      "n_functional_part_like_nodes": 8,
+      "n_functional_relations": 8,
+      "n_nodes": 13,
+      "scene_id": "422813",
+      "scene_json": "scenes/422813/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/422826/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 231,
+      "n_functional_part_like_nodes": 4,
+      "n_functional_relations": 6,
+      "n_nodes": 10,
+      "scene_id": "422826",
+      "scene_json": "scenes/422826/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/460417/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 832,
+      "n_functional_part_like_nodes": 10,
+      "n_functional_relations": 8,
+      "n_nodes": 14,
+      "scene_id": "460417",
+      "scene_json": "scenes/460417/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/460419/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 784,
+      "n_functional_part_like_nodes": 8,
+      "n_functional_relations": 8,
+      "n_nodes": 14,
+      "scene_id": "460419",
+      "scene_json": "scenes/460419/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/466183/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 375,
+      "n_functional_part_like_nodes": 8,
+      "n_functional_relations": 6,
+      "n_nodes": 14,
+      "scene_id": "466183",
+      "scene_json": "scenes/466183/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/466192/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 205,
+      "n_functional_part_like_nodes": 5,
+      "n_functional_relations": 5,
+      "n_nodes": 8,
+      "scene_id": "466192",
+      "scene_json": "scenes/466192/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/466803/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 1066,
+      "n_functional_part_like_nodes": 3,
+      "n_functional_relations": 4,
+      "n_nodes": 6,
+      "scene_id": "466803",
+      "scene_json": "scenes/466803/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/467293/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 570,
+      "n_functional_part_like_nodes": 5,
+      "n_functional_relations": 5,
+      "n_nodes": 7,
+      "scene_id": "467293",
+      "scene_json": "scenes/467293/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/468076/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 749,
+      "n_functional_part_like_nodes": 5,
+      "n_functional_relations": 4,
+      "n_nodes": 9,
+      "scene_id": "468076",
+      "scene_json": "scenes/468076/scene.json",
+      "split": "test"
+    },
+    {
+      "frames_jsonl": "scenes/469011/frames.jsonl",
+      "full_scene_ready": true,
+      "n_frames": 472,
+      "n_functional_part_like_nodes": 28,
+      "n_functional_relations": 24,
+      "n_nodes": 43,
+      "scene_id": "469011",
+      "scene_json": "scenes/469011/scene.json",
+      "split": "test"
+    }
+  ],
+  "source_export": "/home/mz560/fungraph_benchmark_v0/benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1",
+  "split_summary": {
+    "expansion_functional_116_candidates": {
+      "n_rows": 116,
+      "paper_use_allowed": false,
+      "release_rel_path": "splits/expansion_functional_116_candidates.jsonl",
+      "source_rel_path": "expansion_v1/final_candidates/functional_balanced_116_frozen_candidate.jsonl"
+    },
+    "expansion_minimal_pairs_60_candidates": {
+      "n_rows": 60,
+      "paper_use_allowed": false,
+      "release_rel_path": "splits/expansion_minimal_pairs_60_candidates.jsonl",
+      "source_rel_path": "expansion_v1/final_candidates/minimal_pairs_expanded_60_frozen_candidate.jsonl"
+    },
+    "functional_500": {
+      "n_rows": 500,
+      "paper_use_allowed": true,
+      "release_rel_path": "splits/functional_500.jsonl",
+      "source_rel_path": "functional_500_eval.jsonl"
+    },
+    "human_133": {
+      "n_rows": 133,
+      "paper_use_allowed": true,
+      "release_rel_path": "splits/human_133.jsonl",
+      "source_rel_path": "human_133_eval.jsonl"
+    },
+    "long_range_50": {
+      "n_rows": 50,
+      "paper_use_allowed": true,
+      "release_rel_path": "splits/long_range_50.jsonl",
+      "source_rel_path": "long_range_50_eval.jsonl"
+    },
+    "minimal_pairs_28": {
+      "n_rows": 28,
+      "paper_use_allowed": true,
+      "release_rel_path": "splits/minimal_pairs_28.jsonl",
+      "source_rel_path": "minimal_pairs_28_eval.jsonl"
+    }
+  },
+  "status": "fungraph_full_modality_release_ready"
+}
