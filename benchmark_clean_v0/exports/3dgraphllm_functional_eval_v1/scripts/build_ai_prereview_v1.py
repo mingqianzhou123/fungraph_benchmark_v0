@@ -17,6 +17,8 @@ from typing import Any
 EXPORT_DIR = Path(__file__).resolve().parents[1]
 EXPANSION_DIR = EXPORT_DIR / "expansion_v1"
 PREREVIEW_DIR = EXPANSION_DIR / "ai_prereview_v1"
+INTERMEDIATE_DIR = EXPANSION_DIR / "_intermediate"
+FINAL_CANDIDATE_DIR = EXPANSION_DIR / "final_candidates"
 
 SLASHY = re.compile(r"\s/\s")
 DOUBLE_SPACE = re.compile(r"\s{2,}")
@@ -265,11 +267,74 @@ def write_dennis_packet(summary: dict[str, Any], functional: list[dict[str, Any]
     (EXPANSION_DIR / "DENNIS_BENCHMARK_SIGNOFF_PACKET.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def read_json_if_exists(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def write_expansion_manifest(ai_summary: dict[str, Any]) -> None:
+    functional_rows = read_jsonl(FINAL_CANDIDATE_DIR / "functional_balanced_116_frozen_candidate.jsonl")
+    pair_rows = read_jsonl(FINAL_CANDIDATE_DIR / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
+    relation_counts = Counter((row.get("supporting_edge_ids") or ["||"])[0].split("|")[1] for row in functional_rows)
+    freeze_summary = {
+        "status": "freeze_candidates_ready_not_paper_frozen",
+        "n_functional_candidates": len(functional_rows),
+        "n_functional_relation_types": len(relation_counts),
+        "functional_max_per_relation": max(relation_counts.values()) if relation_counts else 0,
+        "n_functional_needing_evidence_generation": sum(bool(row.get("needs_evidence_generation")) for row in functional_rows),
+        "n_minimal_pair_candidates": len(pair_rows),
+        "minimal_pair_changed_factor_counts": dict(Counter(row["changed_factor"] for row in pair_rows).most_common()),
+        "paper_use_allowed": False,
+    }
+    manifest = {
+        "status": "expansion_v1_clean_manifest_ready",
+        "structure_version": "expansion_v1_clean_20260619",
+        "paper_use_allowed": False,
+        "intermediate_policy": "Files under expansion_v1/_intermediate/ are script-generated scratch artifacts and are ignored by git.",
+        "current_export_audit": read_json_if_exists(INTERMEDIATE_DIR / "distribution_audit.json"),
+        "source_unique_relation_pool": read_json_if_exists(INTERMEDIATE_DIR / "unique_relation_expansion_summary.json"),
+        "review_workspace": read_json_if_exists(INTERMEDIATE_DIR / "review_queue_summary.json"),
+        "balanced_candidate_source": read_json_if_exists(INTERMEDIATE_DIR / "balanced_unique_relation_candidate_summary.json"),
+        "freeze_candidates": freeze_summary,
+        "perception_evidence": read_json_if_exists(EXPANSION_DIR / "perception_evidence" / "expansion_perception_evidence_summary.json"),
+        "ai_prereview": ai_summary,
+        "canonical_files": [
+            "README.md",
+            "expansion_manifest_v1.json",
+            "DENNIS_BENCHMARK_SIGNOFF_PACKET.md",
+            "final_candidates/functional_balanced_116_frozen_candidate.jsonl",
+            "final_candidates/minimal_pairs_expanded_60_frozen_candidate.jsonl",
+            "ai_prereview_v1/ai_prereview_summary.json",
+            "ai_prereview_v1/functional_ai_prereview_v1.csv",
+            "ai_prereview_v1/minimal_pair_ai_prereview_v1.csv",
+            "ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl",
+            "ai_prereview_v1/minimal_pair_ai_recommended_accept_v1.jsonl",
+            "perception_evidence/expansion_perception_evidence_summary.json",
+            "perception_evidence/expansion_perception_evidence_index.jsonl",
+            "perception_evidence/images/",
+        ],
+        "rebuild_commands": [
+            "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_v1.py --pair-cap 200",
+            "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_freeze_candidates_v1.py",
+            "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_perception_evidence_v1.py --write-images",
+            "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_ai_prereview_v1.py",
+        ],
+        "required_before_paper_use": [
+            "human wording review",
+            "minimal-pair validity review",
+            "evidence spot-check",
+            "Dennis signoff",
+            "final paper manifest with paper_use_allowed=true only after signoff",
+        ],
+    }
+    write_json(EXPANSION_DIR / "expansion_manifest_v1.json", manifest)
+
+
 def main() -> None:
     PREREVIEW_DIR.mkdir(parents=True, exist_ok=True)
-    functional = read_jsonl(EXPANSION_DIR / "functional_balanced_116_frozen_candidate.jsonl")
-    pairs = read_jsonl(EXPANSION_DIR / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
-    draft_ids = {row["query_id"] for row in read_jsonl(EXPANSION_DIR / "functional_unique_relation_585_draft.jsonl")}
+    functional = read_jsonl(FINAL_CANDIDATE_DIR / "functional_balanced_116_frozen_candidate.jsonl")
+    pairs = read_jsonl(FINAL_CANDIDATE_DIR / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
+    draft_path = INTERMEDIATE_DIR / "functional_unique_relation_585_draft.jsonl"
+    draft_ids = {row["query_id"] for row in read_jsonl(draft_path)} if draft_path.exists() else {row["query_id"] for row in functional}
     functional_candidate_ids = {row["query_id"] for row in functional}
     evidence_by_qid = {row["query_id"]: row for row in read_jsonl(EXPANSION_DIR / "perception_evidence" / "expansion_perception_evidence_index.jsonl")}
 
@@ -297,8 +362,6 @@ def main() -> None:
     }
 
     write_json(PREREVIEW_DIR / "ai_prereview_summary.json", summary)
-    write_jsonl(PREREVIEW_DIR / "functional_ai_prereview_v1.jsonl", reviewed_functional)
-    write_jsonl(PREREVIEW_DIR / "minimal_pair_ai_prereview_v1.jsonl", reviewed_pairs)
     write_jsonl(PREREVIEW_DIR / "functional_ai_recommended_accept_v1.jsonl", accepted_functional)
     write_jsonl(PREREVIEW_DIR / "minimal_pair_ai_recommended_accept_v1.jsonl", accepted_pairs)
     write_csv(
@@ -311,7 +374,7 @@ def main() -> None:
         reviewed_pairs,
         ["freeze_candidate_id", "pair_id", "ai_prereview_decision", "ai_prereview_score", "ai_prereview_flags", "changed_factor", "scene_id", "target_label", "relation_a", "relation_b", "anchor_a_label", "anchor_b_label", "target_geom_diff_m", "query_a_id", "query_b_id", "paper_use_allowed"],
     )
-    write_status(summary)
+    write_expansion_manifest(summary)
     write_dennis_packet(summary, reviewed_functional, reviewed_pairs)
     print(json.dumps(summary, indent=2, sort_keys=True))
 

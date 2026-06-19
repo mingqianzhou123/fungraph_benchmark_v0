@@ -1,9 +1,0 @@
-{
-  "changed_factor_counts": {
-    "anchor_object": 15,
-    "functional_relation": 1,
-    "spatial_qualifier": 89
-  },
-  "n_pair_candidates": 105,
-  "status": "minimal_pair_expansion_candidates_ready"
-}

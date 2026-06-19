@@ -279,141 +279,85 @@ def main() -> None:
     if expansion_dir.exists():
         required = [
             "README.md",
-            "EXPANSION_STATUS.md",
-            "distribution_audit.json",
-            "unique_relation_expansion_summary.json",
-            "minimal_pair_expansion_summary.json",
-            "unique_relation_pool_v1.jsonl",
-            "functional_unique_relation_585_draft.jsonl",
-            "minimal_pair_candidates_v1.jsonl",
-            "unique_relation_pool_v1.csv",
-            "minimal_pair_candidates_v1.csv",
-            "review_queue_summary.json",
-            "balanced_unique_relation_candidate_summary.json",
-            "unique_relation_review_queue_v1.csv",
-            "query_review_queue_v1.csv",
-            "minimal_pair_review_queue_v1.csv",
-            "balanced_unique_relation_candidate_v1.jsonl",
-            "balanced_unique_relation_candidate_v1.csv",
-            "review_queue_v1.html",
-            "FROZEN_CANDIDATE_STATUS.md",
-            "freeze_candidate_summary.json",
-            "functional_balanced_116_frozen_candidate.jsonl",
-            "minimal_pairs_expanded_60_frozen_candidate.jsonl",
-            "perception_evidence/EXPANSION_PERCEPTION_EVIDENCE_STATUS.md",
+            "expansion_manifest_v1.json",
+            "DENNIS_BENCHMARK_SIGNOFF_PACKET.md",
+            "final_candidates/functional_balanced_116_frozen_candidate.jsonl",
+            "final_candidates/minimal_pairs_expanded_60_frozen_candidate.jsonl",
             "perception_evidence/expansion_perception_evidence_summary.json",
             "perception_evidence/expansion_perception_evidence_index.jsonl",
-            "ai_prereview_v1/AI_PREREVIEW_STATUS.md",
             "ai_prereview_v1/ai_prereview_summary.json",
-            "ai_prereview_v1/functional_ai_prereview_v1.jsonl",
             "ai_prereview_v1/functional_ai_prereview_v1.csv",
-            "ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl",
-            "ai_prereview_v1/minimal_pair_ai_prereview_v1.jsonl",
             "ai_prereview_v1/minimal_pair_ai_prereview_v1.csv",
+            "ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl",
             "ai_prereview_v1/minimal_pair_ai_recommended_accept_v1.jsonl",
-            "DENNIS_BENCHMARK_SIGNOFF_PACKET.md",
         ]
         for filename in required:
             assert (expansion_dir / filename).exists(), f"missing expansion_v1 file: {filename}"
 
-        distribution = json.loads((expansion_dir / "distribution_audit.json").read_text(encoding="utf-8"))
-        unique_summary = json.loads((expansion_dir / "unique_relation_expansion_summary.json").read_text(encoding="utf-8"))
-        pair_summary = json.loads((expansion_dir / "minimal_pair_expansion_summary.json").read_text(encoding="utf-8"))
-        review_summary = json.loads((expansion_dir / "review_queue_summary.json").read_text(encoding="utf-8"))
-        balanced_summary = json.loads((expansion_dir / "balanced_unique_relation_candidate_summary.json").read_text(encoding="utf-8"))
-        freeze_summary = json.loads((expansion_dir / "freeze_candidate_summary.json").read_text(encoding="utf-8"))
+        manifest = json.loads((expansion_dir / "expansion_manifest_v1.json").read_text(encoding="utf-8"))
         expansion_evidence_summary = json.loads((expansion_dir / "perception_evidence" / "expansion_perception_evidence_summary.json").read_text(encoding="utf-8"))
         prereview_summary = json.loads((expansion_dir / "ai_prereview_v1" / "ai_prereview_summary.json").read_text(encoding="utf-8"))
-        pool_rows = read_jsonl(expansion_dir / "unique_relation_pool_v1.jsonl")
-        draft_rows = read_jsonl(expansion_dir / "functional_unique_relation_585_draft.jsonl")
-        pair_rows = read_jsonl(expansion_dir / "minimal_pair_candidates_v1.jsonl")
-        balanced_rows = read_jsonl(expansion_dir / "balanced_unique_relation_candidate_v1.jsonl")
-        freeze_functional_rows = read_jsonl(expansion_dir / "functional_balanced_116_frozen_candidate.jsonl")
-        freeze_pair_rows = read_jsonl(expansion_dir / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
+        freeze_functional_rows = read_jsonl(expansion_dir / "final_candidates" / "functional_balanced_116_frozen_candidate.jsonl")
+        freeze_pair_rows = read_jsonl(expansion_dir / "final_candidates" / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
         expansion_evidence_rows = read_jsonl(expansion_dir / "perception_evidence" / "expansion_perception_evidence_index.jsonl")
-        prereview_functional_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "functional_ai_prereview_v1.jsonl")
-        prereview_pair_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_prereview_v1.jsonl")
         prereview_functional_accept_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "functional_ai_recommended_accept_v1.jsonl")
         prereview_pair_accept_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_recommended_accept_v1.jsonl")
 
-        expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
-        assert distribution["status"] == "distribution_audit_ready"
-        assert distribution["n_query_rows"] == expected_relations
-        assert unique_summary["status"] == "unique_relation_expansion_pool_ready"
-        assert unique_summary["n_unique_relations"] == 195
-        assert len(pool_rows) == unique_summary["n_unique_relations"]
-        assert unique_summary["n_query_drafts"] == 3 * unique_summary["n_unique_relations"]
-        assert len(draft_rows) == unique_summary["n_query_drafts"]
-        assert pair_summary["status"] == "minimal_pair_expansion_candidates_ready"
-        assert len(pair_rows) == pair_summary["n_pair_candidates"]
-        assert pair_summary["n_pair_candidates"] > EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
-        assert review_summary["status"] == "review_queues_ready"
-        assert review_summary["n_unique_relation_review_rows"] == unique_summary["n_unique_relations"]
-        assert review_summary["n_query_review_rows"] == unique_summary["n_query_drafts"]
-        assert review_summary["n_minimal_pair_review_rows"] == pair_summary["n_pair_candidates"]
-        assert balanced_summary["status"] == "balanced_unique_relation_candidate_ready"
-        assert balanced_summary["max_selected_per_relation"] <= balanced_summary["max_per_exact_relation"]
-        assert len(balanced_rows) == balanced_summary["n_candidate_queries"]
-        assert balanced_summary["n_candidate_queries"] > 80
-        assert balanced_summary["n_candidate_queries"] < unique_summary["n_query_drafts"]
+        with (expansion_dir / "ai_prereview_v1" / "functional_ai_prereview_v1.csv").open("r", encoding="utf-8", newline="") as f:
+            prereview_functional_csv = list(__import__("csv").DictReader(f))
+        with (expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_prereview_v1.csv").open("r", encoding="utf-8", newline="") as f:
+            prereview_pair_csv = list(__import__("csv").DictReader(f))
+
+        assert manifest["status"] == "expansion_v1_clean_manifest_ready"
+        assert manifest["paper_use_allowed"] is False
+        freeze_summary = manifest["freeze_candidates"]
         assert freeze_summary["status"] == "freeze_candidates_ready_not_paper_frozen"
         assert freeze_summary["paper_use_allowed"] is False
-        assert len(freeze_functional_rows) == freeze_summary["n_functional_candidates"] == balanced_summary["n_candidate_queries"]
+        assert len(freeze_functional_rows) == freeze_summary["n_functional_candidates"] == 116
         assert len(freeze_pair_rows) == freeze_summary["n_minimal_pair_candidates"] == 60
+        assert freeze_summary["functional_max_per_relation"] <= 15
         assert all(row.get("paper_use_allowed") is False for row in freeze_functional_rows), "freeze functional candidates must not be paper-enabled"
         assert all(row.get("human_review_required") is True for row in freeze_functional_rows), "freeze functional candidates require human review"
+        assert all(row.get("dennis_signoff_required") is True for row in freeze_functional_rows), "freeze functional candidates require Dennis signoff"
+
         assert expansion_evidence_summary["status"] == "expansion_perception_evidence_ready"
         assert len(expansion_evidence_rows) == expansion_evidence_summary["n_functional_candidates"] == len(freeze_functional_rows)
         assert expansion_evidence_summary["n_visual_evidence_ready"] == len(freeze_functional_rows)
         assert expansion_evidence_summary["n_previously_missing_relations_now_have_pointcloud_evidence"] == freeze_summary["n_functional_needing_evidence_generation"]
         assert (EXPORT_DIR / "BENCHMARK_CLAIM_AUDIT.md").exists(), "missing BENCHMARK_CLAIM_AUDIT.md"
+
         assert prereview_summary["status"] == "ai_prereview_ready_not_human_annotation"
         assert prereview_summary["paper_use_allowed"] is False
-        assert len(prereview_functional_rows) == prereview_summary["n_functional_reviewed"] == len(freeze_functional_rows)
-        assert len(prereview_pair_rows) == prereview_summary["n_pair_reviewed"] == len(freeze_pair_rows)
+        assert len(prereview_functional_csv) == prereview_summary["n_functional_reviewed"] == len(freeze_functional_rows)
+        assert len(prereview_pair_csv) == prereview_summary["n_pair_reviewed"] == len(freeze_pair_rows)
         assert len(prereview_functional_accept_rows) == prereview_summary["n_functional_ai_accept"]
         assert len(prereview_pair_accept_rows) == prereview_summary["n_pair_ai_accept"]
-        assert all(row.get("paper_use_allowed") is False for row in prereview_functional_rows), "AI pre-review functional rows must not be paper-enabled"
-        assert all(row.get("dennis_signoff_required") is True for row in prereview_functional_rows), "AI pre-review functional rows require Dennis signoff"
         assert prereview_summary["n_functional_ai_accept"] > 0
         assert prereview_summary["n_functional_revise_wording"] > 0
 
-        draft_ids = {row["query_id"] for row in draft_rows}
-        allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
-        for row in draft_rows:
+        for row in freeze_functional_rows:
             qid = row["query_id"]
             scene_id = row["scene_id"]
-            assert row.get("annotation_source") == "template_generated_needs_human_review", f"{qid}: unexpected annotation source"
             assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
             for target in row.get("target_node_ids") or []:
                 assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
             assert set(row.get("candidate_node_ids") or []) == candidates_by_scene[scene_id], f"{qid}: embedded candidates mismatch scene candidates"
 
-        for row in balanced_rows:
-            qid = row["query_id"]
-            scene_id = row["scene_id"]
-            assert qid in draft_ids, f"balanced candidate {qid} not in expansion draft"
-            assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
-            for target in row.get("target_node_ids") or []:
-                assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
-            assert row.get("review_status") == "todo", f"{qid}: balanced review status should start as todo"
-
         freeze_functional_ids = {row["query_id"] for row in freeze_functional_rows}
         evidence_ids = {row["query_id"] for row in expansion_evidence_rows}
-        assert freeze_functional_ids == {row["query_id"] for row in balanced_rows}, "freeze functional candidates must match balanced candidates"
         assert evidence_ids == freeze_functional_ids, "expansion evidence rows must match freeze functional candidates"
         if expansion_evidence_summary.get("images_written"):
             for row in expansion_evidence_rows:
                 assert (expansion_dir / row["primary_visual_rel_path"]).exists(), f"missing expansion evidence image: {row['primary_visual_rel_path']}"
 
+        allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
         pair_ids: set[str] = set()
-        for row in pair_rows:
+        for row in freeze_pair_rows:
             pair_id = row.get("pair_id")
             assert pair_id and pair_id not in pair_ids, f"duplicate or missing expansion pair_id: {pair_id}"
             pair_ids.add(pair_id)
-            assert row.get("query_a_id") in draft_ids, f"{pair_id}: query_a_id not in expansion draft"
-            assert row.get("query_b_id") in draft_ids, f"{pair_id}: query_b_id not in expansion draft"
             assert row.get("changed_factor") in allowed_factors, f"{pair_id}: invalid changed_factor"
+            assert row.get("paper_use_allowed") is False, f"{pair_id}: pair candidates must not be paper-enabled"
 
     print("3DGraphLLM export validation passed")
 

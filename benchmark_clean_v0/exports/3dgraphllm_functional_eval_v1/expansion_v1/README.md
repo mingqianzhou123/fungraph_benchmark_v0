@@ -1,30 +1,40 @@
-# Benchmark Expansion v1 Status
+# Expansion v1
 
-This directory is a draft workspace for distribution audit, unique-relation expansion, and minimal-pair expansion. It does not replace frozen eval files.
+This directory is the cleaned expansion workspace for distribution audit, balanced freeze candidates, expansion evidence, AI pre-review, and Dennis signoff. It is not a final paper-frozen split.
 
-## Current Export Audit
+## Canonical Files
 
-- Current query rows: 683
-- Current unique scene-target-anchor-relation keys: 160
-- Max paraphrases per relation group: 10
+```text
+expansion_manifest_v1.json
+DENNIS_BENCHMARK_SIGNOFF_PACKET.md
+final_candidates/functional_balanced_116_frozen_candidate.jsonl
+final_candidates/minimal_pairs_expanded_60_frozen_candidate.jsonl
+ai_prereview_v1/ai_prereview_summary.json
+ai_prereview_v1/functional_ai_prereview_v1.csv
+ai_prereview_v1/minimal_pair_ai_prereview_v1.csv
+ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl
+ai_prereview_v1/minimal_pair_ai_recommended_accept_v1.jsonl
+perception_evidence/expansion_perception_evidence_summary.json
+perception_evidence/expansion_perception_evidence_index.jsonl
+perception_evidence/images/
+```
 
-## Unique-Relation Expansion
+## Current Counts
 
-- OpenFunGraph unique functional relations available: 195
-- Template-generated query drafts: 585
-- Previous-export depth-tested RGB-D crop relations: 48
-- Relations not present in previous full-perception export: 35
-- Target coverage policy: 3 query variants per unique relation.
-- Human-review unique relation rows: 195
-- Balanced candidate queries: 116 with max 15 per exact relation.
-
-## Minimal-Pair Expansion
-
-- Auto-mined pair candidates: 105
-- Changed-factor distribution: {'spatial_qualifier': 89, 'anchor_object': 15, 'functional_relation': 1}
-- Minimal-pair review rows: 105
+- Functional freeze candidates: 116, across 21 exact relation types.
+- Expanded minimal-pair freeze candidates: 60.
+- Expansion perception evidence: 116 / 116 visual evidence cards.
+- AI pre-review: 69 functional candidates and 16 minimal pairs recommended for human/Dennis spot-check.
 
 ## Boundary
 
-Expansion query drafts and pair candidates are generated from verified graph relations, but their natural-language wording is not final human annotation. Use them for coverage planning, model debugging, and human review queues before paper-grade reporting.
-Relations not present in the previous full-perception export need an evidence-generation pass before this draft is promoted to a frozen eval split.
+All expansion files remain `paper_use_allowed=false`. Use `DENNIS_BENCHMARK_SIGNOFF_PACKET.md` for the next human decision point. Intermediate drafts, pools, review HTML, and duplicate JSONL/CSV views are regenerated under `_intermediate/` and are intentionally not tracked.
+
+## Rebuild
+
+```bash
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_v1.py --pair-cap 200
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_freeze_candidates_v1.py
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_perception_evidence_v1.py --write-images
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_ai_prereview_v1.py
+```

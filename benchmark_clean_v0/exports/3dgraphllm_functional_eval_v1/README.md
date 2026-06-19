@@ -50,7 +50,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `full_multimodal_readiness.json` | Machine-readable full benchmark readiness summary |
 | `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
 | `relation_conditioned_evidence/` | Query-level target-anchor multimodal evidence manifests keyed by `relation_key` |
-| `expansion_v1/` | Draft distribution audit, review queues, 116-query freeze-candidate split, 60 minimal-pair freeze candidates, expansion perception evidence, AI pre-review, and Dennis signoff packet |
+| `expansion_v1/` | Clean expansion workspace: manifest, final candidates, AI pre-review views, expansion evidence cards, and Dennis signoff packet; process drafts are regenerated under ignored `_intermediate/` |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
@@ -101,8 +101,11 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   116-query balanced candidate split with max 15 examples per exact relation,
   builds paper-disabled freeze-candidate splits, adds 116 / 116 expansion
   perception evidence cards, runs AI pre-review triage, prepares a Dennis
-  signoff packet, and mines 105 minimal-pair candidates. The generated query
-  wording and pair candidates need human review before paper use.
+  signoff packet, and mines 105 minimal-pair candidates. The canonical tracked
+  expansion files are consolidated under `expansion_manifest_v1.json`,
+  `final_candidates/`, `ai_prereview_v1/`, and `perception_evidence/`;
+  process drafts are regenerated under ignored `_intermediate/`. The generated
+  query wording and pair candidates need human review before paper use.
 - `native_3dgraphllm/` also includes object-selection prompt variants for
   `functional_500`, `human_133`, `long_range_50`, and a one-query smoke split.
   These preserve the original target objects and query ids while forcing a

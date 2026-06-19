@@ -14,6 +14,8 @@ from typing import Any
 
 EXPORT_DIR = Path(__file__).resolve().parents[1]
 EXPANSION_DIR = EXPORT_DIR / "expansion_v1"
+INTERMEDIATE_DIR = EXPANSION_DIR / "_intermediate"
+FINAL_CANDIDATE_DIR = EXPANSION_DIR / "final_candidates"
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -21,10 +23,12 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def write_json(path: Path, obj: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
 
 
@@ -37,7 +41,7 @@ def evidence_rank(row: dict[str, Any]) -> int:
 
 
 def build_functional_candidates() -> list[dict[str, Any]]:
-    rows = read_jsonl(EXPANSION_DIR / "balanced_unique_relation_candidate_v1.jsonl")
+    rows = read_jsonl(INTERMEDIATE_DIR / "balanced_unique_relation_candidate_v1.jsonl")
     out = []
     for idx, row in enumerate(rows):
         frozen = dict(row)
@@ -53,7 +57,7 @@ def build_functional_candidates() -> list[dict[str, Any]]:
 
 
 def build_minimal_pair_candidates(max_pairs: int = 60) -> list[dict[str, Any]]:
-    rows = read_jsonl(EXPANSION_DIR / "minimal_pair_candidates_v1.jsonl")
+    rows = read_jsonl(INTERMEDIATE_DIR / "minimal_pair_candidates_v1.jsonl")
     rows = sorted(rows, key=lambda r: (r["changed_factor"], r["scene_id"], r.get("target_geom_diff_m") or 9999, r["pair_id"]))
     by_factor: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in rows:
@@ -103,7 +107,7 @@ def write_status(summary: dict[str, Any]) -> None:
         "",
         "Do not report these as final benchmark results until review_decision fields are filled, evidence exists, and Dennis signs off.",
     ]
-    (EXPANSION_DIR / "FROZEN_CANDIDATE_STATUS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (INTERMEDIATE_DIR / "FROZEN_CANDIDATE_STATUS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> None:
@@ -128,9 +132,9 @@ def main() -> None:
             "Dennis signoff",
         ],
     }
-    write_jsonl(EXPANSION_DIR / "functional_balanced_116_frozen_candidate.jsonl", functional)
-    write_jsonl(EXPANSION_DIR / "minimal_pairs_expanded_60_frozen_candidate.jsonl", minimal_pairs)
-    write_json(EXPANSION_DIR / "freeze_candidate_summary.json", summary)
+    write_jsonl(FINAL_CANDIDATE_DIR / "functional_balanced_116_frozen_candidate.jsonl", functional)
+    write_jsonl(FINAL_CANDIDATE_DIR / "minimal_pairs_expanded_60_frozen_candidate.jsonl", minimal_pairs)
+    write_json(INTERMEDIATE_DIR / "freeze_candidate_summary.json", summary)
     write_status(summary)
     print(json.dumps(summary, indent=2, sort_keys=True))
 

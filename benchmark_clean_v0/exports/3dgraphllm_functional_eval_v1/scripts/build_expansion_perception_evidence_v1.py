@@ -33,7 +33,9 @@ from build_projection_dryrun import (  # noqa: E402
 
 EXPORT_DIR = SCRIPT_DIR.parent
 EXPANSION_DIR = EXPORT_DIR / "expansion_v1"
+FINAL_CANDIDATE_DIR = EXPANSION_DIR / "final_candidates"
 OUT_DIR = EXPANSION_DIR / "perception_evidence"
+INTERMEDIATE_DIR = EXPANSION_DIR / "_intermediate"
 IMAGE_ROOT_REL = Path("perception_evidence") / "images"
 IMAGE_ROOT = EXPANSION_DIR / IMAGE_ROOT_REL
 RULE_VERSION = "expansion_perception_evidence_v1_20260618_pointcloud_with_previous_crop_metadata"
@@ -54,7 +56,7 @@ def load_previous_full_perception() -> dict[tuple[str, str, str], dict[str, Any]
 
 
 def build(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    candidates = read_jsonl(EXPANSION_DIR / "functional_balanced_116_frozen_candidate.jsonl")
+    candidates = read_jsonl(FINAL_CANDIDATE_DIR / "functional_balanced_116_frozen_candidate.jsonl")
     annotations = {f"{row['scene_id']}/{row['annot_id']}": row for row in read_json(ANNOTATIONS_JSON)}
     previous = load_previous_full_perception()
     ply_paths = load_raw_ply_paths()
@@ -160,7 +162,8 @@ def write_status(summary: dict[str, Any]) -> None:
         "",
         "The generated evidence cards are GT pointcloud object-segment renders. They make every candidate inspectable, but they do not imply that every candidate has a newly depth-tested camera RGB-D crop.",
     ]
-    (OUT_DIR / "EXPANSION_PERCEPTION_EVIDENCE_STATUS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    INTERMEDIATE_DIR.mkdir(parents=True, exist_ok=True)
+    (INTERMEDIATE_DIR / "EXPANSION_PERCEPTION_EVIDENCE_STATUS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> None:

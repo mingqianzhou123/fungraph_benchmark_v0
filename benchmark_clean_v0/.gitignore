@@ -8,3 +8,4 @@ __pycache__/
 # bulk crops or exported point segments.
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/crops_local/
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/pointclouds_local/
+exports/3dgraphllm_functional_eval_v1/expansion_v1/_intermediate/
