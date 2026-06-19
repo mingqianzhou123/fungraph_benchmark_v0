@@ -1,0 +1,752 @@
+{
+  "annotations_aggregated": {
+    "format_note": "Point indices are not duplicated here; use source_file/source_lookup under each node.point_annotation.",
+    "n_nodes_with_point_segments": 14,
+    "source_file": "annotations/openfungraph/SceneFun3D.annotations.json"
+  },
+  "dataset": {
+    "captures": [
+      {
+        "capture_full_ready": true,
+        "capture_id": "44358451",
+        "capture_rel_dir": "test/460417/44358451",
+        "n_rgb_depth_intrinsic_triplets": 383,
+        "trajectory_rel_paths": "test/460417/44358451/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "44358452",
+        "capture_rel_dir": "test/460417/44358452",
+        "n_rgb_depth_intrinsic_triplets": 239,
+        "trajectory_rel_paths": "test/460417/44358452/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "44358455",
+        "capture_rel_dir": "test/460417/44358455",
+        "n_rgb_depth_intrinsic_triplets": 210,
+        "trajectory_rel_paths": "test/460417/44358455/lowres_wide.traj"
+      }
+    ],
+    "frame_index_rel_path": "scenes/460417/frames.jsonl",
+    "frame_summary": {
+      "capture_ids": [
+        "44358451",
+        "44358452",
+        "44358455"
+      ],
+      "n_depth": 832,
+      "n_frames": 832,
+      "n_intrinsics": 832,
+      "n_rgb": 832
+    }
+  },
+  "functional_relations": [
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "ca9e7157-7222-4429-8629-add94f3fc620|press to open or close, or adjust the setting|66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+      "first_label": "button",
+      "first_node_id": "ca9e7157-7222-4429-8629-add94f3fc620",
+      "relation": "press to open or close, or adjust the setting",
+      "relation_id": "02afbdfe-a868-4c9d-938f-fae48622ae68",
+      "second_label": "washing machine",
+      "second_node_id": "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650|provide power|3f5fc8ad-60c9-4b6e-a323-a919410bdd1a",
+      "first_label": "electric outlet",
+      "first_node_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650",
+      "relation": "provide power",
+      "relation_id": "bfa358b3-785d-4993-8681-305aad238af5",
+      "second_label": "dryer",
+      "second_node_id": "3f5fc8ad-60c9-4b6e-a323-a919410bdd1a"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "59552624-a2f6-4e2b-9a25-9d62b675cada|provide power|66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+      "first_label": "electric outlet",
+      "first_node_id": "59552624-a2f6-4e2b-9a25-9d62b675cada",
+      "relation": "provide power",
+      "relation_id": "ffeea45a-674f-480a-8e3d-032f6b6fc050",
+      "second_label": "washing machine",
+      "second_node_id": "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650|provide power|66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+      "first_label": "electric outlet",
+      "first_node_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650",
+      "relation": "provide power",
+      "relation_id": "a3ba8819-7036-4888-9a9e-cf16425573a8",
+      "second_label": "washing machine",
+      "second_node_id": "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "10313d37-ce8c-46d2-ac35-802b83af6d0b|pull to open or close|b47c57ba-51db-480b-af65-ba2a5b6c3b00",
+      "first_label": "knob",
+      "first_node_id": "10313d37-ce8c-46d2-ac35-802b83af6d0b",
+      "relation": "pull to open or close",
+      "relation_id": "3727397e-9bb0-4fdb-bc92-221dea58a89d",
+      "second_label": "cabinet",
+      "second_node_id": "b47c57ba-51db-480b-af65-ba2a5b6c3b00"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "c0499d97-a54d-472f-89a3-6e778e59767d|pull to open or close|d3ce1a14-5ed1-4196-b922-49ac70f4ff78",
+      "first_label": "knob",
+      "first_node_id": "c0499d97-a54d-472f-89a3-6e778e59767d",
+      "relation": "pull to open or close",
+      "relation_id": "a80dbca0-9c9b-49d9-9959-fb9d573b2291",
+      "second_label": "cabinet",
+      "second_node_id": "d3ce1a14-5ed1-4196-b922-49ac70f4ff78"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "a6956e03-3809-409c-b16d-cee0ef3e1246|rotate or press to adjust the setting|66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+      "first_label": "knob / button",
+      "first_node_id": "a6956e03-3809-409c-b16d-cee0ef3e1246",
+      "relation": "rotate or press to adjust the setting",
+      "relation_id": "d3d8a097-7745-472e-b26b-cb8ca1acbe5f",
+      "second_label": "washing machine",
+      "second_node_id": "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "f845e4b3-a202-4e17-8100-a41736068ffc|rotate to adjust the setting|3f5fc8ad-60c9-4b6e-a323-a919410bdd1a",
+      "first_label": "knob",
+      "first_node_id": "f845e4b3-a202-4e17-8100-a41736068ffc",
+      "relation": "rotate to adjust the setting",
+      "relation_id": "3f6013da-9907-4736-9d5f-dcb46225e2fd",
+      "second_label": "dryer",
+      "second_node_id": "3f5fc8ad-60c9-4b6e-a323-a919410bdd1a"
+    }
+  ],
+  "node_list": [
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.6736623048782349,
+          1.1899116039276123,
+          165.8990936279297
+        ],
+        "bbox_max": [
+          -1.6520720720291138,
+          1.226280689239502,
+          165.9160919189453
+        ],
+        "bbox_min": [
+          -1.7054966688156128,
+          1.1519653797149658,
+          165.88612365722656
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_00",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "10313d37-ce8c-46d2-ac35-802b83af6d0b",
+      "object_id": 0,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 183,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "10313d37-ce8c-46d2-ac35-802b83af6d0b",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          0.8678836822509766,
+          -0.7397503852844238,
+          165.53009033203125
+        ],
+        "bbox_max": [
+          0.9115079045295715,
+          -0.7052592039108276,
+          165.57826232910156
+        ],
+        "bbox_min": [
+          0.8420416116714478,
+          -0.7845458984375,
+          165.49102783203125
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "switch panel",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_01",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "18fff88f-910a-4a81-a52b-2e1256fe1b90",
+      "object_id": 1,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 431,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "18fff88f-910a-4a81-a52b-2e1256fe1b90",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.1866438090801239,
+          2.1664276123046875,
+          165.61367797851562
+        ],
+        "bbox_max": [
+          -0.14366596937179565,
+          2.196133613586426,
+          165.64964294433594
+        ],
+        "bbox_min": [
+          -0.23038078844547272,
+          2.141855478286743,
+          165.5806884765625
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "switch panel",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_02",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "1d216a2f-7505-478f-8401-f8fc666bc8ae",
+      "object_id": 2,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 461,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "1d216a2f-7505-478f-8401-f8fc666bc8ae",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.7758870720863342,
+          2.142927885055542,
+          164.72291564941406
+        ],
+        "bbox_max": [
+          -0.4736855626106262,
+          2.456300973892212,
+          165.10499572753906
+        ],
+        "bbox_min": [
+          -1.150286078453064,
+          1.9562242031097412,
+          164.23744201660156
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "dryer",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_03",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "3f5fc8ad-60c9-4b6e-a323-a919410bdd1a",
+      "object_id": 3,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 56163,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "3f5fc8ad-60c9-4b6e-a323-a919410bdd1a",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -2.128880500793457,
+          0.901913583278656,
+          165.38381958007812
+        ],
+        "bbox_max": [
+          -2.080254554748535,
+          0.9481213688850403,
+          165.41722106933594
+        ],
+        "bbox_min": [
+          -2.2021195888519287,
+          0.8551910519599915,
+          165.33612060546875
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "electric outlet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_04",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "59552624-a2f6-4e2b-9a25-9d62b675cada",
+      "object_id": 4,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 533,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "59552624-a2f6-4e2b-9a25-9d62b675cada",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.5181546211242676,
+          0.9185307621955872,
+          164.7725372314453
+        ],
+        "bbox_max": [
+          -1.3724133968353271,
+          1.2497631311416626,
+          165.1213836669922
+        ],
+        "bbox_min": [
+          -1.7988271713256836,
+          0.6225683093070984,
+          164.2674102783203
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "washing machine",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_05",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+      "object_id": 5,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 31343,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          0.836263120174408,
+          -0.7652170062065125,
+          165.44418334960938
+        ],
+        "bbox_max": [
+          0.8655359148979187,
+          -0.7247938513755798,
+          165.4939727783203
+        ],
+        "bbox_min": [
+          0.8027772307395935,
+          -0.8081389665603638,
+          165.40591430664062
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "electric outlet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_06",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "78e9cc8b-8e28-407e-83c1-e3a3e9b5bb4b",
+      "object_id": 6,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 428,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "78e9cc8b-8e28-407e-83c1-e3a3e9b5bb4b",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.6544088125228882,
+          1.803326964378357,
+          165.44985961914062
+        ],
+        "bbox_max": [
+          -1.6295372247695923,
+          1.841447353363037,
+          165.49368286132812
+        ],
+        "bbox_min": [
+          -1.681983470916748,
+          1.7713046073913574,
+          165.4088897705078
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "electric outlet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_07",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650",
+      "object_id": 7,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 490,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "9f510124-f6aa-4b15-9aa0-4eece6c68650",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.4079720973968506,
+          1.037908673286438,
+          165.01715087890625
+        ],
+        "bbox_max": [
+          -1.3968250751495361,
+          1.0573034286499023,
+          165.03770446777344
+        ],
+        "bbox_min": [
+          -1.4273713827133179,
+          1.0125993490219116,
+          164.9921875
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob / button",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_08",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "a6956e03-3809-409c-b16d-cee0ef3e1246",
+      "object_id": 8,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 182,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "a6956e03-3809-409c-b16d-cee0ef3e1246",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.6948682069778442,
+          1.1978497505187988,
+          165.89004516601562
+        ],
+        "bbox_max": [
+          -1.390998125076294,
+          1.6151777505874634,
+          166.20822143554688
+        ],
+        "bbox_min": [
+          -2.0128443241119385,
+          0.7718011736869812,
+          165.5980682373047
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "cabinet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_09",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "b47c57ba-51db-480b-af65-ba2a5b6c3b00",
+      "object_id": 9,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 36546,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "b47c57ba-51db-480b-af65-ba2a5b6c3b00",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.0465964078903198,
+          1.636350393295288,
+          164.5867156982422
+        ],
+        "bbox_max": [
+          -1.030849575996399,
+          1.6545301675796509,
+          164.606201171875
+        ],
+        "bbox_min": [
+          -1.062677025794983,
+          1.6242752075195312,
+          164.5718231201172
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_10",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "c0499d97-a54d-472f-89a3-6e778e59767d",
+      "object_id": 10,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 64,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "c0499d97-a54d-472f-89a3-6e778e59767d",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.470776915550232,
+          0.9650918245315552,
+          165.01275634765625
+        ],
+        "bbox_max": [
+          -1.46135675907135,
+          0.9779834747314453,
+          165.02781677246094
+        ],
+        "bbox_min": [
+          -1.4788260459899902,
+          0.9526368975639343,
+          164.99673461914062
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "button",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_11",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "ca9e7157-7222-4429-8629-add94f3fc620",
+      "object_id": 11,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 60,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "ca9e7157-7222-4429-8629-add94f3fc620",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.2277741432189941,
+          1.4090754985809326,
+          164.66673278808594
+        ],
+        "bbox_max": [
+          -1.03745436668396,
+          1.7161105871200562,
+          164.91122436523438
+        ],
+        "bbox_min": [
+          -1.605804443359375,
+          1.1611096858978271,
+          164.28611755371094
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "cabinet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_12",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "d3ce1a14-5ed1-4196-b922-49ac70f4ff78",
+      "object_id": 12,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 23931,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "d3ce1a14-5ed1-4196-b922-49ac70f4ff78",
+          "scene_id": "460417"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.8257481455802917,
+          2.017381429672241,
+          165.01356506347656
+        ],
+        "bbox_max": [
+          -0.8014014363288879,
+          2.029259204864502,
+          165.0325469970703
+        ],
+        "bbox_min": [
+          -0.8430496454238892,
+          2.006077527999878,
+          164.99032592773438
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d460417_00_13",
+      "native_scene_id": "sf3d460417_00",
+      "node_id": "f845e4b3-a202-4e17-8100-a41736068ffc",
+      "object_id": 13,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 141,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "f845e4b3-a202-4e17-8100-a41736068ffc",
+          "scene_id": "460417"
+        }
+      }
+    }
+  ],
+  "object_metadata": {
+    "format_note": "Each exported candidate is represented as one node. Functional parts are explicit nodes; parent-child hierarchy is not asserted unless present in source labels.",
+    "labels": [
+      "button",
+      "cabinet",
+      "dryer",
+      "electric outlet",
+      "knob",
+      "knob / button",
+      "switch panel",
+      "washing machine"
+    ],
+    "n_functional_part_like_nodes": 10,
+    "n_nodes": 14
+  },
+  "readiness": {
+    "full_scene_ready": true,
+    "funthor_style_raw_modalities_present": true,
+    "n_rgb_depth_intrinsic_triplets": 832
+  },
+  "scene_asset": {
+    "laser_scan_exists": true,
+    "laser_scan_rel_path": "test/460417/460417_laser_scan.ply"
+  },
+  "scene_id": "460417",
+  "split": "test",
+  "visible": {
+    "definition": "visible-subset analogue based on object record-camera or image-feature availability",
+    "node_ids": [
+      "10313d37-ce8c-46d2-ac35-802b83af6d0b",
+      "18fff88f-910a-4a81-a52b-2e1256fe1b90",
+      "1d216a2f-7505-478f-8401-f8fc666bc8ae",
+      "3f5fc8ad-60c9-4b6e-a323-a919410bdd1a",
+      "59552624-a2f6-4e2b-9a25-9d62b675cada",
+      "66ce5acd-9d4e-4b6b-af9e-fde601c66cb6",
+      "78e9cc8b-8e28-407e-83c1-e3a3e9b5bb4b",
+      "9f510124-f6aa-4b15-9aa0-4eece6c68650",
+      "a6956e03-3809-409c-b16d-cee0ef3e1246",
+      "b47c57ba-51db-480b-af65-ba2a5b6c3b00",
+      "c0499d97-a54d-472f-89a3-6e778e59767d",
+      "ca9e7157-7222-4429-8629-add94f3fc620",
+      "d3ce1a14-5ed1-4196-b922-49ac70f4ff78",
+      "f845e4b3-a202-4e17-8100-a41736068ffc"
+    ],
+    "visibility_stats": {
+      "n_total_nodes": 14,
+      "n_visible_nodes": 14,
+      "visible_ratio": 1.0
+    }
+  }
+}

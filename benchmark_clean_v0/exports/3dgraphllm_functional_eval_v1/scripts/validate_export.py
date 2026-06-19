@@ -279,86 +279,235 @@ def main() -> None:
     if expansion_dir.exists():
         required = [
             "README.md",
-            "EXPANSION_STATUS.md",
-            "distribution_audit.json",
-            "unique_relation_expansion_summary.json",
-            "minimal_pair_expansion_summary.json",
-            "unique_relation_pool_v1.jsonl",
-            "functional_unique_relation_585_draft.jsonl",
-            "minimal_pair_candidates_v1.jsonl",
-            "unique_relation_pool_v1.csv",
-            "minimal_pair_candidates_v1.csv",
-            "review_queue_summary.json",
-            "balanced_unique_relation_candidate_summary.json",
-            "unique_relation_review_queue_v1.csv",
-            "query_review_queue_v1.csv",
-            "minimal_pair_review_queue_v1.csv",
-            "balanced_unique_relation_candidate_v1.jsonl",
-            "balanced_unique_relation_candidate_v1.csv",
-            "review_queue_v1.html",
+            "expansion_manifest_v1.json",
+            "DENNIS_BENCHMARK_SIGNOFF_PACKET.md",
+            "final_candidates/functional_balanced_116_frozen_candidate.jsonl",
+            "final_candidates/minimal_pairs_expanded_60_frozen_candidate.jsonl",
+            "perception_evidence/expansion_perception_evidence_summary.json",
+            "perception_evidence/expansion_perception_evidence_index.jsonl",
+            "ai_prereview_v1/ai_prereview_summary.json",
+            "ai_prereview_v1/functional_ai_prereview_v1.csv",
+            "ai_prereview_v1/minimal_pair_ai_prereview_v1.csv",
+            "ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl",
+            "ai_prereview_v1/minimal_pair_ai_recommended_accept_v1.jsonl",
         ]
         for filename in required:
             assert (expansion_dir / filename).exists(), f"missing expansion_v1 file: {filename}"
 
-        distribution = json.loads((expansion_dir / "distribution_audit.json").read_text(encoding="utf-8"))
-        unique_summary = json.loads((expansion_dir / "unique_relation_expansion_summary.json").read_text(encoding="utf-8"))
-        pair_summary = json.loads((expansion_dir / "minimal_pair_expansion_summary.json").read_text(encoding="utf-8"))
-        review_summary = json.loads((expansion_dir / "review_queue_summary.json").read_text(encoding="utf-8"))
-        balanced_summary = json.loads((expansion_dir / "balanced_unique_relation_candidate_summary.json").read_text(encoding="utf-8"))
-        pool_rows = read_jsonl(expansion_dir / "unique_relation_pool_v1.jsonl")
-        draft_rows = read_jsonl(expansion_dir / "functional_unique_relation_585_draft.jsonl")
-        pair_rows = read_jsonl(expansion_dir / "minimal_pair_candidates_v1.jsonl")
-        balanced_rows = read_jsonl(expansion_dir / "balanced_unique_relation_candidate_v1.jsonl")
+        manifest = json.loads((expansion_dir / "expansion_manifest_v1.json").read_text(encoding="utf-8"))
+        expansion_evidence_summary = json.loads((expansion_dir / "perception_evidence" / "expansion_perception_evidence_summary.json").read_text(encoding="utf-8"))
+        prereview_summary = json.loads((expansion_dir / "ai_prereview_v1" / "ai_prereview_summary.json").read_text(encoding="utf-8"))
+        freeze_functional_rows = read_jsonl(expansion_dir / "final_candidates" / "functional_balanced_116_frozen_candidate.jsonl")
+        freeze_pair_rows = read_jsonl(expansion_dir / "final_candidates" / "minimal_pairs_expanded_60_frozen_candidate.jsonl")
+        expansion_evidence_rows = read_jsonl(expansion_dir / "perception_evidence" / "expansion_perception_evidence_index.jsonl")
+        prereview_functional_accept_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "functional_ai_recommended_accept_v1.jsonl")
+        prereview_pair_accept_rows = read_jsonl(expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_recommended_accept_v1.jsonl")
 
-        expected_relations = sum(EXPECTED_COUNTS[name] for name in ["functional_500_eval.jsonl", "human_133_eval.jsonl", "long_range_50_eval.jsonl"])
-        assert distribution["status"] == "distribution_audit_ready"
-        assert distribution["n_query_rows"] == expected_relations
-        assert unique_summary["status"] == "unique_relation_expansion_pool_ready"
-        assert unique_summary["n_unique_relations"] == 195
-        assert len(pool_rows) == unique_summary["n_unique_relations"]
-        assert unique_summary["n_query_drafts"] == 3 * unique_summary["n_unique_relations"]
-        assert len(draft_rows) == unique_summary["n_query_drafts"]
-        assert pair_summary["status"] == "minimal_pair_expansion_candidates_ready"
-        assert len(pair_rows) == pair_summary["n_pair_candidates"]
-        assert pair_summary["n_pair_candidates"] > EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"]
-        assert review_summary["status"] == "review_queues_ready"
-        assert review_summary["n_unique_relation_review_rows"] == unique_summary["n_unique_relations"]
-        assert review_summary["n_query_review_rows"] == unique_summary["n_query_drafts"]
-        assert review_summary["n_minimal_pair_review_rows"] == pair_summary["n_pair_candidates"]
-        assert balanced_summary["status"] == "balanced_unique_relation_candidate_ready"
-        assert balanced_summary["max_selected_per_relation"] <= balanced_summary["max_per_exact_relation"]
-        assert len(balanced_rows) == balanced_summary["n_candidate_queries"]
-        assert balanced_summary["n_candidate_queries"] > 80
-        assert balanced_summary["n_candidate_queries"] < unique_summary["n_query_drafts"]
+        with (expansion_dir / "ai_prereview_v1" / "functional_ai_prereview_v1.csv").open("r", encoding="utf-8", newline="") as f:
+            prereview_functional_csv = list(__import__("csv").DictReader(f))
+        with (expansion_dir / "ai_prereview_v1" / "minimal_pair_ai_prereview_v1.csv").open("r", encoding="utf-8", newline="") as f:
+            prereview_pair_csv = list(__import__("csv").DictReader(f))
 
-        draft_ids = {row["query_id"] for row in draft_rows}
-        allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
-        for row in draft_rows:
+        assert manifest["status"] == "expansion_v1_clean_manifest_ready"
+        assert manifest["paper_use_allowed"] is False
+        freeze_summary = manifest["freeze_candidates"]
+        assert freeze_summary["status"] == "freeze_candidates_ready_not_paper_frozen"
+        assert freeze_summary["paper_use_allowed"] is False
+        assert len(freeze_functional_rows) == freeze_summary["n_functional_candidates"] == 116
+        assert len(freeze_pair_rows) == freeze_summary["n_minimal_pair_candidates"] == 60
+        assert freeze_summary["functional_max_per_relation"] <= 15
+        assert all(row.get("paper_use_allowed") is False for row in freeze_functional_rows), "freeze functional candidates must not be paper-enabled"
+        assert all(row.get("human_review_required") is True for row in freeze_functional_rows), "freeze functional candidates require human review"
+        assert all(row.get("dennis_signoff_required") is True for row in freeze_functional_rows), "freeze functional candidates require Dennis signoff"
+
+        assert expansion_evidence_summary["status"] == "expansion_perception_evidence_ready"
+        assert len(expansion_evidence_rows) == expansion_evidence_summary["n_functional_candidates"] == len(freeze_functional_rows)
+        assert expansion_evidence_summary["n_visual_evidence_ready"] == len(freeze_functional_rows)
+        assert expansion_evidence_summary["n_previously_missing_relations_now_have_pointcloud_evidence"] == freeze_summary["n_functional_needing_evidence_generation"]
+        assert (EXPORT_DIR / "BENCHMARK_CLAIM_AUDIT.md").exists(), "missing BENCHMARK_CLAIM_AUDIT.md"
+
+        assert prereview_summary["status"] == "ai_prereview_ready_not_human_annotation"
+        assert prereview_summary["paper_use_allowed"] is False
+        assert len(prereview_functional_csv) == prereview_summary["n_functional_reviewed"] == len(freeze_functional_rows)
+        assert len(prereview_pair_csv) == prereview_summary["n_pair_reviewed"] == len(freeze_pair_rows)
+        assert len(prereview_functional_accept_rows) == prereview_summary["n_functional_ai_accept"]
+        assert len(prereview_pair_accept_rows) == prereview_summary["n_pair_ai_accept"]
+        assert prereview_summary["n_functional_ai_accept"] > 0
+        assert prereview_summary["n_functional_revise_wording"] > 0
+
+        for row in freeze_functional_rows:
             qid = row["query_id"]
             scene_id = row["scene_id"]
-            assert row.get("annotation_source") == "template_generated_needs_human_review", f"{qid}: unexpected annotation source"
             assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
             for target in row.get("target_node_ids") or []:
                 assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
             assert set(row.get("candidate_node_ids") or []) == candidates_by_scene[scene_id], f"{qid}: embedded candidates mismatch scene candidates"
 
-        for row in balanced_rows:
-            qid = row["query_id"]
-            scene_id = row["scene_id"]
-            assert qid in draft_ids, f"balanced candidate {qid} not in expansion draft"
-            assert scene_id in candidates_by_scene, f"{qid}: scene has no candidates: {scene_id}"
-            for target in row.get("target_node_ids") or []:
-                assert target in candidates_by_scene[scene_id], f"{qid}: target not in candidates: {target}"
-            assert row.get("review_status") == "todo", f"{qid}: balanced review status should start as todo"
+        freeze_functional_ids = {row["query_id"] for row in freeze_functional_rows}
+        evidence_ids = {row["query_id"] for row in expansion_evidence_rows}
+        assert evidence_ids == freeze_functional_ids, "expansion evidence rows must match freeze functional candidates"
+        if expansion_evidence_summary.get("images_written"):
+            for row in expansion_evidence_rows:
+                assert (expansion_dir / row["primary_visual_rel_path"]).exists(), f"missing expansion evidence image: {row['primary_visual_rel_path']}"
 
+        allowed_factors = {"spatial_qualifier", "anchor_object", "functional_relation"}
         pair_ids: set[str] = set()
-        for row in pair_rows:
+        for row in freeze_pair_rows:
             pair_id = row.get("pair_id")
             assert pair_id and pair_id not in pair_ids, f"duplicate or missing expansion pair_id: {pair_id}"
             pair_ids.add(pair_id)
-            assert row.get("query_a_id") in draft_ids, f"{pair_id}: query_a_id not in expansion draft"
-            assert row.get("query_b_id") in draft_ids, f"{pair_id}: query_b_id not in expansion draft"
             assert row.get("changed_factor") in allowed_factors, f"{pair_id}: invalid changed_factor"
+            assert row.get("paper_use_allowed") is False, f"{pair_id}: pair candidates must not be paper-enabled"
+
+
+
+    release_dir = EXPORT_DIR / "fungraph_full_modality_release_v1"
+    if release_dir.exists():
+        required = [
+            "README.md",
+            "dataset_manifest.json",
+            "dataset_unique_labels.json",
+            "dataset_functional_labels.json",
+            "dataset_unique_relations.json",
+            "annotation_rules/functional_relation_taxonomy.json",
+            "splits/functional_500.jsonl",
+            "splits/human_133.jsonl",
+            "splits/long_range_50.jsonl",
+            "splits/minimal_pairs_28.jsonl",
+            "splits/expansion_functional_116_candidates.jsonl",
+            "splits/expansion_minimal_pairs_60_candidates.jsonl",
+            "query_protocol_v1.md",
+            "external/funthor_v1/README.md",
+            "external/funthor_v1/funthor_manifest.json",
+            "splits/funthor_functional_queries_v1.jsonl",
+            "splits/funthor_minimal_pairs_v1.jsonl",
+            "splits/funthor_functional_queries_factorized_v2.jsonl",
+        ]
+        for filename in required:
+            assert (release_dir / filename).exists(), f"missing full-modality release file: {filename}"
+
+        release_manifest = json.loads((release_dir / "dataset_manifest.json").read_text(encoding="utf-8"))
+        assert release_manifest["status"] == "fungraph_full_modality_release_ready"
+        assert release_manifest["counts"]["n_scenes"] == len(candidates_by_scene)
+        assert release_manifest["counts"]["n_candidate_nodes"] == sum(len(x) for x in candidates_by_scene.values())
+        assert release_manifest["counts"]["n_frames"] == summary.get("n_frame_rgbd_camera_triplets", release_manifest["counts"]["n_frames"])
+        assert release_manifest["counts"]["n_functional_relations"] >= 160
+        assert release_manifest["counts"]["n_unique_relations"] >= 20
+
+        expected_release_splits = {
+            "functional_500": EXPECTED_COUNTS["functional_500_eval.jsonl"],
+            "human_133": EXPECTED_COUNTS["human_133_eval.jsonl"],
+            "long_range_50": EXPECTED_COUNTS["long_range_50_eval.jsonl"],
+            "minimal_pairs_28": EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"],
+            "expansion_functional_116_candidates": 116,
+            "expansion_minimal_pairs_60_candidates": 60,
+        }
+        for split_name, expected in expected_release_splits.items():
+            rows = read_jsonl(release_dir / "splits" / f"{split_name}.jsonl")
+            assert len(rows) == expected, f"release split {split_name}: expected {expected}, got {len(rows)}"
+
+        external = release_manifest.get("external_datasets", {}).get("funthor_v1")
+        assert external, "missing FunTHOR external dataset entry in release manifest"
+        assert external["paper_use_allowed"] is False
+        assert external["n_scenes"] == 12
+        assert external["n_functional_edges"] == 164
+        assert external["n_generated_queries"] == 805
+        assert external["n_generated_minimal_pairs"] == 200
+        assert external["n_factorized_v2_queries"] == 1655
+        assert external["factorized_v2_axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
+        assert release_manifest["counts"]["n_external_funthor_queries"] == 805
+        assert release_manifest["counts"]["n_external_funthor_minimal_pairs"] == 200
+        assert release_manifest["counts"]["n_external_funthor_factorized_v2_queries"] == 1655
+        assert release_manifest["counts"]["n_total_release_query_rows_including_external"] >= 3500
+
+        funthor_manifest = json.loads((release_dir / "external" / "funthor_v1" / "funthor_manifest.json").read_text(encoding="utf-8"))
+        assert funthor_manifest["status"] == "funthor_external_functional_extension_ready"
+        assert funthor_manifest["counts"]["n_scenes"] == 12
+        assert funthor_manifest["counts"]["n_functional_edges"] == 164
+        assert funthor_manifest["counts"]["n_visible_endpoint_edges"] == 161
+        assert funthor_manifest["counts"]["n_generated_queries"] == 805
+        assert funthor_manifest["counts"]["n_generated_minimal_pairs"] == 200
+        assert funthor_manifest["counts"]["n_factorized_v2_queries"] == 1655
+        assert funthor_manifest["counts"]["n_unique_relations"] == 18
+        assert funthor_manifest["factorized_v2"]["axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
+        assert funthor_manifest["factorized_v2"]["paper_use_allowed"] is False
+
+        funthor_queries = read_jsonl(release_dir / "splits" / "funthor_functional_queries_v1.jsonl")
+        funthor_pairs = read_jsonl(release_dir / "splits" / "funthor_minimal_pairs_v1.jsonl")
+        funthor_v2_queries = read_jsonl(release_dir / "splits" / "funthor_functional_queries_factorized_v2.jsonl")
+        assert len(funthor_queries) == 805
+        assert len(funthor_pairs) == 200
+        assert len(funthor_v2_queries) == 1655
+        funthor_query_ids = {row["query_id"] for row in funthor_queries}
+        assert len(funthor_query_ids) == len(funthor_queries), "duplicate FunTHOR query ids"
+        for row in funthor_queries:
+            assert row["dataset"] == "funthor"
+            assert row["paper_use_allowed"] is False
+            assert row["human_review_required"] is True
+            assert row["dennis_signoff_required"] is True
+            assert row["target_node_id"] in set(row["candidate_node_ids"]), f"FunTHOR target outside candidate set: {row['query_id']}"
+            assert row["query_family"] in {"functional_element_selection", "affected_object_selection"}
+            assert row.get("functional_taxonomy", {}).get("relation_category"), f"FunTHOR query missing taxonomy: {row['query_id']}"
+        for row in funthor_pairs:
+            assert row["dataset"] == "funthor"
+            assert row["paper_use_allowed"] is False
+            assert row["query_a_id"] in funthor_query_ids
+            assert row["query_b_id"] in funthor_query_ids
+
+        allowed_query_types = {
+            "functional_element_selection",
+            "target_object_selection",
+            "relation_verification",
+            "state_change_goal_completion",
+            "ambiguous_instance_minimal_pair",
+            "functional_affordance_selection",
+            "functional_consequence_prediction",
+        }
+        allowed_scopes = {"local", "remote"}
+        allowed_anchor_visibility = {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
+        allowed_answer_formats = {"node_selection", "boolean", "text"}
+        funthor_v2_ids = {row["query_id"] for row in funthor_v2_queries}
+        assert len(funthor_v2_ids) == len(funthor_v2_queries), "duplicate FunTHOR v2 query ids"
+        assert {row["spatial_scope"] for row in funthor_v2_queries} == allowed_scopes
+        assert {row["anchor_visibility"] for row in funthor_v2_queries} == allowed_anchor_visibility
+        for row in funthor_v2_queries:
+            qid = row["query_id"]
+            assert row["dataset"] == "funthor"
+            assert row["generation_version"] == "factorized_v2"
+            assert row["paper_use_allowed"] is False
+            assert row["human_review_required"] is True
+            assert row["dennis_signoff_required"] is True
+            assert row["functional_query_type"] in allowed_query_types, f"{qid}: invalid query type"
+            assert row["spatial_scope"] in allowed_scopes, f"{qid}: invalid spatial scope"
+            assert row["anchor_visibility"] in allowed_anchor_visibility, f"{qid}: invalid anchor visibility"
+            assert row["answer_format"] in allowed_answer_formats, f"{qid}: invalid answer format"
+            assert row["functional_taxonomy"]["spatial_scope"] == row["spatial_scope"], f"{qid}: taxonomy scope mismatch"
+            assert row["functional_taxonomy"]["anchor_visibility"] == row["anchor_visibility"], f"{qid}: taxonomy anchor mismatch"
+            assert row["target_node_ids"], f"{qid}: missing target_node_ids"
+            for target in row["target_node_ids"]:
+                assert target in set(row["candidate_node_ids"]), f"{qid}: target outside candidate set"
+            if row["answer_format"] == "boolean":
+                assert row.get("answer_boolean") is True, f"{qid}: boolean query must carry answer_boolean"
+            if row["answer_format"] == "text":
+                assert row.get("answer_text"), f"{qid}: text query must carry answer_text"
+
+        scene_manifest = release_manifest["scene_manifest"]
+        assert len(scene_manifest) == len(candidates_by_scene)
+        for scene_row in scene_manifest:
+            scene_id = str(scene_row["scene_id"])
+            scene_json_path = release_dir / scene_row["scene_json"]
+            frames_path = release_dir / scene_row["frames_jsonl"]
+            assert scene_json_path.exists(), f"missing release scene package: {scene_json_path}"
+            assert frames_path.exists(), f"missing release frame index: {frames_path}"
+            scene_pkg = json.loads(scene_json_path.read_text(encoding="utf-8"))
+            frame_rows = read_jsonl(frames_path)
+            assert scene_pkg["scene_id"] == scene_id
+            assert len(scene_pkg["node_list"]) == len(candidates_by_scene[scene_id])
+            assert len(frame_rows) == scene_row["n_frames"] == scene_pkg["dataset"]["frame_summary"]["n_frames"]
+            assert scene_pkg["readiness"]["full_scene_ready"] is True
+            assert scene_pkg["readiness"]["funthor_style_raw_modalities_present"] is True
+            assert scene_pkg["visible"]["visibility_stats"]["n_visible_nodes"] == len(scene_pkg["visible"]["node_ids"])
+            assert all("point_annotation" in node for node in scene_pkg["node_list"]), f"{scene_id}: node missing point annotation pointer"
 
     print("3DGraphLLM export validation passed")
 

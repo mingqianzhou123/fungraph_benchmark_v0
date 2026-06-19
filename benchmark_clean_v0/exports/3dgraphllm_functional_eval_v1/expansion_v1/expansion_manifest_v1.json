@@ -1,0 +1,472 @@
+{
+  "ai_prereview": {
+    "functional_decision_counts": {
+      "ai_recommend_accept_after_human_spotcheck": 69,
+      "needs_human_review": 9,
+      "revise_wording_before_signoff": 38
+    },
+    "functional_flag_counts": {
+      "fallback_template_wording": 4,
+      "new_expansion_relation_pointcloud_only": 21,
+      "no_depth_tested_rgbd_crop": 70,
+      "same_label_disambiguation_requires_visual_check": 74,
+      "slash_label_needs_wording_cleanup": 34,
+      "source_relation_has_spacing_typo": 1
+    },
+    "n_functional_ai_accept": 69,
+    "n_functional_needs_review": 9,
+    "n_functional_reviewed": 116,
+    "n_functional_revise_wording": 38,
+    "n_pair_ai_accept": 16,
+    "n_pair_needs_review_or_reject": 10,
+    "n_pair_reviewed": 60,
+    "n_pair_secondary_only": 34,
+    "pair_decision_counts": {
+      "ai_recommend_accept_after_human_spotcheck": 16,
+      "keep_as_secondary_diagnostic_only": 34,
+      "needs_human_review": 9,
+      "needs_human_review_not_primary_pair": 1
+    },
+    "pair_flag_counts": {
+      "high_frequency_target_label": 55,
+      "pair_endpoint_not_in_116_functional_candidate_split": 34,
+      "same_target_answer_not_useful_for_object_selection_contrast": 1,
+      "small_spatial_separation": 25
+    },
+    "paper_use_allowed": false,
+    "required_before_paper_use": [
+      "human wording review",
+      "evidence spot-check",
+      "Dennis signoff",
+      "final paper manifest"
+    ],
+    "status": "ai_prereview_ready_not_human_annotation"
+  },
+  "balanced_candidate_source": {
+    "max_per_exact_relation": 15,
+    "max_selected_per_relation": 15,
+    "n_candidate_queries": 116,
+    "n_candidates_needing_evidence_generation": 21,
+    "n_exact_relation_types": 21,
+    "relation_counts": {
+      "control": 13,
+      "control the water flow": 7,
+      "control, turn on or turn off": 6,
+      "press or rotate to  control the water flow": 1,
+      "press or rotate to control the water flow": 4,
+      "press or rotate to flush": 1,
+      "press or rotate to open": 1,
+      "press to open or close, or adjust the setting": 1,
+      "provide power": 15,
+      "pull or rotate to open or close": 1,
+      "pull to open or close": 15,
+      "pull to open or close a drawer": 15,
+      "push to flush": 1,
+      "rotate or press to adjust the setting": 1,
+      "rotate to adjust setting or temperature": 3,
+      "rotate to adjust the setting": 7,
+      "rotate to adjust the setting or open or close": 1,
+      "rotate to adjust the temperature": 7,
+      "rotate to control the water flow": 2,
+      "rotate to flush": 1,
+      "rotate to open or close": 13
+    },
+    "selection_rule": "max_15_per_exact_relation_prefer_rgbd_then_previous_export",
+    "status": "balanced_unique_relation_candidate_ready"
+  },
+  "canonical_files": [
+    "README.md",
+    "expansion_manifest_v1.json",
+    "DENNIS_BENCHMARK_SIGNOFF_PACKET.md",
+    "final_candidates/functional_balanced_116_frozen_candidate.jsonl",
+    "final_candidates/minimal_pairs_expanded_60_frozen_candidate.jsonl",
+    "ai_prereview_v1/ai_prereview_summary.json",
+    "ai_prereview_v1/functional_ai_prereview_v1.csv",
+    "ai_prereview_v1/minimal_pair_ai_prereview_v1.csv",
+    "ai_prereview_v1/functional_ai_recommended_accept_v1.jsonl",
+    "ai_prereview_v1/minimal_pair_ai_recommended_accept_v1.jsonl",
+    "perception_evidence/expansion_perception_evidence_summary.json",
+    "perception_evidence/expansion_perception_evidence_index.jsonl",
+    "perception_evidence/images/"
+  ],
+  "current_export_audit": {
+    "by_split": {
+      "functional_500": {
+        "n_query_rows": 500,
+        "n_unique_relations": 83
+      },
+      "human_133": {
+        "n_query_rows": 133,
+        "n_unique_relations": 94
+      },
+      "long_range_50": {
+        "n_query_rows": 50,
+        "n_unique_relations": 45
+      }
+    },
+    "max_paraphrases_per_relation": 10,
+    "n_query_rows": 683,
+    "n_relation_groups_with_multiple_paraphrases": 102,
+    "n_unique_scene_target_anchor_relation": 160,
+    "status": "distribution_audit_ready",
+    "top_relations": [
+      {
+        "n": 196,
+        "relation": "pull to open or close"
+      },
+      {
+        "n": 148,
+        "relation": "pull to open or close a drawer"
+      },
+      {
+        "n": 71,
+        "relation": "provide power"
+      },
+      {
+        "n": 46,
+        "relation": "rotate to adjust the setting"
+      },
+      {
+        "n": 45,
+        "relation": "control"
+      },
+      {
+        "n": 39,
+        "relation": "rotate to open or close"
+      },
+      {
+        "n": 30,
+        "relation": "control the water flow"
+      },
+      {
+        "n": 21,
+        "relation": "rotate to adjust the temperature"
+      },
+      {
+        "n": 18,
+        "relation": "control, turn on or turn off"
+      },
+      {
+        "n": 16,
+        "relation": "press or rotate to control the water flow"
+      },
+      {
+        "n": 12,
+        "relation": "rotate to control the water flow"
+      },
+      {
+        "n": 8,
+        "relation": "rotate or press to adjust the setting"
+      },
+      {
+        "n": 7,
+        "relation": "rotate to adjust the setting or open or close"
+      },
+      {
+        "n": 7,
+        "relation": "press to open or close, or adjust the setting"
+      },
+      {
+        "n": 7,
+        "relation": "press or rotate to  control the water flow"
+      },
+      {
+        "n": 6,
+        "relation": "pull or rotate to open or close"
+      },
+      {
+        "n": 6,
+        "relation": "rotate to flush"
+      }
+    ],
+    "top_scenes": [
+      {
+        "n": 159,
+        "scene_id": "469011"
+      },
+      {
+        "n": 124,
+        "scene_id": "421380"
+      },
+      {
+        "n": 46,
+        "scene_id": "422813"
+      },
+      {
+        "n": 42,
+        "scene_id": "460417"
+      },
+      {
+        "n": 42,
+        "scene_id": "460419"
+      },
+      {
+        "n": 36,
+        "scene_id": "466183"
+      },
+      {
+        "n": 33,
+        "scene_id": "422826"
+      },
+      {
+        "n": 32,
+        "scene_id": "466192"
+      },
+      {
+        "n": 31,
+        "scene_id": "421254"
+      },
+      {
+        "n": 25,
+        "scene_id": "466803"
+      },
+      {
+        "n": 24,
+        "scene_id": "467293"
+      },
+      {
+        "n": 20,
+        "scene_id": "422391"
+      },
+      {
+        "n": 18,
+        "scene_id": "468076"
+      },
+      {
+        "n": 14,
+        "scene_id": "420683"
+      },
+      {
+        "n": 14,
+        "scene_id": "421013"
+      },
+      {
+        "n": 13,
+        "scene_id": "421602"
+      },
+      {
+        "n": 4,
+        "scene_id": "421063"
+      },
+      {
+        "n": 3,
+        "scene_id": "422007"
+      },
+      {
+        "n": 3,
+        "scene_id": "421267"
+      }
+    ],
+    "top_target_anchor_label_pairs": [
+      {
+        "anchor_label": "television stand / cabinet",
+        "n": 101,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "kitchen cabinet",
+        "n": 71,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "television",
+        "n": 45,
+        "target_label": "remote"
+      },
+      {
+        "anchor_label": "oven",
+        "n": 38,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "door",
+        "n": 27,
+        "target_label": "handle"
+      },
+      {
+        "anchor_label": "dresser / chest of drawers",
+        "n": 26,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "television",
+        "n": 24,
+        "target_label": "electric outlet"
+      },
+      {
+        "anchor_label": "wardrobe",
+        "n": 24,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "radiator",
+        "n": 21,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "cabinet",
+        "n": 19,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "cabinet / dresser / nightstand",
+        "n": 18,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "bathroom sink",
+        "n": 14,
+        "target_label": "button / knob"
+      },
+      {
+        "anchor_label": "cabinet",
+        "n": 12,
+        "target_label": "handle"
+      },
+      {
+        "anchor_label": "bathtub",
+        "n": 12,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "doors",
+        "n": 12,
+        "target_label": "handle"
+      },
+      {
+        "anchor_label": "drawer",
+        "n": 12,
+        "target_label": "knob"
+      },
+      {
+        "anchor_label": "dresser / chest of drawers",
+        "n": 12,
+        "target_label": "handle"
+      },
+      {
+        "anchor_label": "chandelier / ceiling light",
+        "n": 9,
+        "target_label": "light switch"
+      },
+      {
+        "anchor_label": "exhaust hood / ventilation fan",
+        "n": 9,
+        "target_label": "electric outlet"
+      },
+      {
+        "anchor_label": "fridge",
+        "n": 9,
+        "target_label": "handle"
+      }
+    ]
+  },
+  "freeze_candidates": {
+    "functional_max_per_relation": 15,
+    "minimal_pair_changed_factor_counts": {
+      "anchor_object": 15,
+      "functional_relation": 1,
+      "spatial_qualifier": 44
+    },
+    "n_functional_candidates": 116,
+    "n_functional_needing_evidence_generation": 21,
+    "n_functional_relation_types": 21,
+    "n_minimal_pair_candidates": 60,
+    "paper_use_allowed": false,
+    "status": "freeze_candidates_ready_not_paper_frozen"
+  },
+  "intermediate_policy": "Files under expansion_v1/_intermediate/ are script-generated scratch artifacts and are ignored by git.",
+  "paper_use_allowed": false,
+  "perception_evidence": {
+    "image_root_rel_path": "perception_evidence/images",
+    "images_written": true,
+    "important_boundary": "This completes visual evidence cards for freeze candidates, not new camera-depth z-test crops for all candidates.",
+    "n_functional_candidates": 116,
+    "n_pointcloud_render_images": 116,
+    "n_previously_missing_relations_now_have_pointcloud_evidence": 21,
+    "n_visual_evidence_ready": 116,
+    "n_with_previous_depth_tested_rgbd_crop": 46,
+    "previous_export_evidence_tier_counts": {
+      "not_in_previous_export": 21,
+      "pointcloud_render_fallback": 49,
+      "rgbd_crop_plus_pointcloud_render": 46
+    },
+    "selection_rule_version": "expansion_perception_evidence_v1_20260618_pointcloud_with_previous_crop_metadata",
+    "status": "expansion_perception_evidence_ready"
+  },
+  "rebuild_commands": [
+    "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_v1.py --pair-cap 200",
+    "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_freeze_candidates_v1.py",
+    "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_perception_evidence_v1.py --write-images",
+    "python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_ai_prereview_v1.py"
+  ],
+  "required_before_paper_use": [
+    "human wording review",
+    "minimal-pair validity review",
+    "evidence spot-check",
+    "Dennis signoff",
+    "final paper manifest with paper_use_allowed=true only after signoff"
+  ],
+  "review_workspace": {
+    "n_minimal_pair_review_rows": 105,
+    "n_needing_evidence_generation": 35,
+    "n_query_review_rows": 585,
+    "n_unique_relation_review_rows": 195,
+    "review_priority_counts": {
+      "needs_evidence_generation": 35,
+      "rgbd_crop_ready": 48,
+      "same_label_disambiguation": 97,
+      "standard": 15
+    },
+    "status": "review_queues_ready"
+  },
+  "source_unique_relation_pool": {
+    "n_depth_tested_rgbd_crop_relations": 48,
+    "n_non_previous_export_relations": 35,
+    "n_query_drafts": 585,
+    "n_scenes": 20,
+    "n_unique_relations": 195,
+    "relation_counts": {
+      "control": 13,
+      "control the water flow": 7,
+      "control, turn on or turn off": 6,
+      "press or rotate to  control the water flow": 1,
+      "press or rotate to control the water flow": 4,
+      "press or rotate to flush": 1,
+      "press or rotate to open": 1,
+      "press to open or close, or adjust the setting": 1,
+      "provide power": 15,
+      "pull or rotate to open or close": 1,
+      "pull to open or close": 45,
+      "pull to open or close a drawer": 64,
+      "push to flush": 1,
+      "rotate or press to adjust the setting": 1,
+      "rotate to adjust setting or temperature": 3,
+      "rotate to adjust the setting": 7,
+      "rotate to adjust the setting or open or close": 1,
+      "rotate to adjust the temperature": 7,
+      "rotate to control the water flow": 2,
+      "rotate to flush": 1,
+      "rotate to open or close": 13
+    },
+    "status": "unique_relation_expansion_pool_ready",
+    "target_label_counts": {
+      "button": 2,
+      "button / knob": 6,
+      "electric outlet": 12,
+      "electric outlet / power strip": 1,
+      "faucet / handle": 3,
+      "faucet / knob / handle": 1,
+      "handle": 45,
+      "handle / faucet": 3,
+      "knob": 100,
+      "knob / button": 1,
+      "light switch": 4,
+      "power strip": 2,
+      "remote": 13,
+      "switch panel": 1,
+      "switch panel / electric outlet": 1
+    }
+  },
+  "status": "expansion_v1_clean_manifest_ready",
+  "structure_version": "expansion_v1_clean_20260619"
+}

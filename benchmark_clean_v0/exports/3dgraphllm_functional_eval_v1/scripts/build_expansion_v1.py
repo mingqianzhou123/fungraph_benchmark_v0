@@ -24,6 +24,7 @@ from typing import Any
 EXPORT_DIR = Path(__file__).resolve().parents[1]
 BENCHMARK_ROOT = EXPORT_DIR.parents[1]
 OUT_DIR = EXPORT_DIR / "expansion_v1"
+INTERMEDIATE_DIR = OUT_DIR / "_intermediate"
 ANNOTATION_DIR = BENCHMARK_ROOT / "annotations" / "openfungraph"
 RELATIONS_PATH = ANNOTATION_DIR / "SceneFun3D.relations.json"
 ANNOTATIONS_PATH = ANNOTATION_DIR / "SceneFun3D.annotations.json"
@@ -595,8 +596,8 @@ def write_report(current: dict[str, Any], pool_summary: dict[str, Any], pair_sum
         "Relations not present in the previous full-perception export need an evidence-generation pass before this draft is promoted to a frozen eval split.",
     ]
     rendered = "\n".join(lines) + "\n"
-    (OUT_DIR / "EXPANSION_STATUS.md").write_text(rendered, encoding="utf-8")
-    (OUT_DIR / "README.md").write_text(rendered, encoding="utf-8")
+    (INTERMEDIATE_DIR / "EXPANSION_STATUS.md").write_text(rendered, encoding="utf-8")
+    (INTERMEDIATE_DIR / "README.md").write_text(rendered, encoding="utf-8")
 
 
 def main() -> None:
@@ -629,46 +630,46 @@ def main() -> None:
     unique_review_rows, query_review_rows, pair_review_rows, review_summary = build_review_queues(unique_rows, query_rows, pair_rows)
     balanced_rows, balanced_summary = build_balanced_candidates(unique_rows, query_rows, max_per_relation=15)
 
-    write_json(OUT_DIR / "distribution_audit.json", current_summary)
-    write_json(OUT_DIR / "unique_relation_expansion_summary.json", pool_summary)
-    write_json(OUT_DIR / "minimal_pair_expansion_summary.json", pair_summary)
-    write_json(OUT_DIR / "review_queue_summary.json", review_summary)
-    write_json(OUT_DIR / "balanced_unique_relation_candidate_summary.json", balanced_summary)
-    write_jsonl(OUT_DIR / "unique_relation_pool_v1.jsonl", unique_rows)
-    write_jsonl(OUT_DIR / "functional_unique_relation_585_draft.jsonl", query_rows)
-    write_jsonl(OUT_DIR / "minimal_pair_candidates_v1.jsonl", pair_rows)
-    write_jsonl(OUT_DIR / "balanced_unique_relation_candidate_v1.jsonl", balanced_rows)
+    write_json(INTERMEDIATE_DIR / "distribution_audit.json", current_summary)
+    write_json(INTERMEDIATE_DIR / "unique_relation_expansion_summary.json", pool_summary)
+    write_json(INTERMEDIATE_DIR / "minimal_pair_expansion_summary.json", pair_summary)
+    write_json(INTERMEDIATE_DIR / "review_queue_summary.json", review_summary)
+    write_json(INTERMEDIATE_DIR / "balanced_unique_relation_candidate_summary.json", balanced_summary)
+    write_jsonl(INTERMEDIATE_DIR / "unique_relation_pool_v1.jsonl", unique_rows)
+    write_jsonl(INTERMEDIATE_DIR / "functional_unique_relation_585_draft.jsonl", query_rows)
+    write_jsonl(INTERMEDIATE_DIR / "minimal_pair_candidates_v1.jsonl", pair_rows)
+    write_jsonl(INTERMEDIATE_DIR / "balanced_unique_relation_candidate_v1.jsonl", balanced_rows)
     write_csv(
-        OUT_DIR / "unique_relation_pool_v1.csv",
+        INTERMEDIATE_DIR / "unique_relation_pool_v1.csv",
         unique_rows,
         ["unique_relation_id", "scene_id", "target_label", "target_node_id", "relation", "anchor_label", "anchor_node_id", "target_label_count_in_scene", "perception_evidence_tier", "has_depth_tested_rgbd_crop"],
     )
     write_csv(
-        OUT_DIR / "minimal_pair_candidates_v1.csv",
+        INTERMEDIATE_DIR / "minimal_pair_candidates_v1.csv",
         pair_rows,
         ["pair_id", "changed_factor", "scene_id", "target_label", "relation_a", "relation_b", "anchor_a_label", "anchor_b_label", "target_geom_diff_m", "pair_evidence_used", "query_a_id", "query_b_id"],
     )
     write_csv(
-        OUT_DIR / "unique_relation_review_queue_v1.csv",
+        INTERMEDIATE_DIR / "unique_relation_review_queue_v1.csv",
         unique_review_rows,
         ["review_status", "review_decision", "reject_reason", "needs_query_rewrite", "needs_evidence_generation", "review_priority", "unique_relation_id", "canonical_query_id", "scene_id", "target_label", "target_node_id", "relation", "anchor_label", "anchor_node_id", "canonical_query_text", "target_label_count_in_scene", "relation_count_in_scene", "perception_evidence_tier", "has_depth_tested_rgbd_crop", "reviewer_rewrite_query_text", "reviewer_notes"],
     )
     write_csv(
-        OUT_DIR / "query_review_queue_v1.csv",
+        INTERMEDIATE_DIR / "query_review_queue_v1.csv",
         query_review_rows,
         ["review_status", "review_decision", "reject_reason", "needs_query_rewrite", "query_id", "unique_relation_id", "scene_id", "target_label", "target_node_id", "relation", "anchor_label", "anchor_node_id", "query_text", "perception_evidence_tier", "has_depth_tested_rgbd_crop", "reviewer_rewrite_query_text", "reviewer_notes"],
     )
     write_csv(
-        OUT_DIR / "minimal_pair_review_queue_v1.csv",
+        INTERMEDIATE_DIR / "minimal_pair_review_queue_v1.csv",
         pair_review_rows,
         ["review_status", "review_decision", "reject_reason", "pair_id", "changed_factor", "scene_id", "target_label", "relation_a", "relation_b", "anchor_a_label", "anchor_b_label", "target_geom_diff_m", "why_hard", "query_a_id", "query_b_id", "reviewer_notes"],
     )
     write_csv(
-        OUT_DIR / "balanced_unique_relation_candidate_v1.csv",
+        INTERMEDIATE_DIR / "balanced_unique_relation_candidate_v1.csv",
         balanced_rows,
         ["review_status", "review_decision", "query_id", "unique_relation_id", "scene_id", "target_label", "target_node_id", "anchor_label", "anchor_node_id", "query_text", "perception_evidence_tier", "has_depth_tested_rgbd_crop", "needs_evidence_generation", "balanced_selection_rule"],
     )
-    write_review_html(OUT_DIR / "review_queue_v1.html", unique_review_rows, balanced_rows, pair_review_rows, review_summary, balanced_summary)
+    write_review_html(INTERMEDIATE_DIR / "review_queue_v1.html", unique_review_rows, balanced_rows, pair_review_rows, review_summary, balanced_summary)
     write_report(current_summary, pool_summary, pair_summary, review_summary, balanced_summary)
     print(json.dumps({"current": current_summary, "pool": pool_summary, "pairs": pair_summary, "review": review_summary, "balanced": balanced_summary}, indent=2, sort_keys=True))
 

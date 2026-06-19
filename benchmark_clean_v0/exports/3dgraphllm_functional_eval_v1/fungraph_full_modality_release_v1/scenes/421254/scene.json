@@ -1,0 +1,1489 @@
+{
+  "annotations_aggregated": {
+    "format_note": "Point indices are not duplicated here; use source_file/source_lookup under each node.point_annotation.",
+    "n_nodes_with_point_segments": 28,
+    "source_file": "annotations/openfungraph/SceneFun3D.annotations.json"
+  },
+  "dataset": {
+    "captures": [
+      {
+        "capture_full_ready": true,
+        "capture_id": "42444754",
+        "capture_rel_dir": "dev/421254/42444754",
+        "n_rgb_depth_intrinsic_triplets": 284,
+        "trajectory_rel_paths": "dev/421254/42444754/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "42444755",
+        "capture_rel_dir": "dev/421254/42444755",
+        "n_rgb_depth_intrinsic_triplets": 235,
+        "trajectory_rel_paths": "dev/421254/42444755/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "42444758",
+        "capture_rel_dir": "dev/421254/42444758",
+        "n_rgb_depth_intrinsic_triplets": 222,
+        "trajectory_rel_paths": "dev/421254/42444758/lowres_wide.traj"
+      }
+    ],
+    "frame_index_rel_path": "scenes/421254/frames.jsonl",
+    "frame_summary": {
+      "capture_ids": [
+        "42444754",
+        "42444755",
+        "42444758"
+      ],
+      "n_depth": 741,
+      "n_frames": 741,
+      "n_intrinsics": 741,
+      "n_rgb": 741
+    }
+  },
+  "functional_relations": [
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "560f1e2c-e62d-4f1e-93e8-3acbf61433cd|control|8bd6869b-b734-4041-a3e5-0cd3e3b18d0e",
+      "first_label": "remote",
+      "first_node_id": "560f1e2c-e62d-4f1e-93e8-3acbf61433cd",
+      "relation": "control",
+      "relation_id": "0cf34fbd-f364-4a04-b297-aab83d056de4",
+      "second_label": "television",
+      "second_node_id": "8bd6869b-b734-4041-a3e5-0cd3e3b18d0e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "9c06f662-e551-484e-9559-a7d3c0b5b31d|control|8bd6869b-b734-4041-a3e5-0cd3e3b18d0e",
+      "first_label": "remote",
+      "first_node_id": "9c06f662-e551-484e-9559-a7d3c0b5b31d",
+      "relation": "control",
+      "relation_id": "a24dbdf0-6e3e-42ba-bfae-9caf7d2e90ab",
+      "second_label": "television",
+      "second_node_id": "8bd6869b-b734-4041-a3e5-0cd3e3b18d0e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "51097855-7ce4-4893-8f0a-4715abeaec1c|provide power|0ea8a987-f639-4314-a3f3-78a5e6a3b5dc",
+      "first_label": "electric outlet",
+      "first_node_id": "51097855-7ce4-4893-8f0a-4715abeaec1c",
+      "relation": "provide power",
+      "relation_id": "7aab0d44-6301-42b3-82d1-017605799fdc",
+      "second_label": "lamp",
+      "second_node_id": "0ea8a987-f639-4314-a3f3-78a5e6a3b5dc"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "044038ae-cd3a-4874-837c-9f2e32a83b04|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "044038ae-cd3a-4874-837c-9f2e32a83b04",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "064e14b9-a9eb-4884-93e4-5db78e29d3d6",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "0635ce47-455a-4933-b421-cd5601b7203f|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "0635ce47-455a-4933-b421-cd5601b7203f",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "7243d8f3-14a5-4d60-af83-7711b83d1313",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "15a1acd9-d48d-4011-bbdc-297619dfb62c|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "15a1acd9-d48d-4011-bbdc-297619dfb62c",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "bccd4bc6-604f-40de-8cda-8c12ade8db0e",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "28032579-88c0-4088-b5ca-50ccd2d50d87",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "2ffdc7cc-6746-4b6d-a2e5-35c078befc56|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "2ffdc7cc-6746-4b6d-a2e5-35c078befc56",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "8f1dbb59-f197-4ce8-bada-382db1e7e98c",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "3025d034-e4c9-4dc8-8711-ba7cda23b8e1|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "3025d034-e4c9-4dc8-8711-ba7cda23b8e1",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "1247f859-3396-4f5b-bbab-7c22339e23d8",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "482d7642-61c9-4161-b651-45dc8cb9e2ae|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "482d7642-61c9-4161-b651-45dc8cb9e2ae",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "06742f16-2702-403d-949c-88c893625368",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "6aa841fa-6898-401d-a750-0f521b4cafe7|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "6aa841fa-6898-401d-a750-0f521b4cafe7",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "7fd4f4fc-4082-46cd-b31f-4c09c21752c5",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "877bb40d-b6d8-4716-b958-320b07e6f8d8|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "877bb40d-b6d8-4716-b958-320b07e6f8d8",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "799b0c43-8bc3-4a7c-9cbf-b341adda34b0",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "8ab6af8d-3cad-4fad-bf78-157916578132|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "8ab6af8d-3cad-4fad-bf78-157916578132",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "57f88abc-c9a9-4a8d-a973-1eac0d042c01",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "fd7124b7-cf3e-4e5f-ade2-441d2d9e9977",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "69b76413-5cef-4fb9-95e9-7b1d3acdc68e",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "ac42e1c2-3ed4-447f-8147-cd903d8eefc5|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "ac42e1c2-3ed4-447f-8147-cd903d8eefc5",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "2866ac13-99b3-4c0f-ad16-b64cf0d18402",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "addeffee-87e2-4f20-98bd-589c425f0f07|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "addeffee-87e2-4f20-98bd-589c425f0f07",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "b641bb1c-5f68-402b-a785-c005c7a36184",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "b0aa5f30-4fae-4ca8-bc66-c0595b8fc754|pull to open or close a drawer|f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "first_label": "knob",
+      "first_node_id": "b0aa5f30-4fae-4ca8-bc66-c0595b8fc754",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "13b891cc-c260-4958-b96f-3f1e470bf6a7",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "da2d25fc-56d3-4b0f-8ada-778acac16871|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "da2d25fc-56d3-4b0f-8ada-778acac16871",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "5cb11cb6-6916-4afb-b98f-3e5f3ecd1a58",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "f75e1a27-55d7-4b2e-be1a-2d5596d69dd8|pull to open or close a drawer|97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "first_label": "knob",
+      "first_node_id": "f75e1a27-55d7-4b2e-be1a-2d5596d69dd8",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "8d39f815-0291-4a42-ad2f-b83931864240",
+      "second_label": "dresser / chest of drawers",
+      "second_node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "ba0e4f26-1e02-4745-92b6-e1035ba5252c|pull to open or close a drawer|762c6ae7-17cb-4f69-998b-ffe2c168d47f",
+      "first_label": "knob",
+      "first_node_id": "ba0e4f26-1e02-4745-92b6-e1035ba5252c",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "a8fbfc93-9f2e-422a-b1c8-6b9c1db38e81",
+      "second_label": "dresser / nightstand",
+      "second_node_id": "762c6ae7-17cb-4f69-998b-ffe2c168d47f"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "c0685f07-46ed-41c9-b3ce-4fc476c86c7c|pull to open or close a drawer|762c6ae7-17cb-4f69-998b-ffe2c168d47f",
+      "first_label": "knob",
+      "first_node_id": "c0685f07-46ed-41c9-b3ce-4fc476c86c7c",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "cfc39f7d-7adb-4f97-b6ae-d9aa805c6a39",
+      "second_label": "dresser / nightstand",
+      "second_node_id": "762c6ae7-17cb-4f69-998b-ffe2c168d47f"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "d2174346-66bb-4a99-8177-edcc8c7cd20b|pull to open or close a drawer|762c6ae7-17cb-4f69-998b-ffe2c168d47f",
+      "first_label": "knob",
+      "first_node_id": "d2174346-66bb-4a99-8177-edcc8c7cd20b",
+      "relation": "pull to open or close a drawer",
+      "relation_id": "86f335b7-b55c-45e7-83c3-4c3bef4899f5",
+      "second_label": "dresser / nightstand",
+      "second_node_id": "762c6ae7-17cb-4f69-998b-ffe2c168d47f"
+    }
+  ],
+  "node_list": [
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.9422075748443604,
+          0.9634690880775452,
+          212.61329650878906
+        ],
+        "bbox_max": [
+          -1.9231090545654297,
+          0.9768966436386108,
+          212.6192626953125
+        ],
+        "bbox_min": [
+          -1.9644880294799805,
+          0.9555709958076477,
+          212.6021270751953
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_00",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "044038ae-cd3a-4874-837c-9f2e32a83b04",
+      "object_id": 0,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 63,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "044038ae-cd3a-4874-837c-9f2e32a83b04",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.1275684833526611,
+          0.7523878812789917,
+          212.25572204589844
+        ],
+        "bbox_max": [
+          -1.1182827949523926,
+          0.7682170867919922,
+          212.26361083984375
+        ],
+        "bbox_min": [
+          -1.1384836435317993,
+          0.7433034181594849,
+          212.2456512451172
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_01",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "0635ce47-455a-4933-b421-cd5601b7203f",
+      "object_id": 1,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 41,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "0635ce47-455a-4933-b421-cd5601b7203f",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.5253819227218628,
+          -2.0618813037872314,
+          212.68759155273438
+        ],
+        "bbox_max": [
+          -0.2976365089416504,
+          -2.0266098976135254,
+          212.87066650390625
+        ],
+        "bbox_min": [
+          -0.7038440108299255,
+          -2.140626907348633,
+          212.42991638183594
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "lamp",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_02",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "0ea8a987-f639-4314-a3f3-78a5e6a3b5dc",
+      "object_id": 2,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 1609,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "0ea8a987-f639-4314-a3f3-78a5e6a3b5dc",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.5633388757705688,
+          0.8707417845726013,
+          212.440673828125
+        ],
+        "bbox_max": [
+          -1.5406821966171265,
+          0.8844386339187622,
+          212.45904541015625
+        ],
+        "bbox_min": [
+          -1.5820553302764893,
+          0.8574473857879639,
+          212.40541076660156
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_03",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "15a1acd9-d48d-4011-bbdc-297619dfb62c",
+      "object_id": 3,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 85,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "15a1acd9-d48d-4011-bbdc-297619dfb62c",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.9459763765335083,
+          0.9648491740226746,
+          212.4508514404297
+        ],
+        "bbox_max": [
+          -1.9258395433425903,
+          0.9807103276252747,
+          212.46078491210938
+        ],
+        "bbox_min": [
+          -1.9649314880371094,
+          0.9559424519538879,
+          212.4175567626953
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_04",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64",
+      "object_id": 4,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 59,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.7238836288452148,
+          0.6479644179344177,
+          212.69969177246094
+        ],
+        "bbox_max": [
+          -0.7137655019760132,
+          0.6605328917503357,
+          212.70924377441406
+        ],
+        "bbox_min": [
+          -0.7340376377105713,
+          0.6385425925254822,
+          212.68997192382812
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_05",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "2ffdc7cc-6746-4b6d-a2e5-35c078befc56",
+      "object_id": 5,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 47,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "2ffdc7cc-6746-4b6d-a2e5-35c078befc56",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.1251790523529053,
+          0.7538965940475464,
+          212.48036193847656
+        ],
+        "bbox_max": [
+          -1.1139037609100342,
+          0.7681325078010559,
+          212.48883056640625
+        ],
+        "bbox_min": [
+          -1.1373969316482544,
+          0.7429430484771729,
+          212.46981811523438
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_06",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "3025d034-e4c9-4dc8-8711-ba7cda23b8e1",
+      "object_id": 6,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 54,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "3025d034-e4c9-4dc8-8711-ba7cda23b8e1",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.5593338012695312,
+          0.8657013773918152,
+          212.29318237304688
+        ],
+        "bbox_max": [
+          -1.5420637130737305,
+          0.877152144908905,
+          212.3012237548828
+        ],
+        "bbox_min": [
+          -1.5827867984771729,
+          0.8557877540588379,
+          212.28329467773438
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_07",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "482d7642-61c9-4161-b651-45dc8cb9e2ae",
+      "object_id": 7,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 63,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "482d7642-61c9-4161-b651-45dc8cb9e2ae",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.945456862449646,
+          -1.959684133529663,
+          211.9751434326172
+        ],
+        "bbox_max": [
+          -0.8972659707069397,
+          -1.9244294166564941,
+          211.98162841796875
+        ],
+        "bbox_min": [
+          -1.0024088621139526,
+          -1.999822735786438,
+          211.9545440673828
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "electric outlet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_08",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "51097855-7ce4-4893-8f0a-4715abeaec1c",
+      "object_id": 8,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 297,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "51097855-7ce4-4893-8f0a-4715abeaec1c",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.33014407753944397,
+          -1.9345356225967407,
+          212.44580078125
+        ],
+        "bbox_max": [
+          -0.28465503454208374,
+          -1.861607551574707,
+          212.45632934570312
+        ],
+        "bbox_min": [
+          -0.3682619333267212,
+          -2.0163638591766357,
+          212.43118286132812
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "remote",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_09",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "560f1e2c-e62d-4f1e-93e8-3acbf61433cd",
+      "object_id": 9,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 476,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "560f1e2c-e62d-4f1e-93e8-3acbf61433cd",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.5568803548812866,
+          0.8650417923927307,
+          212.61154174804688
+        ],
+        "bbox_max": [
+          -1.5287777185440063,
+          0.8750173449516296,
+          212.62120056152344
+        ],
+        "bbox_min": [
+          -1.5785809755325317,
+          0.8554982542991638,
+          212.60009765625
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_10",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "6aa841fa-6898-401d-a750-0f521b4cafe7",
+      "object_id": 10,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 71,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "6aa841fa-6898-401d-a750-0f521b4cafe7",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.4345459043979645,
+          -1.8814529180526733,
+          212.22088623046875
+        ],
+        "bbox_max": [
+          -0.25133970379829407,
+          -1.775407314300537,
+          212.4536895751953
+        ],
+        "bbox_min": [
+          -0.6489508152008057,
+          -2.2190537452697754,
+          211.95468139648438
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "dresser / nightstand",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_11",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "762c6ae7-17cb-4f69-998b-ffe2c168d47f",
+      "object_id": 11,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 8701,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "762c6ae7-17cb-4f69-998b-ffe2c168d47f",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.7261391282081604,
+          0.6509876847267151,
+          212.25515747070312
+        ],
+        "bbox_max": [
+          -0.7162688970565796,
+          0.666256844997406,
+          212.27102661132812
+        ],
+        "bbox_min": [
+          -0.7369828224182129,
+          0.6400963664054871,
+          212.2440948486328
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_12",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "877bb40d-b6d8-4716-b958-320b07e6f8d8",
+      "object_id": 12,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 53,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "877bb40d-b6d8-4716-b958-320b07e6f8d8",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.9373388290405273,
+          0.9608628153800964,
+          212.93307495117188
+        ],
+        "bbox_max": [
+          -1.921376347541809,
+          0.9702382683753967,
+          212.94229125976562
+        ],
+        "bbox_min": [
+          -1.957125186920166,
+          0.9540407657623291,
+          212.91799926757812
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_13",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "8ab6af8d-3cad-4fad-bf78-157916578132",
+      "object_id": 13,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 64,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "8ab6af8d-3cad-4fad-bf78-157916578132",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.0677536725997925,
+          0.9551345705986023,
+          213.1971893310547
+        ],
+        "bbox_max": [
+          -0.6904720067977905,
+          1.073325276374817,
+          213.46231079101562
+        ],
+        "bbox_min": [
+          -1.3222270011901855,
+          0.8134229779243469,
+          212.9649200439453
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "television",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_14",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "8bd6869b-b734-4041-a3e5-0cd3e3b18d0e",
+      "object_id": 14,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 11699,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "8bd6869b-b734-4041-a3e5-0cd3e3b18d0e",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.8531970977783203,
+          0.7367289066314697,
+          212.5355682373047
+        ],
+        "bbox_max": [
+          -0.40006256103515625,
+          0.9915642142295837,
+          212.9888916015625
+        ],
+        "bbox_min": [
+          -1.3752760887145996,
+          0.5975517630577087,
+          212.0167694091797
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "dresser / chest of drawers",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_15",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "object_id": 15,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 54906,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.1233336925506592,
+          0.7526764273643494,
+          212.9260711669922
+        ],
+        "bbox_max": [
+          -1.1130995750427246,
+          0.7682523131370544,
+          212.93521118164062
+        ],
+        "bbox_min": [
+          -1.1339032649993896,
+          0.7428390383720398,
+          212.9145965576172
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_16",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3",
+      "object_id": 16,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 57,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.4425584375858307,
+          -1.9447520971298218,
+          212.4472198486328
+        ],
+        "bbox_max": [
+          -0.40230298042297363,
+          -1.8693649768829346,
+          212.45596313476562
+        ],
+        "bbox_min": [
+          -0.4828854501247406,
+          -2.0316805839538574,
+          212.43191528320312
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "remote",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_17",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "9c06f662-e551-484e-9559-a7d3c0b5b31d",
+      "object_id": 17,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 419,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "9c06f662-e551-484e-9559-a7d3c0b5b31d",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.5493743419647217,
+          0.8663167953491211,
+          212.9320068359375
+        ],
+        "bbox_max": [
+          -1.53144371509552,
+          0.8769100904464722,
+          212.9409942626953
+        ],
+        "bbox_min": [
+          -1.5775349140167236,
+          0.8552040457725525,
+          212.92037963867188
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_18",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f",
+      "object_id": 18,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 65,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.940970778465271,
+          0.961575984954834,
+          212.775390625
+        ],
+        "bbox_max": [
+          -1.9234198331832886,
+          0.9737653136253357,
+          212.78392028808594
+        ],
+        "bbox_min": [
+          -1.962924599647522,
+          0.9553535580635071,
+          212.76304626464844
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_19",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "ac42e1c2-3ed4-447f-8147-cd903d8eefc5",
+      "object_id": 19,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 56,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "ac42e1c2-3ed4-447f-8147-cd903d8eefc5",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.7262473106384277,
+          0.6511351466178894,
+          212.9251708984375
+        ],
+        "bbox_max": [
+          -0.7161015868186951,
+          0.6676520109176636,
+          212.9339141845703
+        ],
+        "bbox_min": [
+          -0.7368741631507874,
+          0.640347421169281,
+          212.9141387939453
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_20",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "addeffee-87e2-4f20-98bd-589c425f0f07",
+      "object_id": 20,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 54,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "addeffee-87e2-4f20-98bd-589c425f0f07",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.551867961883545,
+          0.8646839261054993,
+          212.76998901367188
+        ],
+        "bbox_max": [
+          -1.5230962038040161,
+          0.8751839995384216,
+          212.7785186767578
+        ],
+        "bbox_min": [
+          -1.578456997871399,
+          0.8539400100708008,
+          212.75521850585938
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_21",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "b0aa5f30-4fae-4ca8-bc66-c0595b8fc754",
+      "object_id": 21,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 86,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "b0aa5f30-4fae-4ca8-bc66-c0595b8fc754",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.4462389647960663,
+          -1.7980003356933594,
+          212.34535217285156
+        ],
+        "bbox_max": [
+          -0.42791682481765747,
+          -1.7934157848358154,
+          212.36212158203125
+        ],
+        "bbox_min": [
+          -0.46300649642944336,
+          -1.8110777139663696,
+          212.3225860595703
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_22",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "ba0e4f26-1e02-4745-92b6-e1035ba5252c",
+      "object_id": 22,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 67,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "ba0e4f26-1e02-4745-92b6-e1035ba5252c",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.44605782628059387,
+          -1.8009448051452637,
+          212.20138549804688
+        ],
+        "bbox_max": [
+          -0.4277534782886505,
+          -1.795082449913025,
+          212.21261596679688
+        ],
+        "bbox_min": [
+          -0.4634612798690796,
+          -1.815367341041565,
+          212.18722534179688
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_23",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "c0685f07-46ed-41c9-b3ce-4fc476c86c7c",
+      "object_id": 23,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 54,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "c0685f07-46ed-41c9-b3ce-4fc476c86c7c",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.44628143310546875,
+          -1.7987098693847656,
+          212.04783630371094
+        ],
+        "bbox_max": [
+          -0.42892986536026,
+          -1.7937672138214111,
+          212.06544494628906
+        ],
+        "bbox_min": [
+          -0.46573764085769653,
+          -1.805147409439087,
+          212.0238037109375
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_24",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "d2174346-66bb-4a99-8177-edcc8c7cd20b",
+      "object_id": 24,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 62,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "d2174346-66bb-4a99-8177-edcc8c7cd20b",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.1253858804702759,
+          0.7524474263191223,
+          212.70291137695312
+        ],
+        "bbox_max": [
+          -1.1134167909622192,
+          0.7662282586097717,
+          212.7114715576172
+        ],
+        "bbox_min": [
+          -1.1370679140090942,
+          0.7426914572715759,
+          212.69239807128906
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_25",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "da2d25fc-56d3-4b0f-8ada-778acac16871",
+      "object_id": 25,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 49,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "da2d25fc-56d3-4b0f-8ada-778acac16871",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.7661783695220947,
+          0.9662997126579285,
+          212.67030334472656
+        ],
+        "bbox_max": [
+          -1.2888425588607788,
+          1.4280668497085571,
+          213.03041076660156
+        ],
+        "bbox_min": [
+          -2.17995285987854,
+          0.8125630021095276,
+          211.99867248535156
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "dresser / chest of drawers",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_26",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "object_id": 26,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 41580,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+          "scene_id": "421254"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -0.7256030440330505,
+          0.6506354212760925,
+          212.47962951660156
+        ],
+        "bbox_max": [
+          -0.7141059637069702,
+          0.6679957509040833,
+          212.49533081054688
+        ],
+        "bbox_min": [
+          -0.7378512024879456,
+          0.6395111083984375,
+          212.46942138671875
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421254_00_27",
+      "native_scene_id": "sf3d421254_00",
+      "node_id": "f75e1a27-55d7-4b2e-be1a-2d5596d69dd8",
+      "object_id": 27,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 52,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "f75e1a27-55d7-4b2e-be1a-2d5596d69dd8",
+          "scene_id": "421254"
+        }
+      }
+    }
+  ],
+  "object_metadata": {
+    "format_note": "Each exported candidate is represented as one node. Functional parts are explicit nodes; parent-child hierarchy is not asserted unless present in source labels.",
+    "labels": [
+      "dresser / chest of drawers",
+      "dresser / nightstand",
+      "electric outlet",
+      "knob",
+      "lamp",
+      "remote",
+      "television"
+    ],
+    "n_functional_part_like_nodes": 23,
+    "n_nodes": 28
+  },
+  "readiness": {
+    "full_scene_ready": true,
+    "funthor_style_raw_modalities_present": true,
+    "n_rgb_depth_intrinsic_triplets": 741
+  },
+  "scene_asset": {
+    "laser_scan_exists": true,
+    "laser_scan_rel_path": "dev/421254/421254_laser_scan.ply"
+  },
+  "scene_id": "421254",
+  "split": "dev",
+  "visible": {
+    "definition": "visible-subset analogue based on object record-camera or image-feature availability",
+    "node_ids": [
+      "044038ae-cd3a-4874-837c-9f2e32a83b04",
+      "0635ce47-455a-4933-b421-cd5601b7203f",
+      "0ea8a987-f639-4314-a3f3-78a5e6a3b5dc",
+      "15a1acd9-d48d-4011-bbdc-297619dfb62c",
+      "2b17304a-ced6-4b4f-9c1b-32ec7ba8bc64",
+      "2ffdc7cc-6746-4b6d-a2e5-35c078befc56",
+      "3025d034-e4c9-4dc8-8711-ba7cda23b8e1",
+      "482d7642-61c9-4161-b651-45dc8cb9e2ae",
+      "51097855-7ce4-4893-8f0a-4715abeaec1c",
+      "560f1e2c-e62d-4f1e-93e8-3acbf61433cd",
+      "6aa841fa-6898-401d-a750-0f521b4cafe7",
+      "762c6ae7-17cb-4f69-998b-ffe2c168d47f",
+      "877bb40d-b6d8-4716-b958-320b07e6f8d8",
+      "8ab6af8d-3cad-4fad-bf78-157916578132",
+      "8bd6869b-b734-4041-a3e5-0cd3e3b18d0e",
+      "97164eaa-1cf8-49ff-9024-f20d4d64f13e",
+      "9bb22a10-e42b-46fb-af9b-8a8df7d3f6b3",
+      "9c06f662-e551-484e-9559-a7d3c0b5b31d",
+      "a0f8f1a0-fe8d-4eae-b655-66ac3b1ca05f",
+      "ac42e1c2-3ed4-447f-8147-cd903d8eefc5",
+      "addeffee-87e2-4f20-98bd-589c425f0f07",
+      "b0aa5f30-4fae-4ca8-bc66-c0595b8fc754",
+      "ba0e4f26-1e02-4745-92b6-e1035ba5252c",
+      "c0685f07-46ed-41c9-b3ce-4fc476c86c7c",
+      "d2174346-66bb-4a99-8177-edcc8c7cd20b",
+      "da2d25fc-56d3-4b0f-8ada-778acac16871",
+      "f1f234c5-0f2c-4fd0-aaf5-91a02c121ccb",
+      "f75e1a27-55d7-4b2e-be1a-2d5596d69dd8"
+    ],
+    "visibility_stats": {
+      "n_total_nodes": 28,
+      "n_visible_nodes": 28,
+      "visible_ratio": 1.0
+    }
+  }
+}

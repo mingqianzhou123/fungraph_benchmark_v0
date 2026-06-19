@@ -1,0 +1,469 @@
+{
+  "annotations_aggregated": {
+    "format_note": "Point indices are not duplicated here; use source_file/source_lookup under each node.point_annotation.",
+    "n_nodes_with_point_segments": 8,
+    "source_file": "annotations/openfungraph/SceneFun3D.annotations.json"
+  },
+  "dataset": {
+    "captures": [
+      {
+        "capture_full_ready": true,
+        "capture_id": "45260898",
+        "capture_rel_dir": "test/466192/45260898",
+        "n_rgb_depth_intrinsic_triplets": 19,
+        "trajectory_rel_paths": "test/466192/45260898/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "45260899",
+        "capture_rel_dir": "test/466192/45260899",
+        "n_rgb_depth_intrinsic_triplets": 141,
+        "trajectory_rel_paths": "test/466192/45260899/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "45260900",
+        "capture_rel_dir": "test/466192/45260900",
+        "n_rgb_depth_intrinsic_triplets": 45,
+        "trajectory_rel_paths": "test/466192/45260900/lowres_wide.traj"
+      }
+    ],
+    "frame_index_rel_path": "scenes/466192/frames.jsonl",
+    "frame_summary": {
+      "capture_ids": [
+        "45260898",
+        "45260899",
+        "45260900"
+      ],
+      "n_depth": 205,
+      "n_frames": 205,
+      "n_intrinsics": 205,
+      "n_rgb": 205
+    }
+  },
+  "functional_relations": [
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "9311f0c0-33b1-4b61-8ef7-1d2dc24c903a|control the water flow|87da20eb-b2be-450b-b42e-b9d6f49ca0d4",
+      "first_label": "faucet / knob / handle",
+      "first_node_id": "9311f0c0-33b1-4b61-8ef7-1d2dc24c903a",
+      "relation": "control the water flow",
+      "relation_id": "fdd0e8be-d9a0-45ec-83f3-b11d2b777630",
+      "second_label": "bathroom sink",
+      "second_node_id": "87da20eb-b2be-450b-b42e-b9d6f49ca0d4"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "83da9fe4-5d04-4f73-b9dd-f3a91d273cd0|press or rotate to  control the water flow|87da20eb-b2be-450b-b42e-b9d6f49ca0d4",
+      "first_label": "button / knob",
+      "first_node_id": "83da9fe4-5d04-4f73-b9dd-f3a91d273cd0",
+      "relation": "press or rotate to  control the water flow",
+      "relation_id": "557cf31c-c342-48f3-87db-af6486a3c9d0",
+      "second_label": "bathroom sink",
+      "second_node_id": "87da20eb-b2be-450b-b42e-b9d6f49ca0d4"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "955efc16-07fa-4af0-afd6-867bbd7333ae|rotate to control the water flow|724a0787-626b-4e22-a2a7-cf75cdcb6435",
+      "first_label": "knob",
+      "first_node_id": "955efc16-07fa-4af0-afd6-867bbd7333ae",
+      "relation": "rotate to control the water flow",
+      "relation_id": "16d36986-c887-4cbf-822c-cf8f531fa257",
+      "second_label": "bathtub",
+      "second_node_id": "724a0787-626b-4e22-a2a7-cf75cdcb6435"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "d0e18255-d9a3-47b2-8830-8a4138113076|rotate to control the water flow|724a0787-626b-4e22-a2a7-cf75cdcb6435",
+      "first_label": "knob",
+      "first_node_id": "d0e18255-d9a3-47b2-8830-8a4138113076",
+      "relation": "rotate to control the water flow",
+      "relation_id": "3b522c00-dde0-4bca-b4fd-75f97ca946a3",
+      "second_label": "bathtub",
+      "second_node_id": "724a0787-626b-4e22-a2a7-cf75cdcb6435"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "2b2cccd7-2df2-4904-926e-ebd8e99f7df5|rotate to flush|bfdeff05-7d93-4768-8480-46aa3cec0ca8",
+      "first_label": "handle",
+      "first_node_id": "2b2cccd7-2df2-4904-926e-ebd8e99f7df5",
+      "relation": "rotate to flush",
+      "relation_id": "f0a2b7f8-e01f-4fce-8071-2d2859de0b8e",
+      "second_label": "toilet",
+      "second_node_id": "bfdeff05-7d93-4768-8480-46aa3cec0ca8"
+    }
+  ],
+  "node_list": [
+    {
+      "geometry": {
+        "bbox_center": [
+          2.763397693634033,
+          -0.28666314482688904,
+          -70.29866790771484
+        ],
+        "bbox_max": [
+          2.7836172580718994,
+          -0.24639306962490082,
+          -70.28395080566406
+        ],
+        "bbox_min": [
+          2.7516424655914307,
+          -0.3274136185646057,
+          -70.31935119628906
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "handle",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_00",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "2b2cccd7-2df2-4904-926e-ebd8e99f7df5",
+      "object_id": 0,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 106,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "2b2cccd7-2df2-4904-926e-ebd8e99f7df5",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.2501074075698853,
+          -0.006539882160723209,
+          -70.69670867919922
+        ],
+        "bbox_max": [
+          2.0311968326568604,
+          0.5354244112968445,
+          -70.41803741455078
+        ],
+        "bbox_min": [
+          0.3501376807689667,
+          -0.5985050201416016,
+          -70.95283508300781
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "bathtub",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_01",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "724a0787-626b-4e22-a2a7-cf75cdcb6435",
+      "object_id": 1,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 90999,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "724a0787-626b-4e22-a2a7-cf75cdcb6435",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          0.1558935046195984,
+          0.6366486549377441,
+          -70.39347839355469
+        ],
+        "bbox_max": [
+          0.18927811086177826,
+          0.6907727122306824,
+          -70.35430908203125
+        ],
+        "bbox_min": [
+          0.12817580997943878,
+          0.5683507919311523,
+          -70.43309783935547
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "button / knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_02",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "83da9fe4-5d04-4f73-b9dd-f3a91d273cd0",
+      "object_id": 2,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 170,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "83da9fe4-5d04-4f73-b9dd-f3a91d273cd0",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          0.13166393339633942,
+          0.5746265053749084,
+          -70.25724792480469
+        ],
+        "bbox_max": [
+          0.5387217998504639,
+          0.8788905739784241,
+          -70.18294525146484
+        ],
+        "bbox_min": [
+          -0.24927164614200592,
+          0.27108800411224365,
+          -70.39321899414062
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "bathroom sink",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_03",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "87da20eb-b2be-450b-b42e-b9d6f49ca0d4",
+      "object_id": 3,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 14882,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "87da20eb-b2be-450b-b42e-b9d6f49ca0d4",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          0.20595060288906097,
+          0.7060055732727051,
+          -70.17457580566406
+        ],
+        "bbox_max": [
+          0.3175513446331024,
+          0.7727124691009521,
+          -70.12071228027344
+        ],
+        "bbox_min": [
+          0.07886293530464172,
+          0.6024605631828308,
+          -70.21766662597656
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "faucet / knob / handle",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_04",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "9311f0c0-33b1-4b61-8ef7-1d2dc24c903a",
+      "object_id": 4,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 392,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "9311f0c0-33b1-4b61-8ef7-1d2dc24c903a",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.391033411026001,
+          0.27784213423728943,
+          -70.4211654663086
+        ],
+        "bbox_max": [
+          1.4213066101074219,
+          0.3138201832771301,
+          -70.39328002929688
+        ],
+        "bbox_min": [
+          1.3540446758270264,
+          0.24015673995018005,
+          -70.42871856689453
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_05",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "955efc16-07fa-4af0-afd6-867bbd7333ae",
+      "object_id": 5,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 161,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "955efc16-07fa-4af0-afd6-867bbd7333ae",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          2.535832643508911,
+          -0.27963125705718994,
+          -70.4577865600586
+        ],
+        "bbox_max": [
+          2.8240091800689697,
+          0.02278723381459713,
+          -70.22213745117188
+        ],
+        "bbox_min": [
+          2.285186529159546,
+          -0.7333870530128479,
+          -70.66088104248047
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "toilet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_06",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "bfdeff05-7d93-4768-8480-46aa3cec0ca8",
+      "object_id": 6,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 18804,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "bfdeff05-7d93-4768-8480-46aa3cec0ca8",
+          "scene_id": "466192"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.2114510536193848,
+          0.332503080368042,
+          -70.41631317138672
+        ],
+        "bbox_max": [
+          1.2351906299591064,
+          0.35885244607925415,
+          -70.37865447998047
+        ],
+        "bbox_min": [
+          1.1838836669921875,
+          0.3055977523326874,
+          -70.4300765991211
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d466192_00_07",
+      "native_scene_id": "sf3d466192_00",
+      "node_id": "d0e18255-d9a3-47b2-8830-8a4138113076",
+      "object_id": 7,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 94,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "d0e18255-d9a3-47b2-8830-8a4138113076",
+          "scene_id": "466192"
+        }
+      }
+    }
+  ],
+  "object_metadata": {
+    "format_note": "Each exported candidate is represented as one node. Functional parts are explicit nodes; parent-child hierarchy is not asserted unless present in source labels.",
+    "labels": [
+      "bathroom sink",
+      "bathtub",
+      "button / knob",
+      "faucet / knob / handle",
+      "handle",
+      "knob",
+      "toilet"
+    ],
+    "n_functional_part_like_nodes": 5,
+    "n_nodes": 8
+  },
+  "readiness": {
+    "full_scene_ready": true,
+    "funthor_style_raw_modalities_present": true,
+    "n_rgb_depth_intrinsic_triplets": 205
+  },
+  "scene_asset": {
+    "laser_scan_exists": true,
+    "laser_scan_rel_path": "test/466192/466192_laser_scan.ply"
+  },
+  "scene_id": "466192",
+  "split": "test",
+  "visible": {
+    "definition": "visible-subset analogue based on object record-camera or image-feature availability",
+    "node_ids": [
+      "2b2cccd7-2df2-4904-926e-ebd8e99f7df5",
+      "724a0787-626b-4e22-a2a7-cf75cdcb6435",
+      "83da9fe4-5d04-4f73-b9dd-f3a91d273cd0",
+      "87da20eb-b2be-450b-b42e-b9d6f49ca0d4",
+      "9311f0c0-33b1-4b61-8ef7-1d2dc24c903a",
+      "955efc16-07fa-4af0-afd6-867bbd7333ae",
+      "bfdeff05-7d93-4768-8480-46aa3cec0ca8",
+      "d0e18255-d9a3-47b2-8830-8a4138113076"
+    ],
+    "visibility_stats": {
+      "n_total_nodes": 8,
+      "n_visible_nodes": 8,
+      "visible_ratio": 1.0
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "categories": {
+    "ambiguous_one_to_one_assignment": "Same-label functional parts require global scene/cardinality reasoning, e.g. knob-to-appliance assignment.",
+    "object_object_affordance": "Functional relation between two whole-object-like nodes.",
+    "part_object_operation": "Functional part-like target operates, opens, adjusts, switches, presses, pulls, or controls an anchor object.",
+    "proximity_dependent_relation": "Relation whose plausibility depends on spatial proximity or shared physical channel such as water/power."
+  },
+  "functional_part_labels": [
+    "button",
+    "button / knob",
+    "electric outlet",
+    "faucet / handle",
+    "faucet / knob / handle",
+    "handle",
+    "handle / faucet",
+    "knob",
+    "knob / button",
+    "light switch",
+    "remote",
+    "switch panel",
+    "switch panel / electric outlet"
+  ],
+  "relation_counts": {
+    "control": 13,
+    "control the water flow": 7,
+    "control, turn on or turn off": 6,
+    "press or rotate to  control the water flow": 1,
+    "press or rotate to control the water flow": 4,
+    "press or rotate to flush": 1,
+    "press or rotate to open": 1,
+    "press to open or close, or adjust the setting": 1,
+    "provide power": 15,
+    "pull or rotate to open or close": 1,
+    "pull to open or close": 45,
+    "pull to open or close a drawer": 64,
+    "push to flush": 1,
+    "rotate or press to adjust the setting": 1,
+    "rotate to adjust setting or temperature": 3,
+    "rotate to adjust the setting": 7,
+    "rotate to adjust the setting or open or close": 1,
+    "rotate to adjust the temperature": 7,
+    "rotate to control the water flow": 2,
+    "rotate to flush": 1,
+    "rotate to open or close": 13
+  },
+  "source_inspiration": "leggedrobotics/funthor-dataset annotation_rules/functional_relations_config.json",
+  "status": "funthor_inspired_taxonomy_ready"
+}

@@ -1,0 +1,17 @@
+{
+  "image_root_rel_path": "perception_evidence/images",
+  "images_written": true,
+  "important_boundary": "This completes visual evidence cards for freeze candidates, not new camera-depth z-test crops for all candidates.",
+  "n_functional_candidates": 116,
+  "n_pointcloud_render_images": 116,
+  "n_previously_missing_relations_now_have_pointcloud_evidence": 21,
+  "n_visual_evidence_ready": 116,
+  "n_with_previous_depth_tested_rgbd_crop": 46,
+  "previous_export_evidence_tier_counts": {
+    "not_in_previous_export": 21,
+    "pointcloud_render_fallback": 49,
+    "rgbd_crop_plus_pointcloud_render": 46
+  },
+  "selection_rule_version": "expansion_perception_evidence_v1_20260618_pointcloud_with_previous_crop_metadata",
+  "status": "expansion_perception_evidence_ready"
+}

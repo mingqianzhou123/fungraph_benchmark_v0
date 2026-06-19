@@ -18,6 +18,8 @@ For the current 3DGraphLLM+ project, do not start from the old intern task plans
 ```text
 exports/3dgraphllm_functional_eval_v1/README.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/README.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/README.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/query_protocol_v1.md
 STRUCTURE_AUDIT_20260618.md
 ```
 
@@ -148,7 +150,14 @@ exports/3dgraphllm_functional_eval_v1/FULL_MULTIMODAL_BENCHMARK_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/RELATION_EVIDENCE_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/OFFICIAL_CROP_STATUS.md
 exports/3dgraphllm_functional_eval_v1/relation_conditioned_evidence/FULL_PERCEPTION_EVIDENCE_STATUS.md
-exports/3dgraphllm_functional_eval_v1/expansion_v1/EXPANSION_STATUS.md
+exports/3dgraphllm_functional_eval_v1/expansion_v1/README.md
+exports/3dgraphllm_functional_eval_v1/expansion_v1/expansion_manifest_v1.json
+exports/3dgraphllm_functional_eval_v1/expansion_v1/DENNIS_BENCHMARK_SIGNOFF_PACKET.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/README.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/dataset_manifest.json
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/query_protocol_v1.md
+exports/3dgraphllm_functional_eval_v1/fungraph_full_modality_release_v1/external/funthor_v1/funthor_manifest.json
+exports/3dgraphllm_functional_eval_v1/BENCHMARK_CLAIM_AUDIT.md
 ```
 
 Validate the export with:
@@ -157,4 +166,4 @@ Validate the export with:
 python3 exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
 
-Large regenerated crops and point-cloud segments live in ignored local folders under `relation_conditioned_evidence/`; commit manifests, reports, and QC metadata, not bulk raw visual assets. The exception is `relation_conditioned_evidence/full_perception_evidence/images/`, which contains lightweight committed evidence cards for the 683 / 683 full-coverage perception layer.
+Large regenerated crops and point-cloud segments live in ignored local folders under `relation_conditioned_evidence/`; commit manifests, reports, and QC metadata, not bulk raw visual assets. The exception is `relation_conditioned_evidence/full_perception_evidence/images/`, which contains lightweight committed evidence cards for the 683 / 683 full-coverage perception layer. Expansion scratch files are regenerated under ignored `expansion_v1/_intermediate/`; only final candidates, AI review views, manifest, Dennis packet, and compact evidence cards are tracked.

@@ -1,0 +1,608 @@
+{
+  "annotations_aggregated": {
+    "format_note": "Point indices are not duplicated here; use source_file/source_lookup under each node.point_annotation.",
+    "n_nodes_with_point_segments": 11,
+    "source_file": "annotations/openfungraph/SceneFun3D.annotations.json"
+  },
+  "dataset": {
+    "captures": [
+      {
+        "capture_full_ready": true,
+        "capture_id": "42444787",
+        "capture_rel_dir": "dev/421015/42444787",
+        "n_rgb_depth_intrinsic_triplets": 154,
+        "trajectory_rel_paths": "dev/421015/42444787/lowres_wide.traj"
+      },
+      {
+        "capture_full_ready": true,
+        "capture_id": "42444789",
+        "capture_rel_dir": "dev/421015/42444789",
+        "n_rgb_depth_intrinsic_triplets": 494,
+        "trajectory_rel_paths": "dev/421015/42444789/lowres_wide.traj"
+      }
+    ],
+    "frame_index_rel_path": "scenes/421015/frames.jsonl",
+    "frame_summary": {
+      "capture_ids": [
+        "42444787",
+        "42444789"
+      ],
+      "n_depth": 648,
+      "n_frames": 648,
+      "n_intrinsics": 648,
+      "n_rgb": 648
+    }
+  },
+  "functional_relations": [
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "0a0b6e88-91f5-4e72-b087-efd26724beb3|control|0b74764f-2a87-4652-bed1-9e0d0e9af7bd",
+      "first_label": "remote",
+      "first_node_id": "0a0b6e88-91f5-4e72-b087-efd26724beb3",
+      "relation": "control",
+      "relation_id": "aa9cb154-1386-441e-8a39-e0511a220988",
+      "second_label": "television",
+      "second_node_id": "0b74764f-2a87-4652-bed1-9e0d0e9af7bd"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "b5c5da57-4f2b-463e-baa9-b3f0debf1dbb|control|0b74764f-2a87-4652-bed1-9e0d0e9af7bd",
+      "first_label": "remote",
+      "first_node_id": "b5c5da57-4f2b-463e-baa9-b3f0debf1dbb",
+      "relation": "control",
+      "relation_id": "11826ca3-77eb-4451-b476-53785cd5baf2",
+      "second_label": "television",
+      "second_node_id": "0b74764f-2a87-4652-bed1-9e0d0e9af7bd"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "459f80b1-1d1c-45fe-85dc-601a9ffef984|control the water flow|5a5b914c-7a52-4266-ba38-629ff5abbe62",
+      "first_label": "handle / faucet",
+      "first_node_id": "459f80b1-1d1c-45fe-85dc-601a9ffef984",
+      "relation": "control the water flow",
+      "relation_id": "ff3259dc-5a21-4e8f-89cb-f6018c78a96c",
+      "second_label": "sink",
+      "second_node_id": "5a5b914c-7a52-4266-ba38-629ff5abbe62"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "ea6a915e-6b48-4040-aaba-33db193d9e4f|provide power|48b30fae-7dbc-4eb6-8849-c5b07536690b",
+      "first_label": "electric outlet",
+      "first_node_id": "ea6a915e-6b48-4040-aaba-33db193d9e4f",
+      "relation": "provide power",
+      "relation_id": "9551657d-d0ca-4e08-95b5-6c1b5f66971a",
+      "second_label": "kettle",
+      "second_node_id": "48b30fae-7dbc-4eb6-8849-c5b07536690b"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "87288e94-cd31-4f93-8e97-abfc7820ecdc|rotate to adjust setting or temperature|5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a",
+      "first_label": "knob",
+      "first_node_id": "87288e94-cd31-4f93-8e97-abfc7820ecdc",
+      "relation": "rotate to adjust setting or temperature",
+      "relation_id": "cc9c648f-c678-429d-b510-5d83f318aa2c",
+      "second_label": "oven",
+      "second_node_id": "5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "ad665cfd-cce2-4b77-bacd-7df2562de3fb|rotate to adjust setting or temperature|5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a",
+      "first_label": "knob",
+      "first_node_id": "ad665cfd-cce2-4b77-bacd-7df2562de3fb",
+      "relation": "rotate to adjust setting or temperature",
+      "relation_id": "49a24364-c5dc-43a6-8f13-2ed95d655a64",
+      "second_label": "oven",
+      "second_node_id": "5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a"
+    },
+    {
+      "annotation_source": "openfungraph_scenefun3d_relation",
+      "edge_id": "bffeae1b-559e-44de-8179-5847aeeb323d|rotate to adjust setting or temperature|5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a",
+      "first_label": "knob",
+      "first_node_id": "bffeae1b-559e-44de-8179-5847aeeb323d",
+      "relation": "rotate to adjust setting or temperature",
+      "relation_id": "c50ba9ff-6916-4dcc-b475-49033c434faf",
+      "second_label": "oven",
+      "second_node_id": "5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a"
+    }
+  ],
+  "node_list": [
+    {
+      "geometry": {
+        "bbox_center": [
+          1.881232738494873,
+          -0.37418681383132935,
+          225.63851928710938
+        ],
+        "bbox_max": [
+          2.0254268646240234,
+          -0.3370082974433899,
+          225.6533660888672
+        ],
+        "bbox_min": [
+          1.7537908554077148,
+          -0.4189011752605438,
+          225.62741088867188
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "remote",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_00",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "0a0b6e88-91f5-4e72-b087-efd26724beb3",
+      "object_id": 0,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 1555,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "0a0b6e88-91f5-4e72-b087-efd26724beb3",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          -1.1393336057662964,
+          -1.2872663736343384,
+          225.8922119140625
+        ],
+        "bbox_max": [
+          -0.9780208468437195,
+          -0.7491106986999512,
+          226.30593872070312
+        ],
+        "bbox_min": [
+          -3.6160635948181152,
+          -1.8426858186721802,
+          225.64385986328125
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "television",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_01",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "0b74764f-2a87-4652-bed1-9e0d0e9af7bd",
+      "object_id": 1,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 44558,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "0b74764f-2a87-4652-bed1-9e0d0e9af7bd",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.4808133840560913,
+          5.089720726013184,
+          226.12896728515625
+        ],
+        "bbox_max": [
+          1.6741005182266235,
+          5.162355899810791,
+          226.36343383789062
+        ],
+        "bbox_min": [
+          1.3769257068634033,
+          5.019922733306885,
+          226.00733947753906
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "handle / faucet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_02",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "459f80b1-1d1c-45fe-85dc-601a9ffef984",
+      "object_id": 2,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 924,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "459f80b1-1d1c-45fe-85dc-601a9ffef984",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.7369636297225952,
+          4.540738105773926,
+          226.1812286376953
+        ],
+        "bbox_max": [
+          1.781372308731079,
+          4.618491172790527,
+          226.2911834716797
+        ],
+        "bbox_min": [
+          1.6562657356262207,
+          4.457396030426025,
+          226.07113647460938
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "kettle",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_03",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "48b30fae-7dbc-4eb6-8849-c5b07536690b",
+      "object_id": 3,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 2071,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "48b30fae-7dbc-4eb6-8849-c5b07536690b",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.554810643196106,
+          5.019343376159668,
+          225.96328735351562
+        ],
+        "bbox_max": [
+          1.9115495681762695,
+          5.355292320251465,
+          226.07151794433594
+        ],
+        "bbox_min": [
+          1.445762276649475,
+          4.822327613830566,
+          225.84817504882812
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "sink",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_04",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "5a5b914c-7a52-4266-ba38-629ff5abbe62",
+      "object_id": 4,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 9450,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "5a5b914c-7a52-4266-ba38-629ff5abbe62",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.8113062381744385,
+          5.891750335693359,
+          225.67112731933594
+        ],
+        "bbox_max": [
+          1.8800123929977417,
+          6.260400772094727,
+          226.01844787597656
+        ],
+        "bbox_min": [
+          1.7178149223327637,
+          5.692301273345947,
+          225.413818359375
+        ]
+      },
+      "is_functional_part_like": false,
+      "label": "oven",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_05",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a",
+      "object_id": 5,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 11677,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.8374097347259521,
+          5.87060022354126,
+          225.98013305664062
+        ],
+        "bbox_max": [
+          1.8497148752212524,
+          5.889328479766846,
+          226.0010528564453
+        ],
+        "bbox_min": [
+          1.8215738534927368,
+          5.8486104011535645,
+          225.9556121826172
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_06",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "87288e94-cd31-4f93-8e97-abfc7820ecdc",
+      "object_id": 6,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 152,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "87288e94-cd31-4f93-8e97-abfc7820ecdc",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.7791059017181396,
+          6.119529724121094,
+          225.98306274414062
+        ],
+        "bbox_max": [
+          1.7939543724060059,
+          6.145196437835693,
+          226.00535583496094
+        ],
+        "bbox_min": [
+          1.7553303241729736,
+          6.098979473114014,
+          225.95689392089844
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_07",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "ad665cfd-cce2-4b77-bacd-7df2562de3fb",
+      "object_id": 7,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 175,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "ad665cfd-cce2-4b77-bacd-7df2562de3fb",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.8803986310958862,
+          -0.48626118898391724,
+          225.6566925048828
+        ],
+        "bbox_max": [
+          1.9759340286254883,
+          -0.44971537590026855,
+          225.66921997070312
+        ],
+        "bbox_min": [
+          1.7965999841690063,
+          -0.5240985155105591,
+          225.6266632080078
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "remote",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_08",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "b5c5da57-4f2b-463e-baa9-b3f0debf1dbb",
+      "object_id": 8,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 735,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "b5c5da57-4f2b-463e-baa9-b3f0debf1dbb",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.8084149360656738,
+          5.99442720413208,
+          225.98001098632812
+        ],
+        "bbox_max": [
+          1.8207958936691284,
+          6.015050411224365,
+          225.99937438964844
+        ],
+        "bbox_min": [
+          1.795444130897522,
+          5.97249698638916,
+          225.954833984375
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "knob",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_09",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "bffeae1b-559e-44de-8179-5847aeeb323d",
+      "object_id": 9,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 139,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "bffeae1b-559e-44de-8179-5847aeeb323d",
+          "scene_id": "421015"
+        }
+      }
+    },
+    {
+      "geometry": {
+        "bbox_center": [
+          1.5585181713104248,
+          4.4846062660217285,
+          226.37014770507812
+        ],
+        "bbox_max": [
+          1.5848954916000366,
+          4.55157995223999,
+          226.41258239746094
+        ],
+        "bbox_min": [
+          1.5259535312652588,
+          4.400064468383789,
+          226.3207244873047
+        ]
+      },
+      "is_functional_part_like": true,
+      "label": "electric outlet",
+      "modality": {
+        "has_bbox_geometry": true,
+        "has_image_feature": true,
+        "has_point_feature": true,
+        "has_record_camera": true,
+        "object_full_ready": true
+      },
+      "native_feature_key": "sf3d421015_00_10",
+      "native_scene_id": "sf3d421015_00",
+      "node_id": "ea6a915e-6b48-4040-aaba-33db193d9e4f",
+      "object_id": 10,
+      "point_annotation": {
+        "has_point_segment": true,
+        "n_point_indices": 1041,
+        "source_file": "annotations/openfungraph/SceneFun3D.annotations.json",
+        "source_lookup": {
+          "annot_id": "ea6a915e-6b48-4040-aaba-33db193d9e4f",
+          "scene_id": "421015"
+        }
+      }
+    }
+  ],
+  "object_metadata": {
+    "format_note": "Each exported candidate is represented as one node. Functional parts are explicit nodes; parent-child hierarchy is not asserted unless present in source labels.",
+    "labels": [
+      "electric outlet",
+      "handle / faucet",
+      "kettle",
+      "knob",
+      "oven",
+      "remote",
+      "sink",
+      "television"
+    ],
+    "n_functional_part_like_nodes": 7,
+    "n_nodes": 11
+  },
+  "readiness": {
+    "full_scene_ready": true,
+    "funthor_style_raw_modalities_present": true,
+    "n_rgb_depth_intrinsic_triplets": 648
+  },
+  "scene_asset": {
+    "laser_scan_exists": true,
+    "laser_scan_rel_path": "dev/421015/421015_laser_scan.ply"
+  },
+  "scene_id": "421015",
+  "split": "dev",
+  "visible": {
+    "definition": "visible-subset analogue based on object record-camera or image-feature availability",
+    "node_ids": [
+      "0a0b6e88-91f5-4e72-b087-efd26724beb3",
+      "0b74764f-2a87-4652-bed1-9e0d0e9af7bd",
+      "459f80b1-1d1c-45fe-85dc-601a9ffef984",
+      "48b30fae-7dbc-4eb6-8849-c5b07536690b",
+      "5a5b914c-7a52-4266-ba38-629ff5abbe62",
+      "5febfbab-cf5b-4bc0-bf80-ba8eeba57d1a",
+      "87288e94-cd31-4f93-8e97-abfc7820ecdc",
+      "ad665cfd-cce2-4b77-bacd-7df2562de3fb",
+      "b5c5da57-4f2b-463e-baa9-b3f0debf1dbb",
+      "bffeae1b-559e-44de-8179-5847aeeb323d",
+      "ea6a915e-6b48-4040-aaba-33db193d9e4f"
+    ],
+    "visibility_stats": {
+      "n_total_nodes": 11,
+      "n_visible_nodes": 11,
+      "visible_ratio": 1.0
+    }
+  }
+}
