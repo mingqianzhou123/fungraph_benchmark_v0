@@ -19,6 +19,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_f
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_perception_evidence_v1.py --write-images
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_ai_prereview_v1.py
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_fungraph_full_modality_release.py
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_funthor_query_extension.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -52,7 +53,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
 | `relation_conditioned_evidence/` | Query-level target-anchor multimodal evidence manifests keyed by `relation_key` |
 | `expansion_v1/` | Clean expansion workspace: manifest, final candidates, AI pre-review views, expansion evidence cards, and Dennis signoff packet; process drafts are regenerated under ignored `_intermediate/` |
-| `fungraph_full_modality_release_v1/` | Clean FunTHOR-inspired human-facing release package: dataset manifest, label/relation files, annotation rules, query splits, and one compact scene package per scene |
+| `fungraph_full_modality_release_v1/` | Clean FunTHOR-inspired human-facing release package: dataset manifest, label/relation files, annotation rules, query splits, external FunTHOR query extension, and one compact scene package per scene |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
@@ -68,6 +69,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `scripts/build_expansion_perception_evidence_v1.py` | Builds pointcloud-render evidence cards for the expansion functional freeze candidates |
 | `scripts/build_ai_prereview_v1.py` | Builds AI pre-review triage files and `DENNIS_BENCHMARK_SIGNOFF_PACKET.md` without enabling paper use |
 | `scripts/build_fungraph_full_modality_release.py` | Builds the clean FunTHOR-inspired full-modality release package from the adapter/export files |
+| `scripts/build_funthor_query_extension.py` | Generates FunTHOR protocol queries/minimal pairs from Hugging Face metadata and merges them into the release splits |
 | `scripts/export_relation_point_segments.py` | Optional local exporter for target/anchor PLY point segments; outputs should not be committed |
 
 ## Current Policy
@@ -102,6 +104,12 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   relation files, annotation rules, query splits, and one compact scene package
   per scene containing nodes, functional relations, RGB-D-camera frame paths,
   pointcloud/annotation pointers, modality readiness, and a visible-subset analogue.
+- FunTHOR is included as an external functional-scenegraph dataset under
+  `fungraph_full_modality_release_v1/external/funthor_v1/`. The shared
+  `query_protocol_v1.md` defines one protocol across datasets: each visible
+  functional edge yields 3 functional-element selection queries and 2
+  affected-object selection queries; generated FunTHOR rows remain
+  paper-disabled until human/Dennis signoff.
 - `expansion_v1/` is a draft expansion layer, not a frozen eval split. It audits
   the current 683 rows, exposes the true 160 unique scene-target-anchor-relation
   units, covers all 195 unique OpenFunGraph source relations with 585
@@ -149,10 +157,11 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   minimal-pair review rows, a 116-query balanced freeze-candidate split, 60
   expanded minimal-pair freeze candidates, 116 / 116 expansion evidence cards,
   AI pre-review counts, a Dennis signoff packet, and a benchmark claim audit;
-- the clean full-modality release package exists, covers all 20 scenes, exposes
-  317 candidate nodes, 195 functional relations, 13,039 RGB-D-camera frame rows,
-  dataset-level label/relation files, query splits, and per-scene `scene.json` +
-  `frames.jsonl` packages.
+- the clean full-modality release package exists, covers all 20 FunGraph scenes,
+  exposes 317 candidate nodes, 195 FunGraph functional relations, 13,039
+  RGB-D-camera frame rows, dataset-level label/relation files, query splits,
+  per-scene `scene.json` + `frames.jsonl` packages, and the external FunTHOR
+  extension with 805 generated functional queries plus 200 minimal pairs.
 
 ## Native 3DGraphLLM Smoke Test
 

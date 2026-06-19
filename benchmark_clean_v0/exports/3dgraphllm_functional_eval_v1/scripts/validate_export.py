@@ -376,6 +376,11 @@ def main() -> None:
             "splits/minimal_pairs_28.jsonl",
             "splits/expansion_functional_116_candidates.jsonl",
             "splits/expansion_minimal_pairs_60_candidates.jsonl",
+            "query_protocol_v1.md",
+            "external/funthor_v1/README.md",
+            "external/funthor_v1/funthor_manifest.json",
+            "splits/funthor_functional_queries_v1.jsonl",
+            "splits/funthor_minimal_pairs_v1.jsonl",
         ]
         for filename in required:
             assert (release_dir / filename).exists(), f"missing full-modality release file: {filename}"
@@ -399,6 +404,46 @@ def main() -> None:
         for split_name, expected in expected_release_splits.items():
             rows = read_jsonl(release_dir / "splits" / f"{split_name}.jsonl")
             assert len(rows) == expected, f"release split {split_name}: expected {expected}, got {len(rows)}"
+
+        external = release_manifest.get("external_datasets", {}).get("funthor_v1")
+        assert external, "missing FunTHOR external dataset entry in release manifest"
+        assert external["paper_use_allowed"] is False
+        assert external["n_scenes"] == 12
+        assert external["n_functional_edges"] == 164
+        assert external["n_generated_queries"] == 805
+        assert external["n_generated_minimal_pairs"] == 200
+        assert release_manifest["counts"]["n_external_funthor_queries"] == 805
+        assert release_manifest["counts"]["n_external_funthor_minimal_pairs"] == 200
+        assert release_manifest["counts"]["n_total_release_query_rows_including_external"] >= 1800
+
+        funthor_manifest = json.loads((release_dir / "external" / "funthor_v1" / "funthor_manifest.json").read_text(encoding="utf-8"))
+        assert funthor_manifest["status"] == "funthor_external_functional_extension_ready"
+        assert funthor_manifest["counts"]["n_scenes"] == 12
+        assert funthor_manifest["counts"]["n_functional_edges"] == 164
+        assert funthor_manifest["counts"]["n_visible_endpoint_edges"] == 161
+        assert funthor_manifest["counts"]["n_generated_queries"] == 805
+        assert funthor_manifest["counts"]["n_generated_minimal_pairs"] == 200
+        assert funthor_manifest["counts"]["n_unique_relations"] == 18
+
+        funthor_queries = read_jsonl(release_dir / "splits" / "funthor_functional_queries_v1.jsonl")
+        funthor_pairs = read_jsonl(release_dir / "splits" / "funthor_minimal_pairs_v1.jsonl")
+        assert len(funthor_queries) == 805
+        assert len(funthor_pairs) == 200
+        funthor_query_ids = {row["query_id"] for row in funthor_queries}
+        assert len(funthor_query_ids) == len(funthor_queries), "duplicate FunTHOR query ids"
+        for row in funthor_queries:
+            assert row["dataset"] == "funthor"
+            assert row["paper_use_allowed"] is False
+            assert row["human_review_required"] is True
+            assert row["dennis_signoff_required"] is True
+            assert row["target_node_id"] in set(row["candidate_node_ids"]), f"FunTHOR target outside candidate set: {row['query_id']}"
+            assert row["query_family"] in {"functional_element_selection", "affected_object_selection"}
+            assert row.get("functional_taxonomy", {}).get("relation_category"), f"FunTHOR query missing taxonomy: {row['query_id']}"
+        for row in funthor_pairs:
+            assert row["dataset"] == "funthor"
+            assert row["paper_use_allowed"] is False
+            assert row["query_a_id"] in funthor_query_ids
+            assert row["query_b_id"] in funthor_query_ids
 
         scene_manifest = release_manifest["scene_manifest"]
         assert len(scene_manifest) == len(candidates_by_scene)

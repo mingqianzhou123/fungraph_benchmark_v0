@@ -12,7 +12,9 @@ fungraph_full_modality_release_v1/
   dataset_functional_labels.json
   dataset_unique_relations.json
   annotation_rules/functional_relation_taxonomy.json
+  query_protocol_v1.md
   splits/*.jsonl
+  external/funthor_v1/funthor_manifest.json
   scenes/<scene_id>/
     scene.json
     frames.jsonl
@@ -34,6 +36,18 @@ fungraph_full_modality_release_v1/
 2. `scenes/<scene_id>/scene.json` for one scene's nodes, functional relations, modality readiness, and visible subset analogue.
 3. `splits/functional_500.jsonl` and `splits/human_133.jsonl` for current frozen eval queries.
 4. `splits/expansion_functional_116_candidates.jsonl` only as paper-disabled candidates requiring human/Dennis signoff.
+
+
+## External FunTHOR Extension
+
+Dennis suggested defining one query protocol across functional-scenegraph datasets. This release now includes FunTHOR as an external dataset:
+
+- `query_protocol_v1.md` defines the shared generation protocol.
+- `external/funthor_v1/funthor_manifest.json` stores compact FunTHOR scene/node/edge metadata and HF raw asset pointers.
+- `splits/funthor_functional_queries_v1.jsonl` contains 805 protocol-generated FunTHOR functional queries.
+- `splits/funthor_minimal_pairs_v1.jsonl` contains 200 same-label functional-element diagnostic pairs.
+
+These rows are rule-grounded but still paper-disabled until human wording review, evidence spot-check, and Dennis signoff.
 
 ## Boundary
 

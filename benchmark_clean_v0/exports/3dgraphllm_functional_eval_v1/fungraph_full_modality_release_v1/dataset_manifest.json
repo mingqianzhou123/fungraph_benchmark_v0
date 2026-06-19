@@ -10,15 +10,33 @@
   },
   "counts": {
     "n_candidate_nodes": 317,
+    "n_external_funthor_minimal_pairs": 200,
+    "n_external_funthor_queries": 805,
     "n_frames": 13039,
     "n_functional_part_like_nodes": 209,
     "n_functional_relations": 195,
     "n_scenes": 20,
+    "n_total_release_query_rows_including_external": 1892,
     "n_unique_functional_labels": 13,
     "n_unique_labels": 54,
     "n_unique_relations": 21
   },
   "design_reference": "FunTHOR-style layout: dataset-level label/relation files, annotation rules, query splits, and one scene package per scene with RGB-D-camera-pointcloud references.",
+  "external_datasets": {
+    "funthor_v1": {
+      "dataset": "leggedrobotics/funthor-dataset",
+      "manifest": "external/funthor_v1/funthor_manifest.json",
+      "minimal_pair_split": "splits/funthor_minimal_pairs_v1.jsonl",
+      "n_functional_edges": 164,
+      "n_generated_minimal_pairs": 200,
+      "n_generated_queries": 805,
+      "n_nodes": 576,
+      "n_scenes": 12,
+      "paper_use_allowed": false,
+      "query_split": "splits/funthor_functional_queries_v1.jsonl"
+    }
+  },
+  "query_protocol": "query_protocol_v1.md",
   "raw_asset_policy": "Large RGB/depth/pointcloud files are referenced by relative path and are not duplicated into this release folder.",
   "release_version": "fungraph_full_modality_release_v1_20260619",
   "remaining_semantic_gaps": [
