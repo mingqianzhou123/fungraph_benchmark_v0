@@ -38,6 +38,19 @@ For same-scene, same-label, same-relation functional elements, the protocol crea
 - Generated FunTHOR minimal pairs: 200
 
 
+
+## FunGraph Existing Query Taxonomy v2
+
+The original FunGraph/SceneFun3D release queries are preserved unchanged. A derived categorized view adds the same analysis axes used for FunTHOR v2:
+
+```text
+Functional Query Type x Spatial Scope x Anchor Visibility
+```
+
+Categorized existing FunGraph/SceneFun3D queries: 799
+
+This view is for slicing, diagnostics, and model-analysis tables. It is auto-labeled and requires spot-checking before paper claims.
+
 ## FunTHOR Factorized v2
 
 FunTHOR v2 keeps the same grounded functional edges but varies three controlled factors:

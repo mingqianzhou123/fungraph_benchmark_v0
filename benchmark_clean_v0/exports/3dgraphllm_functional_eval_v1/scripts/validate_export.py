@@ -382,6 +382,8 @@ def main() -> None:
             "splits/funthor_functional_queries_v1.jsonl",
             "splits/funthor_minimal_pairs_v1.jsonl",
             "splits/funthor_functional_queries_factorized_v2.jsonl",
+            "splits/fungraph_existing_queries_categorized_v2.jsonl",
+            "fungraph_query_taxonomy_v2_summary.json",
         ]
         for filename in required:
             assert (release_dir / filename).exists(), f"missing full-modality release file: {filename}"
@@ -405,6 +407,20 @@ def main() -> None:
         for split_name, expected in expected_release_splits.items():
             rows = read_jsonl(release_dir / "splits" / f"{split_name}.jsonl")
             assert len(rows) == expected, f"release split {split_name}: expected {expected}, got {len(rows)}"
+
+        fungraph_taxonomy_summary = json.loads((release_dir / "fungraph_query_taxonomy_v2_summary.json").read_text(encoding="utf-8"))
+        fungraph_categorized_rows = read_jsonl(release_dir / "splits" / "fungraph_existing_queries_categorized_v2.jsonl")
+        assert fungraph_taxonomy_summary["status"] == "fungraph_existing_query_taxonomy_v2_ready"
+        assert fungraph_taxonomy_summary["paper_use_allowed"] is False
+        assert len(fungraph_categorized_rows) == fungraph_taxonomy_summary["counts"]["n_rows"] == 799
+        assert release_manifest["counts"]["n_fungraph_existing_queries_categorized_v2"] == 799
+        derived = release_manifest.get("derived_splits", {}).get("fungraph_existing_queries_categorized_v2")
+        assert derived, "missing FunGraph categorized v2 derived split"
+        assert derived["n_rows"] == 799
+        assert derived["paper_use_allowed"] is False
+        assert derived["axes"] == ["functional_query_type", "spatial_scope", "anchor_visibility"]
+        assert set(fungraph_taxonomy_summary["counts"]["by_spatial_scope"]) == {"local", "remote"}
+        assert set(fungraph_taxonomy_summary["counts"]["by_anchor_visibility"]) == {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
 
         external = release_manifest.get("external_datasets", {}).get("funthor_v1")
         assert external, "missing FunTHOR external dataset entry in release manifest"
@@ -466,6 +482,25 @@ def main() -> None:
         allowed_scopes = {"local", "remote"}
         allowed_anchor_visibility = {"anchor_explicit", "anchor_implicit", "anchor_hidden"}
         allowed_answer_formats = {"node_selection", "boolean", "text"}
+        fungraph_categorized_ids = {row["query_id"] for row in fungraph_categorized_rows}
+        assert len(fungraph_categorized_ids) == len(fungraph_categorized_rows), "duplicate FunGraph categorized v2 query ids"
+        for row in fungraph_categorized_rows:
+            qid = row["query_id"]
+            assert row["dataset"] == "scenefun3d"
+            assert row["generation_version"] == "existing_query_categorized_v2"
+            assert row["taxonomy_review_status"] == "auto_labeled_needs_spot_check"
+            assert row["paper_use_allowed"] is False
+            assert row["human_review_required"] is True
+            assert row["dennis_signoff_required"] is True
+            assert row["functional_query_type"] in allowed_query_types, f"{qid}: invalid FunGraph query type"
+            assert row["spatial_scope"] in allowed_scopes, f"{qid}: invalid FunGraph spatial scope"
+            assert row["anchor_visibility"] in allowed_anchor_visibility, f"{qid}: invalid FunGraph anchor visibility"
+            assert row["answer_format"] == "node_selection", f"{qid}: existing FunGraph rows must remain node-selection"
+            assert row["functional_taxonomy"]["spatial_scope"] == row["spatial_scope"], f"{qid}: taxonomy scope mismatch"
+            assert row["functional_taxonomy"]["anchor_visibility"] == row["anchor_visibility"], f"{qid}: taxonomy anchor mismatch"
+            for target in row.get("target_node_ids") or []:
+                assert target in set(row["candidate_node_ids"]), f"{qid}: target outside candidate set"
+
         funthor_v2_ids = {row["query_id"] for row in funthor_v2_queries}
         assert len(funthor_v2_ids) == len(funthor_v2_queries), "duplicate FunTHOR v2 query ids"
         assert {row["spatial_scope"] for row in funthor_v2_queries} == allowed_scopes

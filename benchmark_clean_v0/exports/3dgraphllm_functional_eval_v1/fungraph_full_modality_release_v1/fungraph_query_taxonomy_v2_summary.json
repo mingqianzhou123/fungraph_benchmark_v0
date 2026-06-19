@@ -1,0 +1,44 @@
+{
+  "counts": {
+    "by_anchor_visibility": {
+      "anchor_explicit": 697,
+      "anchor_hidden": 76,
+      "anchor_implicit": 26
+    },
+    "by_dataset": {
+      "scenefun3d": 799
+    },
+    "by_functional_query_type": {
+      "ambiguous_instance_minimal_pair": 137,
+      "functional_element_selection": 434,
+      "state_change_goal_completion": 228
+    },
+    "by_original_split": {
+      "expansion_functional_116_candidates.jsonl": 116,
+      "functional_500.jsonl": 500,
+      "human_133.jsonl": 133,
+      "long_range_50.jsonl": 50
+    },
+    "by_spatial_scope": {
+      "local": 587,
+      "remote": 212
+    },
+    "n_rows": 799
+  },
+  "dennis_signoff_required": true,
+  "human_review_required": true,
+  "notes": "Auto-labeled derived view; canonical source split files are unchanged.",
+  "paper_use_allowed": false,
+  "source_splits": [
+    "functional_500.jsonl",
+    "human_133.jsonl",
+    "long_range_50.jsonl",
+    "expansion_functional_116_candidates.jsonl"
+  ],
+  "status": "fungraph_existing_query_taxonomy_v2_ready",
+  "taxonomy_axes": [
+    "functional_query_type",
+    "spatial_scope",
+    "anchor_visibility"
+  ]
+}

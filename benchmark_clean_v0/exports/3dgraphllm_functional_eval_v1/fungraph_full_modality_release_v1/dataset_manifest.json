@@ -9,6 +9,32 @@
     "splits": "splits/*.jsonl"
   },
   "counts": {
+    "fungraph_existing_query_taxonomy_v2": {
+      "by_anchor_visibility": {
+        "anchor_explicit": 697,
+        "anchor_hidden": 76,
+        "anchor_implicit": 26
+      },
+      "by_dataset": {
+        "scenefun3d": 799
+      },
+      "by_functional_query_type": {
+        "ambiguous_instance_minimal_pair": 137,
+        "functional_element_selection": 434,
+        "state_change_goal_completion": 228
+      },
+      "by_original_split": {
+        "expansion_functional_116_candidates.jsonl": 116,
+        "functional_500.jsonl": 500,
+        "human_133.jsonl": 133,
+        "long_range_50.jsonl": 50
+      },
+      "by_spatial_scope": {
+        "local": 587,
+        "remote": 212
+      },
+      "n_rows": 799
+    },
     "n_candidate_nodes": 317,
     "n_external_funthor_factorized_v2_queries": 1655,
     "n_external_funthor_minimal_pairs": 200,
@@ -16,11 +42,31 @@
     "n_frames": 13039,
     "n_functional_part_like_nodes": 209,
     "n_functional_relations": 195,
+    "n_fungraph_existing_queries_categorized_v2": 799,
     "n_scenes": 20,
     "n_total_release_query_rows_including_external": 3547,
     "n_unique_functional_labels": 13,
     "n_unique_labels": 54,
     "n_unique_relations": 21
+  },
+  "derived_splits": {
+    "fungraph_existing_queries_categorized_v2": {
+      "axes": [
+        "functional_query_type",
+        "spatial_scope",
+        "anchor_visibility"
+      ],
+      "n_rows": 799,
+      "paper_use_allowed": false,
+      "path": "splits/fungraph_existing_queries_categorized_v2.jsonl",
+      "source_splits": [
+        "functional_500.jsonl",
+        "human_133.jsonl",
+        "long_range_50.jsonl",
+        "expansion_functional_116_candidates.jsonl"
+      ],
+      "summary": "fungraph_query_taxonomy_v2_summary.json"
+    }
   },
   "design_reference": "FunTHOR-style layout: dataset-level label/relation files, annotation rules, query splits, and one scene package per scene with RGB-D-camera-pointcloud references.",
   "external_datasets": {
