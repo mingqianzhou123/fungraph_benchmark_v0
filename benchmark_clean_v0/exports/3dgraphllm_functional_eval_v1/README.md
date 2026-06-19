@@ -18,6 +18,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_e
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_freeze_candidates_v1.py
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_expansion_perception_evidence_v1.py --write-images
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_ai_prereview_v1.py
+python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/build_funthor_style_quality_layer.py
 /home/mz560/3dgraphllm_plus_data/envs/3dgraphllm/bin/python benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/audit_native_3dgraphllm_assets.py --graphllm-root "/home/mz560/3D scene graph project/3DGraphLLM"
 python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validate_export.py
 ```
@@ -51,6 +52,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `FULL_MULTIMODAL_BENCHMARK_STATUS.md` | Human-readable full multimodal benchmark status |
 | `relation_conditioned_evidence/` | Query-level target-anchor multimodal evidence manifests keyed by `relation_key` |
 | `expansion_v1/` | Clean expansion workspace: manifest, final candidates, AI pre-review views, expansion evidence cards, and Dennis signoff packet; process drafts are regenerated under ignored `_intermediate/` |
+| `benchmark_quality_v2/` | FunTHOR-style full-modality and relation-taxonomy quality layer: RGB-D-camera/pointcloud readiness, query relation categories, minimal-pair ambiguity tags, and remaining parity gaps |
 | `SMOKE_TEST.md` | Completed one-query full-model smoke test command and result |
 | `FULL_EVAL_20260618.md` | Full 500-query original 3DGraphLLM run note and FunGraph metrics |
 | `OBJECT_SELECTION_EVAL_20260618.md` | Controlled object-selection 3DGraphLLM eval note and metrics |
@@ -65,6 +67,7 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
 | `scripts/build_freeze_candidates_v1.py` | Builds conservative paper-disabled freeze-candidate functional and minimal-pair splits from expansion_v1 |
 | `scripts/build_expansion_perception_evidence_v1.py` | Builds pointcloud-render evidence cards for the expansion functional freeze candidates |
 | `scripts/build_ai_prereview_v1.py` | Builds AI pre-review triage files and `DENNIS_BENCHMARK_SIGNOFF_PACKET.md` without enabling paper use |
+| `scripts/build_funthor_style_quality_layer.py` | Builds the FunTHOR-style benchmark quality layer and relation/minimal-pair taxonomy indexes |
 | `scripts/export_relation_point_segments.py` | Optional local exporter for target/anchor PLY point segments; outputs should not be committed |
 
 ## Current Policy
@@ -94,6 +97,12 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   evidence keep their strict `official_crop_*` crop metadata; rows without such
   views use a GT pointcloud-render fallback and must not be described as
   depth-tested camera crops.
+- `benchmark_quality_v2/` is the FunTHOR-style quality layer. It makes explicit
+  which scenes meet full raw RGB-D-camera-pointcloud readiness, which queries are
+  part-object operations versus proximity-dependent relations, which minimal pairs
+  require same-label or global one-to-one reasoning, and which semantic gaps remain
+  relative to FunTHOR-style parity: first-class object-part hierarchy and explicit
+  visible subset tables.
 - `expansion_v1/` is a draft expansion layer, not a frozen eval split. It audits
   the current 683 rows, exposes the true 160 unique scene-target-anchor-relation
   units, covers all 195 unique OpenFunGraph source relations with 585
@@ -140,7 +149,10 @@ python3 benchmark_clean_v0/exports/3dgraphllm_functional_eval_v1/scripts/validat
   drafts, 195 unique-relation review rows, 585 query-review rows, 105
   minimal-pair review rows, a 116-query balanced freeze-candidate split, 60
   expanded minimal-pair freeze candidates, 116 / 116 expansion evidence cards,
-  AI pre-review counts, a Dennis signoff packet, and a benchmark claim audit.
+  AI pre-review counts, a Dennis signoff packet, and a benchmark claim audit;
+- the FunTHOR-style quality layer exists, covers all 20 scenes, indexes 799
+  functional/query rows and 88 minimal-pair rows, and records relation taxonomy,
+  ambiguity, and remaining object-part/visible-subset parity gaps.
 
 ## Native 3DGraphLLM Smoke Test
 

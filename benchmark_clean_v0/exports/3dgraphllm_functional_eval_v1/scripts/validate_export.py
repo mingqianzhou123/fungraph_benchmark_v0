@@ -359,6 +359,56 @@ def main() -> None:
             assert row.get("changed_factor") in allowed_factors, f"{pair_id}: invalid changed_factor"
             assert row.get("paper_use_allowed") is False, f"{pair_id}: pair candidates must not be paper-enabled"
 
+
+    quality_dir = EXPORT_DIR / "benchmark_quality_v2"
+    if quality_dir.exists():
+        required = [
+            "FUNTHOR_STYLE_BENCHMARK_STATUS.md",
+            "funthor_style_readiness.json",
+            "funthor_style_modality_audit.csv",
+            "relation_taxonomy_v2.json",
+            "query_relation_taxonomy_index.jsonl",
+            "minimal_pair_taxonomy_index.jsonl",
+        ]
+        for filename in required:
+            assert (quality_dir / filename).exists(), f"missing benchmark_quality_v2 file: {filename}"
+
+        quality_summary = json.loads((quality_dir / "funthor_style_readiness.json").read_text(encoding="utf-8"))
+        relation_summary = json.loads((quality_dir / "relation_taxonomy_v2.json").read_text(encoding="utf-8"))
+        query_taxonomy_rows = read_jsonl(quality_dir / "query_relation_taxonomy_index.jsonl")
+        pair_taxonomy_rows = read_jsonl(quality_dir / "minimal_pair_taxonomy_index.jsonl")
+        with (quality_dir / "funthor_style_modality_audit.csv").open("r", encoding="utf-8", newline="") as f:
+            modality_rows = list(__import__("csv").DictReader(f))
+
+        assert quality_summary["status"] == "funthor_style_quality_layer_ready"
+        assert relation_summary["status"] == "funthor_style_relation_taxonomy_ready"
+        assert quality_summary["full_modality_summary"]["status"] == "funthor_style_full_modality_audit_ready"
+        assert quality_summary["minimal_pair_taxonomy_summary"]["status"] == "funthor_style_minimal_pair_taxonomy_ready"
+        assert len(modality_rows) == quality_summary["full_modality_summary"]["our_export"]["scenes"] == len(candidates_by_scene)
+        assert all(row["has_rgb"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without RGB"
+        assert all(row["has_depth"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without depth"
+        assert all(row["has_intrinsics"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without intrinsics"
+        assert all(row["has_camera_trajectory"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without camera trajectory"
+        assert all(row["has_scene_pointcloud"] == "True" for row in modality_rows), "FunTHOR-style audit found a scene without pointcloud"
+        assert all(row["funthor_style_full_ready"] == "True" for row in modality_rows), "not all scenes meet FunTHOR-style raw readiness"
+
+        expected_taxonomy_queries = (
+            EXPECTED_COUNTS["functional_500_eval.jsonl"]
+            + EXPECTED_COUNTS["human_133_eval.jsonl"]
+            + EXPECTED_COUNTS["long_range_50_eval.jsonl"]
+        )
+        if expansion_dir.exists():
+            expected_taxonomy_queries += 116
+        assert len(query_taxonomy_rows) == relation_summary["n_queries_indexed"] == expected_taxonomy_queries
+        assert relation_summary["taxonomy_version"] == "funthor_style_v2_20260619"
+        allowed_categories = {"part_object_operation", "object_object_affordance", "proximity_dependent_relation"}
+        assert all(row["funthor_style_category"] in allowed_categories for row in query_taxonomy_rows), "unknown FunTHOR-style query category"
+        assert any(row["ambiguity_type"] == "ambiguous_one_to_one_assignment" for row in query_taxonomy_rows), "missing ambiguous one-to-one taxonomy rows"
+
+        expected_taxonomy_pairs = EXPECTED_COUNTS["minimal_pairs_28_eval.jsonl"] + (60 if expansion_dir.exists() else 0)
+        assert len(pair_taxonomy_rows) == quality_summary["minimal_pair_taxonomy_summary"]["n_pairs_indexed"] == expected_taxonomy_pairs
+        assert quality_summary["minimal_pair_taxonomy_summary"]["n_pairs_requiring_cardinality_or_global_scene_reasoning"] > 0
+
     print("3DGraphLLM export validation passed")
 
 
